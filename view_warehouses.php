@@ -96,8 +96,6 @@ if (!isset($_SESSION['admin_email'])) {
                                 <th style="vertical-align: middle;text-align: center">Telephone</th>
                                 <th style="vertical-align: middle;text-align: center">CCTV</th>
                                 <th style="vertical-align: middle;text-align: center">Base Value</th>
-                                <th style="vertical-align: middle;text-align: center">Remove Warehouse</th>
-                                <th style="vertical-align: middle;text-align: center">Edit Details</th>
 
                             </tr>
 
@@ -202,26 +200,6 @@ if (!isset($_SESSION['admin_email'])) {
                                     <td><?php echo $warehouse_cctv; ?></td>
 
                                     <td>LKR &nbsp; <?php echo $warehouse_price; ?></td>
-
-                                    <td>
-
-                                        <a href="index.php?delete_warehouse=<?php echo $warehouse_id; ?>">
-
-                                            <i class="fa fa-trash-o"> </i> Delete
-
-                                        </a>
-
-                                    </td>
-
-                                    <td>
-
-                                        <a href="index.php?edit_warehouse=<?php echo $warehouse_id; ?>">
-
-                                            <i class="fa fa-pencil"> </i> Edit
-
-                                        </a>
-
-                                    </td>
 
                                 </tr>
 
