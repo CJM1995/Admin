@@ -510,5 +510,5 @@ if (!isset($_SESSION['admin_email'])) {
             </div><!-- panel panel-primary Ends -->
         </div><!-- col-lg-12 Ends -->
     </div><!-- 6 row Ends -->
-
+    <a class="gotopbtn" href="#"> <i class="fa fa-arrow-circle-up"></i> </a>
 <?php } ?>

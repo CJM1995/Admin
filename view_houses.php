@@ -398,5 +398,5 @@ if (!isset($_SESSION['admin_email'])) {
 
     </div><!-- 2 row Ends -->
 
-
+    <a class="gotopbtn" href="#"> <i class="fa fa-arrow-circle-up"></i> </a>
 <?php } ?>

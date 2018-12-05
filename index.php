@@ -76,6 +76,8 @@ if (!isset($_SESSION['admin_email'])) {
 
         <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
+<!--        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">-->
+
     </head>
 
     <body>
