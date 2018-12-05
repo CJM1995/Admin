@@ -230,8 +230,8 @@ if (!isset($_SESSION['admin_email'])) {
                                                                     }
 
                                                                     .image:hover {
-                                                                        -webkit-transform: scale(4.0);
-                                                                        transform: scale(4.0);
+                                                                        -webkit-transform: scale(3.5);
+                                                                        transform: scale(3.5);
                                                                     }
                                                                 </style>
                                                                 <td><img class="image"
@@ -387,8 +387,8 @@ if (!isset($_SESSION['admin_email'])) {
                                         }
 
                                         .image:hover {
-                                            -webkit-transform: scale(4.0);
-                                            transform: scale(4.0);
+                                            -webkit-transform: scale(3.5);
+                                            transform: scale(3.5);
                                         }
                                     </style>
                                     <td><img class="image" src="house_images/<?php echo $lnd_img1; ?>" width="60"

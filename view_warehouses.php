@@ -84,7 +84,9 @@ if (!isset($_SESSION['admin_email'])) {
                             <tr>
                                 <th style="vertical-align: middle;text-align: center">Operations</th>
                                 <th style="vertical-align: middle;text-align: center">Warehouse ID</th>
-                                <th style="vertical-align: middle;text-align: center">Warehouse Image</th>
+                                <th style="vertical-align: middle;text-align: center">Warehouse Image1</th>
+                                <th style="vertical-align: middle;text-align: center">Warehouse Image2</th>
+                                <th style="vertical-align: middle;text-align: center">Warehouse Image3</th>
                                 <th style="vertical-align: middle;text-align: center">Sale Type</th>
                                 <th style="vertical-align: middle;text-align: center">Address</th>
                                 <th style="vertical-align: middle;text-align: center">Road Access</th>
@@ -149,9 +151,24 @@ if (!isset($_SESSION['admin_email'])) {
                                             <i class="fa fa-trash"></i>
                                         </button>
                                     </td>
+                                    <style>
+                                        .image {
+                                            -webkit-transition: all 0.7s ease;
+                                            transition: all 0.7s ease;
+                                        }
+
+                                        .image:hover {
+                                            -webkit-transform: scale(3.5);
+                                            transform: scale(3.5);
+                                        }
+                                    </style>
 
                                     <td><?php echo $i; ?></td>
-                                    <td><img src="warehouse_images/<?php echo $warehouse_image; ?>" width="60"
+                                    <td><img class="image" src="warehouse_images/<?php echo $warehouse_image; ?>" width="60"
+                                             height="60"></td>
+                                    <td><img class="image" src="warehouse_images/<?php echo $warehouse_image2; ?>" width="60"
+                                             height="60"></td>
+                                    <td><img class="image" src="warehouse_images/<?php echo $warehouse_image3; ?>" width="60"
                                              height="60"></td>
                                     <td><?php echo $warehouse_category; ?></td>
                                     <td><?php echo $warehouse_address; ?></td>
