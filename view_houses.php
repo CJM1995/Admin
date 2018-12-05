@@ -212,17 +212,8 @@ if (!isset($_SESSION['admin_email'])) {
                                                                 </td>
                                                                 <td><?php echo $i; ?></td>
                                                                 <td><?php echo $hou_code_s; ?></td>
-                                                                <style>
-                                                                    .image {
-                                                                        -webkit-transition: all 0.7s ease;
-                                                                        transition: all 0.7s ease;
-                                                                    }
-
-                                                                    .image:hover {
-                                                                        -webkit-transform: scale(3.5);
-                                                                        transform: scale(3.5);
-                                                                    }
-                                                                </style>
+<!--                                                                <style>-->
+<!--                                                                </style>-->
                                                                 <td><img class="image"
                                                                          src="house_images/<?php echo $hou_img1_s; ?>"
                                                                          width="60"
@@ -351,17 +342,8 @@ if (!isset($_SESSION['admin_email'])) {
                                     </td>
                                     <td><?php echo $i; ?></td>
                                     <td><?php echo $hou_code; ?></td>
-                                    <style>
-                                        .image {
-                                            -webkit-transition: all 0.7s ease;
-                                            transition: all 0.7s ease;
-                                        }
-
-                                        .image:hover {
-                                            -webkit-transform: scale(3.5);
-                                            transform: scale(3.5);
-                                        }
-                                    </style>
+<!--                                    <style>-->
+<!--                                    </style>-->
                                     <td><img class="image" src="house_images/<?php echo $hou_img1; ?>" width="60"
                                              height="60"></td>
                                     <td><img class="image" src="house_images/<?php echo $hou_img2; ?>" width="60"

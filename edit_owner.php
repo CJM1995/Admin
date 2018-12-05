@@ -58,7 +58,7 @@ if (!isset($_SESSION['admin_email'])) {
 
                     <h3 class="panel-title">
 
-                        <i class="fa fa-money fa-fw"></i> Edit Owner Details
+                        <i class="fa fa-user-secret fa-2x fa-fw"></i> Edit Owner Details
 
                     </h3>
 
@@ -141,9 +141,44 @@ if (!isset($_SESSION['admin_email'])) {
 
     </div><!-- 2 row Ends -->
 
+    <!-- Success Modal -->
+    <div class="modal fade" id="suModal" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog modal-sm">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" onclick="window.open('index.php?view_owners','_self')">
+                        &times;
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <i style="font-size: 800%"
+                       class="text-center text-success center-block fa fa-check-circle-o fa-5x"></i>
+                    <br>
+                    <p style="font-size: 110%" class="text-center">Owner details has been edited successfully!</p>
+
+                </div>
+                <form method="post">
+                    <div style="text-align: center" class="modal-footer text-center center-block">
+                        <button type="button" class="btn btn-success"
+                                onclick="window.open('index.php?view_owners','_self')">OK
+                        </button>
+                    </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Success Modal -->
+
     <?php
 
     if (isset($_POST['update'])) {
+        echo "<link rel=\"stylesheet\" href=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css\">";
+        echo "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js\"></script>";
+        echo "<script src=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js\"></script>";
+        echo "<link href=\"css/style.css\" rel=\"stylesheet\">";
+
         $owner_name = $_POST['owner_name'];
         $owner_address = $_POST['owner_address'];
         $owner_phone = $_POST['owner_phone'];
@@ -156,9 +191,9 @@ if (!isset($_SESSION['admin_email'])) {
 
         if ($run_owner) {
 
-            echo "<script>alert('Owner Has Been Updated successfully')</script>";
-
-            echo "<script>window.open('index.php?view_owners','_self')</script>";
+            echo "<script type=\"text/javascript\">
+                    $('#suModal').modal('show');
+                  </script>";
 
         }
 

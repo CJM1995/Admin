@@ -179,9 +179,43 @@ if (!isset($_SESSION['admin_email'])) {
 
     </div><!-- 2 row Ends -->
 
+    <!-- Success Modal -->
+    <div class="modal fade" id="suModal" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog modal-sm">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" onclick="window.open('index.php?view_users','_self')">
+                        &times;
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <i style="font-size: 800%"
+                       class="text-center text-success center-block fa fa-check-circle-o fa-5x"></i>
+                    <br>
+                    <p style="font-size: 110%" class="text-center">User has been inserted successfully!</p>
+
+                </div>
+                <form method="post">
+                    <div style="text-align: center" class="modal-footer text-center center-block">
+                        <button type="button" class="btn btn-success"
+                                onclick="window.open('index.php?view_users','_self')">OK
+                        </button>
+                    </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Success Modal -->
+
     <?php
 
     if (isset($_POST['submit'])) {
+        echo "<link rel=\"stylesheet\" href=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css\">";
+        echo "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js\"></script>";
+        echo "<script src=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js\"></script>";
+        echo "<link href=\"css/style.css\" rel=\"stylesheet\">";
 
         $admin_name = $_POST['admin_name'];
 
@@ -210,10 +244,10 @@ if (!isset($_SESSION['admin_email'])) {
 
 
         if ($run_admin) {
+            echo "<script type=\"text/javascript\">
 
-            echo "<script>alert('One User Has Been Inserted successfully')</script>";
-
-            echo "<script>window.open('index.php?view_users','_self')</script>";
+            $('#suModal').modal('show');
+        </script>";
 
         }
 

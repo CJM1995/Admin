@@ -200,18 +200,8 @@ if (!isset($_SESSION['admin_email'])) {
                                                                         <i class="fa fa-trash"></i>
                                                                     </button>
                                                                 </td>
-                                                                <style>
-                                                                    .image {
-                                                                        -webkit-transition: all 0.7s ease;
-                                                                        transition: all 0.7s ease;
-                                                                    }
-
-                                                                    .image:hover {
-                                                                        -webkit-transform: scale(3.5);
-                                                                        transform: scale(3.5);
-                                                                    }
-                                                                </style>
-
+<!--                                                                <style>-->
+<!--                                                                </style>-->
                                                                 <td><?php echo $i; ?></td>
                                                                 <td><img class="image" src="warehouse_images/<?php echo $warehouse_image_s; ?>" width="60"
                                                                          height="60"></td>
@@ -332,17 +322,8 @@ if (!isset($_SESSION['admin_email'])) {
                                             <i class="fa fa-trash"></i>
                                         </button>
                                     </td>
-                                    <style>
-                                        .image {
-                                            -webkit-transition: all 0.7s ease;
-                                            transition: all 0.7s ease;
-                                        }
-
-                                        .image:hover {
-                                            -webkit-transform: scale(3.5);
-                                            transform: scale(3.5);
-                                        }
-                                    </style>
+<!--                                    <style>-->
+<!--                                    </style>-->
 
                                     <td><?php echo $i; ?></td>
                                     <td><img class="image" src="warehouse_images/<?php echo $warehouse_image; ?>" width="60"

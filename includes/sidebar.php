@@ -203,7 +203,7 @@ if (!isset($_SESSION['admin_email'])) {
 
                 <li class="item" id='user' data-toggle="collapse" data-target="#users"><!-- li Starts -->
                     <a href="#user" class="">
-                        <i class="fa fa-fw fa-user-md"></i></i>Users
+                        <i class="fa fa-fw fa-user"></i></i>Users
                         <i class="fa fa-fw fa-caret-down"></i>
                     </a>
                     <div id="users" class="smenu collapse">
