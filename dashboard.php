@@ -271,15 +271,12 @@ if (!isset($_SESSION['admin_email'])) {
                                 ?>
                                 <tr>
                                     <td><?php echo $warehouse_id; ?></td>
-                                    <td>
                                         <?php
-                                        $get_customer = "select * from customersn where cus_id='$cus_id'";
-                                        $run_customer = mysqli_query($con, $get_customer);
-                                        $row_customer = mysqli_fetch_array($run_customer);
-                                        $customer_email = $row_customer['email'];
-                                        echo $customer_email;
+                                        $result_wc = mysqli_query($con, "SELECT email AS wc_email FROM customersn WHERE cus_id='$cus_id'");
+                                        $row = mysqli_fetch_array($result_wc);
+                                        $wc_email = $row['wc_email'];
                                         ?>
-                                    </td>
+                                    <td><?php echo $wc_email; ?></td>
                                     <td><?php echo $invoice_no; ?></td>
                                     <td><?php echo $sale_type; ?></td>
                                     <td><?php echo $p_date; ?></td>
@@ -370,15 +367,12 @@ if (!isset($_SESSION['admin_email'])) {
                                 ?>
                                 <tr>
                                     <td><?php echo $house_id; ?></td>
-                                    <td>
                                         <?php
-                                        $get_customer = "select * from customersn where cus_id='$cus_id'";
-                                        $run_customer = mysqli_query($con, $get_customer);
-                                        $row_customer = mysqli_fetch_array($run_customer);
-                                        $customer_email = $row_customer['email'];
-                                        echo $customer_email;
+                                        $result_hc = mysqli_query($con, "SELECT email AS hc_email FROM customersn WHERE cus_id='$cus_id'");
+                                        $row = mysqli_fetch_array($result_hc);
+                                        $hc_email = $row['hc_email'];
                                         ?>
-                                    </td>
+                                    <td><?php echo $hc_email; ?></td>
                                     <td><?php echo $invoice_no; ?></td>
                                     <td><?php echo $sale_type; ?></td>
                                     <td><?php echo $p_date; ?></td>
@@ -469,15 +463,12 @@ if (!isset($_SESSION['admin_email'])) {
                                 ?>
                                 <tr>
                                     <td><?php echo $land_id; ?></td>
-                                    <td>
                                         <?php
-                                        $get_customer = "select * from customersn where cus_id='$cus_id'";
-                                        $run_customer = mysqli_query($con, $get_customer);
-                                        $row_customer = mysqli_fetch_array($run_customer);
-                                        $customer_email = $row_customer['email'];
-                                        echo $customer_email;
+                                        $result_lc = mysqli_query($con, "SELECT email AS lc_email FROM customersn WHERE cus_id='$cus_id'");
+                                        $row = mysqli_fetch_array($result_lc);
+                                        $lc_email = $row['lc_email'];
                                         ?>
-                                    </td>
+                                    <td><?php echo $lc_email; ?></td>
                                     <td><?php echo $invoice_no; ?></td>
                                     <td><?php echo $sale_type; ?></td>
                                     <td><?php echo $p_date; ?></td>

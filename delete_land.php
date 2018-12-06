@@ -95,12 +95,57 @@ if (!isset($_SESSION['admin_email'])) {
     </div>
     <!-- Success Modal -->
 
+    <!-- Warning Modal -->
+    <div class="modal fade" id="waModal" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog modal-sm">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <i style="font-size: 800%"
+                       class="text-center text-warning center-block fa fa-exclamation-circle fa-5x"></i>
+                    <br>
+                    <p style="font-size: 110%" class="text-center">This operation is not possible because there are land purchase records of this land.</p>
+
+                </div>
+                <form method="post">
+                    <div style="text-align: center" class="modal-footer text-center center-block">
+                        <input type="submit" name="no" value="OK"
+                               class="btn btn-warning">
+                    </div>
+            </div>
+
+        </div>
+        </form>
+    </div>
+    <!-- Warning Modal -->
+
     <?php
 
     if (isset($_POST['delete'])) {
         $del_id = $_POST['del_id'];
+
+        $result_lp = mysqli_query($con, "SELECT COUNT(lp_id) AS lp_count FROM land_purchases WHERE land_id='$del_id'");
+        $row = mysqli_fetch_array($result_lp);
+        $lp_count = $row['lp_count'];
+
         $delete_land = "delete from lands where land_id='$del_id'";
-        $run_delete = mysqli_query($con, $delete_land);
+        //$run_delete = mysqli_query($con, $delete_land);
+
+        if($lp_count==0){
+            $run_delete = mysqli_query($con, $delete_land);
+        }
+        else{
+            echo "<script type=\"text/javascript\">
+            $(window).load(function(){
+                $('#myModal').modal('hide');
+            });
+
+            $('#waModal').modal('show');
+        </script>";
+        }
+
         if ($run_delete) {
 
             echo "<script type=\"text/javascript\">
@@ -117,6 +162,10 @@ if (!isset($_SESSION['admin_email'])) {
     }
 
     if (isset($_POST['close'])) {
+        echo "<script>window.open('index.php?view_lands','_self')</script>";
+    }
+
+    if (isset($_POST['no'])) {
         echo "<script>window.open('index.php?view_lands','_self')</script>";
     }
     ?>

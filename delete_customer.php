@@ -88,12 +88,64 @@ if (!isset($_SESSION['admin_email'])) {
     </div>
     <!-- Success Modal -->
 
+    <!-- Warning Modal -->
+    <div class="modal fade" id="waModal" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog modal-sm">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <i style="font-size: 800%"
+                       class="text-center text-warning center-block fa fa-exclamation-circle fa-5x"></i>
+                    <br>
+                    <p style="font-size: 110%" class="text-center">This operation is not possible because there are purchase records from this customer.</p>
+
+                </div>
+                <form method="post">
+                    <div style="text-align: center" class="modal-footer text-center center-block">
+                        <input type="submit" name="no" value="OK"
+                               class="btn btn-warning">
+                    </div>
+            </div>
+
+        </div>
+        </form>
+    </div>
+    <!-- Warning Modal -->
+
     <?php
 
     if (isset($_POST['delete'])) {
         $del_id = $_POST['del_id'];
-        $delete_house = "delete from customersn where cus_id='$del_id'";
-        $run_delete = mysqli_query($con, $delete_house);
+
+        $result_lp = mysqli_query($con, "SELECT COUNT(lp_id) AS lp_count FROM land_purchases WHERE cus_id='$del_id'");
+        $row = mysqli_fetch_array($result_lp);
+        $lp_count = $row['lp_count'];
+
+        $result_wp = mysqli_query($con, "SELECT COUNT(wp_id) AS wp_count FROM warehouse_purchases WHERE cus_id='$del_id'");
+        $row = mysqli_fetch_array($result_wp);
+        $wp_count = $row['wp_count'];
+
+        $result_hp = mysqli_query($con, "SELECT COUNT(hp_id) AS hp_count FROM house_purchases WHERE cus_id='$del_id'");
+        $row = mysqli_fetch_array($result_hp);
+        $hp_count = $row['hp_count'];
+
+        $delete_customer = "delete from customersn where cus_id='$del_id'";
+
+        if($lp_count==0 && $wp_count==0 && $hp_count==0){
+            $run_delete = mysqli_query($con, $delete_customer);
+        }
+        else{
+            echo "<script type=\"text/javascript\">
+            $(window).load(function(){
+                $('#myModal').modal('hide');
+            });
+
+            $('#waModal').modal('show');
+        </script>";
+        }
+        //$run_delete = mysqli_query($con, $delete_house);
         if ($run_delete) {
 
             echo "<script type=\"text/javascript\">
@@ -110,6 +162,10 @@ if (!isset($_SESSION['admin_email'])) {
     }
 
     if (isset($_POST['close'])) {
+        echo "<script>window.open('index.php?view_customers','_self')</script>";
+    }
+
+    if (isset($_POST['no'])) {
         echo "<script>window.open('index.php?view_customers','_self')</script>";
     }
     ?>

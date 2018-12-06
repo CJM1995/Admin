@@ -87,12 +87,64 @@ if (!isset($_SESSION['admin_email'])) {
     </div>
     <!-- Success Modal -->
 
+    <!-- Warning Modal -->
+    <div class="modal fade" id="waModal" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog modal-sm">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <i style="font-size: 800%"
+                       class="text-center text-warning center-block fa fa-exclamation-circle fa-5x"></i>
+                    <br>
+                    <p style="font-size: 110%" class="text-center">This operation is not possible because there are properties from this owner.</p>
+
+                </div>
+                <form method="post">
+                    <div style="text-align: center" class="modal-footer text-center center-block">
+                        <input type="submit" name="no" value="OK"
+                               class="btn btn-warning">
+                    </div>
+            </div>
+
+        </div>
+        </form>
+    </div>
+    <!-- Warning Modal -->
+
     <?php
 
     if (isset($_POST['delete'])) {
         $del_id = $_POST['del_id'];
-        $delete_house = "delete from owners where owner_id='$del_id'";
-        $run_delete = mysqli_query($con, $delete_house);
+
+        $result_l = mysqli_query($con, "SELECT COUNT(land_id) AS l_count FROM lands WHERE owner_id='$del_id'");
+        $row = mysqli_fetch_array($result_l);
+        $l_count = $row['l_count'];
+
+        $result_w = mysqli_query($con, "SELECT COUNT(warehouse_id) AS w_count FROM warehouses WHERE owner_id='$del_id'");
+        $row = mysqli_fetch_array($result_w);
+        $w_count = $row['w_count'];
+
+        $result_h = mysqli_query($con, "SELECT COUNT(house_id) AS h_count FROM house_purchases WHERE owner_id='$del_id'");
+        $row = mysqli_fetch_array($result_h);
+        $h_count = $row['h_count'];
+
+        $delete_owner = "delete from owners where owner_id='$del_id'";
+
+        if($l_count==0 && $w_count==0 && $h_count==0){
+            $run_delete = mysqli_query($con, $delete_owner);
+        }
+        else{
+            echo "<script type=\"text/javascript\">
+            $(window).load(function(){
+                $('#myModal').modal('hide');
+            });
+
+            $('#waModal').modal('show');
+        </script>";
+        }
+
         if ($run_delete) {
 
             echo "<script type=\"text/javascript\">
@@ -105,6 +157,10 @@ if (!isset($_SESSION['admin_email'])) {
         }
     }
     if (isset($_POST['ok'])) {
+        echo "<script>window.open('index.php?view_owners','_self')</script>";
+    }
+
+    if (isset($_POST['no'])) {
         echo "<script>window.open('index.php?view_owners','_self')</script>";
     }
 
