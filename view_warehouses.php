@@ -187,19 +187,36 @@ if (!isset($_SESSION['admin_email'])) {
                                                             ?>
 
                                                             <tr>
-                                                                <td style="min-width: 130px">
-
-                                                                    <button type="button" rel="tooltip" class="btn btn-success btn-sm"
-                                                                            data-original-title="" title="Edit"
-                                                                            onclick="location.href = 'index.php?edit_warehouse=<?php echo $warehouse_id_s; ?>';">
-                                                                        <i class="fa fa-pencil"></i>
+                                                                <?php
+                                                                if(strcmp($warehouse_availability_s,'Available')==0){
+                                                                    echo "<td style=\"min-width: 130px\">
+                                                                    <button type=\"button\" rel=\"tooltip\" class=\"btn btn-success btn-sm\"
+                                                                            data-original-title=\"\" title=\"Edit\"
+                                                                            onclick=\"location.href = 'index.php?edit_warehouse=$warehouse_id_s';\">
+                                                                        <i class=\"fa fa-pencil\"></i>
                                                                     </button>
-                                                                    <button type="button" rel="tooltip" class="btn btn-danger btn-sm"
-                                                                            data-original-title="" title="Remove"
-                                                                            onclick="location.href = 'index.php?delete_warehouse=<?php echo $warehouse_id_s; ?>';">
-                                                                        <i class="fa fa-trash"></i>
+                                                                    <button type=\"button\" rel=\"tooltip\" class=\"btn btn-danger btn-sm\"
+                                                                            data-original-title=\"\" title=\"Remove\"
+                                                                            onclick=\"location.href = 'index.php?delete_warehouse=$warehouse_id_s';\">
+                                                                        <i class=\"fa fa-trash\"></i>
                                                                     </button>
-                                                                </td>
+                                                                </td>";
+                                                                }
+                                                                else{
+                                                                    echo "<td style=\"min-width: 130px\">
+                                                                    <button type=\"button\" rel=\"tooltip\" class=\"btn btn-success btn-sm\"
+                                                                            data-original-title=\"\" title=\"Edit\"
+                                                                            onclick=\"location.href = 'index.php?edit_warehouse=$warehouse_id_s';\" disabled>
+                                                                        <i class=\"fa fa-pencil\"></i>
+                                                                    </button>
+                                                                    <button type=\"button\" rel=\"tooltip\" class=\"btn btn-danger btn-sm\"
+                                                                            data-original-title=\"\" title=\"Remove\"
+                                                                            onclick=\"location.href = 'index.php?delete_warehouse=$warehouse_id_s';\" disabled>
+                                                                        <i class=\"fa fa-trash\"></i>
+                                                                    </button>
+                                                                </td>";
+                                                                }
+                                                                ?>
 <!--                                                                <style>-->
 <!--                                                                </style>-->
                                                                 <td><?php echo $i; ?></td>
@@ -309,19 +326,36 @@ if (!isset($_SESSION['admin_email'])) {
                                 ?>
 
                                 <tr>
-                                    <td style="min-width: 130px">
-
-                                        <button type="button" rel="tooltip" class="btn btn-success btn-sm"
-                                                data-original-title="" title="Edit"
-                                                onclick="location.href = 'index.php?edit_warehouse=<?php echo $warehouse_id; ?>';">
-                                            <i class="fa fa-pencil"></i>
+                                    <?php
+                                    if(strcmp($warehouse_availability,'Available')==0){
+                                        echo "<td style=\"min-width: 130px\">
+                                        <button type=\"button\" rel=\"tooltip\" class=\"btn btn-success btn-sm\"
+                                                data-original-title=\"\" title=\"Edit\"
+                                                onclick=\"location.href = 'index.php?edit_warehouse=$warehouse_id';\">
+                                            <i class=\"fa fa-pencil\"></i>
                                         </button>
-                                        <button type="button" rel="tooltip" class="btn btn-danger btn-sm"
-                                                data-original-title="" title="Remove"
-                                                onclick="location.href = 'index.php?delete_warehouse=<?php echo $warehouse_id; ?>';">
-                                            <i class="fa fa-trash"></i>
+                                        <button type=\"button\" rel=\"tooltip\" class=\"btn btn-danger btn-sm\"
+                                                data-original-title=\"\" title=\"Remove\"
+                                                onclick=\"location.href = 'index.php?delete_warehouse=$warehouse_id';\">
+                                            <i class=\"fa fa-trash\"></i>
                                         </button>
-                                    </td>
+                                    </td>";
+                                    }
+                                    else{
+                                        echo "<td style=\"min-width: 130px\">
+                                        <button type=\"button\" rel=\"tooltip\" class=\"btn btn-success btn-sm\"
+                                                data-original-title=\"\" title=\"Edit\"
+                                                onclick=\"location.href = 'index.php?edit_warehouse=$warehouse_id';\" disabled>
+                                            <i class=\"fa fa-pencil\"></i>
+                                        </button>
+                                        <button type=\"button\" rel=\"tooltip\" class=\"btn btn-danger btn-sm\"
+                                                data-original-title=\"\" title=\"Remove\"
+                                                onclick=\"location.href = 'index.php?delete_warehouse=$warehouse_id';\" disabled>
+                                            <i class=\"fa fa-trash\"></i>
+                                        </button>
+                                    </td>";
+                                    }
+                                    ?>
 <!--                                    <style>-->
 <!--                                    </style>-->
 

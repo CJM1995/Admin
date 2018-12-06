@@ -186,22 +186,44 @@ if (!isset($_SESSION['admin_email'])) {
                                                             $i++;
                                                             ?>
                                                             <tr>
-                                                                <td>
-                                                                    <button style="margin-top: 2px" type="button"
-                                                                            rel="tooltip"
-                                                                            class="btn btn-success btn-sm"
-                                                                            data-original-title="" title="Edit"
-                                                                            onclick="location.href = 'index.php?edit_land=<?php echo $lnd_id_s; ?>';">
-                                                                        <i class="fa fa-pencil"></i>
+                                                                <?php
+                                                                if(strcmp($lnd_ava_s,'Available')==0){
+                                                                    echo "<td>
+                                                                    <button style=\"margin-top: 2px\" type=\"button\"
+                                                                            rel=\"tooltip\"
+                                                                            class=\"btn btn-success btn-sm\"
+                                                                            data-original-title=\"\" title=\"Edit\"
+                                                                            onclick=\"location.href = 'index.php?edit_land=$lnd_id_s';\">
+                                                                        <i class=\"fa fa-pencil\"></i>
                                                                     </button>
-                                                                    <button style="margin-top: 2px" type="button"
-                                                                            rel="tooltip"
-                                                                            class="btn btn-danger btn-sm"
-                                                                            data-original-title="" title="Remove"
-                                                                            onclick="location.href = 'index.php?delete_land=<?php echo $lnd_id_s; ?>';">
-                                                                        <i class="fa fa-trash"></i>
+                                                                    <button style=\"margin-top: 2px\" type=\"button\"
+                                                                            rel=\"tooltip\"
+                                                                            class=\"btn btn-danger btn-sm\"
+                                                                            data-original-title=\"\" title=\"Remove\"
+                                                                            onclick=\"location.href = 'index.php?delete_land=$lnd_id_s';\">
+                                                                        <i class=\"fa fa-trash\"></i>
                                                                     </button>
-                                                                </td>
+                                                                </td>";
+                                                                }
+                                                                else{
+                                                                    echo "<td>
+                                                                    <button style=\"margin-top: 2px\" type=\"button\"
+                                                                            rel=\"tooltip\"
+                                                                            class=\"btn btn-success btn-sm\"
+                                                                            data-original-title=\"\" title=\"Edit\"
+                                                                            onclick=\"location.href = 'index.php?edit_land=$lnd_id_s';\" disabled>
+                                                                        <i class=\"fa fa-pencil\"></i>
+                                                                    </button>
+                                                                    <button style=\"margin-top: 2px\" type=\"button\"
+                                                                            rel=\"tooltip\"
+                                                                            class=\"btn btn-danger btn-sm\"
+                                                                            data-original-title=\"\" title=\"Remove\"
+                                                                            onclick=\"location.href = 'index.php?delete_land=$lnd_id_s';\" disabled>
+                                                                        <i class=\"fa fa-trash\"></i>
+                                                                    </button>
+                                                                </td>";
+                                                                }
+                                                                ?>
                                                                 <td><?php echo $i; ?></td>
                                                                 <td><?php echo $lnd_code_s; ?></td>
 <!--                                                                <style>-->
@@ -335,21 +357,40 @@ if (!isset($_SESSION['admin_email'])) {
                                 ?>
 
                                 <tr>
-
-                                    <td>
-                                        <button style="margin-top: 2px" type="button" rel="tooltip"
-                                                class="btn btn-success btn-sm"
-                                                data-original-title="" title="Edit"
-                                                onclick="location.href = 'index.php?edit_land=<?php echo $lnd_id; ?>';">
-                                            <i class="fa fa-pencil"></i>
+                                    <?php
+                                    if(strcmp($lnd_ava,'Available')==0){
+                                        echo "<td>
+                                        <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                                class=\"btn btn-success btn-sm\"
+                                                data-original-title=\"\" title=\"Edit\"
+                                                onclick=\"location.href = 'index.php?edit_land=$lnd_id';\">
+                                            <i class=\"fa fa-pencil\"></i>
                                         </button>
-                                        <button style="margin-top: 2px" type="button" rel="tooltip"
-                                                class="btn btn-danger btn-sm"
-                                                data-original-title="" title="Remove"
-                                                onclick="location.href = 'index.php?delete_land=<?php echo $lnd_id; ?>';">
-                                            <i class="fa fa-trash"></i>
+                                        <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                                class=\"btn btn-danger btn-sm\"
+                                                data-original-title=\"\" title=\"Remove\"
+                                                onclick=\"location.href = 'index.php?delete_land=$lnd_id';\">
+                                            <i class=\"fa fa-trash\"></i>
                                         </button>
-                                    </td>
+                                    </td>";
+                                    }
+                                    else{
+                                        echo "<td>
+                                        <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                                class=\"btn btn-success btn-sm\"
+                                                data-original-title=\"\" title=\"Edit\"
+                                                onclick=\"location.href = 'index.php?edit_land=$lnd_id';\" disabled>
+                                            <i class=\"fa fa-pencil\"></i>
+                                        </button>
+                                        <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                                class=\"btn btn-danger btn-sm\"
+                                                data-original-title=\"\" title=\"Remove\"
+                                                onclick=\"location.href = 'index.php?delete_land=$lnd_id';\" disabled>
+                                            <i class=\"fa fa-trash\"></i>
+                                        </button>
+                                    </td>";
+                                    }
+                                    ?>
                                     <td><?php echo $i; ?></td>
                                     <td><?php echo $lnd_code; ?></td>
 <!--                                    <style>-->
