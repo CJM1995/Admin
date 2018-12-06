@@ -137,6 +137,14 @@ if (!isset($_SESSION['admin_email'])) {
                         </div><!-- form-group Ends -->
 
                         <div class="form-group"><!-- form-group Starts -->
+                            <label class="col-md-3 control-label"> Lease Installment </label>
+                            <div class="col-md-6">
+                                <input type="number" id="lease_amt" name="lease_amt" class="form-control" pattern="^[0.00-9.99]" min="1"
+                                       placeholder="LKR" title="Only if the selected house is for lease" value="<?= isset($_POST['lease_amt']) ? $_POST['lease_amt'] : ''; ?>">
+                            </div>
+                        </div><!-- form-group Ends -->
+
+                        <div class="form-group"><!-- form-group Starts -->
                             <label class="col-md-3 control-label"> Remaining Amount </label>
                             <div class="col-md-6">
                                 <!--                            <div class="input-group">-->
@@ -168,6 +176,14 @@ if (!isset($_SESSION['admin_email'])) {
                             <div class="col-md-6">
                                 <input type="number" title="Only if the House - Sale Type is Rent" id="duration" name="duration" class="form-control" pattern="^[0-9]" min="1"
                                                placeholder="In Months Only - Ex: 12" value="<?= isset($_POST['duration']) ? $_POST['duration'] : ''; ?>">
+                            </div>
+                        </div><!-- form-group Ends -->
+
+                        <div class="form-group"><!-- form-group Starts -->
+                            <label class="col-md-3 control-label">Remaining Lease Installments </label>
+                            <div class="col-md-6">
+                                <input type="number" title="Only if the house - Sale Type is Lease" id="lease_ins" name="lease_ins" class="form-control" pattern="^[0-9]" min="1"
+                                       placeholder="Ex: 24" value="<?= isset($_POST['lease_ins']) ? $_POST['lease_ins'] : ''; ?>">
                             </div>
                         </div><!-- form-group Ends -->
 
@@ -269,9 +285,11 @@ if (!isset($_SESSION['admin_email'])) {
         $tot_amt = $_POST['tot_amt'];
         $paid_amt = $_POST['paid_amt'];
         $rent_amt = $_POST['rent_amt'];
+        $lease_ins_amt = $_POST['lease_amt'];
         //$remain_amt = $_POST['remain_amt'];
         $pay_status = $_POST['pay_status'];
         $duration = $_POST['duration'];
+        $lease_ins = $_POST['lease_ins'];
 
         $result_h = mysqli_query($con, "SELECT sale_type AS s_type FROM houses WHERE house_id='$house_id'");
         $row_h = mysqli_fetch_array($result_h);
@@ -316,21 +334,31 @@ if (!isset($_SESSION['admin_email'])) {
                     echo "<script>alert('Total Amount cannot be empty!')</script>";
                 }
                 else{
-                    $remain_amt = (float)$tot_amt - (float)$paid_amt;
-                    if($remain_amt == 0){
-                        if(strcmp($pay_status,'Complete')!=0){
-                            echo "<script>alert('Check Payment Status - It should be Complete!')</script>";
-                        }
-                        else{
-                            $insert_house_p = "INSERT INTO house_purchases (cus_id, house_id, invoice_no, sale_type, p_date, tot_amt, paid_amt, remain_amt, duration, pay_status) VALUES ('$cus_id','$house_id','$inv_no','$s_type','$pay_day','$tot_amt','$paid_amt','$remain_amt','$duration','$pay_status')";
-                        }
+                    if(empty($lease_ins_amt)){
+                        echo "<script>alert('Lease installment cannot be empty!')</script>";
                     }
                     else{
-                        if(strcmp($pay_status,'Rental / Lease')!=0){
-                            echo "<script>alert('Check Payment Status - It should be Rental/Lease')</script>";
+                        if(empty($lease_ins)){
+                            echo "<script>alert('Remaining Lease installments cannot be empty!')</script>";
                         }
                         else{
-                            $insert_house_p = "INSERT INTO house_purchases (cus_id, house_id, invoice_no, sale_type, p_date, tot_amt, paid_amt, remain_amt, duration, pay_status) VALUES ('$cus_id','$house_id','$inv_no','$s_type','$pay_day','$tot_amt','$paid_amt','$remain_amt','$duration','$pay_status')";
+                            $remain_amt = (float)$tot_amt - (float)$paid_amt;
+                            if($remain_amt == 0){
+                                if(strcmp($pay_status,'Complete')!=0){
+                                    echo "<script>alert('Check Payment Status - It should be Complete!')</script>";
+                                }
+                                else{
+                                    $insert_warehouse_p = "INSERT INTO house_purchases (cus_id, house_id, invoice_no, sale_type, p_date, tot_amt, paid_amt, remain_amt, lease_amt, lease_ins, pay_status) VALUES ('$cus_id','$warehouse_id','$inv_no','$s_type','$pay_day','$tot_amt','$paid_amt','$remain_amt','$lease_ins_amt','0','$pay_status')";
+                                }
+                            }
+                            else{
+                                if(strcmp($pay_status,'Rental / Lease')!=0){
+                                    echo "<script>alert('Check Payment Status - It should be Rental/Lease')</script>";
+                                }
+                                else{
+                                    $insert_warehouse_p = "INSERT INTO house_purchases (cus_id, house_id, invoice_no, sale_type, p_date, tot_amt, paid_amt, remain_amt, lease_amt, lease_ins, pay_status) VALUES ('$cus_id','$warehouse_id','$inv_no','$s_type','$pay_day','$tot_amt','$paid_amt','$remain_amt','$lease_ins_amt','$lease_ins','$pay_status')";
+                                }
+                            }
                         }
                     }
                 }
