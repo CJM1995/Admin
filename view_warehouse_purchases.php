@@ -79,7 +79,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 
                         if (strcmp($rdo, 'Invoice') == 0) {
-                            $get_rslt = "select * from warehouse_purchases WHERE invoice_no ='$box'";
+                            $get_rslt = "select * from warehouse_purchases WHERE invoice_no='$box'";
                             $run_rslt = mysqli_query($con, $get_rslt);
                         }
                         if (strcmp($rdo, 'Sale Type') == 0) {
@@ -87,7 +87,7 @@ if (!isset($_SESSION['admin_email'])) {
                             $run_rslt = mysqli_query($con, $get_rslt);
                         }
                         if (strcmp($rdo, 'Payment Status') == 0) {
-                            $get_rslt = "select * from warehouse_purchases WHERE pay_status LIKE '%$box%'";
+                            $get_rslt = "select * from warehouse_purchases WHERE pay_status='$box'";
                             $run_rslt = mysqli_query($con, $get_rslt);
                         }
                         if (strcmp($rdo, 'Duration') == 0) {
@@ -164,6 +164,8 @@ if (!isset($_SESSION['admin_email'])) {
                                                             </th>
                                                             <th style="vertical-align: middle;text-align: center">Duration
                                                             </th>
+                                                            <th style="vertical-align: middle;text-align: center">Remaining Lease Installments
+                                                            </th>
 
 
                                                         </tr>
@@ -182,18 +184,19 @@ if (!isset($_SESSION['admin_email'])) {
 
                                                         while ($row_warehouse = mysqli_fetch_array($run_warehouse)) {
 
-                                                            $wp_id = $row_warehouse['wp_id'];
-                                                            $cus_id = $row_warehouse['cus_id'];
-                                                            $warehouse_id = $row_warehouse['warehouse_id'];
-                                                            $invoice_no = $row_warehouse['invoice_no'];
-                                                            $sale_type = $row_warehouse['sale_type'];
-                                                            $p_date = $row_warehouse['p_date'];
-                                                            $tot_amt = $row_warehouse['tot_amt'];
-                                                            $paid_amt = $row_warehouse['paid_amt'];
-                                                            $rent_amt = $row_warehouse['rent_amt'];
-                                                            $remain_amt = $row_warehouse['remain_amt'];
-                                                            $pay_status = $row_warehouse['pay_status'];
-                                                            $duration = $row_warehouse['duration'];
+                                                            $wp_id_s = $row_warehouse['wp_id'];
+                                                            $cus_id_s = $row_warehouse['cus_id'];
+                                                            $warehouse_id_s = $row_warehouse['warehouse_id'];
+                                                            $invoice_no_s = $row_warehouse['invoice_no'];
+                                                            $sale_type_s = $row_warehouse['sale_type'];
+                                                            $p_date_s = $row_warehouse['p_date'];
+                                                            $tot_amt_s = $row_warehouse['tot_amt'];
+                                                            $paid_amt_s = $row_warehouse['paid_amt'];
+                                                            $rent_amt_s = $row_warehouse['rent_amt'];
+                                                            $remain_amt_s = $row_warehouse['remain_amt'];
+                                                            $pay_status_s = $row_warehouse['pay_status'];
+                                                            $duration_s = $row_warehouse['duration'];
+                                                            $l_ins_s = $row_warehouse['lease_ins'];
 
                                                             $i++;
 
@@ -205,29 +208,29 @@ if (!isset($_SESSION['admin_email'])) {
                                                                     <button style="margin-top: 2px" type="button" rel="tooltip"
                                                                             class="btn btn-success btn-sm"
                                                                             data-original-title="" title="Edit"
-                                                                            onclick="location.href = 'index.php?edit_warehouse_purchase=<?php echo $wp_id; ?>';">
+                                                                            onclick="location.href = 'index.php?edit_warehouse_purchase=<?php echo $wp_id_s; ?>';">
                                                                         <i class="fa fa-pencil"></i>
                                                                     </button>
                                                                     <button style="margin-top: 2px" type="button" rel="tooltip"
                                                                             class="btn btn-danger btn-sm"
                                                                             data-original-title="" title="Remove"
-                                                                            onclick="location.href = 'index.php?delete_warehouse_purchase=<?php echo $wp_id; ?>';">
+                                                                            onclick="location.href = 'index.php?delete_warehouse_purchase=<?php echo $wp_id_s; ?>';">
                                                                         <i class="fa fa-trash"></i>
                                                                     </button>
                                                                 </td>
                                                                 <td><?php echo $i; ?></td>
-                                                                <td><?php echo $cus_id; ?></td>
-                                                                <td><?php echo $warehouse_id; ?></td>
-                                                                <td><?php echo $invoice_no; ?></td>
-                                                                <td><?php echo $sale_type; ?></td>
-                                                                <td><?php echo $p_date; ?></td>
-                                                                <td>LKR &nbsp;<?php echo $tot_amt; ?></td>
-                                                                <td>LKR &nbsp;<?php echo $paid_amt; ?></td>
-                                                                <td>LKR &nbsp;<?php echo $rent_amt; ?></td>
-                                                                <td>LKR &nbsp;<?php echo $remain_amt; ?></td>
-                                                                <td><?php echo $pay_status; ?></td>
-                                                                <td><?php echo $duration; ?>&nbsp; Month/s</td>
-
+                                                                <td><?php echo $cus_id_s; ?></td>
+                                                                <td><?php echo $warehouse_id_s; ?></td>
+                                                                <td><?php echo $invoice_no_s; ?></td>
+                                                                <td><?php echo $sale_type_s; ?></td>
+                                                                <td><?php echo $p_date_s; ?></td>
+                                                                <td>LKR &nbsp;<?php echo $tot_amt_s; ?></td>
+                                                                <td>LKR &nbsp;<?php echo $paid_amt_s; ?></td>
+                                                                <td>LKR &nbsp;<?php echo $rent_amt_s; ?></td>
+                                                                <td>LKR &nbsp;<?php echo $remain_amt_s; ?></td>
+                                                                <td><?php echo $pay_status_s; ?></td>
+                                                                <td><?php echo $duration_s; ?>&nbsp; Month/s</td>
+                                                                <td><?php echo $l_ins_s; ?></td>
                                                             </tr>
 
                                                         <?php } ?>
@@ -296,7 +299,8 @@ if (!isset($_SESSION['admin_email'])) {
                                 </th>
                                 <th style="vertical-align: middle;text-align: center">Duration
                                 </th>
-
+                                <th style="vertical-align: middle;text-align: center">Remaining Lease Installments
+                                </th>
 
                             </tr>
 
@@ -326,7 +330,7 @@ if (!isset($_SESSION['admin_email'])) {
                                 $remain_amt = $row_warehouse['remain_amt'];
                                 $pay_status = $row_warehouse['pay_status'];
                                 $duration = $row_warehouse['duration'];
-
+                                $l_ins = $row_warehouse['lease_ins'];
                                 $i++;
 
                                 ?>
@@ -359,7 +363,7 @@ if (!isset($_SESSION['admin_email'])) {
                                     <td>LKR &nbsp;<?php echo $remain_amt; ?></td>
                                     <td><?php echo $pay_status; ?></td>
                                     <td><?php echo $duration; ?>&nbsp; Month/s</td>
-
+                                    <td><?php echo $l_ins; ?></td>
                                 </tr>
 
                             <?php } ?>

@@ -164,7 +164,8 @@ if (!isset($_SESSION['admin_email'])) {
                                                             </th>
                                                             <th style="vertical-align: middle;text-align: center">Duration
                                                             </th>
-
+                                                            <th style="vertical-align: middle;text-align: center">Remaining Lease Installments
+                                                            </th>
 
                                                         </tr>
 
@@ -182,19 +183,19 @@ if (!isset($_SESSION['admin_email'])) {
 
                                                         while ($row_house = mysqli_fetch_array($run_house)) {
 
-                                                            $hp_id = $row_house['hp_id'];
-                                                            $cus_id = $row_house['cus_id'];
-                                                            $house_id = $row_house['house_id'];
-                                                            $invoice_no = $row_house['invoice_no'];
-                                                            $sale_type = $row_house['sale_type'];
-                                                            $p_date = $row_house['p_date'];
-                                                            $tot_amt = $row_house['tot_amt'];
-                                                            $paid_amt = $row_house['paid_amt'];
-                                                            $rent_amt = $row_house['rent_amt'];
-                                                            $remain_amt = $row_house['remain_amt'];
-                                                            $pay_status = $row_house['pay_status'];
-                                                            $duration = $row_house['duration'];
-
+                                                            $hp_id_s = $row_house['hp_id'];
+                                                            $cus_id_s = $row_house['cus_id'];
+                                                            $house_id_s = $row_house['house_id'];
+                                                            $invoice_no_s = $row_house['invoice_no'];
+                                                            $sale_type_s = $row_house['sale_type'];
+                                                            $p_date_s = $row_house['p_date'];
+                                                            $tot_amt_s = $row_house['tot_amt'];
+                                                            $paid_amt_s = $row_house['paid_amt'];
+                                                            $rent_amt_s = $row_house['rent_amt'];
+                                                            $remain_amt_s = $row_house['remain_amt'];
+                                                            $pay_status_s = $row_house['pay_status'];
+                                                            $duration_s = $row_house['duration'];
+                                                            $l_ins_s = $row_house['lease_ins'];
                                                             $i++;
 
                                                             ?>
@@ -205,29 +206,29 @@ if (!isset($_SESSION['admin_email'])) {
                                                                     <button style="margin-top: 2px" type="button" rel="tooltip"
                                                                             class="btn btn-success btn-sm"
                                                                             data-original-title="" title="Edit"
-                                                                            onclick="location.href = 'index.php?edit_land_purchase=<?php echo $hp_id; ?>';">
+                                                                            onclick="location.href = 'index.php?edit_land_purchase=<?php echo $hp_id_s; ?>';">
                                                                         <i class="fa fa-pencil"></i>
                                                                     </button>
                                                                     <button style="margin-top: 2px" type="button" rel="tooltip"
                                                                             class="btn btn-danger btn-sm"
                                                                             data-original-title="" title="Remove"
-                                                                            onclick="location.href = 'index.php?delete_land_purchase=<?php echo $hp_id; ?>';">
+                                                                            onclick="location.href = 'index.php?delete_land_purchase=<?php echo $hp_id_s; ?>';">
                                                                         <i class="fa fa-trash"></i>
                                                                     </button>
                                                                 </td>
                                                                 <td><?php echo $i; ?></td>
-                                                                <td><?php echo $cus_id; ?></td>
-                                                                <td><?php echo $house_id; ?></td>
-                                                                <td><?php echo $invoice_no; ?></td>
-                                                                <td><?php echo $sale_type; ?></td>
-                                                                <td><?php echo $p_date; ?></td>
-                                                                <td>LKR &nbsp;<?php echo $tot_amt; ?></td>
-                                                                <td>LKR &nbsp;<?php echo $paid_amt; ?></td>
-                                                                <td>LKR &nbsp;<?php echo $rent_amt; ?></td>
-                                                                <td>LKR &nbsp;<?php echo $remain_amt; ?></td>
-                                                                <td><?php echo $pay_status; ?></td>
-                                                                <td><?php echo $duration; ?>&nbsp; Month/s</td>
-
+                                                                <td><?php echo $cus_id_s; ?></td>
+                                                                <td><?php echo $house_id_s; ?></td>
+                                                                <td><?php echo $invoice_no_s; ?></td>
+                                                                <td><?php echo $sale_type_s; ?></td>
+                                                                <td><?php echo $p_date_s; ?></td>
+                                                                <td>LKR &nbsp;<?php echo $tot_amt_s; ?></td>
+                                                                <td>LKR &nbsp;<?php echo $paid_amt_s; ?></td>
+                                                                <td>LKR &nbsp;<?php echo $rent_amt_s; ?></td>
+                                                                <td>LKR &nbsp;<?php echo $remain_amt_s; ?></td>
+                                                                <td><?php echo $pay_status_s; ?></td>
+                                                                <td><?php echo $duration_s; ?>&nbsp; Month/s</td>
+                                                                <td><?php echo $l_ins_s; ?></td>
                                                             </tr>
 
                                                         <?php } ?>
@@ -296,7 +297,8 @@ if (!isset($_SESSION['admin_email'])) {
                                 </th>
                                 <th style="vertical-align: middle;text-align: center">Duration
                                 </th>
-
+                                <th style="vertical-align: middle;text-align: center">Remaining Lease Installments
+                                </th>
 
                             </tr>
 
@@ -326,7 +328,7 @@ if (!isset($_SESSION['admin_email'])) {
                                 $remain_amt = $row_house['remain_amt'];
                                 $pay_status = $row_house['pay_status'];
                                 $duration = $row_house['duration'];
-
+                                $l_ins = $row_house['lease_ins'];
                                 $i++;
 
                                 ?>
@@ -359,7 +361,7 @@ if (!isset($_SESSION['admin_email'])) {
                                     <td>LKR &nbsp;<?php echo $remain_amt; ?></td>
                                     <td><?php echo $pay_status; ?></td>
                                     <td><?php echo $duration; ?>&nbsp; Month/s</td>
-
+                                    <td><?php echo $l_ins; ?></td>
                                 </tr>
 
                             <?php } ?>

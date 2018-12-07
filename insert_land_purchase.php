@@ -5,6 +5,10 @@ if (!isset($_SESSION['admin_email'])) {
     echo "<script>window.open('login.php','_self')</script>";
 
 } else {
+    echo "<link rel=\"stylesheet\" href=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css\">";
+    echo "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js\"></script>";
+    echo "<script src=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js\"></script>";
+    echo "<link href=\"css/style.css\" rel=\"stylesheet\">";
 
     ?>
     <!DOCTYPE html>
@@ -97,6 +101,26 @@ if (!isset($_SESSION['admin_email'])) {
                         </div><!-- form-group Ends -->
 
                         <div class="form-group"><!-- form-group Starts -->
+                            <label class="col-md-3 control-label"> Perches </label>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <input type="number" id="perches" name="perches" class="form-control" pattern="^[0.0-9.9]" min="1" title="Select 'Manual' and enter 'Total Amount' according to perch amount OR select 'Auto' and leave 'Total Amount' blank to calculate amount according to pre-given per perch value on land details."
+                                           placeholder="Select 'Manual' and enter 'Total Amount' according to perch amount OR select 'Auto' and leave 'Total Amount' blank to calculate amount according to pre-given per perch value on land details." value="<?= isset($_POST['perches']) ? $_POST['perches'] : ''; ?>">
+                                    <div style="background-color: #2e6da4" class="input-group-addon">
+                                        <select style="width: 100px;color: white;background-color: #2e6da4;border-style: none" name="calc">
+                                            class="btn-group-lg">
+                                            <option value="Auto">Auto</option>
+                                            <option value="Manual">Manual</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group-btn">
+                                        <button type="button" name="perches_prices" title="Check more details" class="btn btn-default" data-toggle="modal" data-target="#viewModal"><i class="fa fa-eye"></i> </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- form-group Ends -->
+
+                        <div class="form-group"><!-- form-group Starts -->
                             <label class="col-md-3 control-label"> Invoice No.</label>
                             <div class="col-md-6">
                                 <input type="number" name="inv_no" id="inv_no" class="form-control" pattern="^[0-9]" min="1"
@@ -153,7 +177,7 @@ if (!isset($_SESSION['admin_email'])) {
                             <label class="col-md-3 control-label"> Lease Installment </label>
                             <div class="col-md-6">
                                 <input type="number" id="lease_amt" name="lease_amt" class="form-control" pattern="^[0.00-9.99]" min="1"
-                                       placeholder="LKR" title="Only if the selected warehouse is for lease" value="<?= isset($_POST['lease_amt']) ? $_POST['lease_amt'] : ''; ?>">
+                                       placeholder="LKR" title="Only if the selected land is for lease" value="<?= isset($_POST['lease_amt']) ? $_POST['lease_amt'] : ''; ?>">
                             </div>
                         </div><!-- form-group Ends -->
 
@@ -265,6 +289,61 @@ if (!isset($_SESSION['admin_email'])) {
     </div>
     <!-- Alert Modal -->
 
+    <!-- View Modal -->
+    <div class="modal fade" id="viewModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        &times;
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive"><!-- table-responsive Starts -->
+                        <table class="table table-bordered table-hover table-striped">
+                            <!-- table table-bordered table-hover table-striped Starts -->
+                            <thead>
+                            <tr>
+                                <th style="vertical-align: middle;text-align: center">Land Code</th>
+                                <th style="vertical-align: middle;text-align: center">Price per Perch</th>
+                                <th style="vertical-align: middle;text-align: center">Available Perches</th>
+                                <th style="vertical-align: middle;text-align: center">Total Price(Perch Price x Available Perches)</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                            $get_land_m = "select * from lands WHERE availability='Available'";
+                            $run_land_m = mysqli_query($con, $get_land_m);
+                            while ($row_land_m = mysqli_fetch_array($run_land_m)) {
+                                $land_code_m = $row_land_m['code'];
+                                $per_perch_m = $row_land_m['perch_prz'];
+                                $avi_perches_m = $row_land_m['available_qty'];
+                            ?>
+                                <tr>
+                                    <td><?php echo $land_code_m; ?></td>
+                                    <td><?php echo $per_perch_m; ?></td>
+                                    <td><?php echo $avi_perches_m; ?></td>
+                                    <td><?php echo ((float)$per_perch_m * (float)$avi_perches_m); ?></td>
+                                </tr>
+                            <?php } ?>
+                            </tbody>
+                        </table><!-- table table-bordered table-hover table-striped Ends -->
+                    </div><!-- table-responsive Ends -->
+
+                </div>
+                <div style="text-align: center" class="modal-footer text-center center-block">
+                    <button type="button" class="btn btn-warning"
+                            data-dismiss="modal">OK
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- View Modal -->
+
 
     </body>
 
@@ -273,10 +352,10 @@ if (!isset($_SESSION['admin_email'])) {
     <?php
 
     if (isset($_POST['submit'])) {
-        echo "<link rel=\"stylesheet\" href=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css\">";
-        echo "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js\"></script>";
-        echo "<script src=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js\"></script>";
-        echo "<link href=\"css/style.css\" rel=\"stylesheet\">";
+//        echo "<link rel=\"stylesheet\" href=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css\">";
+//        echo "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js\"></script>";
+//        echo "<script src=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js\"></script>";
+//        echo "<link href=\"css/style.css\" rel=\"stylesheet\">";
 
         $cus_id = $_POST['cus_id'];
         $land_id = $_POST['land_id'];
@@ -302,9 +381,11 @@ if (!isset($_SESSION['admin_email'])) {
             else{
                 if(empty($tot_amt)){
                     $insert_land_p = "INSERT INTO land_purchases (cus_id, land_id, invoice_no, sale_type, p_date, paid_amt, duration, pay_status) VALUES ('$cus_id','$land_id','$inv_no','$s_type','$pay_day','$paid_amt','$duration','$pay_status')";
+                    //$update_land = "update lands set availability='Not - available' where land_id='$land_id'";
                 }
                 else{
                     $insert_land_p = "INSERT INTO land_purchases (cus_id, land_id, invoice_no, sale_type, p_date, tot_amt, paid_amt, duration, pay_status) VALUES ('$cus_id','$land_id','$inv_no','$s_type','$pay_day','$tot_amt','$paid_amt','$duration','$pay_status')";
+                    //$update_land = "update lands set availability='Not - available' where land_id='$land_id'";
                 }
             }
         }
@@ -322,6 +403,7 @@ if (!isset($_SESSION['admin_email'])) {
                     }
                     else{
                         $insert_land_p = "INSERT INTO land_purchases (cus_id, land_id, invoice_no, sale_type, p_date, rent_amt, duration, pay_status) VALUES ('$cus_id','$land_id','$inv_no','$s_type','$pay_day','$rent_amt','$duration','$pay_status')";
+                        //$update_land = "update lands set availability='Not - available' where land_id='$land_id'";
                     }
                 }
             }
@@ -348,7 +430,8 @@ if (!isset($_SESSION['admin_email'])) {
                                     echo "<script>alert('Check Payment Status - It should be Complete!')</script>";
                                 }
                                 else{
-                                    $insert_warehouse_p = "INSERT INTO land_purchases (cus_id, land_id, invoice_no, sale_type, p_date, tot_amt, paid_amt, remain_amt, lease_amt, lease_ins, pay_status) VALUES ('$cus_id','$warehouse_id','$inv_no','$s_type','$pay_day','$tot_amt','$paid_amt','$remain_amt','$lease_ins_amt','0','$pay_status')";
+                                    $insert_land_p = "INSERT INTO land_purchases (cus_id, land_id, invoice_no, sale_type, p_date, tot_amt, paid_amt, remain_amt, lease_amt, lease_ins, pay_status) VALUES ('$cus_id','$land_id','$inv_no','$s_type','$pay_day','$tot_amt','$paid_amt','$remain_amt','$lease_ins_amt','0','$pay_status')";
+                                    //$update_land = "update lands set availability='Not - available' where land_id='$land_id'";
                                 }
                             }
                             else{
@@ -356,7 +439,8 @@ if (!isset($_SESSION['admin_email'])) {
                                     echo "<script>alert('Check Payment Status - It should be Rental/Lease')</script>";
                                 }
                                 else{
-                                    $insert_warehouse_p = "INSERT INTO land_purchases (cus_id, land_id, invoice_no, sale_type, p_date, tot_amt, paid_amt, remain_amt, lease_amt, lease_ins, pay_status) VALUES ('$cus_id','$warehouse_id','$inv_no','$s_type','$pay_day','$tot_amt','$paid_amt','$remain_amt','$lease_ins_amt','$lease_ins','$pay_status')";
+                                    $insert_land_p = "INSERT INTO land_purchases (cus_id, land_id, invoice_no, sale_type, p_date, tot_amt, paid_amt, lease_amt, remain_amt, pay_status, lease_ins) VALUES ('$cus_id','$land_id','$inv_no','$s_type','$pay_day','$tot_amt','$paid_amt','$lease_ins_amt','$remain_amt','$pay_status','$lease_ins')";
+                                    //$update_land = "update lands set availability='Not - available' where land_id='$land_id'";
                                 }
                             }
                         }
@@ -380,6 +464,7 @@ if (!isset($_SESSION['admin_email'])) {
                         }
                         else{
                             $insert_land_p = "INSERT INTO land_purchases (cus_id, land_id, invoice_no, sale_type, p_date, tot_amt, paid_amt, remain_amt, duration, pay_status) VALUES ('$cus_id','$land_id','$inv_no','$s_type','$pay_day','$tot_amt','$paid_amt','$remain_amt','$duration','$pay_status')";
+                            //$update_land = "update lands set availability='Not - available' where land_id='$land_id'";
                         }
                     }
                     else{
@@ -393,6 +478,7 @@ if (!isset($_SESSION['admin_email'])) {
                         }
                         else{
                             $insert_land_p = "INSERT INTO land_purchases (cus_id, land_id, invoice_no, sale_type, p_date, tot_amt, paid_amt, remain_amt, duration, pay_status) VALUES ('$cus_id','$land_id','$inv_no','$s_type','$pay_day','$tot_amt','$paid_amt','$remain_amt','$duration','$pay_status')";
+                            //
 
                         }
                     }

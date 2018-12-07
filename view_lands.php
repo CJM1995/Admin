@@ -229,15 +229,15 @@ if (!isset($_SESSION['admin_email'])) {
 <!--                                                                <style>-->
 <!--                                                                </style>-->
                                                                 <td><img class="image"
-                                                                         src="house_images/<?php echo $lnd_img1_s; ?>"
+                                                                         src="land_images/<?php echo $lnd_img1_s; ?>"
                                                                          width="60"
                                                                          height="60"></td>
                                                                 <td><img class="image"
-                                                                         src="house_images/<?php echo $lnd_img2_s; ?>"
+                                                                         src="land_images/<?php echo $lnd_img2_s; ?>"
                                                                          width="60"
                                                                          height="60"></td>
                                                                 <td><img class="image"
-                                                                         src="house_images/<?php echo $lnd_img3_s; ?>"
+                                                                         src="land_images/<?php echo $lnd_img3_s; ?>"
                                                                          width="60"
                                                                          height="60"></td>
                                                                 <td><?php echo $lnd_address_s; ?></td>
@@ -395,11 +395,11 @@ if (!isset($_SESSION['admin_email'])) {
                                     <td><?php echo $lnd_code; ?></td>
 <!--                                    <style>-->
 <!--                                    </style>-->
-                                    <td><img class="image" src="house_images/<?php echo $lnd_img1; ?>" width="60"
+                                    <td><img class="image" src="land_images/<?php echo $lnd_img1; ?>" width="60"
                                              height="60"></td>
-                                    <td><img class="image" src="house_images/<?php echo $lnd_img2; ?>" width="60"
+                                    <td><img class="image" src="land_images/<?php echo $lnd_img2; ?>" width="60"
                                              height="60"></td>
-                                    <td><img class="image" src="house_images/<?php echo $lnd_img3; ?>" width="60"
+                                    <td><img class="image" src="land_images/<?php echo $lnd_img3; ?>" width="60"
                                              height="60"></td>
                                     <td><?php echo $lnd_address; ?></td>
                                     <td><?php echo $lnd_city; ?></td>
