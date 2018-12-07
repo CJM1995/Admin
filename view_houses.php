@@ -56,6 +56,7 @@ if (!isset($_SESSION['admin_email'])) {
                         </div>
                         <div class="input-group center-block text-center">
                             <div class="form-horizontal">
+                                <label class="radio-inline"><input type="radio" name="optradio" value="Code">Code</label>
                                 <label class="radio-inline"><input type="radio" name="optradio"
                                                                    value="City">City</label>
                                 <label class="radio-inline"><input type="radio" name="optradio" value="Sale Type">Sale
@@ -94,6 +95,10 @@ if (!isset($_SESSION['admin_email'])) {
                         }
                         if (strcmp($rdo, 'Price') == 0) {
                             $get_rslt = "select * from houses WHERE base_price LIKE '%$box%' AND availability='$ava'";
+                            $run_rslt = mysqli_query($con, $get_rslt);
+                        }
+                        if (strcmp($rdo, 'Code') == 0) {
+                            $get_rslt = "select * from houses WHERE code='$box' AND availability='$ava'";
                             $run_rslt = mysqli_query($con, $get_rslt);
                         }
 
