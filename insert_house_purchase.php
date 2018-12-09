@@ -379,7 +379,7 @@ if (!isset($_SESSION['admin_email'])) {
                             echo "<script>alert('Check Payment Status - It should be Complete!')</script>";
                         }
                         else{
-                            $insert_house_p = "INSERT INTO house_purchases (cus_id, house_id, invoice_no, sale_type, p_date, tot_amt, paid_amt, remain_amt, duration, pay_status) VALUES ('$cus_id','$house_id','$inv_no','$s_type','$pay_day','$tot_amt','$paid_amt','$remain_amt','$duration','$pay_status')";
+                            $insert_house_p = "INSERT INTO house_purchases (cus_id, house_id, invoice_no, sale_type, p_date, tot_amt, paid_amt, remain_amt, pay_status) VALUES ('$cus_id','$house_id','$inv_no','$s_type','$pay_day','$tot_amt','$paid_amt','$remain_amt','$pay_status')";
                         }
                     }
                     else{
@@ -392,7 +392,7 @@ if (!isset($_SESSION['admin_email'])) {
 //                                  </script>";
                         }
                         else{
-                            $insert_house_p = "INSERT INTO house_purchases (cus_id, house_id, invoice_no, sale_type, p_date, tot_amt, paid_amt, remain_amt, duration, pay_status) VALUES ('$cus_id','$house_id','$inv_no','$s_type','$pay_day','$tot_amt','$paid_amt','$remain_amt','$duration','$pay_status')";
+                            $insert_house_p = "INSERT INTO house_purchases (cus_id, house_id, invoice_no, sale_type, p_date, tot_amt, paid_amt, remain_amt, pay_status) VALUES ('$cus_id','$house_id','$inv_no','$s_type','$pay_day','$tot_amt','$paid_amt','$remain_amt','$pay_status')";
 
                         }
                     }

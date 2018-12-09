@@ -109,7 +109,7 @@ if (!isset($_SESSION['admin_email'])) {
                                     <div style="background-color: #2e6da4" class="input-group-addon">
                                         <select style="width: 100px;color: white;background-color: #2e6da4;border-style: none" name="calc">
                                             class="btn-group-lg">
-                                            <option value="Auto">Auto</option>
+                                            <option value="Auto" selected>Auto</option>
                                             <option value="Manual">Manual</option>
                                         </select>
                                     </div>
@@ -152,13 +152,13 @@ if (!isset($_SESSION['admin_email'])) {
                             </div>
                         </div><!-- form-group Ends -->
 
-                        <div class="form-group"><!-- form-group Starts -->
-                            <label class="col-md-3 control-label"> Rental Amount </label>
-                            <div class="col-md-6">
-                                <input type="number" id="rent_amt" name="rent_amt" class="form-control" pattern="^[0.00-9.99]" min="1"
-                                       placeholder="LKR" title="Only if the selected land is for rent" value="<?= isset($_POST['rent_amt']) ? $_POST['rent_amt'] : ''; ?>">
-                            </div>
-                        </div><!-- form-group Ends -->
+<!--                        <div class="form-group"><!-- form-group Starts -->
+<!--                            <label class="col-md-3 control-label"> Rental Amount </label>-->
+<!--                            <div class="col-md-6">-->
+<!--                                <input type="number" id="rent_amt" name="rent_amt" class="form-control" pattern="^[0.00-9.99]" min="1"-->
+<!--                                       placeholder="LKR" title="Only if the selected land is for rent" value="--><?//= isset($_POST['rent_amt']) ? $_POST['rent_amt'] : ''; ?><!--">-->
+<!--                            </div>-->
+<!--                        </div><!-- form-group Ends -->
 
                         <div class="form-group"><!-- form-group Starts -->
                             <label class="col-md-3 control-label"> Remaining Amount </label>
@@ -189,27 +189,27 @@ if (!isset($_SESSION['admin_email'])) {
                                     <option> Select Payment Status</option>
                                     <option value="Advance"> Advance</option>
                                     <option value="Complete"> Complete</option>
-                                    <option value="Rental / Lease"> Rental / Lease</option>
+<!--                                    <option value="Rental / Lease"> Rental / Lease</option>-->
                                     <option value="Incomplete"> Incomplete</option>
                                 </select>
                             </div>
                         </div><!-- form-group Ends -->
 
-                        <div class="form-group"><!-- form-group Starts -->
-                            <label class="col-md-3 control-label">Rental Duration </label>
-                            <div class="col-md-6">
-                                <input type="number" title="Only if the Land - Sale Type is Rent" id="duration" name="duration" class="form-control" pattern="^[0-9]" min="1"
-                                       placeholder="In Months Only - Ex: 12" value="<?= isset($_POST['duration']) ? $_POST['duration'] : ''; ?>">
-                            </div>
-                        </div><!-- form-group Ends -->
-
-                        <div class="form-group"><!-- form-group Starts -->
-                            <label class="col-md-3 control-label">Remaining Lease Installments </label>
-                            <div class="col-md-6">
-                                <input type="number" title="Only if the land - Sale Type is Lease" id="lease_ins" name="lease_ins" class="form-control" pattern="^[0-9]" min="1"
-                                       placeholder="Ex: 24" value="<?= isset($_POST['lease_ins']) ? $_POST['lease_ins'] : ''; ?>">
-                            </div>
-                        </div><!-- form-group Ends -->
+<!--                        <div class="form-group"><!-- form-group Starts -->
+<!--                            <label class="col-md-3 control-label">Rental Duration </label>-->
+<!--                            <div class="col-md-6">-->
+<!--                                <input type="number" title="Only if the Land - Sale Type is Rent" id="duration" name="duration" class="form-control" pattern="^[0-9]" min="1"-->
+<!--                                       placeholder="In Months Only - Ex: 12" value="--><?//= isset($_POST['duration']) ? $_POST['duration'] : ''; ?><!--">-->
+<!--                            </div>-->
+<!--                        </div><!-- form-group Ends -->
+<!---->
+<!--                        <div class="form-group"><!-- form-group Starts -->
+<!--                            <label class="col-md-3 control-label">Remaining Lease Installments </label>-->
+<!--                            <div class="col-md-6">-->
+<!--                                <input type="number" title="Only if the land - Sale Type is Lease" id="lease_ins" name="lease_ins" class="form-control" pattern="^[0-9]" min="1"-->
+<!--                                       placeholder="Ex: 24" value="--><?//= isset($_POST['lease_ins']) ? $_POST['lease_ins'] : ''; ?><!--">-->
+<!--                            </div>-->
+<!--                        </div><!-- form-group Ends -->
 
                         <div class="form-group"><!-- form-group Starts -->
 
@@ -369,6 +369,13 @@ if (!isset($_SESSION['admin_email'])) {
         $pay_status = $_POST['pay_status'];
         $duration = $_POST['duration'];
         $lease_ins = $_POST['lease_ins'];
+        $op = $_POST['calc'];
+        $perches = $_POST['perches'];
+        if(empty($duration)){
+            $duration='';
+        }
+
+
 
         $result_l = mysqli_query($con, "SELECT sale_type AS s_type FROM lands WHERE land_id='$land_id'");
         $row_l = mysqli_fetch_array($result_l);
@@ -380,8 +387,24 @@ if (!isset($_SESSION['admin_email'])) {
             }
             else{
                 if(empty($tot_amt)){
-                    $insert_land_p = "INSERT INTO land_purchases (cus_id, land_id, invoice_no, sale_type, p_date, paid_amt, duration, pay_status) VALUES ('$cus_id','$land_id','$inv_no','$s_type','$pay_day','$paid_amt','$duration','$pay_status')";
-                    //$update_land = "update lands set availability='Not - available' where land_id='$land_id'";
+                    if(strcmp($op,'Manual')){
+                        echo "<script>alert('Either change Perches option to Auto or Fill Total Amount!')</script>";
+                    }
+                    else{
+                        $result_lp = mysqli_query($con, "SELECT available_qty AS ava_perches FROM lands WHERE land_id='$land_id'");
+                        $row_lp = mysqli_fetch_array($result_lp);
+                        $ava_perches = $row_l['ava_perches'];
+
+                        if((float)$perches > (float)$ava_perches){
+                            echo "<script>alert('Number of Perches should be lower OR equal to available perches of this land!')</script>";
+                        }
+                        elseif ((float)$perches < (float)$ava_perches){
+                            $remain_perches = (float)$ava_perches - (float)$perches;
+                            $insert_land_p = "INSERT INTO land_purchases (cus_id, land_id, invoice_no, sale_type, p_date, paid_amt, duration, pay_status) VALUES ('$cus_id','$land_id','$inv_no','$s_type','$pay_day','$paid_amt','$duration','$pay_status')";
+                            $update_land = "update lands set availability='Not - available' where land_id='$land_id'";
+                        }
+                    }
+
                 }
                 else{
                     $insert_land_p = "INSERT INTO land_purchases (cus_id, land_id, invoice_no, sale_type, p_date, tot_amt, paid_amt, duration, pay_status) VALUES ('$cus_id','$land_id','$inv_no','$s_type','$pay_day','$tot_amt','$paid_amt','$duration','$pay_status')";
@@ -389,65 +412,65 @@ if (!isset($_SESSION['admin_email'])) {
                 }
             }
         }
-        elseif (strcmp($s_type,'Rent')==0) {
-            if(empty($rent_amt)){
-                echo "<script>alert('Rental Amount cannot be empty!')</script>";
-            }
-            else{
-                if(empty($duration)){
-                    echo "<script>alert('Rental Duration cannot be empty!')</script>";
-                }
-                else{
-                    if(strcmp($pay_status,'Rental / Lease')!=0){
-                        echo "<script>alert('Check Payment Status - It should be Rental/Lease')</script>";
-                    }
-                    else{
-                        $insert_land_p = "INSERT INTO land_purchases (cus_id, land_id, invoice_no, sale_type, p_date, rent_amt, duration, pay_status) VALUES ('$cus_id','$land_id','$inv_no','$s_type','$pay_day','$rent_amt','$duration','$pay_status')";
-                        //$update_land = "update lands set availability='Not - available' where land_id='$land_id'";
-                    }
-                }
-            }
-        } elseif (strcmp($s_type,'Lease')==0) {
-            if(empty($paid_amt)){
-                echo "<script>alert('Paid Amount cannot be empty!')</script>";
-            }
-            else{
-                if(empty($tot_amt)){
-                    echo "<script>alert('Total Amount cannot be empty!')</script>";
-                }
-                else{
-                    if(empty($lease_ins_amt)){
-                        echo "<script>alert('Lease installment cannot be empty!')</script>";
-                    }
-                    else{
-                        if(empty($lease_ins)){
-                            echo "<script>alert('Remaining Lease installments cannot be empty!')</script>";
-                        }
-                        else{
-                            $remain_amt = (float)$tot_amt - (float)$paid_amt;
-                            if($remain_amt == 0){
-                                if(strcmp($pay_status,'Complete')!=0){
-                                    echo "<script>alert('Check Payment Status - It should be Complete!')</script>";
-                                }
-                                else{
-                                    $insert_land_p = "INSERT INTO land_purchases (cus_id, land_id, invoice_no, sale_type, p_date, tot_amt, paid_amt, remain_amt, lease_amt, lease_ins, pay_status) VALUES ('$cus_id','$land_id','$inv_no','$s_type','$pay_day','$tot_amt','$paid_amt','$remain_amt','$lease_ins_amt','0','$pay_status')";
-                                    //$update_land = "update lands set availability='Not - available' where land_id='$land_id'";
-                                }
-                            }
-                            else{
-                                if(strcmp($pay_status,'Rental / Lease')!=0){
-                                    echo "<script>alert('Check Payment Status - It should be Rental/Lease')</script>";
-                                }
-                                else{
-                                    $insert_land_p = "INSERT INTO land_purchases (cus_id, land_id, invoice_no, sale_type, p_date, tot_amt, paid_amt, lease_amt, remain_amt, pay_status, lease_ins) VALUES ('$cus_id','$land_id','$inv_no','$s_type','$pay_day','$tot_amt','$paid_amt','$lease_ins_amt','$remain_amt','$pay_status','$lease_ins')";
-                                    //$update_land = "update lands set availability='Not - available' where land_id='$land_id'";
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+//        elseif (strcmp($s_type,'Rent')==0) {
+//            if(empty($rent_amt)){
+//                echo "<script>alert('Rental Amount cannot be empty!')</script>";
+//            }
+//            else{
+//                if(empty($duration)){
+//                    echo "<script>alert('Rental Duration cannot be empty!')</script>";
+//                }
+//                else{
+//                    if(strcmp($pay_status,'Rental / Lease')!=0){
+//                        echo "<script>alert('Check Payment Status - It should be Rental/Lease')</script>";
+//                    }
+//                    else{
+//                        $insert_land_p = "INSERT INTO land_purchases (cus_id, land_id, invoice_no, sale_type, p_date, rent_amt, duration, pay_status) VALUES ('$cus_id','$land_id','$inv_no','$s_type','$pay_day','$rent_amt','$duration','$pay_status')";
+//                        //$update_land = "update lands set availability='Not - available' where land_id='$land_id'";
+//                    }
+//                }
+//            }
+//        } elseif (strcmp($s_type,'Lease')==0) {
+//            if(empty($paid_amt)){
+//                echo "<script>alert('Paid Amount cannot be empty!')</script>";
+//            }
+//            else{
+//                if(empty($tot_amt)){
+//                    echo "<script>alert('Total Amount cannot be empty!')</script>";
+//                }
+//                else{
+//                    if(empty($lease_ins_amt)){
+//                        echo "<script>alert('Lease installment cannot be empty!')</script>";
+//                    }
+//                    else{
+//                        if(empty($lease_ins)){
+//                            echo "<script>alert('Remaining Lease installments cannot be empty!')</script>";
+//                        }
+//                        else{
+//                            $remain_amt = (float)$tot_amt - (float)$paid_amt;
+//                            if($remain_amt == 0){
+//                                if(strcmp($pay_status,'Complete')!=0){
+//                                    echo "<script>alert('Check Payment Status - It should be Complete!')</script>";
+//                                }
+//                                else{
+//                                    $insert_land_p = "INSERT INTO land_purchases (cus_id, land_id, invoice_no, sale_type, p_date, tot_amt, paid_amt, remain_amt, lease_amt, lease_ins, pay_status) VALUES ('$cus_id','$land_id','$inv_no','$s_type','$pay_day','$tot_amt','$paid_amt','$remain_amt','$lease_ins_amt','0','$pay_status')";
+//                                    //$update_land = "update lands set availability='Not - available' where land_id='$land_id'";
+//                                }
+//                            }
+//                            else{
+//                                if(strcmp($pay_status,'Rental / Lease')!=0){
+//                                    echo "<script>alert('Check Payment Status - It should be Rental/Lease')</script>";
+//                                }
+//                                else{
+//                                    $insert_land_p = "INSERT INTO land_purchases (cus_id, land_id, invoice_no, sale_type, p_date, tot_amt, paid_amt, lease_amt, remain_amt, pay_status, lease_ins) VALUES ('$cus_id','$land_id','$inv_no','$s_type','$pay_day','$tot_amt','$paid_amt','$lease_ins_amt','$remain_amt','$pay_status','$lease_ins')";
+//                                    //$update_land = "update lands set availability='Not - available' where land_id='$land_id'";
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }
         else {
             if(empty($paid_amt)){
                 echo "<script>alert('Paid Amount cannot be empty!')</script>";
