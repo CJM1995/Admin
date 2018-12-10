@@ -156,16 +156,16 @@ if (!isset($_SESSION['admin_email'])) {
                                                             </th>
                                                             <th style="vertical-align: middle;text-align: center">Paid Amount
                                                             </th>
-                                                            <th style="vertical-align: middle;text-align: center">Rental Amount
-                                                            </th>
+<!--                                                            <th style="vertical-align: middle;text-align: center">Rental Amount-->
+<!--                                                            </th>-->
                                                             <th style="vertical-align: middle;text-align: center">Remaining Amount
                                                             </th>
                                                             <th style="vertical-align: middle;text-align: center">Payment Status
                                                             </th>
-                                                            <th style="vertical-align: middle;text-align: center">Duration
-                                                            </th>
-                                                            <th style="vertical-align: middle;text-align: center">Remaining Lease Installments
-                                                            </th>
+<!--                                                            <th style="vertical-align: middle;text-align: center">Duration-->
+<!--                                                            </th>-->
+<!--                                                            <th style="vertical-align: middle;text-align: center">Remaining Lease Installments-->
+<!--                                                            </th>-->
 
                                                         </tr>
 
@@ -224,11 +224,11 @@ if (!isset($_SESSION['admin_email'])) {
                                                                 <td><?php echo $p_date_s; ?></td>
                                                                 <td>LKR &nbsp;<?php echo $tot_amt_s; ?></td>
                                                                 <td>LKR &nbsp;<?php echo $paid_amt_s; ?></td>
-                                                                <td>LKR &nbsp;<?php echo $rent_amt_s; ?></td>
+<!--                                                                <td>LKR &nbsp;--><?php //echo $rent_amt_s; ?><!--</td>-->
                                                                 <td>LKR &nbsp;<?php echo $remain_amt_s; ?></td>
                                                                 <td><?php echo $pay_status_s; ?></td>
-                                                                <td><?php echo $duration_s; ?>&nbsp; Month/s</td>
-                                                                <td><?php echo $l_ins_s; ?></td>
+<!--                                                                <td>--><?php //echo $duration_s; ?><!--&nbsp; Month/s</td>-->
+<!--                                                                <td>--><?php //echo $l_ins_s; ?><!--</td>-->
                                                             </tr>
 
                                                         <?php } ?>
@@ -289,15 +289,9 @@ if (!isset($_SESSION['admin_email'])) {
                                 </th>
                                 <th style="vertical-align: middle;text-align: center">Paid Amount
                                 </th>
-                                <th style="vertical-align: middle;text-align: center">Rental Amount
-                                </th>
                                 <th style="vertical-align: middle;text-align: center">Remaining Amount
                                 </th>
                                 <th style="vertical-align: middle;text-align: center">Payment Status
-                                </th>
-                                <th style="vertical-align: middle;text-align: center">Duration
-                                </th>
-                                <th style="vertical-align: middle;text-align: center">Remaining Lease Installments
                                 </th>
                             </tr>
 
@@ -356,11 +350,8 @@ if (!isset($_SESSION['admin_email'])) {
                                     <td><?php echo $p_date; ?></td>
                                     <td>LKR &nbsp;<?php echo $tot_amt; ?></td>
                                     <td>LKR &nbsp;<?php echo $paid_amt; ?></td>
-                                    <td>LKR &nbsp;<?php echo $rent_amt; ?></td>
                                     <td>LKR &nbsp;<?php echo $remain_amt; ?></td>
                                     <td><?php echo $pay_status; ?></td>
-                                    <td><?php echo $duration; ?>&nbsp; Month/s</td>
-                                    <td><?php echo $l_ins; ?></td>
                                 </tr>
 
                             <?php } ?>

@@ -89,10 +89,7 @@ if (!isset($_SESSION['admin_email'])) {
                             <label class="col-md-3 control-label"> Sale Type </label>
                             <div class="col-md-6">
                                 <select name="la_s_type" class="form-control">
-                                    <option> Select Sale Type</option>
-                                    <option value="Sale">Sale</option>
-                                    <option value="Rent">Rent</option>
-                                    <option value="Lease">Lease</option>
+                                    <option value="Sale" selected>Sale</option>
                                 </select>
                             </div>
                         </div><!-- form-group Ends -->

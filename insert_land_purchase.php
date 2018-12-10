@@ -173,13 +173,13 @@ if (!isset($_SESSION['admin_email'])) {
                             </div>
                         </div><!-- form-group Ends -->
 
-                        <div class="form-group"><!-- form-group Starts -->
-                            <label class="col-md-3 control-label"> Lease Installment </label>
-                            <div class="col-md-6">
-                                <input type="number" id="lease_amt" name="lease_amt" class="form-control" pattern="^[0.00-9.99]" min="1"
-                                       placeholder="LKR" title="Only if the selected land is for lease" value="<?= isset($_POST['lease_amt']) ? $_POST['lease_amt'] : ''; ?>">
-                            </div>
-                        </div><!-- form-group Ends -->
+<!--                        <div class="form-group"><!-- form-group Starts -->
+<!--                            <label class="col-md-3 control-label"> Lease Installment </label>-->
+<!--                            <div class="col-md-6">-->
+<!--                                <input type="number" id="lease_amt" name="lease_amt" class="form-control" pattern="^[0.00-9.99]" min="1"-->
+<!--                                       placeholder="LKR" title="Only if the selected land is for lease" value="--><?//= isset($_POST['lease_amt']) ? $_POST['lease_amt'] : ''; ?><!--">-->
+<!--                            </div>-->
+<!--                        </div><!-- form-group Ends -->
 
                         <div class="form-group"><!-- form-group Starts -->
                             <label class="col-md-3 control-label"> Payment Status </label>
@@ -323,9 +323,9 @@ if (!isset($_SESSION['admin_email'])) {
                             ?>
                                 <tr>
                                     <td><?php echo $land_code_m; ?></td>
-                                    <td><?php echo $per_perch_m; ?></td>
+                                    <td>LKR &nbsp;<?php echo $per_perch_m; ?></td>
                                     <td><?php echo $avi_perches_m; ?></td>
-                                    <td><?php echo ((float)$per_perch_m * (float)$avi_perches_m); ?></td>
+                                    <td>LKR &nbsp;<?php echo ((float)$per_perch_m * (float)$avi_perches_m); ?></td>
                                 </tr>
                             <?php } ?>
                             </tbody>
@@ -375,43 +375,70 @@ if (!isset($_SESSION['admin_email'])) {
             $duration='';
         }
 
+        $result_lp = mysqli_query($con, "SELECT available_qty AS ava_perches FROM lands WHERE land_id='$land_id'");
+        $row_lp = mysqli_fetch_array($result_lp);
+        $ava_perches = $row_lp['ava_perches'];
 
+        $result_pp = mysqli_query($con, "SELECT perch_prz AS prz_perches FROM lands WHERE land_id='$land_id'");
+        $row_pp = mysqli_fetch_array($result_pp);
+        $prz_perches = $row_pp['prz_perches'];
 
         $result_l = mysqli_query($con, "SELECT sale_type AS s_type FROM lands WHERE land_id='$land_id'");
         $row_l = mysqli_fetch_array($result_l);
         $s_type = $row_l['s_type'];
 
-        if(strcmp($pay_status,'Advance')==0){
-            if(empty($paid_amt)){
-                echo "<script>alert('Paid Amount cannot be empty!')</script>";
-            }
-            else{
-                if(empty($tot_amt)){
-                    if(strcmp($op,'Manual')){
-                        echo "<script>alert('Either change Perches option to Auto or Fill Total Amount!')</script>";
-                    }
-                    else{
-                        $result_lp = mysqli_query($con, "SELECT available_qty AS ava_perches FROM lands WHERE land_id='$land_id'");
-                        $row_lp = mysqli_fetch_array($result_lp);
-                        $ava_perches = $row_l['ava_perches'];
-
-                        if((float)$perches > (float)$ava_perches){
-                            echo "<script>alert('Number of Perches should be lower OR equal to available perches of this land!')</script>";
-                        }
-                        elseif ((float)$perches < (float)$ava_perches){
-                            $remain_perches = (float)$ava_perches - (float)$perches;
-                            $insert_land_p = "INSERT INTO land_purchases (cus_id, land_id, invoice_no, sale_type, p_date, paid_amt, duration, pay_status) VALUES ('$cus_id','$land_id','$inv_no','$s_type','$pay_day','$paid_amt','$duration','$pay_status')";
-                            $update_land = "update lands set availability='Not - available' where land_id='$land_id'";
-                        }
-                    }
-
-                }
-                else{
-                    $insert_land_p = "INSERT INTO land_purchases (cus_id, land_id, invoice_no, sale_type, p_date, tot_amt, paid_amt, duration, pay_status) VALUES ('$cus_id','$land_id','$inv_no','$s_type','$pay_day','$tot_amt','$paid_amt','$duration','$pay_status')";
-                    //$update_land = "update lands set availability='Not - available' where land_id='$land_id'";
-                }
-            }
-        }
+//        if(strcmp($pay_status,'Advance')==0){
+//            if(empty($paid_amt)){
+//                echo "<script>alert('Paid Amount cannot be empty!')</script>";
+//            }
+//            else{
+//                if((float)$perches > (float)$ava_perches){
+//                    echo "<script>alert('Number of Perches should be lower OR equal to available perches of this land!')</script>";
+//                }
+//                elseif(empty($tot_amt)){
+//                    if(strcmp($op,'Auto')!=0){
+//                        echo "<script>alert('Either change Perches option to Auto or Fill Total Amount!')</script>";
+//                    }
+//                    else{
+//                        if(empty($perches)){
+//                            $ttot_amt = ((float)$ava_perches * (float)$prz_perches);
+//                            $remain_perches = 0;
+//
+//                            $insert_land_p = "INSERT INTO land_purchases (cus_id, land_id, invoice_no, sale_type, p_date, tot_amt, paid_amt, perches, pay_status) VALUES ('$cus_id','$land_id','$inv_no','$s_type','$pay_day','$ttot_amt','$paid_amt','$perches','$pay_status')";
+//                            $update_land = "update lands set available_qty='$remain_perches',availability='Not - available' where land_id='$land_id'";
+//                        }
+//                        else{
+//                            $ttot_amt = ((float)$perches * (float)$prz_perches);
+//                            $remain_perches = ((float)$ava_perches - (float)$perches);
+//                            if(($remain_perches < 0) || ($remain_perches == 0)){
+//                                $remain_perches = 0;
+//
+//                                $insert_land_p = "INSERT INTO land_purchases (cus_id, land_id, invoice_no, sale_type, p_date, tot_amt, paid_amt, perches, pay_status) VALUES ('$cus_id','$land_id','$inv_no','$s_type','$pay_day','$ttot_amt','$paid_amt','$perches','$pay_status')";
+//                                $update_land = "update lands set available_qty='$remain_perches',availability='Not - available' where land_id='$land_id'";
+//                            }
+//                            else{
+//                                $insert_land_p = "INSERT INTO land_purchases (cus_id, land_id, invoice_no, sale_type, p_date, tot_amt, paid_amt, perches, pay_status) VALUES ('$cus_id','$land_id','$inv_no','$s_type','$pay_day','$ttot_amt','$paid_amt','$perches','$pay_status')";
+//                                $update_land = "update lands set available_qty='$remain_perches' where land_id='$land_id'";
+//                            }
+//                        }
+//                    }
+//                }
+//                else{
+//                    if ((float)$perches < (float)$ava_perches){
+//                        $remain_perches = ((float)$ava_perches - (float)$perches);
+//                        $insert_land_p = "INSERT INTO land_purchases (cus_id, land_id, invoice_no, sale_type, p_date, tot_amt, paid_amt, perches, pay_status) VALUES ('$cus_id','$land_id','$inv_no','$s_type','$pay_day','$tot_amt','$paid_amt','$perches','$pay_status')";
+//                        $update_land = "update lands set available_qty='$remain_perches' where land_id='$land_id'";
+//                    }
+//                    else{
+//                        if((float)$perches == (float)$ava_perches){
+//                            $remain_perches = 0;
+//                            $insert_land_p = "INSERT INTO land_purchases (cus_id, land_id, invoice_no, sale_type, p_date, tot_amt, paid_amt, perches, pay_status) VALUES ('$cus_id','$land_id','$inv_no','$s_type','$pay_day','$tot_amt','$paid_amt','$perches','$pay_status')";
+//                            $update_land = "update lands set available_qty='$remain_perches',availability='Not - available' where land_id='$land_id'";
+//                        }
+//                    }
+//                }
+//            }
+//        }
 //        elseif (strcmp($s_type,'Rent')==0) {
 //            if(empty($rent_amt)){
 //                echo "<script>alert('Rental Amount cannot be empty!')</script>";
@@ -471,13 +498,98 @@ if (!isset($_SESSION['admin_email'])) {
 //                }
 //            }
 //        }
-        else {
+        if(strcmp($s_type,'Sale')==0){
             if(empty($paid_amt)){
                 echo "<script>alert('Paid Amount cannot be empty!')</script>";
             }
             else{
-                if(empty($tot_amt)){
-                    echo "<script>alert('Total Amount cannot be empty!')</script>";
+                if((float)$perches > (float)$ava_perches){
+                    echo "<script>alert('Number of Perches should be lower OR equal to available perches of this land!')</script>";
+                }
+                elseif(empty($tot_amt)){
+                    if(strcmp($op,'Auto')!=0){
+                        echo "<script>alert('Either change Perches option to Auto or Fill Total Amount!')</script>";
+                    }
+                    else{
+                        if(empty($perches)){
+                            $ttot_amt = ((float)$ava_perches * (float)$prz_perches);
+                            $remain_perches = 0;
+
+                            $remain_amt = ((float)$ttot_amt - (float)$paid_amt);
+
+                            if($remain_amt == 0){
+                                if(strcmp($pay_status,'Complete')!=0){
+                                    echo "<script>alert('Check Payment Status - It should be Complete!')</script>";
+                                }
+                                else{
+                                    $insert_land_p = "INSERT INTO land_purchases (cus_id, land_id, invoice_no, sale_type, p_date, tot_amt, paid_amt, remain_amt, perches, pay_status) VALUES ('$cus_id','$land_id','$inv_no','$s_type','$pay_day','$ttot_amt','$paid_amt','$remain_amt','$perches','$pay_status')";
+                                    $update_land = "update lands set available_qty='$remain_perches',availability='Not - available' where land_id='$land_id'";
+                                }
+                            }
+                            else{
+                                if((strcmp($pay_status,'Incomplete')!=0) && (strcmp($pay_status,'Advance')!=0)){
+                                    echo "<script>alert('Check Payment Status - It should be Incomplete OR Advance')</script>";
+//                            echo "<script type=\"text/javascript\">
+//                                    var mymodal = $('#alModal');
+//                                    mymodal.find('#m_body').text('Check Payment Status - It should be Incomplete');
+//                                    mymodal.modal('show');
+//                                  </script>";
+                                }
+                                else{
+                                    $insert_land_p = "INSERT INTO land_purchases (cus_id, land_id, invoice_no, sale_type, p_date, tot_amt, paid_amt, remain_amt, perches, pay_status) VALUES ('$cus_id','$land_id','$inv_no','$s_type','$pay_day','$ttot_amt','$paid_amt','$remain_amt','$perches','$pay_status')";
+                                    $update_land = "update lands set available_qty='$remain_perches',availability='Not - available' where land_id='$land_id'";
+
+                                }
+                            }
+                        }
+                        else{
+                            $ttot_amt = ((float)$perches * (float)$prz_perches);
+                            $remain_perches = ((float)$ava_perches - (float)$perches);
+
+                            $remain_amt = ((float)$ttot_amt - (float)$paid_amt);
+
+                            if($remain_amt == 0){
+                                if(strcmp($pay_status,'Complete')!=0){
+                                    echo "<script>alert('Check Payment Status - It should be Complete!')</script>";
+                                }
+                                else{
+                                    if(($remain_perches < 0) || ($remain_perches == 0)){
+                                        $remain_perches = 0;
+
+                                        $insert_land_p = "INSERT INTO land_purchases (cus_id, land_id, invoice_no, sale_type, p_date, tot_amt, paid_amt, remain_amt, perches, pay_status) VALUES ('$cus_id','$land_id','$inv_no','$s_type','$pay_day','$ttot_amt','$paid_amt','$remain_amt','$perches','$pay_status')";
+                                        $update_land = "update lands set available_qty='$remain_perches',availability='Not - available' where land_id='$land_id'";
+                                    }
+                                    else{
+                                        $insert_land_p = "INSERT INTO land_purchases (cus_id, land_id, invoice_no, sale_type, p_date, tot_amt, paid_amt, remain_amt, perches, pay_status) VALUES ('$cus_id','$land_id','$inv_no','$s_type','$pay_day','$ttot_amt','$paid_amt','$remain_amt','$perches','$pay_status')";
+                                        $update_land = "update lands set available_qty='$remain_perches' where land_id='$land_id'";
+                                    }
+                                }
+                            }
+                            else{
+                                if((strcmp($pay_status,'Incomplete')!=0) && (strcmp($pay_status,'Advance')!=0)){
+                                    echo "<script>alert('Check Payment Status - It should be Incomplete OR Advance')</script>";
+//                            echo "<script type=\"text/javascript\">
+//                                    var mymodal = $('#alModal');
+//                                    mymodal.find('#m_body').text('Check Payment Status - It should be Incomplete');
+//                                    mymodal.modal('show');
+//                                  </script>";
+                                }
+                                else{
+                                    if(($remain_perches < 0) || ($remain_perches == 0)){
+                                        $remain_perches = 0;
+
+                                        $insert_land_p = "INSERT INTO land_purchases (cus_id, land_id, invoice_no, sale_type, p_date, tot_amt, paid_amt, remain_amt, perches, pay_status) VALUES ('$cus_id','$land_id','$inv_no','$s_type','$pay_day','$ttot_amt','$paid_amt','$remain_amt','$perches','$pay_status')";
+                                        $update_land = "update lands set available_qty='$remain_perches',availability='Not - available' where land_id='$land_id'";
+                                    }
+                                    else{
+                                        $insert_land_p = "INSERT INTO land_purchases (cus_id, land_id, invoice_no, sale_type, p_date, tot_amt, paid_amt, remain_amt, perches, pay_status) VALUES ('$cus_id','$land_id','$inv_no','$s_type','$pay_day','$ttot_amt','$paid_amt','$remain_amt','$perches','$pay_status')";
+                                        $update_land = "update lands set available_qty='$remain_perches' where land_id='$land_id'";
+                                    }
+
+                                }
+                            }
+                        }
+                    }
                 }
                 else{
                     $remain_amt = (float)$tot_amt - (float)$paid_amt;
@@ -486,13 +598,23 @@ if (!isset($_SESSION['admin_email'])) {
                             echo "<script>alert('Check Payment Status - It should be Complete!')</script>";
                         }
                         else{
-                            $insert_land_p = "INSERT INTO land_purchases (cus_id, land_id, invoice_no, sale_type, p_date, tot_amt, paid_amt, remain_amt, duration, pay_status) VALUES ('$cus_id','$land_id','$inv_no','$s_type','$pay_day','$tot_amt','$paid_amt','$remain_amt','$duration','$pay_status')";
-                            //$update_land = "update lands set availability='Not - available' where land_id='$land_id'";
+                            if ((float)$perches < (float)$ava_perches){
+                                $remain_perches = (float)$ava_perches - (float)$perches;
+                                $insert_land_p = "INSERT INTO land_purchases (cus_id, land_id, invoice_no, sale_type, p_date, tot_amt, paid_amt, remain_amt, perches, pay_status) VALUES ('$cus_id','$land_id','$inv_no','$s_type','$pay_day','$tot_amt','$paid_amt','$remain_amt','$perches','$pay_status')";
+                                $update_land = "update lands set available_qty='$remain_perches' where land_id='$land_id'";
+                            }
+                            else{
+                                if((float)$perches == (float)$ava_perches){
+                                    $remain_perches = 0;
+                                    $insert_land_p = "INSERT INTO land_purchases (cus_id, land_id, invoice_no, sale_type, p_date, tot_amt, paid_amt, remain_amt, perches, pay_status) VALUES ('$cus_id','$land_id','$inv_no','$s_type','$pay_day','$tot_amt','$paid_amt','$remain_amt','$perches','$pay_status')";
+                                    $update_land = "update lands set available_qty='$remain_perches',availability='Not - available' where land_id='$land_id'";
+                                }
+                            }
                         }
                     }
                     else{
-                        if(strcmp($pay_status,'Incomplete')!=0){
-                            echo "<script>alert('Check Payment Status - It should be Incomplete')</script>";
+                        if((strcmp($pay_status,'Incomplete')!=0) && (strcmp($pay_status,'Advance')!=0)){
+                            echo "<script>alert('Check Payment Status - It should be Incomplete OR Advance')</script>";
 //                            echo "<script type=\"text/javascript\">
 //                                    var mymodal = $('#alModal');
 //                                    mymodal.find('#m_body').text('Check Payment Status - It should be Incomplete');
@@ -500,9 +622,18 @@ if (!isset($_SESSION['admin_email'])) {
 //                                  </script>";
                         }
                         else{
-                            $insert_land_p = "INSERT INTO land_purchases (cus_id, land_id, invoice_no, sale_type, p_date, tot_amt, paid_amt, remain_amt, duration, pay_status) VALUES ('$cus_id','$land_id','$inv_no','$s_type','$pay_day','$tot_amt','$paid_amt','$remain_amt','$duration','$pay_status')";
-                            //
-
+                            if ((float)$perches < (float)$ava_perches){
+                                $remain_perches = (float)$ava_perches - (float)$perches;
+                                $insert_land_p = "INSERT INTO land_purchases (cus_id, land_id, invoice_no, sale_type, p_date, tot_amt, paid_amt, remain_amt, perches, pay_status) VALUES ('$cus_id','$land_id','$inv_no','$s_type','$pay_day','$tot_amt','$paid_amt','$remain_amt','$perches','$pay_status')";
+                                $update_land = "update lands set available_qty='$remain_perches' where land_id='$land_id'";
+                            }
+                            else{
+                                if((float)$perches == (float)$ava_perches){
+                                    $remain_perches = 0;
+                                    $insert_land_p = "INSERT INTO land_purchases (cus_id, land_id, invoice_no, sale_type, p_date, tot_amt, paid_amt, remain_amt, perches, pay_status) VALUES ('$cus_id','$land_id','$inv_no','$s_type','$pay_day','$tot_amt','$paid_amt','$remain_amt','$perches','$pay_status')";
+                                    $update_land = "update lands set available_qty='$remain_perches',availability='Not - available' where land_id='$land_id'";
+                                }
+                            }
                         }
                     }
                 }
@@ -511,15 +642,16 @@ if (!isset($_SESSION['admin_email'])) {
 
         $run_land_p = mysqli_query($con, $insert_land_p);
 
-        $update_land = "update lands set availability='Not - available' where land_id='$land_id'";
-        $run_update_land = mysqli_query($con, $update_land);
+        //$update_land = "update lands set availability='Not - available' where land_id='$land_id'";
+        if ($run_land_p) {
+            $run_update_land = mysqli_query($con, $update_land);
+        }
 
         if ($run_land_p && $run_update_land) {
             echo "<script type=\"text/javascript\">
 
             $('#suModal').modal('show');
         </script>";
-
         }
 //        else{
 //            echo "<script type=\"text/javascript\">
@@ -528,9 +660,7 @@ if (!isset($_SESSION['admin_email'])) {
 //                      mymodal.modal('show');
 //                  </script>";
 //        }
-
     }
-
     ?>
 
 <?php } ?>
