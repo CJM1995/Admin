@@ -260,6 +260,24 @@ if (!isset($_SESSION['admin_email'])) {
 
                 }
 
+                if (isset($_GET['edit_sale_purchase_h'])) {
+
+                    include("edit_sale_purchase_h.php");
+
+                }
+
+                if (isset($_GET['edit_rent_purchase_h'])) {
+
+                    include("edit_rent_purchase_h.php");
+
+                }
+
+                if (isset($_GET['edit_lease_purchase_h'])) {
+
+                    include("edit_lease_purchase_h.php");
+
+                }
+
                 if (isset($_GET['edit_product'])) {
 
                     include("edit_product.php");

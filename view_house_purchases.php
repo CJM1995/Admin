@@ -339,7 +339,7 @@ if (!isset($_SESSION['admin_email'])) {
                                         <button style="margin-top: 2px" type="button" rel="tooltip"
                                                 class="btn btn-success btn-sm"
                                                 data-original-title="" title="Edit"
-                                                onclick="location.href = 'index.php?edit_house_purchase=<?php echo $hp_id; ?>';">
+                                                onclick="location.href = 'index.php?edit_sale_purchase_h=<?php echo $hp_id; ?>';">
                                             <i class="fa fa-pencil"></i>
                                         </button>
                                         <button style="margin-top: 2px" type="button" rel="tooltip"
