@@ -107,7 +107,7 @@ if (!isset($_SESSION['admin_email'])) {
                             <div class="col-md-6">
                                 <input type="number" name="inv_no" id="inv_no" class="form-control" pattern="^[0-9]"
                                        min="1"
-                                       value="<?php echo $invoice_no ?>" required>
+                                       title="Previous: <?php echo $invoice_no ?>" placeholder="Previous: <?php echo $invoice_no ?>" required>
                             </div>
                         </div><!-- form-group Ends -->
 
@@ -130,13 +130,12 @@ if (!isset($_SESSION['admin_email'])) {
                         </div><!-- form-group Ends -->
 
                         <div class="form-group"><!-- form-group Starts -->
-                            <label class="col-md-3 control-label"> Paid Amount </label>
+                            <label class="col-md-3 control-label"> Latest Payment </label>
                             <div class="col-md-6">
                                 <input type="number" name="new_paid_amt" id="paid_amt" class="form-control"
                                        pattern="^[0.00-9.99]" min="1"
-                                       placeholder="LKR <?php echo $paid_amt; ?> was already paid"
-                                       value="<?php echo $paid_amt; ?>"
-                                       title="LKR <?php echo $paid_amt; ?> was already paid">
+                                       placeholder="Must be less than OR equal to Remaining Amount (LKR <?php echo $remain_amt; ?>)"
+                                       title="Must be less than OR equal to Remaining Amount (LKR <?php echo $remain_amt; ?>)">
                             </div>
                         </div><!-- form-group Ends -->
 
@@ -157,19 +156,12 @@ if (!isset($_SESSION['admin_email'])) {
                                     <?php
                                     if (strcmp($payment_status, 'Advance') == 0) {
                                         echo "<option value=\"Complete\"> Complete</option>
-                                        <option value=\"Rental / Lease\"> Rental / Lease</option>
                                         <option value=\"Incomplete\"> Incomplete</option>";
                                     } elseif (strcmp($payment_status, 'Complete') == 0) {
                                         echo "<option value=\"Advance\"> Advance</option>
-                                        <option value=\"Rental / Lease\"> Rental / Lease</option>
                                         <option value=\"Incomplete\"> Incomplete</option>";
-                                    } elseif (strcmp($payment_status, 'Incomplete') == 0) {
-                                        echo "<option value=\"Advance\"> Advance</option>
-                                        <option value=\"Rental / Lease\"> Rental / Lease</option>
-                                        <option value=\"Complete\"> Complete</option>";
                                     } else {
                                         echo "<option value=\"Advance\"> Advance</option>
-                                        <option value=\"Incomplete\"> Incomplete</option>
                                         <option value=\"Complete\"> Complete</option>";
                                     }
                                     ?>
@@ -204,7 +196,7 @@ if (!isset($_SESSION['admin_email'])) {
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" onclick="window.open('index.php?view_owners','_self')">
+                    <button type="button" class="close" onclick="window.open('index.php?view_house_purchases','_self')">
                         &times;
                     </button>
                 </div>
@@ -212,13 +204,13 @@ if (!isset($_SESSION['admin_email'])) {
                     <i style="font-size: 800%"
                        class="text-center text-success center-block fa fa-check-circle-o fa-5x"></i>
                     <br>
-                    <p style="font-size: 110%" class="text-center">Owner details has been edited successfully!</p>
+                    <p style="font-size: 110%" class="text-center">House Purchase details has been edited successfully!</p>
 
                 </div>
                 <form method="post">
                     <div style="text-align: center" class="modal-footer text-center center-block">
                         <button type="button" class="btn btn-success"
-                                onclick="window.open('index.php?view_owners','_self')">OK
+                                onclick="window.open('index.php?view_house_purchases','_self')">OK
                         </button>
                     </div>
             </div>
@@ -235,17 +227,47 @@ if (!isset($_SESSION['admin_email'])) {
         echo "<script src=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js\"></script>";
         echo "<link href=\"css/style.css\" rel=\"stylesheet\">";
 
-        $owner_name = $_POST['owner_name'];
-        $owner_address = $_POST['owner_address'];
-        $owner_phone = $_POST['owner_phone'];
-        $owner_fax = $_POST['owner_fax'];
-        $owner_email = $_POST['owner_email'];
+        $hp_inv_no = $_POST['inv_no'];
+        $hp_pay_day = $_POST['pay_day'];
+        $hp_tot_amt = $_POST['tot_amt'];
+        $hp_paid_amt = $_POST['new_paid_amt'];
+        $hp_pay_status = $_POST['pay_status'];
 
-        $update_owner = "update owners set name='$owner_name',address='$owner_address',phone='$owner_phone',fax='$owner_fax',email='$owner_email' where owner_id='$owner_id'";
+        if(empty($hp_paid_amt)){
+            echo "<script>alert('Paid Amount cannot be empty!')</script>";
+        }
+        else{
+            if(($hp_paid_amt < $remain_amt) && ($hp_paid_amt > 0)){
+                $n_remain_amt = ((float)$remain_amt - (float)$hp_paid_amt);
+                $n_paid_amt = ((float)$paid_amt + (float)$hp_paid_amt);
 
-        $run_owner = mysqli_query($con, $update_owner);
+                if(strcmp($hp_pay_status,'Complete')==0){
+                    echo "<script>alert('Check Payment Status: It should be Advance OR Incomplete!')</script>";
+                }
+                else{
+                    $update_hp = "update house_purchases set invoice_no='$hp_inv_no',p_date='$hp_pay_day',paid_amt='$n_paid_amt',remain_amt='$n_remain_amt',pay_status='$hp_pay_status' where hp_id='$hp_id'";
+                }
+            }
+            elseif($hp_paid_amt == $remain_amt){
+                $n_remain_amt = 0;
+                $n_paid_amt = $remain_amt;
 
-        if ($run_owner) {
+                if(strcmp($hp_pay_status,'Complete')!=0){
+                    echo "<script>alert('Check Payment Status: It should be Completed!')</script>";
+                }
+                else{
+                    $update_hp = "update house_purchases set invoice_no='$hp_inv_no',p_date='$hp_pay_day',paid_amt='$n_paid_amt',remain_amt='$n_remain_amt',pay_status='$hp_pay_status' where hp_id='$hp_id'";
+                }
+            }
+            else{
+                echo "<script>alert('Check Latest Payment: It should be Less than OR Equal to Remaining Amount!')</script>";
+            }
+        }
+
+
+        $run_hp = mysqli_query($con, $update_hp);
+
+        if ($run_hp) {
 
             echo "<script type=\"text/javascript\">
                     $('#suModal').modal('show');

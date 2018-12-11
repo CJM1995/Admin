@@ -32,7 +32,8 @@ if (!isset($_SESSION['admin_email'])) {
                     <div class="row">
                         <div class="col-xs-12">
                             <h3 class="panel-title pull-left" style="padding-top: 7.5px;">
-                                <i class="fa fa-dollar fa-2x fa-fw"></i><i class="fa fa-home fa-2x fa-fw"></i> View House Purchases
+                                <i class="fa fa-dollar fa-2x fa-fw"></i><i class="fa fa-home fa-2x fa-fw"></i> View
+                                House Purchases
                             </h3>
                         </div>
                     </div>
@@ -57,11 +58,15 @@ if (!isset($_SESSION['admin_email'])) {
                         <div class="input-group center-block text-center">
                             <div class="form-horizontal">
                                 <label class="radio-inline"><input type="radio" name="optradio" value="Invoice">Invoice</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="Sale Type">Sale Type</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="Payment Status">Payment Status</label>
+                                <label class="radio-inline"><input type="radio" name="optradio" value="Sale Type">Sale
+                                    Type</label>
+                                <label class="radio-inline"><input type="radio" name="optradio" value="Payment Status">Payment
+                                    Status</label>
                                 <label class="radio-inline"><input type="radio" name="optradio" value="Duration">Duration</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="Amount">Amount</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="Date">Date</label>
+                                <label class="radio-inline"><input type="radio" name="optradio"
+                                                                   value="Amount">Amount</label>
+                                <label class="radio-inline"><input type="radio" name="optradio"
+                                                                   value="Date">Date</label>
                             </div>
 
                         </div>
@@ -137,34 +142,46 @@ if (!isset($_SESSION['admin_email'])) {
 
                                                         <tr>
                                                             <th style="vertical-align: middle;text-align: center"><i
-                                                                    class="fa fa-gear"></i></th>
-                                                            <th style="vertical-align: middle;text-align: center">House Purchase
+                                                                        class="fa fa-gear"></i></th>
+                                                            <th style="vertical-align: middle;text-align: center">House
+                                                                Purchase
                                                                 ID
                                                             </th>
-                                                            <th style="vertical-align: middle;text-align: center">Customer ID
+                                                            <th style="vertical-align: middle;text-align: center">
+                                                                Customer ID
                                                             </th>
                                                             <th style="vertical-align: middle;text-align: center">House
                                                                 ID
                                                             </th>
-                                                            <th style="vertical-align: middle;text-align: center">Invoice No.
+                                                            <th style="vertical-align: middle;text-align: center">
+                                                                Invoice No.
                                                             </th>
-                                                            <th style="vertical-align: middle;text-align: center">Sale Type
+                                                            <th style="vertical-align: middle;text-align: center">Sale
+                                                                Type
                                                             </th>
-                                                            <th style="vertical-align: middle;text-align: center">Purchased Date
+                                                            <th style="vertical-align: middle;text-align: center">
+                                                                Purchased Date
                                                             </th>
-                                                            <th style="vertical-align: middle;text-align: center">Total Amount
+                                                            <th style="vertical-align: middle;text-align: center">Total
+                                                                Amount
                                                             </th>
-                                                            <th style="vertical-align: middle;text-align: center">Paid Amount
+                                                            <th style="vertical-align: middle;text-align: center">Paid
+                                                                Amount
                                                             </th>
-                                                            <th style="vertical-align: middle;text-align: center">Rental Amount
+                                                            <th style="vertical-align: middle;text-align: center">Rental
+                                                                Amount
                                                             </th>
-                                                            <th style="vertical-align: middle;text-align: center">Remaining Amount
+                                                            <th style="vertical-align: middle;text-align: center">
+                                                                Remaining Amount
                                                             </th>
-                                                            <th style="vertical-align: middle;text-align: center">Payment Status
+                                                            <th style="vertical-align: middle;text-align: center">
+                                                                Payment Status
                                                             </th>
-                                                            <th style="vertical-align: middle;text-align: center">Duration
+                                                            <th style="vertical-align: middle;text-align: center">
+                                                                Duration
                                                             </th>
-                                                            <th style="vertical-align: middle;text-align: center">Remaining Lease Installments
+                                                            <th style="vertical-align: middle;text-align: center">
+                                                                Remaining Lease Installments
                                                             </th>
 
                                                         </tr>
@@ -203,18 +220,40 @@ if (!isset($_SESSION['admin_email'])) {
                                                             <tr>
 
                                                                 <td>
-                                                                    <button style="margin-top: 2px" type="button" rel="tooltip"
-                                                                            class="btn btn-success btn-sm"
-                                                                            data-original-title="" title="Edit"
-                                                                            onclick="location.href = 'index.php?edit_land_purchase=<?php echo $hp_id_s; ?>';">
-                                                                        <i class="fa fa-pencil"></i>
-                                                                    </button>
-                                                                    <button style="margin-top: 2px" type="button" rel="tooltip"
-                                                                            class="btn btn-danger btn-sm"
-                                                                            data-original-title="" title="Remove"
-                                                                            onclick="location.href = 'index.php?delete_land_purchase=<?php echo $hp_id_s; ?>';">
-                                                                        <i class="fa fa-trash"></i>
-                                                                    </button>
+                                                                    <?php
+                                                                    if (strcmp($sale_type_s, 'Sale') == 0) {
+                                                                        echo "<button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                                                                class=\"btn btn-success btn-sm\"
+                                                                                data-original-title=\"\" title=\"Update\"
+                                                                                onclick=\"location.href = 'index.php?edit_sale_purchase_h=$hp_id_s'\">
+                                                                            <i class=\"fa fa-pencil\"></i>
+                                                                        </button>";
+                                                                    }
+                                                                    if (strcmp($sale_type_s, 'Rent') == 0) {
+                                                                        echo "<button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                                                                class=\"btn btn-success btn-sm\"
+                                                                                data-original-title=\"\" title=\"Update\"
+                                                                                onclick=\"location.href = 'index.php?edit_rent_purchase_h=$hp_id_s'\">
+                                                                            <i class=\"fa fa-pencil\"></i>
+                                                                        </button>";
+                                                                    }
+                                                                    if (strcmp($sale_type_s, 'Lease') == 0) {
+                                                                        echo "<button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                                                                class=\"btn btn-success btn-sm\"
+                                                                                data-original-title=\"\" title=\"Update\"
+                                                                                onclick=\"location.href = 'index.php?edit_lease_purchase_h=$hp_id_s'\">
+                                                                            <i class=\"fa fa-pencil\"></i>
+                                                                        </button>";
+                                                                    }
+                                                                    if ((strcmp($pay_status_s, 'Complete') == 0) || (strcmp($pay_status_s, 'Rental / Lease') == 0)) {
+                                                                        echo "<button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                                                                class=\"btn btn-danger btn-sm\"
+                                                                                data-original-title=\"\" title=\"Remove\"
+                                                                                onclick=\"location.href = 'index.php?delete_house_purchase=$hp_id_s';\">
+                                                                            <i class=\"fa fa-trash\"></i>
+                                                                        </button>";
+                                                                    }
+                                                                    ?>
                                                                 </td>
                                                                 <td><?php echo $i; ?></td>
                                                                 <td><?php echo $cus_id_s; ?></td>
@@ -241,7 +280,8 @@ if (!isset($_SESSION['admin_email'])) {
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-default"
-                                                        onclick="window.open('index.php?view_land_purchases','_self')">Close
+                                                        onclick="window.open('index.php?view_house_purchases','_self')">
+                                                    Close
                                                 </button>
                                             </div>
                                         </div>
@@ -270,7 +310,7 @@ if (!isset($_SESSION['admin_email'])) {
 
                             <tr>
                                 <th style="vertical-align: middle;text-align: center"><i
-                                        class="fa fa-gear"></i></th>
+                                            class="fa fa-gear"></i></th>
                                 <th style="vertical-align: middle;text-align: center">House Purchase
                                     ID
                                 </th>
@@ -336,18 +376,40 @@ if (!isset($_SESSION['admin_email'])) {
                                 <tr>
 
                                     <td>
-                                        <button style="margin-top: 2px" type="button" rel="tooltip"
-                                                class="btn btn-success btn-sm"
-                                                data-original-title="" title="Edit"
-                                                onclick="location.href = 'index.php?edit_sale_purchase_h=<?php echo $hp_id; ?>';">
-                                            <i class="fa fa-pencil"></i>
-                                        </button>
-                                        <button style="margin-top: 2px" type="button" rel="tooltip"
-                                                class="btn btn-danger btn-sm"
-                                                data-original-title="" title="Remove"
-                                                onclick="location.href = 'index.php?delete_house_purchase=<?php echo $hp_id; ?>';">
-                                            <i class="fa fa-trash"></i>
-                                        </button>
+                                        <?php
+                                        if (strcmp($sale_type, 'Sale') == 0) {
+                                            echo "<button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                                class=\"btn btn-success btn-sm\"
+                                                data-original-title=\"\" title=\"Update\"
+                                                onclick=\"location.href = 'index.php?edit_sale_purchase_h=$hp_id'\">
+                                            <i class=\"fa fa-pencil\"></i>
+                                        </button>";
+                                        }
+                                        if (strcmp($sale_type, 'Rent') == 0) {
+                                            echo "<button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                                class=\"btn btn-success btn-sm\"
+                                                data-original-title=\"\" title=\"Update\"
+                                                onclick=\"location.href = 'index.php?edit_rent_purchase_h=$hp_id'\">
+                                            <i class=\"fa fa-pencil\"></i>
+                                        </button>";
+                                        }
+                                        if (strcmp($sale_type, 'Lease') == 0) {
+                                            echo "<button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                                class=\"btn btn-success btn-sm\"
+                                                data-original-title=\"\" title=\"Update\"
+                                                onclick=\"location.href = 'index.php?edit_lease_purchase_h=$hp_id'\">
+                                            <i class=\"fa fa-pencil\"></i>
+                                        </button>";
+                                        }
+                                        if ((strcmp($pay_status, 'Complete') == 0) || (strcmp($pay_status, 'Rental / Lease') == 0)) {
+                                            echo "<button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                                class=\"btn btn-danger btn-sm\"
+                                                data-original-title=\"\" title=\"Remove\"
+                                                onclick=\"location.href = 'index.php?delete_house_purchase=$hp_id';\">
+                                            <i class=\"fa fa-trash\"></i>
+                                        </button>";
+                                        }
+                                        ?>
                                     </td>
                                     <td><?php echo $i; ?></td>
                                     <td><?php echo $cus_id; ?></td>
