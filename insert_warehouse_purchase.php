@@ -137,6 +137,14 @@ if (!isset($_SESSION['admin_email'])) {
                         </div><!-- form-group Ends -->
 
                         <div class="form-group"><!-- form-group Starts -->
+                            <label class="col-md-3 control-label">Rental Duration </label>
+                            <div class="col-md-6">
+                                <input type="number" title="Only if the Warehouse - Sale Type is Rent" id="duration" name="duration" class="form-control" pattern="^[0-9]" min="1"
+                                       placeholder="In Months Only - Ex: 12" value="<?= isset($_POST['duration']) ? $_POST['duration'] : ''; ?>">
+                            </div>
+                        </div><!-- form-group Ends -->
+
+                        <div class="form-group"><!-- form-group Starts -->
                             <label class="col-md-3 control-label"> Lease Installment </label>
                             <div class="col-md-6">
                                 <input type="number" id="lease_amt" name="lease_amt" class="form-control" pattern="^[0.00-9.99]" min="1"
@@ -158,6 +166,14 @@ if (!isset($_SESSION['admin_email'])) {
                         </div><!-- form-group Ends -->
 
                         <div class="form-group"><!-- form-group Starts -->
+                            <label class="col-md-3 control-label">Remaining Lease Installments </label>
+                            <div class="col-md-6">
+                                <input type="number" title="Only if the Warehouse - Sale Type is Lease" id="lease_ins" name="lease_ins" class="form-control" pattern="^[0-9]" min="1"
+                                       placeholder="Ex: 24" value="<?= isset($_POST['lease_ins']) ? $_POST['lease_ins'] : ''; ?>">
+                            </div>
+                        </div><!-- form-group Ends -->
+
+                        <div class="form-group"><!-- form-group Starts -->
                             <label class="col-md-3 control-label"> Payment Status </label>
                             <div class="col-md-6">
                                 <select id="pay_status"  name="pay_status" class="form-control" required>
@@ -168,22 +184,6 @@ if (!isset($_SESSION['admin_email'])) {
                                     <option value="Rental / Lease"> Rental / Lease</option>
                                     <option value="Incomplete"> Incomplete</option>
                                 </select>
-                            </div>
-                        </div><!-- form-group Ends -->
-
-                        <div class="form-group"><!-- form-group Starts -->
-                            <label class="col-md-3 control-label">Rental Duration </label>
-                            <div class="col-md-6">
-                                <input type="number" title="Only if the Warehouse - Sale Type is Rent" id="duration" name="duration" class="form-control" pattern="^[0-9]" min="1"
-                                       placeholder="In Months Only - Ex: 12" value="<?= isset($_POST['duration']) ? $_POST['duration'] : ''; ?>">
-                            </div>
-                        </div><!-- form-group Ends -->
-
-                        <div class="form-group"><!-- form-group Starts -->
-                            <label class="col-md-3 control-label">Remaining Lease Installments </label>
-                            <div class="col-md-6">
-                                <input type="number" title="Only if the Warehouse - Sale Type is Lease" id="lease_ins" name="lease_ins" class="form-control" pattern="^[0-9]" min="1"
-                                       placeholder="Ex: 24" value="<?= isset($_POST['lease_ins']) ? $_POST['lease_ins'] : ''; ?>">
                             </div>
                         </div><!-- form-group Ends -->
 
