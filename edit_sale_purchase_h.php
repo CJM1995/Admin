@@ -69,7 +69,8 @@ if (!isset($_SESSION['admin_email'])) {
 
                     <h3 class="panel-title">
 
-                        <i class="fa fa-dollar fa-2x fa-fw"></i><i class="fa fa-home fa-2x fa-fw"></i> Edit House Purchase Details
+                        <i class="fa fa-dollar fa-2x fa-fw"></i><i class="fa fa-home fa-2x fa-fw"></i> Edit House
+                        Purchase Details
 
                     </h3>
 
@@ -95,7 +96,8 @@ if (!isset($_SESSION['admin_email'])) {
                             <label class="col-md-3 control-label"> House Code / Sale Type</label>
                             <div class="col-md-6">
                                 <select name="house_id" class="form-control" disabled>
-                                    <option value="<?php echo $house_id; ?>"> <?php echo $h_code;?> &nbsp;/&nbsp; <?php echo $s_type; ?> </option>
+                                    <option value="<?php echo $house_id; ?>"> <?php echo $h_code; ?>
+                                        &nbsp;/&nbsp; <?php echo $s_type; ?> </option>
                                 </select>
                             </div>
                         </div><!-- form-group Ends -->
@@ -103,7 +105,8 @@ if (!isset($_SESSION['admin_email'])) {
                         <div class="form-group"><!-- form-group Starts -->
                             <label class="col-md-3 control-label"> Invoice No.</label>
                             <div class="col-md-6">
-                                <input type="number" name="inv_no" id="inv_no" class="form-control" pattern="^[0-9]" min="1"
+                                <input type="number" name="inv_no" id="inv_no" class="form-control" pattern="^[0-9]"
+                                       min="1"
                                        value="<?php echo $invoice_no ?>" required>
                             </div>
                         </div><!-- form-group Ends -->
@@ -120,49 +123,51 @@ if (!isset($_SESSION['admin_email'])) {
                         <div class="form-group"><!-- form-group Starts -->
                             <label class="col-md-3 control-label"> Total Amount </label>
                             <div class="col-md-6">
-                                <input type="number" id="tot_amt" name="tot_amt" class="form-control" pattern="^[0.00-9.99]" min="1"
-                                       placeholder="LKR" value="<?php echo $tot_amt; ?>" disabled>
+                                <input type="text" id="tot_amt" name="tot_amt" class="form-control"
+                                       pattern="^[0.00-9.99]" min="1"
+                                       placeholder="LKR" value="LKR &nbsp;<?php echo $tot_amt; ?>" disabled>
                             </div>
                         </div><!-- form-group Ends -->
 
                         <div class="form-group"><!-- form-group Starts -->
                             <label class="col-md-3 control-label"> Paid Amount </label>
                             <div class="col-md-6">
-                                <input type="number" name="new_paid_amt" id="paid_amt" class="form-control" pattern="^[0.00-9.99]" min="1"
-                                       placeholder="LKR <?php echo $paid_amt; ?> was already paid" value="<?php echo $paid_amt; ?>">
+                                <input type="number" name="new_paid_amt" id="paid_amt" class="form-control"
+                                       pattern="^[0.00-9.99]" min="1"
+                                       placeholder="LKR <?php echo $paid_amt; ?> was already paid"
+                                       value="<?php echo $paid_amt; ?>"
+                                       title="LKR <?php echo $paid_amt; ?> was already paid">
                             </div>
                         </div><!-- form-group Ends -->
 
                         <div class="form-group"><!-- form-group Starts -->
                             <label class="col-md-3 control-label"> Remaining Amount </label>
                             <div class="col-md-6">
-                                <input type="text" name="new_remain_amt" class="form-control" placeholder="LKR" title="This will be auto updated"
-                                       value="<?php echo $remain_amt; ?>" disabled>
+                                <input type="text" name="new_remain_amt" class="form-control" placeholder="LKR"
+                                       title="This will be auto updated"
+                                       value="LKR &nbsp;<?php echo $remain_amt; ?>" disabled>
                             </div>
                         </div><!-- form-group Ends -->
 
                         <div class="form-group"><!-- form-group Starts -->
                             <label class="col-md-3 control-label"> Payment Status </label>
                             <div class="col-md-6">
-                                <select id="pay_status"  name="pay_status" class="form-control" required>
-                                    <option value="<?php echo $payment_status; ?>" > <?php echo $payment_status; ?> </option>
+                                <select id="pay_status" name="pay_status" class="form-control" required>
+                                    <option value="<?php echo $payment_status; ?>"> <?php echo $payment_status; ?> </option>
                                     <?php
-                                    if(strcmp($payment_status,'Advance')==0){
+                                    if (strcmp($payment_status, 'Advance') == 0) {
                                         echo "<option value=\"Complete\"> Complete</option>
                                         <option value=\"Rental / Lease\"> Rental / Lease</option>
                                         <option value=\"Incomplete\"> Incomplete</option>";
-                                    }
-                                    elseif (strcmp($payment_status,'Complete')==0){
+                                    } elseif (strcmp($payment_status, 'Complete') == 0) {
                                         echo "<option value=\"Advance\"> Advance</option>
                                         <option value=\"Rental / Lease\"> Rental / Lease</option>
                                         <option value=\"Incomplete\"> Incomplete</option>";
-                                    }
-                                    elseif (strcmp($payment_status,'Incomplete')==0){
+                                    } elseif (strcmp($payment_status, 'Incomplete') == 0) {
                                         echo "<option value=\"Advance\"> Advance</option>
                                         <option value=\"Rental / Lease\"> Rental / Lease</option>
                                         <option value=\"Complete\"> Complete</option>";
-                                    }
-                                    else{
+                                    } else {
                                         echo "<option value=\"Advance\"> Advance</option>
                                         <option value=\"Incomplete\"> Incomplete</option>
                                         <option value=\"Complete\"> Complete</option>";
