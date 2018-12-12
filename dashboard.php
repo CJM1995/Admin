@@ -81,7 +81,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 
         <div class="col-lg-4 col-md-6"><!-- col-lg-4 col-md-6 Starts -->
-            <div style="border: 1px solid rgba(92,216,92,0.71)" class="panel panel-green"><!-- panel panel-green Starts -->
+            <div class="panel panel-green"><!-- panel panel-green Starts -->
                 <div class="panel-heading"><!-- panel-heading Starts -->
                     <div class="row"><!-- panel-heading row Starts -->
                         <div class="col-xs-3"><!-- col-xs-3 Starts -->
@@ -106,7 +106,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 
         <div class="col-lg-4 col-md-6"><!-- col-lg-4 col-md-6 Starts -->
-            <div style="border: 1px solid #f0ad4e" class="panel panel-yellow"><!-- panel panel-yellow Starts -->
+            <div class="panel panel-yellow"><!-- panel panel-yellow Starts -->
                 <div class="panel-heading"><!-- panel-heading Starts -->
                     <div class="row"><!-- panel-heading row Starts -->
                         <div class="col-xs-3"><!-- col-xs-3 Starts -->
@@ -133,7 +133,7 @@ if (!isset($_SESSION['admin_email'])) {
 
     <div class="row"><!-- 3 row Starts -->
         <div class="col-lg-4 col-md-6"><!-- col-lg-4 col-md-6 Starts -->
-            <div style="border: 1px solid #d9534f" class="panel panel-red"><!-- panel panel-red Starts -->
+            <div class="panel panel-red"><!-- panel panel-red Starts -->
                 <div class="panel-heading"><!-- panel-heading Starts -->
                     <div class="row"><!-- panel-heading row Starts -->
                         <div class="col-xs-2"><!-- col-xs-2 Starts -->
@@ -160,7 +160,7 @@ if (!isset($_SESSION['admin_email'])) {
         </div><!-- col-lg-4 col-md-6 Ends -->
 
         <div class="col-lg-4 col-md-6"><!-- col-lg-4 col-md-6 Starts -->
-            <div style="border: 1px solid #d9534f" class="panel panel-red"><!-- panel panel-red Starts -->
+            <div class="panel panel-red"><!-- panel panel-red Starts -->
                 <div class="panel-heading"><!-- panel-heading Starts -->
                     <div class="row"><!-- panel-heading row Starts -->
                         <div class="col-xs-2"><!-- col-xs-2 Starts -->
@@ -187,7 +187,7 @@ if (!isset($_SESSION['admin_email'])) {
         </div><!-- col-lg-4 col-md-6 Ends -->
 
         <div class="col-lg-4 col-md-6"><!-- col-lg-4 col-md-6 Starts -->
-            <div style="border: 1px solid #d9534f" class="panel panel-red"><!-- panel panel-red Starts -->
+            <div class="panel panel-red"><!-- panel panel-red Starts -->
                 <div class="panel-heading"><!-- panel-heading Starts -->
                     <div class="row"><!-- panel-heading row Starts -->
                         <div class="col-xs-2"><!-- col-xs-2 Starts -->
@@ -312,7 +312,7 @@ if (!isset($_SESSION['admin_email'])) {
 
     <div class="row"><!-- 5 row Starts -->
         <div class="col-lg-12"><!-- col-lg-12 Starts -->
-            <div style="border: 1px solid rgba(92,216,92,0.71)" class="panel panel-green"><!-- panel panel-primary Starts -->
+            <div class="panel panel-green"><!-- panel panel-primary Starts -->
                 <div class="panel-heading"><!-- panel-heading Starts -->
                     <h3 class="panel-title"><!-- panel-title Starts -->
                         <i class="fa fa-money fa-fw"></i> Advance/Incomplete House Purchases
@@ -408,7 +408,7 @@ if (!isset($_SESSION['admin_email'])) {
 
     <div class="row"><!-- 6 row Starts -->
         <div class="col-lg-12"><!-- col-lg-12 Starts -->
-            <div style="border: 1px solid #f0ad4e" class="panel panel-yellow"><!-- panel panel-primary Starts -->
+            <div class="panel panel-yellow"><!-- panel panel-primary Starts -->
                 <div class="panel-heading"><!-- panel-heading Starts -->
                     <h3 class="panel-title"><!-- panel-title Starts -->
                         <i class="fa fa-money fa-fw"></i> Advance/Incomplete Land Purchases

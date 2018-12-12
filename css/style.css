@@ -68,6 +68,46 @@ body {
     color: black;
 }
 
+/* Top Navigation Right*/
+.dropbtn {
+    background-color: rgba(36, 27, 28, 0.1);
+    color: white;
+    padding: 15px 8px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0px 8px 15px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 15px 10px;
+    text-decoration: none;
+    display: block;
+}
+
+
+
+.dropdown-content a:hover {background-color: #cbcbcb;}
+.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropbtn {background-color: #0f0f0f;}
+
+
+
 /* Sidebar Styles */
 
 @media (min-width: 768px) {
@@ -82,7 +122,6 @@ body {
         bottom: 0;
         overflow-x: hidden;
         padding-bottom: 40px;
-
     }
 
     .side-nav > li > a {
@@ -94,6 +133,7 @@ body {
     .side-nav li a:focus {
         outline: none;
         /*background-color: #000 !important;*/
+        background-color: #272727 !important;
         text-decoration: none;
     }
 
@@ -109,7 +149,12 @@ body {
     padding: 10px 15px 10px 38px;
     text-decoration: none;
     color: #999;
+}
 
+@media (max-width: 768px) {
+    .side-nav > li > a{
+        font-size: 22px;
+    }
 }
 
 .side-nav > li > ul > li > a:hover {
@@ -123,6 +168,10 @@ body {
     line-height: normal;
 }
 
+.panel-green{
+    border: 1px solid #5cd85c;
+}
+
 .panel-green > .panel-heading {
     color: #fff;
     background-color: #5cd85c;
@@ -133,6 +182,10 @@ body {
     color: #5cd85c;
 }
 
+.panel-red{
+    border: 1px solid #d9534f;
+}
+
 .panel-red > .panel-heading {
     color: #fff;
     background-color: #d9534f;
@@ -140,6 +193,10 @@ body {
 
 .panel-red > a {
     color: #d9534f;
+}
+
+.panel-yellow{
+    border: 1px solid #f0ad4e;
 }
 
 .panel-yellow > .panel-heading {
@@ -251,6 +308,12 @@ hr.dotted {
     font-size: 14px;
     /*margin: 4px 0;*/
     position: relative;
+}
+
+@media (max-width: 768px) {
+    .smenu a {
+        font-size: 20px;
+    }
 }
 
 .smenu a:before {
