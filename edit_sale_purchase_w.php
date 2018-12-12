@@ -11,20 +11,18 @@ if (!isset($_SESSION['admin_email'])) {
 
     <?php
 
-    if (isset($_GET['edit_lease_purchase_h'])) {
-        $edit_id = $_GET['edit_lease_purchase_h'];
-        $get_record = "select * from house_purchases where hp_id='$edit_id'";
+    if (isset($_GET['edit_sale_purchase_w'])) {
+        $edit_id = $_GET['edit_sale_purchase_w'];
+        $get_record = "select * from warehouse_purchases where wp_id='$edit_id'";
         $run_record = mysqli_query($con, $get_record);
         $row_record = mysqli_fetch_array($run_record);
-        $hp_id = $row_record['hp_id'];
+        $wp_id = $row_record['wp_id'];
         $cus_id = $row_record['cus_id'];
-        $house_id = $row_record['house_id'];
+        $warehouse_id = $row_record['warehouse_id'];
         $invoice_no = $row_record['invoice_no'];
         $p_date = $row_record['p_date'];
         $tot_amt = $row_record['tot_amt'];
         $paid_amt = $row_record['paid_amt'];
-        $lease_amt = $row_record['lease_amt'];
-        $lease_ins = $row_record['lease_ins'];
         $remain_amt = $row_record['remain_amt'];
         $payment_status = $row_record['pay_status'];
 
@@ -32,10 +30,10 @@ if (!isset($_SESSION['admin_email'])) {
         $row_cn = mysqli_fetch_array($result_cn);
         $cus_name = $row_cn['cus_name'];
 
-        $result_h = mysqli_query($con, "SELECT code AS h_code, sale_type AS s_type FROM houses WHERE house_id='$house_id'");
-        $row_h = mysqli_fetch_array($result_h);
-        $h_code = $row_h['h_code'];
-        $s_type = $row_h['s_type'];
+        $result_w = mysqli_query($con, "SELECT code AS w_code, sale_type AS s_type FROM warehouses WHERE warehouse_id='$warehouse_id'");
+        $row_w = mysqli_fetch_array($result_w);
+        $w_code = $row_w['w_code'];
+        $s_type = $row_w['s_type'];
     }
 
 
@@ -50,7 +48,7 @@ if (!isset($_SESSION['admin_email'])) {
 
                 <li class="active">
 
-                    <i class="fa fa-dashboard"></i> Dashboard / Edit House Purchase Details
+                    <i class="fa fa-dashboard"></i> Dashboard / Edit Warehouse Purchase Details
 
                 </li>
 
@@ -71,7 +69,7 @@ if (!isset($_SESSION['admin_email'])) {
 
                     <h3 class="panel-title">
 
-                        <i class="fa fa-dollar fa-2x fa-fw"></i><i class="fa fa-home fa-2x fa-fw"></i> Edit House
+                        <i class="fa fa-dollar fa-2x fa-fw"></i><i class="fa fa-building fa-2x fa-fw"></i> Edit Warehouse
                         Purchase Details
 
                     </h3>
@@ -95,10 +93,10 @@ if (!isset($_SESSION['admin_email'])) {
                         </div><!-- form-group Ends -->
 
                         <div class="form-group"><!-- form-group Starts -->
-                            <label class="col-md-3 control-label"> House Code / Sale Type</label>
+                            <label class="col-md-3 control-label"> Warehouse Code / Sale Type</label>
                             <div class="col-md-6">
                                 <select name="house_id" class="form-control" disabled>
-                                    <option value="<?php echo $house_id; ?>"> <?php echo $h_code; ?>
+                                    <option value="<?php echo $warehouse_id; ?>"> <?php echo $w_code; ?>
                                         &nbsp;/&nbsp; <?php echo $s_type; ?> </option>
                                 </select>
                             </div>
@@ -109,8 +107,7 @@ if (!isset($_SESSION['admin_email'])) {
                             <div class="col-md-6">
                                 <input type="number" name="inv_no" id="inv_no" class="form-control" pattern="^[0-9]"
                                        min="1"
-                                       title="Previous: <?php echo $invoice_no ?>"
-                                       placeholder="Previous: <?php echo $invoice_no ?>" required>
+                                       title="Previous: <?php echo $invoice_no ?>" placeholder="Previous: <?php echo $invoice_no ?>" required>
                             </div>
                         </div><!-- form-group Ends -->
 
@@ -143,27 +140,6 @@ if (!isset($_SESSION['admin_email'])) {
                         </div><!-- form-group Ends -->
 
                         <div class="form-group"><!-- form-group Starts -->
-                            <label class="col-md-3 control-label"> Lease Installment </label>
-                            <div class="col-md-6">
-                                <input type="number" id="lease_amt" name="lease_amt" class="form-control"
-                                       pattern="^[0.00-9.99]" min="1"
-                                       placeholder="Previous: LKR <?php echo $lease_amt; ?>"
-                                       value="<?php echo $lease_amt; ?>"
-                                       title="Previous: LKR <?php echo $lease_amt; ?>" required>
-                            </div>
-                        </div><!-- form-group Ends -->
-
-                        <div class="form-group"><!-- form-group Starts -->
-                            <label class="col-md-3 control-label">Remaining Lease Installments </label>
-                            <div class="col-md-6">
-                                <input type="number" title="Should be less than the Previous: <?php echo $lease_ins; ?>" id="lease_ins"
-                                       name="lease_ins" class="form-control" pattern="^[0-9]" min="<?php echo ((float)$lease_ins - 1); ?>"
-                                       placeholder="Should be less than the Previous: <?php echo $lease_ins; ?>"
-                                       value="<?php echo $lease_ins; ?>">
-                            </div>
-                        </div><!-- form-group Ends -->
-
-                        <div class="form-group"><!-- form-group Starts -->
                             <label class="col-md-3 control-label"> Remaining Amount </label>
                             <div class="col-md-6">
                                 <input type="text" name="new_remain_amt" class="form-control" placeholder="LKR"
@@ -178,11 +154,15 @@ if (!isset($_SESSION['admin_email'])) {
                                 <select id="pay_status" name="pay_status" class="form-control" required>
                                     <option value="<?php echo $payment_status; ?>"> <?php echo $payment_status; ?> </option>
                                     <?php
-                                    if (strcmp($payment_status, 'Rental / Lease') == 0) {
-                                        echo "<option value=\"Complete\"> Complete</option>";
-                                    }
-                                    if (strcmp($payment_status, 'Complete') == 0) {
-                                        echo "<option value=\"Rental / Lease\"> Rent / Lease</option>";
+                                    if (strcmp($payment_status, 'Advance') == 0) {
+                                        echo "<option value=\"Complete\"> Complete</option>
+                                        <option value=\"Incomplete\"> Incomplete</option>";
+                                    } elseif (strcmp($payment_status, 'Complete') == 0) {
+                                        echo "<option value=\"Advance\"> Advance</option>
+                                        <option value=\"Incomplete\"> Incomplete</option>";
+                                    } else {
+                                        echo "<option value=\"Advance\"> Advance</option>
+                                        <option value=\"Complete\"> Complete</option>";
                                     }
                                     ?>
                                 </select>
@@ -192,7 +172,7 @@ if (!isset($_SESSION['admin_email'])) {
                         <div class="form-group"><!-- form-group Starts -->
                             <label class="col-md-3 control-label"></label>
                             <div class="col-md-6"><!-- col-md-6 Starts -->
-                                <input type="submit" name="update" value="Update House Purchase"
+                                <input type="submit" name="update" value="Update Warehouse Purchase"
                                        class="btn btn-primary form-control">
                             </div><!-- col-md-6 Ends -->
                         </div><!-- form-group Ends -->
@@ -216,7 +196,7 @@ if (!isset($_SESSION['admin_email'])) {
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" onclick="window.open('index.php?view_house_purchases','_self')">
+                    <button type="button" class="close" onclick="window.open('index.php?view_warehouse_purchases','_self')">
                         &times;
                     </button>
                 </div>
@@ -224,14 +204,13 @@ if (!isset($_SESSION['admin_email'])) {
                     <i style="font-size: 800%"
                        class="text-center text-success center-block fa fa-check-circle-o fa-5x"></i>
                     <br>
-                    <p style="font-size: 110%" class="text-center">House Purchase details has been edited
-                        successfully!</p>
+                    <p style="font-size: 110%" class="text-center">Warehouse Purchase details has been edited successfully!</p>
 
                 </div>
                 <form method="post">
                     <div style="text-align: center" class="modal-footer text-center center-block">
                         <button type="button" class="btn btn-success"
-                                onclick="window.open('index.php?view_house_purchases','_self')">OK
+                                onclick="window.open('index.php?view_warehouse_purchases','_self')">OK
                         </button>
                     </div>
             </div>
@@ -248,48 +227,47 @@ if (!isset($_SESSION['admin_email'])) {
         echo "<script src=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js\"></script>";
         echo "<link href=\"css/style.css\" rel=\"stylesheet\">";
 
-        $hp_inv_no = $_POST['inv_no'];
-        $hp_pay_day = $_POST['pay_day'];
-        $hp_tot_amt = $_POST['tot_amt'];
-        $hp_paid_amt = $_POST['new_paid_amt'];
-        $hp_lease_amt = $_POST['lease_amt'];
-        $hp_lease_ins = $_POST['lease_ins'];
-        $hp_pay_status = $_POST['pay_status'];
+        $wp_inv_no = $_POST['inv_no'];
+        $wp_pay_day = $_POST['pay_day'];
+        $wp_tot_amt = $_POST['tot_amt'];
+        $wp_paid_amt = $_POST['new_paid_amt'];
+        $wp_pay_status = $_POST['pay_status'];
 
-        if (empty($hp_paid_amt)) {
+        if(empty($wp_paid_amt)){
             echo "<script>alert('Paid Amount cannot be empty!')</script>";
         }
-        elseif ($hp_lease_ins == $lease_ins){
-            echo "<script>alert('Remaining Lease Installments should be less than previous no. of installments!')</script>";
-        }
-        else {
-            if (($hp_paid_amt < $remain_amt) && ($hp_paid_amt > 0)) {
-                $n_remain_amt = ((float)$remain_amt - (float)$hp_paid_amt);
-                $n_paid_amt = ((float)$paid_amt + (float)$hp_paid_amt);
+        else{
+            if(($wp_paid_amt < $remain_amt) && ($wp_paid_amt > 0)){
+                $n_remain_amt = ((float)$remain_amt - (float)$wp_paid_amt);
+                $n_paid_amt = ((float)$paid_amt + (float)$wp_paid_amt);
 
-                if (strcmp($hp_pay_status, 'Complete') == 0) {
+                if(strcmp($wp_pay_status,'Complete')==0){
                     echo "<script>alert('Check Payment Status: It should be Advance OR Incomplete!')</script>";
-                } else {
-                    $update_hp = "update house_purchases set invoice_no='$hp_inv_no',p_date='$hp_pay_day',paid_amt='$n_paid_amt',remain_amt='$n_remain_amt',lease_amt='$hp_lease_amt',lease_ins='$hp_lease_ins',pay_status='$hp_pay_status' where hp_id='$hp_id'";
                 }
-            } elseif ($hp_paid_amt == $remain_amt) {
+                else{
+                    $update_wp = "update warehouse_purchases set invoice_no='$wp_inv_no',p_date='$wp_pay_day',paid_amt='$n_paid_amt',remain_amt='$n_remain_amt',pay_status='$wp_pay_status' where wp_id='$wp_id'";
+                }
+            }
+            elseif($wp_paid_amt == $remain_amt){
                 $n_remain_amt = 0;
                 $n_paid_amt = $remain_amt;
 
-                if (strcmp($hp_pay_status, 'Complete') != 0) {
+                if(strcmp($wp_pay_status,'Complete')!=0){
                     echo "<script>alert('Check Payment Status: It should be Completed!')</script>";
-                } else {
-                    $update_hp = "update house_purchases set invoice_no='$hp_inv_no',p_date='$hp_pay_day',paid_amt='$n_paid_amt',remain_amt='$n_remain_amt',lease_amt='$hp_lease_amt',lease_ins='$hp_lease_ins',pay_status='$hp_pay_status' where hp_id='$hp_id'";
                 }
-            } else {
+                else{
+                    $update_wp = "update warehouse_purchases set invoice_no='$wp_inv_no',p_date='$wp_pay_day',paid_amt='$n_paid_amt',remain_amt='$n_remain_amt',pay_status='$wp_pay_status' where wp_id='$wp_id'";
+                }
+            }
+            else{
                 echo "<script>alert('Check Latest Payment: It should be Less than OR Equal to Remaining Amount!')</script>";
             }
         }
 
 
-        $run_hp = mysqli_query($con, $update_hp);
+        $run_wp = mysqli_query($con, $update_wp);
 
-        if ($run_hp) {
+        if ($run_wp) {
 
             echo "<script type=\"text/javascript\">
                     $('#suModal').modal('show');

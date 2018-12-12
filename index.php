@@ -278,6 +278,30 @@ if (!isset($_SESSION['admin_email'])) {
 
                 }
 
+                if (isset($_GET['edit_sale_purchase_w'])) {
+
+                    include("edit_sale_purchase_w.php");
+
+                }
+
+                if (isset($_GET['edit_rent_purchase_w'])) {
+
+                    include("edit_rent_purchase_w.php");
+
+                }
+
+                if (isset($_GET['edit_lease_purchase_w'])) {
+
+                    include("edit_lease_purchase_w.php");
+
+                }
+
+                if (isset($_GET['edit_sale_purchase_l'])) {
+
+                    include("edit_sale_purchase_l.php");
+
+                }
+
                 if (isset($_GET['edit_product'])) {
 
                     include("edit_product.php");
