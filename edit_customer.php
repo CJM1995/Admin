@@ -87,7 +87,7 @@ if (!isset($_SESSION['admin_email'])) {
                             <div class="col-md-6"><!-- col-md-6 Starts -->
                                 <input class="form-control" placeholder="Ex: xxx@xxx.xxx"
                                        name="cus_email" type="email"
-                                       title="Customer's email (format: xxx@xxx.xxx)"
+                                       data-tippy="Customer's email (format: xxx@xxx.xxx)" data-tippy-arrow="true" data-tippy-size="large"
                                        pattern="[a-zA-Z0-9!#$%&amp;'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*" value="<?php echo $cus_email ?>" required>
                             </div><!-- col-md-6 Ends -->
                         </div><!-- form-group Ends -->

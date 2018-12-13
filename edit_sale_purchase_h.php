@@ -105,9 +105,9 @@ if (!isset($_SESSION['admin_email'])) {
                         <div class="form-group"><!-- form-group Starts -->
                             <label class="col-md-3 control-label"> Invoice No.</label>
                             <div class="col-md-6">
-                                <input type="number" name="inv_no" id="inv_no" class="form-control" pattern="^[0-9]"
-                                       min="1"
-                                       title="Previous: <?php echo $invoice_no ?>" placeholder="Previous: <?php echo $invoice_no ?>" required>
+                                <input type="number" name="inv_no" id="inv_no" class="form-control simptip-position-top" pattern="^[0-9]"
+                                       min="1" data-tippy="Previous: <?php echo $invoice_no ?>" data-tippy-arrow="true" data-tippy-size="large"
+                                       placeholder="Previous: <?php echo $invoice_no ?>" required>
                             </div>
                         </div><!-- form-group Ends -->
 
@@ -115,7 +115,7 @@ if (!isset($_SESSION['admin_email'])) {
                         <div class="form-group"><!-- form-group Starts -->
                             <label class="col-md-3 control-label"> Paid/Last Paid Date </label>
                             <div class="col-md-6">
-                                <input type="date" name="pay_day" id="pay_day" class="form-control"
+                                <input type="date" name="pay_day" id="pay_day" class="form-control" data-tippy="Value must be <?php echo date('Y-m-d'); ?> or later." data-tippy-arrow="true" data-tippy-size="large"
                                        min="<?php echo date('Y-m-d'); ?>" value="<?php echo $p_date; ?>" required>
                             </div>
                         </div><!-- form-group Ends -->
@@ -133,9 +133,9 @@ if (!isset($_SESSION['admin_email'])) {
                             <label class="col-md-3 control-label"> Latest Payment </label>
                             <div class="col-md-6">
                                 <input type="number" name="new_paid_amt" id="paid_amt" class="form-control"
-                                       pattern="^[0.00-9.99]" min="1"
+                                       pattern="^[0.00-9.99]" min="1" data-tippy-arrow="true" data-tippy-size="large"
                                        placeholder="Must be less than OR equal to Remaining Amount (LKR <?php echo $remain_amt; ?>)"
-                                       title="Must be less than OR equal to Remaining Amount (LKR <?php echo $remain_amt; ?>)">
+                                       data-tippy="Must be less than OR equal to Remaining Amount (LKR <?php echo $remain_amt; ?>)">
                             </div>
                         </div><!-- form-group Ends -->
 
@@ -143,7 +143,7 @@ if (!isset($_SESSION['admin_email'])) {
                             <label class="col-md-3 control-label"> Remaining Amount </label>
                             <div class="col-md-6">
                                 <input type="text" name="new_remain_amt" class="form-control" placeholder="LKR"
-                                       title="This will be auto updated"
+                                       data-tippy="This will be auto updated"
                                        value="LKR &nbsp;<?php echo $remain_amt; ?>" disabled>
                             </div>
                         </div><!-- form-group Ends -->
@@ -204,7 +204,8 @@ if (!isset($_SESSION['admin_email'])) {
                     <i style="font-size: 800%"
                        class="text-center text-success center-block fa fa-check-circle-o fa-5x"></i>
                     <br>
-                    <p style="font-size: 110%" class="text-center">House Purchase details has been edited successfully!</p>
+                    <p style="font-size: 110%" class="text-center">House Purchase details has been edited
+                        successfully!</p>
 
                 </div>
                 <form method="post">
@@ -233,33 +234,28 @@ if (!isset($_SESSION['admin_email'])) {
         $hp_paid_amt = $_POST['new_paid_amt'];
         $hp_pay_status = $_POST['pay_status'];
 
-        if(empty($hp_paid_amt)){
+        if (empty($hp_paid_amt)) {
             echo "<script>alert('Paid Amount cannot be empty!')</script>";
-        }
-        else{
-            if(($hp_paid_amt < $remain_amt) && ($hp_paid_amt > 0)){
+        } else {
+            if (($hp_paid_amt < $remain_amt) && ($hp_paid_amt > 0)) {
                 $n_remain_amt = ((float)$remain_amt - (float)$hp_paid_amt);
                 $n_paid_amt = ((float)$paid_amt + (float)$hp_paid_amt);
 
-                if(strcmp($hp_pay_status,'Complete')==0){
+                if (strcmp($hp_pay_status, 'Complete') == 0) {
                     echo "<script>alert('Check Payment Status: It should be Advance OR Incomplete!')</script>";
-                }
-                else{
+                } else {
                     $update_hp = "update house_purchases set invoice_no='$hp_inv_no',p_date='$hp_pay_day',paid_amt='$n_paid_amt',remain_amt='$n_remain_amt',pay_status='$hp_pay_status' where hp_id='$hp_id'";
                 }
-            }
-            elseif($hp_paid_amt == $remain_amt){
+            } elseif ($hp_paid_amt == $remain_amt) {
                 $n_remain_amt = 0;
                 $n_paid_amt = $remain_amt;
 
-                if(strcmp($hp_pay_status,'Complete')!=0){
+                if (strcmp($hp_pay_status, 'Complete') != 0) {
                     echo "<script>alert('Check Payment Status: It should be Completed!')</script>";
-                }
-                else{
+                } else {
                     $update_hp = "update house_purchases set invoice_no='$hp_inv_no',p_date='$hp_pay_day',paid_amt='$n_paid_amt',remain_amt='$n_remain_amt',pay_status='$hp_pay_status' where hp_id='$hp_id'";
                 }
-            }
-            else{
+            } else {
                 echo "<script>alert('Check Latest Payment: It should be Less than OR Equal to Remaining Amount!')</script>";
             }
         }

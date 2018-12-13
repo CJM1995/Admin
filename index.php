@@ -488,6 +488,8 @@ if (!isset($_SESSION['admin_email'])) {
 
     <script src="js/jquery.min.js"></script>
 
+    <script src="https://unpkg.com/tippy.js@3/dist/tippy.all.min.js"></script>
+
     <script src="js/bootbox.min.js"></script>
 
     <script src="js/bootstrap.min.js"></script>

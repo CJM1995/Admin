@@ -109,7 +109,8 @@ if (!isset($_SESSION['admin_email'])) {
                             <div class="col-md-6">
                                 <input type="number" name="inv_no" id="inv_no" class="form-control" pattern="^[0-9]"
                                        min="1"
-                                       title="Previous: <?php echo $invoice_no ?>"
+                                       data-tippy="Previous: <?php echo $invoice_no ?>" data-tippy-arrow="true"
+                                       data-tippy-size="large"
                                        placeholder="Previous: <?php echo $invoice_no ?>" required>
                             </div>
                         </div><!-- form-group Ends -->
@@ -119,6 +120,8 @@ if (!isset($_SESSION['admin_email'])) {
                             <label class="col-md-3 control-label"> Paid/Last Paid Date </label>
                             <div class="col-md-6">
                                 <input type="date" name="pay_day" id="pay_day" class="form-control"
+                                       data-tippy="Value must be <?php echo date('Y-m-d'); ?> or later."
+                                       data-tippy-arrow="true" data-tippy-size="large"
                                        min="<?php echo date('Y-m-d'); ?>" value="<?php echo $p_date; ?>" required>
                             </div>
                         </div><!-- form-group Ends -->
@@ -136,9 +139,9 @@ if (!isset($_SESSION['admin_email'])) {
                             <label class="col-md-3 control-label"> Latest Payment </label>
                             <div class="col-md-6">
                                 <input type="number" name="new_paid_amt" id="paid_amt" class="form-control"
-                                       pattern="^[0.00-9.99]" min="1"
+                                       pattern="^[0.00-9.99]" min="1" data-tippy-arrow="true" data-tippy-size="large"
                                        placeholder="Must be less than OR equal to Remaining Amount (LKR <?php echo $remain_amt; ?>)"
-                                       title="Must be less than OR equal to Remaining Amount (LKR <?php echo $remain_amt; ?>)">
+                                       data-tippy="Must be less than OR equal to Remaining Amount (LKR <?php echo $remain_amt; ?>)">
                             </div>
                         </div><!-- form-group Ends -->
 
@@ -148,16 +151,18 @@ if (!isset($_SESSION['admin_email'])) {
                                 <input type="number" id="lease_amt" name="lease_amt" class="form-control"
                                        pattern="^[0.00-9.99]" min="1"
                                        placeholder="Previous: LKR <?php echo $lease_amt; ?>"
-                                       value="<?php echo $lease_amt; ?>"
-                                       title="Previous: LKR <?php echo $lease_amt; ?>" required>
+                                       value="<?php echo $lease_amt; ?>" data-tippy-arrow="true" data-tippy-size="large"
+                                       data-tippy="Previous: LKR <?php echo $lease_amt; ?>" required>
                             </div>
                         </div><!-- form-group Ends -->
 
                         <div class="form-group"><!-- form-group Starts -->
                             <label class="col-md-3 control-label">Remaining Lease Installments </label>
                             <div class="col-md-6">
-                                <input type="number" title="Should be less than the Previous: <?php echo $lease_ins; ?>" id="lease_ins"
-                                       name="lease_ins" class="form-control" pattern="^[0-9]" min="<?php echo ((float)$lease_ins - 1); ?>"
+                                <input type="number" data-tippy="Should be less than the Previous: <?php echo $lease_ins; ?>"
+                                       id="lease_ins" data-tippy-arrow="true" data-tippy-size="large"
+                                       name="lease_ins" class="form-control" pattern="^[0-9]"
+                                       min="<?php echo((float)$lease_ins - 1); ?>"
                                        placeholder="Should be less than the Previous: <?php echo $lease_ins; ?>"
                                        value="<?php echo $lease_ins; ?>">
                             </div>
@@ -167,7 +172,7 @@ if (!isset($_SESSION['admin_email'])) {
                             <label class="col-md-3 control-label"> Remaining Amount </label>
                             <div class="col-md-6">
                                 <input type="text" name="new_remain_amt" class="form-control" placeholder="LKR"
-                                       title="This will be auto updated"
+                                       data-tippy="This will be auto updated" data-tippy-arrow="true" data-tippy-size="large"
                                        value="LKR &nbsp;<?php echo $remain_amt; ?>" disabled>
                             </div>
                         </div><!-- form-group Ends -->
@@ -258,11 +263,9 @@ if (!isset($_SESSION['admin_email'])) {
 
         if (empty($hp_paid_amt)) {
             echo "<script>alert('Paid Amount cannot be empty!')</script>";
-        }
-        elseif ($hp_lease_ins == $lease_ins){
+        } elseif ($hp_lease_ins == $lease_ins) {
             echo "<script>alert('Remaining Lease Installments should be less than previous no. of installments!')</script>";
-        }
-        else {
+        } else {
             if (($hp_paid_amt < $remain_amt) && ($hp_paid_amt > 0)) {
                 $n_remain_amt = ((float)$remain_amt - (float)$hp_paid_amt);
                 $n_paid_amt = ((float)$paid_amt + (float)$hp_paid_amt);

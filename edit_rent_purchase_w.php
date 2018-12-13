@@ -68,7 +68,8 @@ if (!isset($_SESSION['admin_email'])) {
 
                     <h3 class="panel-title">
 
-                        <i class="fa fa-dollar fa-2x fa-fw"></i><i class="fa fa-building fa-2x fa-fw"></i> Edit Warehouse
+                        <i class="fa fa-dollar fa-2x fa-fw"></i><i class="fa fa-building fa-2x fa-fw"></i> Edit
+                        Warehouse
                         Purchase Details
 
                     </h3>
@@ -105,8 +106,8 @@ if (!isset($_SESSION['admin_email'])) {
                             <label class="col-md-3 control-label"> Invoice No.</label>
                             <div class="col-md-6">
                                 <input type="number" name="inv_no" id="inv_no" class="form-control" pattern="^[0-9]"
-                                       min="1"
-                                       title="Previous: <?php echo $invoice_no ?>"
+                                       min="1" data-tippy-arrow="true" data-tippy-size="large"
+                                       data-tippy="Previous: <?php echo $invoice_no ?>"
                                        placeholder="Previous: <?php echo $invoice_no ?>" required>
                             </div>
                         </div><!-- form-group Ends -->
@@ -117,7 +118,8 @@ if (!isset($_SESSION['admin_email'])) {
                             <div class="col-md-6">
                                 <input type="date" name="pay_day" id="pay_day" class="form-control"
                                        min="<?php echo date('Y-m-d'); ?>" value="<?php echo $p_date; ?>"
-                                       title="Minimum Date: <?php echo date('Y-m-d'); ?>" required>
+                                       data-tippy="Value must be <?php echo date('Y-m-d'); ?> or later."
+                                       data-tippy-arrow="true" data-tippy-size="large" required>
                             </div>
                         </div><!-- form-group Ends -->
 
@@ -133,8 +135,9 @@ if (!isset($_SESSION['admin_email'])) {
                         <div class="form-group"><!-- form-group Starts -->
                             <label class="col-md-3 control-label">Rental Duration </label>
                             <div class="col-md-6">
-                                <input type="number" title="Only if the House - Sale Type is Rent" id="duration"
+                                <input type="number" data-tippy="Only if the House - Sale Type is Rent" id="duration"
                                        name="duration" class="form-control" pattern="^[0-9]" min="1"
+                                       data-tippy-arrow="true" data-tippy-size="large"
                                        placeholder="In Months Only - Ex: 12" value="<?php echo $rent_duration; ?>">
                             </div>
                         </div><!-- form-group Ends -->
@@ -183,7 +186,8 @@ if (!isset($_SESSION['admin_email'])) {
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" onclick="window.open('index.php?view_warehouse_purchases','_self')">
+                    <button type="button" class="close"
+                            onclick="window.open('index.php?view_warehouse_purchases','_self')">
                         &times;
                     </button>
                 </div>

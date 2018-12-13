@@ -91,8 +91,8 @@ if (!isset($_SESSION['admin_email'])) {
                             <label class="col-md-3 control-label">Email </label>
                             <div class="col-md-6"><!-- col-md-6 Starts -->
                                 <input class="form-control" placeholder="Ex: xxx@xxx.xxx"
-                                       name="owner_email" type="email"
-                                       title="Owner's email (format: xxx@xxx.xxx)"
+                                       name="owner_email" type="email" data-tippy-arrow="true" data-tippy-size="large"
+                                       data-tippy="Owner's email (format: xxx@xxx.xxx)"
                                        pattern="[a-zA-Z0-9!#$%&amp;'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*" required>
                             </div><!-- col-md-6 Ends -->
                         </div><!-- form-group Ends -->

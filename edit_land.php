@@ -168,7 +168,7 @@ if (!isset($_SESSION['admin_email'])) {
                                     <label class=\"col-md-3 control-label\"> Total Qty. </label>
                                     <div class=\"col-md-6\">
                                         <input type=\"number\" name=\"land_t_qty\" class=\"form-control\" pattern=\"^[1.0-9.9]\" min=\"$pre_not_available\"
-                                       step=\"1\" value=\"$land_t_qty\" title='This value cannot be less than $pre_not_available'>
+                                       step=\"1\" value=\"$land_t_qty\" data-tippy='This value cannot be less than $pre_not_available' data-tippy-arrow=\"true\" data-tippy-size=\"large\">
                                     </div>
                                   </div><!-- form-group Ends -->";
 
@@ -176,7 +176,7 @@ if (!isset($_SESSION['admin_email'])) {
                                     <label class=\"col-md-3 control-label\"> Available Qty. </label>
                                     <div class=\"col-md-6\">
                                         <input type=\"number\" name=\"land_a_qty\" class=\"form-control\" pattern=\"^[1.0-9.9]\" min=\"0\"
-                                       step=\"1\" value=\"$land_a_qty\" title='This will be auto updated' disabled>
+                                       step=\"1\" value=\"$land_a_qty\" data-tippy='This will be auto updated' data-tippy-arrow=\"true\" data-tippy-size=\"large\" disabled>
                                     </div>
                                   </div><!-- form-group Ends -->";
                         }

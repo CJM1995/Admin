@@ -105,8 +105,8 @@ if (!isset($_SESSION['admin_email'])) {
                             <label class="col-md-3 control-label"> Invoice No.</label>
                             <div class="col-md-6">
                                 <input type="number" name="inv_no" id="inv_no" class="form-control" pattern="^[0-9]"
-                                       min="1"
-                                       title="Previous: <?php echo $invoice_no ?>"
+                                       min="1" data-tippy-arrow="true" data-tippy-size="large"
+                                       data-tippy="Previous: <?php echo $invoice_no ?>"
                                        placeholder="Previous: <?php echo $invoice_no ?>" required>
                             </div>
                         </div><!-- form-group Ends -->
@@ -117,6 +117,8 @@ if (!isset($_SESSION['admin_email'])) {
                             <div class="col-md-6">
                                 <input type="date" name="pay_day" id="pay_day" class="form-control"
                                        min="<?php echo date('Y-m-d'); ?>" value="<?php echo $p_date; ?>"
+                                       data-tippy="Value must be <?php echo date('Y-m-d'); ?> or later."
+                                       data-tippy-arrow="true" data-tippy-size="large"
                                        title="Minimum Date: <?php echo date('Y-m-d'); ?>" required>
                             </div>
                         </div><!-- form-group Ends -->
@@ -133,8 +135,9 @@ if (!isset($_SESSION['admin_email'])) {
                         <div class="form-group"><!-- form-group Starts -->
                             <label class="col-md-3 control-label">Rental Duration </label>
                             <div class="col-md-6">
-                                <input type="number" title="Only if the House - Sale Type is Rent" id="duration"
+                                <input type="number" data-tippy="Only if the House - Sale Type is Rent" id="duration"
                                        name="duration" class="form-control" pattern="^[0-9]" min="1"
+                                       data-tippy-arrow="true" data-tippy-size="large"
                                        placeholder="In Months Only - Ex: 12" value="<?php echo $rent_duration; ?>">
                             </div>
                         </div><!-- form-group Ends -->
