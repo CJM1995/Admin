@@ -203,18 +203,24 @@ if (!isset($_SESSION['admin_email'])) {
                                                             <tr>
 
                                                                 <td>
-                                                                    <button style="margin-top: 2px" type="button" rel="tooltip"
-                                                                            class="btn btn-success btn-sm"
-                                                                            data-original-title="" title="Edit"
-                                                                            onclick="location.href = 'index.php?edit_land_purchase=<?php echo $lp_id_s; ?>';">
-                                                                        <i class="fa fa-pencil"></i>
-                                                                    </button>
-                                                                    <button style="margin-top: 2px" type="button" rel="tooltip"
-                                                                            class="btn btn-danger btn-sm"
-                                                                            data-original-title="" title="Remove"
-                                                                            onclick="location.href = 'index.php?delete_land_purchase=<?php echo $lp_id_s; ?>';">
-                                                                        <i class="fa fa-trash"></i>
-                                                                    </button>
+                                                                    <?php
+                                                                    if (strcmp($sale_type_s, 'Sale') == 0) {
+                                                                        echo "<button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                                                                class=\"btn btn-success btn-sm\"
+                                                                                data-original-title=\"\" title=\"Update\"
+                                                                                onclick=\"location.href = 'index.php?edit_sale_purchase_l=$lp_id_s'\">
+                                                                            <i class=\"fa fa-pencil\"></i>
+                                                                        </button>";
+                                                                    }
+                                                                    if ((strcmp($pay_status_s, 'Complete') == 0)) {
+                                                                        echo "<button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                                                                class=\"btn btn-danger btn-sm\"
+                                                                                data-original-title=\"\" title=\"Remove\"
+                                                                                onclick=\"location.href = 'index.php?delete_land_purchase=$lp_id_s';\">
+                                                                            <i class=\"fa fa-trash\"></i>
+                                                                        </button>";
+                                                                    }
+                                                                    ?>
                                                                 </td>
                                                                 <td><?php echo $i; ?></td>
                                                                 <td><?php echo $cus_id_s; ?></td>
@@ -329,18 +335,24 @@ if (!isset($_SESSION['admin_email'])) {
                                 <tr>
 
                                     <td>
-                                        <button style="margin-top: 2px" type="button" rel="tooltip"
-                                                class="btn btn-success btn-sm"
-                                                data-original-title="" title="Edit"
-                                                onclick="location.href = 'index.php?edit_land_purchase=<?php echo $lp_id; ?>';">
-                                            <i class="fa fa-pencil"></i>
-                                        </button>
-                                        <button style="margin-top: 2px" type="button" rel="tooltip"
-                                                class="btn btn-danger btn-sm"
-                                                data-original-title="" title="Remove"
-                                                onclick="location.href = 'index.php?delete_land_purchase=<?php echo $lp_id; ?>';">
-                                            <i class="fa fa-trash"></i>
-                                        </button>
+                                        <?php
+                                        if (strcmp($sale_type, 'Sale') == 0) {
+                                            echo "<button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                                                                class=\"btn btn-success btn-sm\"
+                                                                                data-original-title=\"\" title=\"Update\"
+                                                                                onclick=\"location.href = 'index.php?edit_sale_purchase_l=$lp_id'\">
+                                                                            <i class=\"fa fa-pencil\"></i>
+                                                                        </button>";
+                                        }
+                                        if ((strcmp($pay_status, 'Complete') == 0)) {
+                                            echo "<button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                                                                class=\"btn btn-danger btn-sm\"
+                                                                                data-original-title=\"\" title=\"Remove\"
+                                                                                onclick=\"location.href = 'index.php?delete_land_purchase=$lp_id';\">
+                                                                            <i class=\"fa fa-trash\"></i>
+                                                                        </button>";
+                                        }
+                                        ?>
                                     </td>
                                     <td><?php echo $i; ?></td>
                                     <td><?php echo $cus_id; ?></td>
