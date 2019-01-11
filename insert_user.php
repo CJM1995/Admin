@@ -90,18 +90,6 @@ if (!isset($_SESSION['admin_email'])) {
 
                         </div><!-- form-group Ends -->
 
-                        <div class="form-group"><!-- form-group Starts -->
-
-                            <label class="col-md-3 control-label">User Country: </label>
-
-                            <div class="col-md-6"><!-- col-md-6 Starts -->
-
-                                <input type="text" name="admin_country" class="form-control" required>
-
-                            </div><!-- col-md-6 Ends -->
-
-                        </div><!-- form-group Ends -->
-
 
                         <div class="form-group"><!-- form-group Starts -->
 
@@ -209,6 +197,21 @@ if (!isset($_SESSION['admin_email'])) {
     </div>
     <!-- Success Modal -->
 
+    <!--Loading-->
+    <div class="modal load-modal" id="loadingModal" data-backdrop="static">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="container"></div>
+                <div class="modal-body text-center center-block">
+                    <i style="font-size: 800%" class="fa fa-spinner fa-pulse fa-5x"></i>
+                    <br><br>
+                    <h4 class="text-center load-text">Please wait...</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Loading-->
+
     <?php
 
     if (isset($_POST['submit'])) {
@@ -217,13 +220,17 @@ if (!isset($_SESSION['admin_email'])) {
         echo "<script src=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js\"></script>";
         echo "<link href=\"css/style.css\" rel=\"stylesheet\">";
 
+        echo "<script type=\"text/javascript\">
+                    $('#loadingModal').modal('show');
+                  </script>";
+
         $admin_name = $_POST['admin_name'];
 
         $admin_email = $_POST['admin_email'];
 
         $admin_pass = $_POST['admin_pass'];
 
-        $admin_country = $_POST['admin_country'];
+//        $admin_country = $_POST['admin_country'];
 
         $admin_job = $_POST['admin_job'];
 
@@ -238,14 +245,14 @@ if (!isset($_SESSION['admin_email'])) {
 
         move_uploaded_file($temp_admin_image, "admin_images/$admin_image");
 
-        $insert_admin = "insert into admins (admin_name,admin_email,admin_pass,admin_image,admin_contact,admin_country,admin_job,admin_about) values ('$admin_name','$admin_email','$admin_pass','$admin_image','$admin_contact','$admin_country','$admin_job','$admin_about')";
+        $insert_admin = "insert into admins (admin_name,admin_email,admin_pass,admin_image,admin_contact,admin_job,admin_about) values ('$admin_name','$admin_email','$admin_pass','$admin_image','$admin_contact','$admin_job','$admin_about')";
 
         $run_admin = mysqli_query($con, $insert_admin);
 
 
         if ($run_admin) {
             echo "<script type=\"text/javascript\">
-
+            $('#loadingModal').modal('hide');
             $('#suModal').modal('show');
         </script>";
 

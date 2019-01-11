@@ -225,6 +225,21 @@ if (!isset($_SESSION['admin_email'])) {
     </div>
     <!-- Success Modal -->
 
+    <!--Loading-->
+    <div class="modal load-modal" id="loadingModal" data-backdrop="static">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="container"></div>
+                <div class="modal-body text-center center-block">
+                    <i style="font-size: 800%" class="fa fa-spinner fa-pulse fa-5x"></i>
+                    <br><br>
+                    <h4 class="text-center load-text">Please wait...</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Loading-->
+
     <?php
 
     if (isset($_POST['update'])) {
@@ -232,6 +247,10 @@ if (!isset($_SESSION['admin_email'])) {
         echo "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js\"></script>";
         echo "<script src=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js\"></script>";
         echo "<link href=\"css/style.css\" rel=\"stylesheet\">";
+
+        echo "<script type=\"text/javascript\">
+                    $('#loadingModal').modal('show');
+                  </script>";
 
         $wp_inv_no = $_POST['inv_no'];
         $wp_pay_day = $_POST['pay_day'];
@@ -271,6 +290,7 @@ if (!isset($_SESSION['admin_email'])) {
         if ($run_wp) {
 
             echo "<script type=\"text/javascript\">
+                    $('#loadingModal').modal('hide');
                     $('#suModal').modal('show');
                   </script>";
 

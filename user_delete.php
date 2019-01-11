@@ -87,9 +87,28 @@ if (!isset($_SESSION['admin_email'])) {
     </div>
     <!-- Success Modal -->
 
+    <!--Loading-->
+    <div class="modal load-modal" id="loadingModal" data-backdrop="static">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="container"></div>
+                <div class="modal-body text-center center-block">
+                    <i style="font-size: 800%" class="fa fa-spinner fa-pulse fa-5x"></i>
+                    <br><br>
+                    <h4 class="text-center load-text">Please wait...</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Loading-->
+
     <?php
 
     if (isset($_POST['delete'])) {
+        echo "<script type=\"text/javascript\">
+                    $('#loadingModal').modal('show');
+                  </script>";
+
         $del_id = $_POST['del_id'];
         $delete_house = "delete from admins where admin_id='$del_id'";
         $run_delete = mysqli_query($con, $delete_house);
@@ -99,7 +118,7 @@ if (!isset($_SESSION['admin_email'])) {
             $(window).load(function(){
                 $('#myModal').modal('hide');
             });
-
+            $('#loadingModal').modal('hide');
             $('#suModal').modal('show');
         </script>";
         }

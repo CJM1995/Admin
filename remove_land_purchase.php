@@ -2,28 +2,35 @@
 
 
 if (!isset($_SESSION['admin_email'])) {
-
     echo "<script>window.open('login.php','_self')</script>";
 
 } else {
+
     echo "<link rel=\"stylesheet\" href=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css\">";
     echo "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js\"></script>";
     echo "<script src=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js\"></script>";
     echo "<link href=\"css/style.css\" rel=\"stylesheet\">";
-
     ?>
+
 
     <?php
-    if (isset($_GET['delete_customer'])) {
-        $delete_id = $_GET['delete_customer'];
+    if (isset($_GET['remove_land_purchase'])) {
+        $delete_id = $_GET['remove_land_purchase'];
+        $delete_land_p = "delete from land_purchases where lp_id='$delete_id'";
+        //$run_delete = mysqli_query($con, $delete_house);
+
+
     }
     ?>
-
     <?php echo "<script type=\"text/javascript\">
         $(window).load(function(){
             $('#myModal').modal('show');
         });
         </script>"; ?>
+
+
+    <!-- Trigger the modal with a button -->
+    <!--        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>-->
 
     <!-- Delete Modal -->
     <div class="modal fade" id="myModal" role="dialog" data-keyboard="false" data-backdrop="static">
@@ -33,7 +40,7 @@ if (!isset($_SESSION['admin_email'])) {
             <form method="post">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" onclick="window.open('index.php?view_customers','_self')">
+                        <button type="button" class="close" onclick="window.open('index.php?view_land_purchases','_self')">
                             &times;
                         </button>
                         <h2 class="modal-title text-center text-danger">Are you sure?</h2>
@@ -49,7 +56,7 @@ if (!isset($_SESSION['admin_email'])) {
                     </div>
                     <div style="text-align: center" class="modal-footer text-center center-block">
                         <input type="submit" name="close" value="Close"
-                               class="btn btn-default" onclick="window.open('index.php?view_customers','_self')">
+                               class="btn btn-default" onclick="window.open('index.php?view_land_purchases','_self')">
                         <input type="submit" name="delete" value="Delete"
                                class="btn btn-danger" onclick=$('#myModal').modal('hide');>
                         <!--                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
@@ -88,106 +95,31 @@ if (!isset($_SESSION['admin_email'])) {
     </div>
     <!-- Success Modal -->
 
-    <!-- Warning Modal -->
-    <div class="modal fade" id="waModal" role="dialog" data-keyboard="false" data-backdrop="static">
-        <div class="modal-dialog modal-sm">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-
-                <div class="modal-body">
-                    <i style="font-size: 800%"
-                       class="text-center text-warning center-block fa fa-exclamation-circle fa-5x"></i>
-                    <br>
-                    <p style="font-size: 110%" class="text-center">This operation is not possible because there are purchase records from this customer.</p>
-
-                </div>
-                <form method="post">
-                    <div style="text-align: center" class="modal-footer text-center center-block">
-                        <input type="submit" name="no" value="OK"
-                               class="btn btn-warning">
-                    </div>
-            </div>
-
-        </div>
-        </form>
-    </div>
-    <!-- Warning Modal -->
-
-    <!--Loading-->
-    <div class="modal load-modal" id="loadingModal" data-backdrop="static">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <div class="container"></div>
-                <div class="modal-body text-center center-block">
-                    <i style="font-size: 800%" class="fa fa-spinner fa-pulse fa-5x"></i>
-                    <br><br>
-                    <h4 class="text-center load-text">Please wait...</h4>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--Loading-->
-
     <?php
 
     if (isset($_POST['delete'])) {
-        echo "<script type=\"text/javascript\">
-                    $('#loadingModal').modal('show');
-                  </script>";
-
         $del_id = $_POST['del_id'];
 
-        $result_lp = mysqli_query($con, "SELECT COUNT(lp_id) AS lp_count FROM land_purchases WHERE cus_id='$del_id'");
-        $row = mysqli_fetch_array($result_lp);
-        $lp_count = $row['lp_count'];
+        $run_delete = mysqli_query($con, $delete_land_p);
 
-        $result_wp = mysqli_query($con, "SELECT COUNT(wp_id) AS wp_count FROM warehouse_purchases WHERE cus_id='$del_id'");
-        $row = mysqli_fetch_array($result_wp);
-        $wp_count = $row['wp_count'];
-
-        $result_hp = mysqli_query($con, "SELECT COUNT(hp_id) AS hp_count FROM house_purchases WHERE cus_id='$del_id'");
-        $row = mysqli_fetch_array($result_hp);
-        $hp_count = $row['hp_count'];
-
-        $delete_customer = "delete from customersn where cus_id='$del_id'";
-
-        if($lp_count==0 && $wp_count==0 && $hp_count==0){
-            $run_delete = mysqli_query($con, $delete_customer);
-        }
-        else{
-            echo "<script type=\"text/javascript\">
-            $(window).load(function(){
-                $('#myModal').modal('hide');
-            });
-            $('#loadingModal').modal('hide');
-            $('#waModal').modal('show');
-        </script>";
-        }
-        //$run_delete = mysqli_query($con, $delete_house);
         if ($run_delete) {
 
             echo "<script type=\"text/javascript\">
             $(window).load(function(){
                 $('#myModal').modal('hide');
             });
-            $('#loadingModal').modal('hide');
+
             $('#suModal').modal('show');
         </script>";
         }
     }
     if (isset($_POST['ok'])) {
-        echo "<script>window.open('index.php?view_customers','_self')</script>";
+        echo "<script>window.open('index.php?view_land_purchases','_self')</script>";
     }
 
     if (isset($_POST['close'])) {
-        echo "<script>window.open('index.php?view_customers','_self')</script>";
+        echo "<script>window.open('index.php?view_land_purchases','_self')</script>";
     }
 
-    if (isset($_POST['no'])) {
-        echo "<script>window.open('index.php?view_customers','_self')</script>";
-    }
-    ?>
+} ?>
 
-
-<?php } ?>

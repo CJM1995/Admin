@@ -298,11 +298,27 @@ if (!isset($_SESSION['admin_email'])) {
                                 onclick="window.open('index.php?view_houses','_self')">OK
                         </button>
                     </div>
+                </form>
             </div>
 
         </div>
     </div>
     <!-- Success Modal -->
+
+    <!--Loading-->
+    <div class="modal load-modal" id="loadingModal" data-backdrop="static">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="container"></div>
+                <div class="modal-body text-center center-block">
+                    <i style="font-size: 800%" class="fa fa-spinner fa-pulse fa-5x"></i>
+                    <br><br>
+                    <h4 class="text-center load-text">Please wait...</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Loading-->
 
     </body>
 
@@ -311,10 +327,15 @@ if (!isset($_SESSION['admin_email'])) {
     <?php
 
     if (isset($_POST['update'])) {
+
         echo "<link rel=\"stylesheet\" href=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css\">";
         echo "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js\"></script>";
         echo "<script src=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js\"></script>";
         echo "<link href=\"css/style.css\" rel=\"stylesheet\">";
+
+        echo "<script type=\"text/javascript\">
+                    $('#loadingModal').modal('show');
+                  </script>";
 
         $ho_code = $_POST['ho_code'];
         $ho_owner_id = $_POST['owner_id'];
@@ -371,6 +392,7 @@ if (!isset($_SESSION['admin_email'])) {
         if ($run_house) {
 
             echo "<script type=\"text/javascript\">
+                    $('#loadingModal').modal('hide');
                     $('#suModal').modal('show');
                   </script>";
 

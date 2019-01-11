@@ -10,6 +10,9 @@ if (!isset($_SESSION['admin_email'])) {
 //    echo "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js\"></script>";
 //    echo "<script src=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js\"></script>";
 //    echo "<link rel=\"stylesheet\" href=\"css/my_style.css\">";
+    $result_cus = mysqli_query($con, "SELECT COUNT(cus_id) AS cus_count FROM customersn");
+    $row = mysqli_fetch_array($result_cus);
+    $cus_count = $row['cus_count'];
     ?>
 
     <nav class="navbar navbar-inverse navbar-fixed-top"><!-- navbar navbar-inverse navbar-fixed-top Starts -->
@@ -32,22 +35,15 @@ if (!isset($_SESSION['admin_email'])) {
 
         <ul class="nav navbar-right top-nav"><!-- nav navbar-right top-nav Starts -->
             <div class="dropdown" style="float: right;">
-                <button class="dropbtn"><i class="fa fa-user">&nbsp;&nbsp;</i><?php echo $admin_name; ?>&nbsp;<b class="caret"></b></button>
+                <button class="dropbtn"><i class="fa fa-user">&nbsp;&nbsp;</i><?php echo $admin_name; ?>&nbsp;<b
+                            class="caret"></b></button>
                 <div class="dropdown-content">
                     <a href="index.php?user_profile=<?php echo $admin_id; ?>">
                         <i class="fa fa-fw fa-user"></i> Profile
                     </a>
-                    <a href="index.php?view_products">
-                        <i class="fa fa-fw fa-envelope"></i> Products
-                        <span class="badge"><?php echo $count_products; ?></span>
-                    </a>
                     <a href="index.php?view_customers">
-                        <i class="fa fa-fw fa-gear"></i> Customers
-                        <span class="badge"><?php echo $count_customers; ?></span>
-                    </a>
-                    <a href="index.php?view_p_cats">
-                        <i class="fa fa-fw fa-gear"></i> Product Categories
-                        <span class="badge"><?php echo $count_p_categories; ?></span>
+                        <i class="fa fa-fw fa-users"></i> Customers
+                        <span class="badge"><?php echo $cus_count; ?></span>
                     </a>
                     <a href="logout.php">
                         <i class="fa fa-fw fa-power-off"> </i> Log Out
@@ -161,9 +157,14 @@ if (!isset($_SESSION['admin_email'])) {
                         <i class="pull-right fa fa-fw fa-caret-down"></i>
                     </a>
                     <div id="users" class="smenu collapse">
-                        <a style="text-decoration: none" href="index.php?insert_user"> Insert User</a>
-                        <a style="text-decoration: none" href="index.php?view_users"> View User</a>
-                        <a style="text-decoration: none" href="index.php?user_profile=<?php echo $admin_id; ?>"> Edit Profile</a>
+                        <?php
+                        if($admin_job === 'Admin' || $admin_job === 'ADMIN' || $admin_job === 'Administrator' || $admin_job === 'ADMINISTRATOR') {
+                            echo "<a style=\"text-decoration: none\" href=\"index.php?insert_user\"> Insert User</a>";
+                            echo "<a style=\"text-decoration: none\" href=\"index.php?view_users\"> View User</a>";
+                        }
+                        ?>
+                        <a style="text-decoration: none" href="index.php?user_profile=<?php echo $admin_id; ?>"> Edit
+                            Profile</a>
                     </div>
                 </li><!-- li Ends -->
 

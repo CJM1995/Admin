@@ -121,9 +121,28 @@ if (!isset($_SESSION['admin_email'])) {
     </div>
     <!-- Warning Modal -->
 
+    <!--Loading-->
+    <div class="modal load-modal" id="loadingModal" data-backdrop="static">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="container"></div>
+                <div class="modal-body text-center center-block">
+                    <i style="font-size: 800%" class="fa fa-spinner fa-pulse fa-5x"></i>
+                    <br><br>
+                    <h4 class="text-center load-text">Please wait...</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Loading-->
+
     <?php
 
     if (isset($_POST['delete'])) {
+        echo "<script type=\"text/javascript\">
+                    $('#loadingModal').modal('show');
+                  </script>";
+
         $del_id = $_POST['del_id'];
 
         $result_wp = mysqli_query($con, "SELECT COUNT(wp_id) AS wp_count FROM warehouse_purchases WHERE warehouse_id='$del_id'");
@@ -141,7 +160,7 @@ if (!isset($_SESSION['admin_email'])) {
             $(window).load(function(){
                 $('#myModal').modal('hide');
             });
-
+            $('#loadingModal').modal('hide');
             $('#waModal').modal('show');
         </script>";
         }
@@ -152,7 +171,7 @@ if (!isset($_SESSION['admin_email'])) {
             $(window).load(function(){
                 $('#myModal').modal('hide');
             });
-
+            $('#loadingModal').modal('hide');
             $('#suModal').modal('show');
         </script>";
         }

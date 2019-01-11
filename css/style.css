@@ -399,3 +399,17 @@ html{
     -webkit-transform: scale(3.5);
     transform: scale(3.5);
 }
+
+/*Loading Modal*/
+.load-modal .modal-content {
+    background: none;
+    box-shadow: none;
+    border: none;
+}
+.load-modal .modal-content .modal-body {
+    color: red;
+}
+.load-modal .modal-content .modal-body h4.load-text {
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+}

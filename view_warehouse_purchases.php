@@ -234,7 +234,7 @@ if (!isset($_SESSION['admin_email'])) {
                                                                         echo "<button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
                                                                                 class=\"btn btn-danger btn-sm\"
                                                                                 data-original-title=\"\" title=\"Remove\"
-                                                                                onclick=\"location.href = 'index.php?delete_warehouse_purchase=$wp_id_s';\">
+                                                                                onclick=\"location.href = 'index.php?remove_warehouse_purchase=$wp_id_s';\">
                                                                             <i class=\"fa fa-trash\"></i>
                                                                         </button>";
                                                                     }
@@ -389,7 +389,7 @@ if (!isset($_SESSION['admin_email'])) {
                                             echo "<button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
                                                                                 class=\"btn btn-danger btn-sm\"
                                                                                 data-original-title=\"\" title=\"Remove\"
-                                                                                onclick=\"location.href = 'index.php?delete_warehouse_purchase=$wp_id';\">
+                                                                                onclick=\"location.href = 'index.php?remove_warehouse_purchase=$wp_id';\">
                                                                             <i class=\"fa fa-trash\"></i>
                                                                         </button>";
                                         }
