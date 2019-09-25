@@ -84,7 +84,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 
                         if (strcmp($rdo, 'Invoice') == 0) {
-                            $get_rslt = "select * from house_purchases WHERE invoice_no ='$box'";
+                            $get_rslt = "select * from house_purchases WHERE invoice_no LIKE '%$box%'";
                             $run_rslt = mysqli_query($con, $get_rslt);
                         }
                         if (strcmp($rdo, 'Sale Type') == 0) {
