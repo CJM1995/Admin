@@ -4,7 +4,6 @@
 if (!isset($_SESSION['admin_email'])) {
 
     echo "<script>window.open('login.php','_self')</script>";
-
 } else {
     //$result = $mysqli->query("SELECT * FROM houses");
 
@@ -12,10 +11,13 @@ if (!isset($_SESSION['admin_email'])) {
     ?>
 
 
-    <div class="row"><!--  1 row Starts -->
+    <div class="row">
+        <!--  1 row Starts -->
 
-        <div class="col-lg-12"><!-- col-lg-12 Starts -->
-            <ol class="breadcrumb"><!-- breadcrumb Starts -->
+        <div class="col-lg-12">
+            <!-- col-lg-12 Starts -->
+            <ol class="breadcrumb">
+                <!-- breadcrumb Starts -->
                 <li class="active">
                     <i class="fa fa-dashboard"></i> Dashboard / View Houses
                 </li>
@@ -24,11 +26,15 @@ if (!isset($_SESSION['admin_email'])) {
 
     </div><!--  1 row Ends -->
 
-    <div class="row"><!-- 2 row Starts -->
+    <div class="row">
+        <!-- 2 row Starts -->
 
-        <div class="col-lg-12"><!-- col-lg-12 Starts -->
-            <div class="panel panel-default"><!-- panel panel-default Starts -->
-                <div class="panel-heading clearfix"><!-- panel-heading Starts -->
+        <div class="col-lg-12">
+            <!-- col-lg-12 Starts -->
+            <div class="panel panel-default">
+                <!-- panel panel-default Starts -->
+                <div class="panel-heading clearfix">
+                    <!-- panel-heading Starts -->
                     <div class="row">
                         <div class="col-xs-12">
                             <h3 class="panel-title pull-left" style="padding-top: 7.5px;">
@@ -41,13 +47,13 @@ if (!isset($_SESSION['admin_email'])) {
                         <div class="input-group">
                             <input type="text" name="search_box" class="form-control" placeholder="Search">
                             <div style="background-color: #2e6da4" class="input-group-addon">
-                                <select style="width: 100px;color: white;background-color: #2e6da4;border-style: none"
-                                        name="ava">
+                                <select style="width: 100px;color: white;background-color: #2e6da4;border-style: none" name="ava">
                                     class="btn-group-lg">
                                     <option value="Available">Available</option>
                                     <option value="Not - available">Not-available</option>
                                 </select>
                             </div>
+
                             <div class="input-group-btn">
                                 <button type="submit" name="search" class="btn btn-primary">
                                     <i class="fa fa-search"></i>
@@ -56,64 +62,167 @@ if (!isset($_SESSION['admin_email'])) {
                         </div>
                         <div class="input-group center-block text-center">
                             <div class="form-horizontal">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="sale_t[]" value="Sale">Sale
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="sale_t[]" value="Rent">Rent
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="sale_t[]" value="Lease">Lease
+                                </label>
                                 <label class="radio-inline"><input type="radio" name="optradio" value="Code">Code</label>
-                                <label class="radio-inline"><input type="radio" name="optradio"
-                                                                   value="City">City</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="Sale Type">Sale
-                                    Type</label>
+
+                                <label class="radio-inline"><input type="radio" name="optradio" value="City">City</label>
+                                <!-- <label class="radio-inline"><input type="radio" name="optradio" value="Sale Type">Sale
+                                    Type</label> -->
                                 <label class="radio-inline"><input type="radio" name="optradio" value="Bedrooms">Bedrooms</label>
-                                <label class="radio-inline"><input type="radio" name="optradio"
-                                                                   value="Price">Price</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="Advance">Advance</label>
+                                <label class="radio-inline"><input type="radio" name="optradio" value="Price">Price</label>
                             </div>
 
                         </div>
                     </form>
                     <?php
-                    if (isset($_POST['search'])) {
+                        if (isset($_POST['search'])) {
 
-                        echo "<link rel=\"stylesheet\" href=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css\">";
-                        echo "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js\"></script>";
-                        echo "<script src=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js\"></script>";
-                        echo "<link href=\"css/style.css\" rel=\"stylesheet\">";
-                        $ava = $_POST['ava'];
-                        $rdo = $_POST['optradio'];
-                        $box = $_POST['search_box'];
+                            echo "<link rel=\"stylesheet\" href=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css\">";
+                            echo "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js\"></script>";
+                            echo "<script src=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js\"></script>";
+                            echo "<link href=\"css/style.css\" rel=\"stylesheet\">";
+                            $ava = $_POST['ava'];
+                            $rdo = $_POST['optradio'];
+                            $box = strval($_POST['search_box']);
+                            $sale = $_POST['st_sale'];
+                            $rent = $_POST['st_sale'];
+                            $lease = $_POST['st_sale'];
 
+                            $first = array_values($_POST['sale_t'])[0];
+                            $second = array_values($_POST['sale_t'])[1];
+                            $third = array_values($_POST['sale_t'])[2];
 
-                        if (strcmp($rdo, 'City') == 0) {
-                            $get_rslt = "select * from houses WHERE city LIKE '%$box%' AND availability='$ava'";
-                            $run_rslt = mysqli_query($con, $get_rslt);
-                        }
-                        if (strcmp($rdo, 'Sale Type') == 0) {
-                            $get_rslt = "select * from houses WHERE sale_type LIKE '%$box%' AND availability='$ava'";
-                            $run_rslt = mysqli_query($con, $get_rslt);
-                        }
-                        if (strcmp($rdo, 'Bedrooms') == 0) {
-                            $get_rslt = "select * from houses WHERE bedrooms LIKE '%$box%' AND availability='$ava'";
-                            $run_rslt = mysqli_query($con, $get_rslt);
-                        }
-                        if (strcmp($rdo, 'Price') == 0) {
-                            $get_rslt = "select * from houses WHERE base_price LIKE '%$box%' AND availability='$ava'";
-                            $run_rslt = mysqli_query($con, $get_rslt);
-                        }
-                        if (strcmp($rdo, 'Code') == 0) {
-                            $get_rslt = "select * from houses WHERE code='$box' AND availability='$ava'";
-                            $run_rslt = mysqli_query($con, $get_rslt);
-                        }
+                            $st_count = count($_POST['sale_t']);
 
+                            // echo ("<script>console.log('first: " . $first . "');</script>");
+                            // echo ("<script>console.log('second: " . $second . "');</script>");
+                            // echo ("<script>console.log('third: " . $third . "');</script>");
+                            // echo ("<script>console.log('st_count: " . $st_count . "');</script>");
 
-                        $count = mysqli_num_rows($run_rslt);
+                            if ($st_count == 1) {
+                                // echo ("<script>console.log('st_count1: " . $st_count . "');</script>");
+                                // echo ("<script>console.log('radio opt: " . $rdo . "');</script>");
+                                // echo ("<script>console.log('box: " . $box . "');</script>");
+                                if ((strcmp($rdo, 'City') == 0) && (strcmp($first, 'Sale') == 0)) {
+                                    // echo ("<script>console.log('st_count2: " . $st_count . "');</script>");
+                                    $get_rslt = "SELECT * FROM houses WHERE sale_type='" . $first . "' AND house_id IN (SELECT house_id FROM houses WHERE city LIKE '%$box%' AND availability='" . $ava . "')";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
+                                if ((strcmp($rdo, 'City') == 0) and (strcmp($first, 'Rent') == 0)) {
+                                    $get_rslt = "SELECT * FROM houses WHERE sale_type='" . $first . "' AND house_id IN (SELECT house_id FROM houses WHERE city LIKE '%$box%' AND availability='" . $ava . "')";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
+                                if ((strcmp($rdo, 'City') == 0) and (strcmp($first, 'Lease') == 0)) {
+                                    $get_rslt = "SELECT * FROM houses WHERE sale_type='" . $first . "' AND house_id IN (SELECT house_id FROM houses WHERE city LIKE '%$box%' AND availability='" . $ava . "')";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
+                                if ((strcmp($rdo, 'Bedrooms') == 0) and (strcmp($first, 'Sale') == 0)) {
+                                    $get_rslt = "SELECT * FROM houses WHERE sale_type='" . $first . "' AND house_id IN (SELECT house_id FROM houses WHERE bedrooms='" . $box . "' AND availability='" . $ava . "')";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
+                                if ((strcmp($rdo, 'Bedrooms') == 0) and (strcmp($first, 'Rent') == 0)) {
+                                    $get_rslt = "SELECT * FROM houses WHERE sale_type='" . $first . "' AND house_id IN (SELECT house_id FROM houses WHERE bedrooms='" . $box . "' AND availability='" . $ava . "')";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
+                                if ((strcmp($rdo, 'Bedrooms') == 0) and (strcmp($first, 'Lease') == 0)) {
+                                    $get_rslt = "SELECT * FROM houses WHERE sale_type='" . $first . "' AND house_id IN (SELECT house_id FROM houses WHERE bedrooms='" . $box . "' AND availability='" . $ava . "')";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
+                                if ((strcmp($rdo, 'Price') == 0) and (strcmp($first, 'Sale') == 0)) {
+                                    $get_rslt = "SELECT * FROM houses WHERE sale_type='" . $first . "' AND house_id IN (SELECT house_id FROM houses WHERE base_price LIKE '%$box%' AND availability='" . $ava . "')";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
+                                if ((strcmp($rdo, 'Price') == 0) and (strcmp($first, 'Rent') == 0)) {
+                                    $get_rslt = "SELECT * FROM houses WHERE sale_type='" . $first . "' AND house_id IN (SELECT house_id FROM houses WHERE base_price LIKE '%$box%' AND availability='" . $ava . "')";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
+                                if ((strcmp($rdo, 'Price') == 0) and (strcmp($first, 'Lease') == 0)) {
+                                    $get_rslt = "SELECT * FROM houses WHERE sale_type='" . $first . "' AND house_id IN (SELECT house_id FROM houses WHERE base_price LIKE '%$box%' AND availability='" . $ava . "')";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
+                            } elseif ($st_count == 2) {
+                                if ((strcmp($rdo, 'City') == 0) && (strcmp($first, 'Sale') == 0) && (strcmp($second, 'Rent') == 0)) {
+                                    // echo ("<script>console.log('st_count2: " . $st_count . "');</script>");
+                                    $get_rslt = "SELECT * FROM houses WHERE sale_type='" . $first . "' OR sale_type='" . $second . "' AND house_id IN (SELECT house_id FROM houses WHERE city LIKE '%$box%' AND availability='" . $ava . "')";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
+                                if ((strcmp($rdo, 'City') == 0) && (strcmp($first, 'Sale') == 0) && (strcmp($second, 'Lease') == 0)) {
+                                    // echo ("<script>console.log('st_count2: " . $st_count . "');</script>");
+                                    $get_rslt = "SELECT * FROM houses WHERE sale_type='" . $first . "' OR sale_type='" . $second . "' AND house_id IN (SELECT house_id FROM houses WHERE city LIKE '%$box%' AND availability='" . $ava . "')";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
+                                if ((strcmp($rdo, 'City') == 0) && (strcmp($first, 'Rent') == 0) && (strcmp($second, 'Lease') == 0)) {
+                                    // echo ("<script>console.log('st_count2: " . $st_count . "');</script>");
+                                    $get_rslt = "SELECT * FROM houses WHERE sale_type='" . $first . "' OR sale_type='" . $second . "' AND house_id IN (SELECT house_id FROM houses WHERE city LIKE '%$box%' AND availability='" . $ava . "')";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
+                                if ((strcmp($rdo, 'Bedrooms') == 0) && (strcmp($first, 'Sale') == 0) && (strcmp($second, 'Rent') == 0)) {
+                                    // echo ("<script>console.log('st_count2: " . $st_count . "');</script>");
+                                    $get_rslt = "SELECT * FROM houses WHERE sale_type='" . $first . "' OR sale_type='" . $second . "' AND house_id IN (SELECT house_id FROM houses WHERE bedrooms='" . $box . "' AND availability='" . $ava . "')";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
+                                if ((strcmp($rdo, 'Bedrooms') == 0) && (strcmp($first, 'Sale') == 0) && (strcmp($second, 'Lease') == 0)) {
+                                    // echo ("<script>console.log('st_count2: " . $st_count . "');</script>");
+                                    $get_rslt = "SELECT * FROM houses WHERE sale_type='" . $first . "' OR sale_type='" . $second . "' AND house_id IN (SELECT house_id FROM houses WHERE bedrooms='" . $box . "' AND availability='" . $ava . "')";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
+                                if ((strcmp($rdo, 'Bedrooms') == 0) && (strcmp($first, 'Rent') == 0) && (strcmp($second, 'Lease') == 0)) {
+                                    // echo ("<script>console.log('st_count2: " . $st_count . "');</script>");
+                                    $get_rslt = "SELECT * FROM houses WHERE sale_type='" . $first . "' OR sale_type='" . $second . "' AND house_id IN (SELECT house_id FROM houses WHERE bedrooms='" . $box . "' AND availability='" . $ava . "')";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
+                                if ((strcmp($rdo, 'Price') == 0) && (strcmp($first, 'Sale') == 0) && (strcmp($second, 'Rent') == 0)) {
+                                    // echo ("<script>console.log('st_count2: " . $st_count . "');</script>");
+                                    $get_rslt = "SELECT * FROM houses WHERE sale_type='" . $first . "' OR sale_type='" . $second . "' AND house_id IN (SELECT house_id FROM houses WHERE base_price LIKE '%$box%' AND availability='" . $ava . "')";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
+                                if ((strcmp($rdo, 'Price') == 0) && (strcmp($first, 'Sale') == 0) && (strcmp($second, 'Lease') == 0)) {
+                                    // echo ("<script>console.log('st_count2: " . $st_count . "');</script>");
+                                    $get_rslt = "SELECT * FROM houses WHERE sale_type='" . $first . "' OR sale_type='" . $second . "' AND house_id IN (SELECT house_id FROM houses WHERE base_price LIKE '%$box%' AND availability='" . $ava . "')";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
+                                if ((strcmp($rdo, 'Price') == 0) && (strcmp($first, 'Rent') == 0) && (strcmp($second, 'Lease') == 0)) {
+                                    // echo ("<script>console.log('st_count2: " . $st_count . "');</script>");
+                                    $get_rslt = "SELECT * FROM houses WHERE sale_type='" . $first . "' OR sale_type='" . $second . "' AND house_id IN (SELECT house_id FROM houses WHERE base_price LIKE '%$box%' AND availability='" . $ava . "')";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
+                            } else {
+                                if (strcmp($rdo, 'City') == 0) {
+                                    $get_rslt = "SELECT * FROM houses WHERE city LIKE '%$box%' AND availability='" . $ava . "'";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
+                                if (strcmp($rdo, 'Bedrooms') == 0) {
+                                    $get_rslt = "select * from houses WHERE bedrooms='" . $box . "' AND availability='" . $ava . "'";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
+                                if (strcmp($rdo, 'Price') == 0) {
+                                    $get_rslt = "select * from houses WHERE base_price='" . $box . "' AND availability='" . $ava . "'";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
+                                if (strcmp($rdo, 'Code') == 0) {
+                                    $get_rslt = "select * from houses WHERE code='" . $box . "' AND availability='" . $ava . "'";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
+                            }
 
-                        if ($count == 0) {
-                            echo "
+                            $count = mysqli_num_rows($run_rslt);
+
+                            if ($count == 0) {
+                                echo "
                                 <div class='box'>
                                     <h2>No Search Results Found</h2>
                                 </div>
                                 ";
-
-                        } else {
-                            ?>
+                            } else {
+                                ?>
                             <!-- search Modal -->
                             <div class="modal fade" id="sModal" role="dialog" data-keyboard="false" data-backdrop="static">
                                 <div class="modal-dialog modal-lg">
@@ -122,86 +231,100 @@ if (!isset($_SESSION['admin_email'])) {
                                     <form method="post">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <button type="button" class="close"
-                                                        onclick="window.open('index.php?view_houses','_self')">
+                                                <button type="button" class="close" onclick="window.open('index.php?view_houses','_self')">
                                                     &times;
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <div class="table-responsive"><!-- table-responsive Starts -->
+                                                <div class="table-responsive">
+                                                    <!-- table-responsive Starts -->
                                                     <table class="table table-bordered table-hover table-striped">
                                                         <!-- table table-bordered table-hover table-striped Starts -->
                                                         <thead>
-                                                        <tr>
-                                                            <th style="vertical-align: middle;text-align: center"><i
-                                                                        class="fa fa-gear"></i></th>
-                                                            <th style="vertical-align: middle;text-align: center">House
-                                                                ID
-                                                            </th>
-                                                            <th style="vertical-align: middle;text-align: center">House
-                                                                Code
-                                                            </th>
-                                                            <th style="vertical-align: middle;text-align: center">House
-                                                                Image1
-                                                            </th>
-                                                            <th style="vertical-align: middle;text-align: center">House
-                                                                Image2
-                                                            </th>
-                                                            <th style="vertical-align: middle;text-align: center">House
-                                                                Image3
-                                                            </th>
-                                                            <th style="vertical-align: middle;text-align: center">
-                                                                Address
-                                                            </th>
-                                                            <th style="vertical-align: middle;text-align: center">City
-                                                            </th>
-                                                            <th style="vertical-align: middle;text-align: center">Sale
-                                                                Type
-                                                            </th>
-                                                            <th style="vertical-align: middle;text-align: center">
-                                                                Bedrooms
-                                                            </th>
-                                                            <th style="vertical-align: middle;text-align: center">A/C
-                                                                Bedrooms Date
-                                                            </th>
-                                                            <th style="vertical-align: middle;text-align: center">
-                                                                Bathrooms
-                                                            </th>
-                                                            <th style="vertical-align: middle;text-align: center">Floor
-                                                                Material
-                                                            </th>
-                                                            <th style="vertical-align: middle;text-align: center">Base
-                                                                Price
-                                                            </th>
-                                                            <th style="vertical-align: middle;text-align: center">
-                                                                Availability
-                                                            </th>
-                                                        </tr>
+                                                            <tr>
+                                                                <th style="vertical-align: middle;text-align: center"><i class="fa fa-gear"></i></th>
+                                                                <!-- <th style="vertical-align: middle;text-align: center">House
+                                                                    ID
+                                                                </th> -->
+                                                                <th style="vertical-align: middle;text-align: center">House
+                                                                    Code
+                                                                </th>
+                                                                <th style="vertical-align: middle;text-align: center">House
+                                                                    Image
+                                                                </th>
+                                                                <th style="vertical-align: middle;text-align: center">Owner Name
+                                                                </th>
+                                                                <th style="vertical-align: middle;text-align: center">Contact Number
+                                                                </th>
+                                                                <th style="vertical-align: middle;text-align: center">
+                                                                    Address
+                                                                </th>
+                                                                <th style="vertical-align: middle;text-align: center">City
+                                                                </th>
+                                                                <th style="vertical-align: middle;text-align: center">Sale
+                                                                    Type
+                                                                </th>
+                                                                <th style="vertical-align: middle;text-align: center">Land Size
+                                                                </th>
+                                                                <th style="vertical-align: middle;text-align: center">
+                                                                    Bedrooms
+                                                                </th>
+                                                                <th style="vertical-align: middle;text-align: center">A/C
+                                                                    Bedrooms Date
+                                                                </th>
+                                                                <th style="vertical-align: middle;text-align: center">
+                                                                    Bathrooms
+                                                                </th>
+                                                                <th style="vertical-align: middle;text-align: center">Floor
+                                                                    Material
+                                                                </th>
+                                                                <th style="vertical-align: middle;text-align: center">Base
+                                                                    Price
+                                                                </th>
+                                                                <th style="vertical-align: middle;text-align: center">
+                                                                    Availability
+                                                                </th>
+                                                                <th style="vertical-align: middle;text-align: center">
+                                                                    Creater
+                                                                </th>
+                                                            </tr>
                                                         </thead>
                                                         <tbody>
-                                                        <?php
-                                                        $i = 0;
-                                                        while ($row_rslt = mysqli_fetch_array($run_rslt)) {
-                                                            $hou_id_s = $row_rslt['house_id'];
-                                                            $hou_code_s = $row_rslt['code'];
-                                                            $hou_img1_s = $row_rslt['house_img1'];
-                                                            $hou_img2_s = $row_rslt['house_img2'];
-                                                            $hou_img3_s = $row_rslt['house_img3'];
-                                                            $hou_address_s = $row_rslt['address'];
-                                                            $hou_city_s = $row_rslt['city'];
-                                                            $hou_s_type_s = $row_rslt['sale_type'];
-                                                            $hou_beds_s = $row_rslt['bedrooms'];
-                                                            $hou_ac_beds_s = $row_rslt['ac_rooms'];
-                                                            $hou_baths_s = $row_rslt['bathrooms'];
-                                                            $hou_floor_s = $row_rslt['floor'];
-                                                            $hou_prz_s = $row_rslt['base_price'];
-                                                            $hou_ava_s = $row_rslt['availability'];
-                                                            $i++;
-                                                            ?>
-                                                            <tr>
-                                                                <?php
-                                                                if(strcmp($hou_ava_s,'Available') == 0){
-                                                                    echo "<td>
+                                                            <?php
+                                                                        $i = 0;
+                                                                        while ($row_rslt = mysqli_fetch_array($run_rslt)) {
+                                                                            $hou_id_s = $row_rslt['house_id'];
+                                                                            $hou_code_s = $row_rslt['code'];
+
+                                                                            $hou_ow_id_s = $row_rslt['owner_id'];
+                                                                            $get_o_name = "select * from owners where owner_id='$hou_ow_id_s'";
+                                                                            $run_o_name = mysqli_query($con, $get_o_name);
+                                                                            $row_o_name = mysqli_fetch_array($run_o_name);
+                                                                            $o_name = $row_o_name['name'];
+                                                                            $ow_number = $row_o_name['phone'];
+
+                                                                            $hou_ow_name_s = $o_name;
+                                                                            $hou_ow_number_s = $ow_number;
+                                                                            $hou_img1_s = $row_rslt['house_img1'];
+                                                                            $hou_img2_s = $row_rslt['house_img2'];
+                                                                            $hou_img3_s = $row_rslt['house_img3'];
+                                                                            $hou_address_s = $row_rslt['address'];
+                                                                            $hou_city_s = $row_rslt['city'];
+                                                                            $hou_s_type_s = $row_rslt['sale_type'];
+                                                                            $hou_land_size_s = $row_rslt['land_size'];
+                                                                            $hou_beds_s = $row_rslt['bedrooms'];
+                                                                            $hou_ac_beds_s = $row_rslt['ac_rooms'];
+                                                                            $hou_baths_s = $row_rslt['bathrooms'];
+                                                                            $hou_floor_s = $row_rslt['floor'];
+                                                                            $hou_prz_s = $row_rslt['base_price'];
+                                                                            $hou_ava_s = $row_rslt['availability'];
+                                                                            $hou_creater_s = $row_rslt['creater'];
+                                                                            $i++;
+                                                                            ?>
+                                                                <tr>
+                                                                    <?php
+                                                                                    if (strcmp($hou_ava_s, 'Available') == 0) {
+                                                                                        echo "<td>
                                                                     <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
                                                                             class=\"btn btn-success btn-sm\"
                                                                             data-original-title=\"\" title=\"Edit\"
@@ -215,9 +338,8 @@ if (!isset($_SESSION['admin_email'])) {
                                                                         <i class=\"fa fa-trash fa-fw\"></i>
                                                                     </button>
                                                                 </td>";
-                                                                }
-                                                                else{
-                                                                    echo "<td>
+                                                                                    } else {
+                                                                                        echo "<td>
                                                                     <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
                                                                             class=\"btn btn-success btn-sm\"
                                                                             data-original-title=\"\" title=\"Edit\"
@@ -231,43 +353,35 @@ if (!isset($_SESSION['admin_email'])) {
                                                                         <i class=\"fa fa-trash fa-fw\"></i>
                                                                     </button>
                                                                 </td>";
-                                                                }
-                                                                ?>
-                                                                <td><?php echo $i; ?></td>
-                                                                <td><?php echo $hou_code_s; ?></td>
-<!--                                                                <style>-->
-<!--                                                                </style>-->
-                                                                <td><img class="image"
-                                                                         src="house_images/<?php echo $hou_img1_s; ?>"
-                                                                         width="60"
-                                                                         height="60"></td>
-                                                                <td><img class="image"
-                                                                         src="house_images/<?php echo $hou_img2_s; ?>"
-                                                                         width="60"
-                                                                         height="60"></td>
-                                                                <td><img class="image"
-                                                                         src="house_images/<?php echo $hou_img3_s; ?>"
-                                                                         width="60"
-                                                                         height="60"></td>
-                                                                <td><?php echo $hou_address_s; ?></td>
-                                                                <td><?php echo $hou_city_s; ?></td>
-                                                                <td><?php echo $hou_s_type_s; ?></td>
-                                                                <td><?php echo $hou_beds_s; ?></td>
-                                                                <td><?php echo $hou_ac_beds_s; ?></td>
-                                                                <td><?php echo $hou_baths_s; ?></td>
-                                                                <td><?php echo $hou_floor_s; ?></td>
-                                                                <td>LKR &nbsp;<?php echo $hou_prz_s; ?></td>
-                                                                <td><?php echo $hou_ava_s; ?></td>
-                                                            </tr>
-                                                        <?php } ?>
+                                                                                    }
+                                                                                    ?>
+                                                                    <!-- <td><?php echo $i; ?></td> -->
+                                                                    <td><?php echo $hou_code_s; ?></td>
+                                                                    <!--                                                                <style>-->
+                                                                    <!--                                                                </style>-->
+                                                                    <td><img class="image" src="house_images/<?php echo $hou_img1_s; ?>" width="60" height="60"></td>
+                                                                    <td><?php echo $hou_ow_name_s; ?></td>
+                                                                    <td><?php echo $hou_ow_number_s; ?></td>
+                                                                    <td><?php echo $hou_address_s; ?></td>
+                                                                    <td><?php echo $hou_city_s; ?></td>
+                                                                    <td><?php echo $hou_s_type_s; ?></td>
+                                                                    <td><?php echo $hou_land_size_s; ?></td>
+                                                                    <td><?php echo $hou_beds_s; ?></td>
+                                                                    <td><?php echo $hou_ac_beds_s; ?></td>
+                                                                    <td><?php echo $hou_baths_s; ?></td>
+                                                                    <td><?php echo $hou_floor_s; ?></td>
+                                                                    <td>LKR &nbsp;<?php echo $hou_prz_s; ?></td>
+                                                                    <td><?php echo $hou_ava_s; ?></td>
+                                                                    <td><?php echo $hou_creater_s; ?></td>
+                                                                </tr>
+                                                            <?php } ?>
                                                         </tbody>
                                                     </table><!-- table table-bordered table-hover table-striped Ends -->
                                                 </div><!-- table-responsive Ends -->
 
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-default"
-                                                        onclick="window.open('index.php?view_houses','_self')">Close
+                                                <button type="button" class="btn btn-default" onclick="window.open('index.php?view_houses','_self')">Close
                                                 </button>
                                             </div>
                                         </div>
@@ -275,82 +389,99 @@ if (!isset($_SESSION['admin_email'])) {
                             </div>
                             <!-- search Modal -->
 
-                            <?php
-                            echo "<script type=\"text/javascript\">
+                    <?php
+                                echo "<script type=\"text/javascript\">
                                 $(window).load(function(){
                                     $('#sModal').modal('show');
                                 });
                                 
                                </script>";
+                            }
                         }
-                    }
-                    ?>
+                        ?>
                 </div><!-- panel-heading Ends -->
 
-                <div class="panel-body"><!-- panel-body Starts -->
+                <div class="panel-body">
+                    <!-- panel-body Starts -->
 
-                    <div class="table-responsive"><!-- table-responsive Starts -->
+                    <div class="table-responsive">
+                        <!-- table-responsive Starts -->
                         <table class="table table-bordered table-hover table-striped">
                             <!-- table table-bordered table-hover table-striped Starts -->
                             <thead>
 
-                            <tr>
-                                <th style="vertical-align: middle;text-align: center"><i class="fa fa-gear"></i></th>
-                                <th style="vertical-align: middle;text-align: center">House ID</th>
-                                <th style="vertical-align: middle;text-align: center">House Code</th>
-                                <th style="vertical-align: middle;text-align: center">House Image1</th>
-                                <th style="vertical-align: middle;text-align: center">House Image2</th>
-                                <th style="vertical-align: middle;text-align: center">House Image3</th>
-                                <th style="vertical-align: middle;text-align: center">Address</th>
-                                <th style="vertical-align: middle;text-align: center">City</th>
-                                <th style="vertical-align: middle;text-align: center">Sale Type</th>
-                                <th style="vertical-align: middle;text-align: center">Bedrooms</th>
-                                <th style="vertical-align: middle;text-align: center">A/C Bedrooms Date</th>
-                                <th style="vertical-align: middle;text-align: center">Bathrooms</th>
-                                <th style="vertical-align: middle;text-align: center">Floor Material</th>
-                                <th style="vertical-align: middle;text-align: center">Base Price</th>
-                                <th style="vertical-align: middle;text-align: center">Availability</th>
+                                <tr>
+                                    <th style="vertical-align: middle;text-align: center"><i class="fa fa-gear"></i></th>
+                                    <!-- <th style="vertical-align: middle;text-align: center">House ID</th> -->
+                                    <th style="vertical-align: middle;text-align: center">House Code</th>
+                                    <th style="vertical-align: middle;text-align: center">House Image</th>
+                                    <th style="vertical-align: middle;text-align: center">Owner Name</th>
+                                    <th style="vertical-align: middle;text-align: center">Contact Number</th>
+                                    <th style="vertical-align: middle;text-align: center">Address</th>
+                                    <th style="vertical-align: middle;text-align: center">City</th>
+                                    <th style="vertical-align: middle;text-align: center">Sale Type</th>
+                                    <th style="vertical-align: middle;text-align: center">Land Size</th>
+                                    <th style="vertical-align: middle;text-align: center">Bedrooms</th>
+                                    <th style="vertical-align: middle;text-align: center">A/C Bedrooms Date</th>
+                                    <th style="vertical-align: middle;text-align: center">Bathrooms</th>
+                                    <th style="vertical-align: middle;text-align: center">Floor Material</th>
+                                    <th style="vertical-align: middle;text-align: center">Base Price</th>
+                                    <th style="vertical-align: middle;text-align: center">Availability</th>
+                                    <th style="vertical-align: middle;text-align: center">Creater</th>
 
 
-                            </tr>
+                                </tr>
 
                             </thead>
 
                             <tbody>
 
-                            <?php
+                                <?php
 
-                            $i = 0;
+                                    $i = 0;
 
-                            $get_pro = "select * from houses";
+                                    $get_pro = "select * from houses";
 
-                            $run_pro = mysqli_query($con, $get_pro);
+                                    $run_pro = mysqli_query($con, $get_pro);
 
-                            while ($row_pro = mysqli_fetch_array($run_pro)) {
+                                    while ($row_pro = mysqli_fetch_array($run_pro)) {
 
-                                $hou_id = $row_pro['house_id'];
-                                $hou_code = $row_pro['code'];
-                                $hou_img1 = $row_pro['house_img1'];
-                                $hou_img2 = $row_pro['house_img2'];
-                                $hou_img3 = $row_pro['house_img3'];
-                                $hou_address = $row_pro['address'];
-                                $hou_city = $row_pro['city'];
-                                $hou_s_type = $row_pro['sale_type'];
-                                $hou_beds = $row_pro['bedrooms'];
-                                $hou_ac_beds = $row_pro['ac_rooms'];
-                                $hou_baths = $row_pro['bathrooms'];
-                                $hou_floor = $row_pro['floor'];
-                                $hou_prz = $row_pro['base_price'];
-                                $hou_ava = $row_pro['availability'];
+                                        $hou_id = $row_pro['house_id'];
+                                        $hou_code = $row_pro['code'];
+                                        $hou_img1 = $row_pro['house_img1'];
+                                        $hou_img2 = $row_pro['house_img2'];
+                                        $hou_img3 = $row_pro['house_img3'];
 
-                                $i++;
+                                        $hou_ow_id = $row_pro['owner_id'];
+                                        $get_o_name_n = "select * from owners where owner_id='$hou_ow_id'";
+                                        $run_o_name_n = mysqli_query($con, $get_o_name_n);
+                                        $row_o_name_n = mysqli_fetch_array($run_o_name_n);
+                                        $o_name_n = $row_o_name_n['name'];
+                                        $ow_number_n = $row_o_name_n['phone'];
 
-                                ?>
+                                        $hou_ow_name = $o_name_n;
+                                        $hou_ow_number = $ow_number_n;
 
-                                <tr>
-                                    <?php
-                                    if(strcmp($hou_ava,'Available') == 0){
-                                        echo "<td>
+                                        $hou_address = $row_pro['address'];
+                                        $hou_city = $row_pro['city'];
+                                        $hou_s_type = $row_pro['sale_type'];
+                                        $hou_land_size = $row_pro['land_size'];
+                                        $hou_beds = $row_pro['bedrooms'];
+                                        $hou_ac_beds = $row_pro['ac_rooms'];
+                                        $hou_baths = $row_pro['bathrooms'];
+                                        $hou_floor = $row_pro['floor'];
+                                        $hou_prz = $row_pro['base_price'];
+                                        $hou_ava = $row_pro['availability'];
+                                        $hou_creater = $row_pro['creater'];
+
+                                        $i++;
+
+                                        ?>
+
+                                    <tr>
+                                        <?php
+                                                if (strcmp($hou_ava, 'Available') == 0) {
+                                                    echo "<td>
                                         <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
                                                 class=\"btn btn-success btn-sm\"
                                                 data-original-title=\"\" title=\"Edit\"
@@ -364,9 +495,8 @@ if (!isset($_SESSION['admin_email'])) {
                                             <i class=\"fa fa-trash fa-fw\"></i>
                                         </button>
                                     </td>";
-                                    }
-                                    else{
-                                        echo "<td>
+                                                } else {
+                                                    echo "<td>
                                         <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
                                                 class=\"btn btn-success btn-sm\"
                                                 data-original-title=\"\" title=\"Edit\"
@@ -380,31 +510,30 @@ if (!isset($_SESSION['admin_email'])) {
                                             <i class=\"fa fa-trash fa-fw\"></i>
                                         </button>
                                     </td>";
-                                    }
-                                    ?>
-                                    <td><?php echo $i; ?></td>
-                                    <td><?php echo $hou_code; ?></td>
-<!--                                    <style>-->
-<!--                                    </style>-->
-                                    <td><img class="image" src="house_images/<?php echo $hou_img1; ?>" width="60"
-                                             height="60"></td>
-                                    <td><img class="image" src="house_images/<?php echo $hou_img2; ?>" width="60"
-                                             height="60"></td>
-                                    <td><img class="image" src="house_images/<?php echo $hou_img3; ?>" width="60"
-                                             height="60"></td>
-                                    <td><?php echo $hou_address; ?></td>
-                                    <td><?php echo $hou_city; ?></td>
-                                    <td><?php echo $hou_s_type; ?></td>
-                                    <td><?php echo $hou_beds; ?></td>
-                                    <td><?php echo $hou_ac_beds; ?></td>
-                                    <td><?php echo $hou_baths; ?></td>
-                                    <td><?php echo $hou_floor; ?></td>
-                                    <td>LKR &nbsp;<?php echo $hou_prz; ?></td>
-                                    <td><?php echo $hou_ava; ?></td>
+                                                }
+                                                ?>
+                                        <!-- <td><?php echo $i; ?></td> -->
+                                        <td><?php echo $hou_code; ?></td>
+                                        <!--                                    <style>-->
+                                        <!--                                    </style>-->
+                                        <td><img class="image" src="house_images/<?php echo $hou_img1; ?>" width="60" height="60"></td>
+                                        <td style="text-align:center;"><?php echo $hou_ow_name; ?></td>
+                                        <td><?php echo $hou_ow_number; ?></td>
+                                        <td><?php echo $hou_address; ?></td>
+                                        <td><?php echo $hou_city; ?></td>
+                                        <td><?php echo $hou_s_type; ?></td>
+                                        <td><?php echo $hou_land_size; ?></td>
+                                        <td><?php echo $hou_beds; ?></td>
+                                        <td><?php echo $hou_ac_beds; ?></td>
+                                        <td><?php echo $hou_baths; ?></td>
+                                        <td><?php echo $hou_floor; ?></td>
+                                        <td>LKR &nbsp;<?php echo $hou_prz; ?></td>
+                                        <td><?php echo $hou_ava; ?></td>
+                                        <td><?php echo $hou_creater; ?></td>
 
-                                </tr>
+                                    </tr>
 
-                            <?php } ?>
+                                <?php } ?>
 
 
                             </tbody>
