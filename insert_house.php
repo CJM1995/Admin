@@ -4,7 +4,7 @@ if (!isset($_SESSION['admin_email'])) {
 
     echo "<script>window.open('login.php','_self')</script>";
 } else {
-    echo("<script>console.log('creater: " . $_SESSION['admin_name'] . "');</script>");
+    // echo("<script>console.log('creater: " . $_SESSION['admin_name'] . "');</script>");
 
     ?>
     <!DOCTYPE html>
@@ -342,18 +342,26 @@ if (!isset($_SESSION['admin_email'])) {
             $hou_owner_name = $_POST['ho_owner_name'];
             $hou_owner_number = $_POST['ho_owner_number'];
 
-            $insert_owner = "insert into owners (name,phone) values ('$hou_owner_name','$hou_owner_number')";
-            $run_owner = mysqli_query($con, $insert_owner);
+            $chk_owner = "select * from owners WHERE name='".$hou_owner_name."'";
+            // $chk_owner = "select * from owners WHERE name='".$hou_owner_name."' AND phone='".$ho_owner_number."'";
+            $run_chk_owner = mysqli_query($con, $chk_owner);
+            $ow_count = mysqli_num_rows($run_chk_owner);
+            echo ("<script>console.log('count :" . $ow_count . "');</script>");
+            // echo ("<script>console.log('owner id: " . $run_chk_owner . "');</script>");
+            if ($ow_count < 1) {
+                $insert_owner = "insert into owners (name,phone) values ('$hou_owner_name','$hou_owner_number')";
+                $run_owner = mysqli_query($con, $insert_owner);
+            }
 
-            $get_ow = "select owner_id from owners WHERE name LIKE '%$hou_owner_name%'";
+            $get_ow = "select owner_id from owners WHERE name='".$hou_owner_name."'";
             $run_ow = mysqli_query($con, $get_ow);
             while ($row_owner = mysqli_fetch_array($run_ow)) {
                 $ow_id = $row_owner['owner_id'];
                 $ow_name = $row_owner['name'];
                 // echo "<option value='$ow_id'>$ow_name</option>";
             }
-            echo("<script>console.log('owner id: " . $ow_id . "');</script>");
-            echo("<script>console.log('owner name: " . $hou_owner_name . "');</script>");
+            echo ("<script>console.log('owner id: " . $ow_id . "');</script>");
+            echo ("<script>console.log('owner name: " . $hou_owner_name . "');</script>");
 
 
             if (($_FILES['ho_img1']['name'] == "") && ($_FILES['ho_img2']['name'] == "") && ($_FILES['ho_img3']['name'] == "")) {
