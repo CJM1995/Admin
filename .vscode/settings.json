@@ -1,0 +1,20 @@
+{
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#44251C",
+        "titleBar.activeBackground": "#5F3427",
+        "titleBar.activeForeground": "#FCF9F8"
+    },
+    "php.validate.run": "onType",
+    "php.validate.enable": true,
+    "sqltools.connections": [
+        {
+            "askForPassword": false,
+            "database": "warehouse",
+            "dialect": "MySQL",
+            "name": "warehouse",
+            "port": 3306,
+            "server": "localhost",
+            "username": "root"
+        }
+    ]
+}
