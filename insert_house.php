@@ -4,6 +4,7 @@ if (!isset($_SESSION['admin_email'])) {
 
     echo "<script>window.open('login.php','_self')</script>";
 } else {
+    echo("<script>console.log('creater: " . $_SESSION['admin_name'] . "');</script>");
 
     ?>
     <!DOCTYPE html>
@@ -96,28 +97,21 @@ if (!isset($_SESSION['admin_email'])) {
                                 <label class="col-md-3 control-label">Phone Number </label>
                                 <div class="col-md-6">
                                     <!-- col-md-6 Starts -->
-                                    <input name="ho_owner_number" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" min="0" maxlength="10" placeholder="Ex: 0123456789" />
+                                    <input name="ho_owner_number" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" min="0" maxlength="10" placeholder="Ex: 0123456789" required />
                                 </div><!-- col-md-6 Ends -->
                             </div><!-- form-group Ends -->
 
                             <!-- form-group Starts -->
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label class="col-md-3 control-label"> Owner </label>
                                 <div class="col-md-6">
                                     <select name="ho_owner" class="form-control">
                                         <option> Select a Owner</option>
-                                        <?php
-                                            $get_ow = "select * from owners";
-                                            $run_ow = mysqli_query($con, $get_ow);
-                                            while ($row_owner = mysqli_fetch_array($run_ow)) {
-                                                $ow_id = $row_owner['owner_id'];
-                                                $ow_name = $row_owner['name'];
-                                                echo "<option value='$ow_id'>$ow_name</option>";
-                                            }
-                                            ?>
+                                        
                                     </select>
                                 </div>
-                            </div><!-- form-group Ends -->
+                            </div> -->
+                            <!-- form-group Ends -->
 
                             <div class="form-group">
                                 <!-- form-group Starts -->
@@ -138,6 +132,14 @@ if (!isset($_SESSION['admin_email'])) {
                                         <option value="Rent">Rent</option>
                                         <option value="Lease">Lease</option>
                                     </select>
+                                </div>
+                            </div><!-- form-group Ends -->
+
+                            <div class="form-group">
+                                <!-- form-group Starts -->
+                                <label class="col-md-3 control-label"> Land Size </label>
+                                <div class="col-md-6">
+                                    <input type="number" name="ho_land_qty" class="form-control" pattern="^[0.0-9.9]" min="1" step="1" required placeholder="Perches">
                                 </div>
                             </div><!-- form-group Ends -->
 
@@ -314,6 +316,7 @@ if (!isset($_SESSION['admin_email'])) {
             $ho_address = $_POST['ho_address'];
             $ho_city = $_POST['ho_city'];
             $ho_s_type = $_POST['ho_s_type'];
+            $ho_land_size = $_POST['ho_land_qty'];
             $ho_beds = $_POST['ho_beds'];
             $ho_ac_beds = $_POST['ho_ac_beds'];
             $ho_baths = $_POST['ho_baths'];
@@ -321,6 +324,8 @@ if (!isset($_SESSION['admin_email'])) {
             $ho_prz = $_POST['ho_prz'];
             $ho_ava = 'Available';
             $ho_desc = $_POST['ho_desc'];
+
+            $creater = $_SESSION['admin_name'];
 
             $ho_img1 = $_FILES['ho_img1']['name'];
             $ho_img2 = $_FILES['ho_img2']['name'];
@@ -334,22 +339,39 @@ if (!isset($_SESSION['admin_email'])) {
             move_uploaded_file($temp_name2, "house_images/$ho_img2");
             move_uploaded_file($temp_name3, "house_images/$ho_img3");
 
+            $hou_owner_name = $_POST['ho_owner_name'];
+            $hou_owner_number = $_POST['ho_owner_number'];
+
+            $insert_owner = "insert into owners (name,phone) values ('$hou_owner_name','$hou_owner_number')";
+            $run_owner = mysqli_query($con, $insert_owner);
+
+            $get_ow = "select owner_id from owners WHERE name LIKE '%$hou_owner_name%'";
+            $run_ow = mysqli_query($con, $get_ow);
+            while ($row_owner = mysqli_fetch_array($run_ow)) {
+                $ow_id = $row_owner['owner_id'];
+                $ow_name = $row_owner['name'];
+                // echo "<option value='$ow_id'>$ow_name</option>";
+            }
+            echo("<script>console.log('owner id: " . $ow_id . "');</script>");
+            echo("<script>console.log('owner name: " . $hou_owner_name . "');</script>");
+
+
             if (($_FILES['ho_img1']['name'] == "") && ($_FILES['ho_img2']['name'] == "") && ($_FILES['ho_img3']['name'] == "")) {
-                $insert_house = "INSERT INTO houses (code, owner_id, address, city, sale_type, bedrooms, ac_rooms, bathrooms, floor, base_price, description, availability) VALUES ('$ho_code','$ho_owner','$ho_address','$ho_city','$ho_s_type','$ho_beds','$ho_ac_beds','$ho_baths','$ho_floor','$ho_prz','$ho_desc','$ho_ava')";
+                $insert_house = "INSERT INTO houses (code, owner_id, owner_name, address, city, sale_type, land_size, bedrooms, ac_rooms, bathrooms, floor, base_price, description, availability, creater) VALUES ('$ho_code','$ow_id','$ow_name','$ho_address','$ho_city','$ho_s_type','$ho_land_size','$ho_beds','$ho_ac_beds','$ho_baths','$ho_floor','$ho_prz','$ho_desc','$ho_ava','$creater')";
             } elseif (($_FILES['ho_img1']['name'] == "") && ($_FILES['ho_img2']['name'] == "")) {
-                $insert_house = "INSERT INTO houses (code, owner_id, address, city, sale_type, bedrooms, ac_rooms, bathrooms, floor, base_price, description, availability, house_img3) VALUES ('$ho_code','$ho_owner','$ho_address','$ho_city','$ho_s_type','$ho_beds','$ho_ac_beds','$ho_baths','$ho_floor','$ho_prz','$ho_desc','$ho_ava','$ho_img3')";
+                $insert_house = "INSERT INTO houses (code, owner_id, owner_name, address, city, sale_type, land_size, bedrooms, ac_rooms, bathrooms, floor, base_price, description, availability, house_img3, creater) VALUES ('$ho_code','$ow_id','$ow_name','$ho_address','$ho_city','$ho_s_type','$ho_land_size','$ho_beds','$ho_ac_beds','$ho_baths','$ho_floor','$ho_prz','$ho_desc','$ho_ava','$ho_img3','$creater')";
             } elseif (($_FILES['ho_img1']['name'] == "") && ($_FILES['ho_img3']['name'] == "")) {
-                $insert_house = "INSERT INTO houses (code, owner_id, address, city, sale_type, bedrooms, ac_rooms, bathrooms, floor, base_price, description, availability, house_img2) VALUES ('$ho_code','$ho_owner','$ho_address','$ho_city','$ho_s_type','$ho_beds','$ho_ac_beds','$ho_baths','$ho_floor','$ho_prz','$ho_desc','$ho_ava','$ho_img2')";
+                $insert_house = "INSERT INTO houses (code, owner_id, owner_name, address, city, sale_type, land_size, bedrooms, ac_rooms, bathrooms, floor, base_price, description, availability, house_img2, creater) VALUES ('$ho_code','$ow_id','$ow_name','$ho_address','$ho_city','$ho_s_type','$ho_land_size','$ho_beds','$ho_ac_beds','$ho_baths','$ho_floor','$ho_prz','$ho_desc','$ho_ava','$ho_img2','$creater')";
             } elseif (($_FILES['ho_img2']['name'] == "") && ($_FILES['ho_img3']['name'] == "")) {
-                $insert_house = "INSERT INTO houses(code, owner_id, address, city, sale_type, bedrooms, ac_rooms, bathrooms, floor, base_price, description, availability, house_img1) VALUES ('$ho_code','$ho_owner','$ho_address','$ho_city','$ho_s_type','$ho_beds','$ho_ac_beds','$ho_baths','$ho_floor','$ho_prz','$ho_desc','$ho_ava','$ho_img1')";
+                $insert_house = "INSERT INTO houses(code, owner_id, owner_name, address, city, sale_type, land_size, bedrooms, ac_rooms, bathrooms, floor, base_price, description, availability, house_img1, creater) VALUES ('$ho_code','$ow_id','$ow_name','$ho_address','$ho_city','$ho_s_type','$ho_land_size','$ho_beds','$ho_ac_beds','$ho_baths','$ho_floor','$ho_prz','$ho_desc','$ho_ava','$ho_img1','$creater')";
             } elseif ($_FILES['ho_img3']['name'] == "") {
-                $insert_house = "INSERT INTO houses (code, owner_id, address, city, sale_type, bedrooms, ac_rooms, bathrooms, floor, base_price, description, availability, house_img1, house_img2) VALUES ('$ho_code','$ho_owner','$ho_address','$ho_city','$ho_s_type','$ho_beds','$ho_ac_beds','$ho_baths','$ho_floor','$ho_prz','$ho_desc','$ho_ava','$ho_img1','$ho_img2')";
+                $insert_house = "INSERT INTO houses (code, owner_id, owner_name, address, city, sale_type, land_size, bedrooms, ac_rooms, bathrooms, floor, base_price, description, availability, house_img1, house_img2, creater) VALUES ('$ho_code','$ow_id','$ow_name','$ho_address','$ho_city','$ho_s_type','$ho_land_size','$ho_beds','$ho_ac_beds','$ho_baths','$ho_floor','$ho_prz','$ho_desc','$ho_ava','$ho_img1','$ho_img2','$creater')";
             } elseif ($_FILES['ho_img2']['name'] == "") {
-                $insert_house = "INSERT INTO houses (code, owner_id, address, city, sale_type, bedrooms, ac_rooms, bathrooms, floor, base_price, description, availability, house_img1, house_img3) VALUES ('$ho_code','$ho_owner','$ho_address','$ho_city','$ho_s_type','$ho_beds','$ho_ac_beds','$ho_baths','$ho_floor','$ho_prz','$ho_desc','$ho_ava', '$ho_img1','$ho_img3')";
+                $insert_house = "INSERT INTO houses (code, owner_id, owner_name, address, city, sale_type, land_size, bedrooms, ac_rooms, bathrooms, floor, base_price, description, availability, house_img1, house_img3, creater) VALUES ('$ho_code','$ow_id','$ow_name','$ho_address','$ho_city','$ho_s_type','$ho_land_size','$ho_beds','$ho_ac_beds','$ho_baths','$ho_floor','$ho_prz','$ho_desc','$ho_ava', '$ho_img1','$ho_img3','$creater')";
             } elseif ($_FILES['ho_img1']['name'] == "") {
-                $insert_house = "INSERT INTO houses (code, owner_id, address, city, sale_type, bedrooms, ac_rooms, bathrooms, floor, base_price, description, availability, house_img2, house_img3) VALUES ('$ho_code','$ho_owner','$ho_address','$ho_city','$ho_s_type','$ho_beds','$ho_ac_beds','$ho_baths','$ho_floor','$ho_prz','$ho_desc','$ho_ava','$ho_img2','$ho_img3')";
+                $insert_house = "INSERT INTO houses (code, owner_id, owner_name, address, city, sale_type, land_size, bedrooms, ac_rooms, bathrooms, floor, base_price, description, availability, house_img2, house_img3, creater) VALUES ('$ho_code','$ow_id','$ow_name','$ho_address','$ho_city','$ho_s_type','$ho_land_size','$ho_beds','$ho_ac_beds','$ho_baths','$ho_floor','$ho_prz','$ho_desc','$ho_ava','$ho_img2','$ho_img3','$creater')";
             } else {
-                $insert_house = "INSERT INTO houses (code, owner_id, address, city, sale_type, bedrooms, ac_rooms, bathrooms, floor, base_price, description, availability, house_img1, house_img2, house_img3) VALUES ('$ho_code','$ho_owner','$ho_address','$ho_city','$ho_s_type','$ho_beds','$ho_ac_beds','$ho_baths','$ho_floor','$ho_prz','$ho_desc','$ho_ava','$ho_img1','$ho_img2','$ho_img3')";
+                $insert_house = "INSERT INTO houses (code, owner_id, owner_name, address, city, sale_type, land_size, bedrooms, ac_rooms, bathrooms, floor, base_price, description, availability, house_img1, house_img2, house_img3, creater) VALUES ('$ho_code','$ow_id','$ow_name','$ho_address','$ho_city','$ho_s_type','$ho_land_size','$ho_beds','$ho_ac_beds','$ho_baths','$ho_floor','$ho_prz','$ho_desc','$ho_ava','$ho_img1','$ho_img2','$ho_img3','$creater')";
             }
 
 

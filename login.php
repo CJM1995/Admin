@@ -5,22 +5,24 @@ session_start();
 include("includes/db.php");
 
 ?>
-    <!DOCTYPE HTML>
-    <html>
+<!DOCTYPE HTML>
+<html>
 
-    <head>
+<head>
 
-        <title>Admin Login</title>
+    <title>Admin Login</title>
 
-        <link rel="stylesheet" href="css/login_style.css">
+    <link rel="stylesheet" href="css/login_style.css">
 
-    </head>
+</head>
 
-    <body>
+<body>
 
-    <div class="container"><!-- container Starts -->
+    <div class="container">
+        <!-- container Starts -->
 
-        <form class="box" action="" method="post"><!-- form-login Starts -->
+        <form class="box" action="" method="post">
+            <!-- form-login Starts -->
 
             <h1>Login</h1>
 
@@ -105,9 +107,9 @@ include("includes/db.php");
     ?>
 
 
-    </body>
+</body>
 
-    </html>
+</html>
 
 
 <?php
@@ -133,24 +135,28 @@ if (isset($_POST['admin_login'])) {
 
     $count = mysqli_num_rows($run_admin);
 
-    if ($count == 1) {
+    $run_adm = mysqli_query($con, $get_admin);
+    while ($row_adm = mysqli_fetch_array($run_adm)) {
+        $adm_name = $row_adm['admin_name'];
+        // echo "<option value='$ow_id'>$ow_name</option>";
+    }
+    echo ("<script>console.log('owner id: " . $adm_name . "');</script>");
 
+    if ($count == 1) {
+        $_SESSION['admin_name'] = $adm_name;
         $_SESSION['admin_email'] = $admin_email;
 
         echo "<script type=\"text/javascript\">
             $('#loadingModal').modal('hide');
             $('#suModal').modal('show');
         </script>";
-
     } else {
 
         echo "<script type=\"text/javascript\">
             $('#loadingModal').modal('hide');
             $('#oopsModal').modal('show');
         </script>";
-
     }
-
 }
 
 ?>
