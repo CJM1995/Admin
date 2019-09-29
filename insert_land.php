@@ -99,7 +99,10 @@ if (!isset($_SESSION['admin_email'])) {
                                 <label class="col-md-3 control-label"> Sale Type </label>
                                 <div class="col-md-6">
                                     <select name="la_s_type" class="form-control">
-                                        <option value="Sale" selected>Sale</option>
+                                        <option> Select Sale Type</option>
+                                        <option value="Sale">Sale</option>
+                                        <option value="Rent">Rent</option>
+                                        <option value="Lease">Lease</option>
                                     </select>
                                 </div>
                             </div><!-- form-group Ends -->
@@ -253,6 +256,8 @@ if (!isset($_SESSION['admin_email'])) {
             $la_ava = 'Available';
             $la_desc = $_POST['la_desc'];
 
+            $tot_prz = (float) $la_t_qty * (float) $la_prz;
+
             $creater = $_SESSION['admin_name'];
 
             $la_img1 = $_FILES['la_img1']['name'];
@@ -267,22 +272,42 @@ if (!isset($_SESSION['admin_email'])) {
             move_uploaded_file($temp_name2, "land_images/$la_img2");
             move_uploaded_file($temp_name3, "land_images/$la_img3");
 
+            $la_owner_name = $_POST['la_owner_name'];
+            $la_owner_number = $_POST['la_owner_number'];
+
+            $chk_owner = "select * from owners WHERE name='" . $la_owner_name . "'";
+            $run_chk_owner = mysqli_query($con, $chk_owner);
+            $ow_count = mysqli_num_rows($run_chk_owner);
+
+            if ($ow_count < 1) {
+                $insert_owner = "insert into owners (name,phone) values ('$la_owner_name','$la_owner_number')";
+                $run_owner = mysqli_query($con, $insert_owner);
+            }
+
+            $get_ow = "select owner_id from owners WHERE name='" . $la_owner_name . "'";
+            $run_ow = mysqli_query($con, $get_ow);
+            while ($row_owner = mysqli_fetch_array($run_ow)) {
+                $ow_id = $row_owner['owner_id'];
+                $ow_name = $row_owner['name'];
+                // echo "<option value='$ow_id'>$ow_name</option>";
+            }
+
             if (($_FILES['la_img1']['name'] == "") && ($_FILES['la_img2']['name'] == "") && ($_FILES['la_img3']['name'] == "")) {
-                $insert_land = "INSERT INTO lands (code, owner_id, address, city, sale_type, total_qty, available_qty, perch_prz, description, availability) VALUES ('$la_code','$la_owner','$la_address','$la_city','$la_s_type','$la_t_qty','$la_t_qty','$la_prz','$la_desc','$la_ava')";
+                $insert_land = "INSERT INTO lands (code, owner_id, address, city, sale_type, total_qty, available_qty, perch_prz, total_price, description, availability, creater) VALUES ('$la_code','$ow_id','$la_address','$la_city','$la_s_type','$la_t_qty','$la_t_qty','$la_prz','$tot_prz','$la_desc','$la_ava','$creater')";
             } elseif (($_FILES['la_img1']['name'] == "") && ($_FILES['la_img2']['name'] == "")) {
-                $insert_land = "INSERT INTO lands (code, owner_id, address, city, sale_type, total_qty, available_qty, perch_prz, description, availability, land_img3) VALUES ('$la_code','$la_owner','$la_address','$la_city','$la_s_type','$la_t_qty','$la_t_qty','$la_prz','$la_desc','$la_ava','$la_img3')";
+                $insert_land = "INSERT INTO lands (code, owner_id, address, city, sale_type, total_qty, available_qty, perch_prz, total_price, description, availability, land_img3, creater) VALUES ('$la_code','$ow_id','$la_address','$la_city','$la_s_type','$la_t_qty','$la_t_qty','$la_prz','$tot_prz','$la_desc','$la_ava','$la_img3','$creater')";
             } elseif (($_FILES['la_img1']['name'] == "") && ($_FILES['la_img3']['name'] == "")) {
-                $insert_land = "INSERT INTO lands (code, owner_id, address, city, sale_type, total_qty, available_qty, perch_prz, description, availability, land_img2) VALUES ('$la_code','$la_owner','$la_address','$la_city','$la_s_type','$la_t_qty','$la_t_qty','$la_prz','$la_desc','$la_ava','$la_img2')";
+                $insert_land = "INSERT INTO lands (code, owner_id, address, city, sale_type, total_qty, available_qty, perch_prz, total_price, description, availability, land_img2, creater) VALUES ('$la_code','$ow_id','$la_address','$la_city','$la_s_type','$la_t_qty','$la_t_qty','$la_prz','$tot_prz','$la_desc','$la_ava','$la_img2','$creater')";
             } elseif (($_FILES['la_img2']['name'] == "") && ($_FILES['la_img3']['name'] == "")) {
-                $insert_land = "INSERT INTO lands (code, owner_id, address, city, sale_type, total_qty, available_qty, perch_prz, description, availability, land_img1) VALUES ('$la_code','$la_owner','$la_address','$la_city','$la_s_type','$la_t_qty','$la_t_qty','$la_prz','$la_desc','$la_ava','$la_img1')";
+                $insert_land = "INSERT INTO lands (code, owner_id, address, city, sale_type, total_qty, available_qty, perch_prz, total_price, description, availability, land_img1, creater) VALUES ('$la_code','$ow_id','$la_address','$la_city','$la_s_type','$la_t_qty','$la_t_qty','$la_prz','$tot_prz','$la_desc','$la_ava','$la_img1','$creater')";
             } elseif ($_FILES['la_img3']['name'] == "") {
-                $insert_land = "INSERT INTO lands (code, owner_id, address, city, sale_type, total_qty, available_qty, perch_prz, description, availability, land_img1, land_img2) VALUES ('$la_code','$la_owner','$la_address','$la_city','$la_s_type','$la_t_qty','$la_t_qty','$la_prz','$la_desc','$la_ava','$la_img1','$la_img2')";
+                $insert_land = "INSERT INTO lands (code, owner_id, address, city, sale_type, total_qty, available_qty, perch_prz, total_price, description, availability, land_img1, land_img2, creater) VALUES ('$la_code','$ow_id','$la_address','$la_city','$la_s_type','$la_t_qty','$la_t_qty','$la_prz','$tot_prz','$la_desc','$la_ava','$la_img1','$la_img2','$creater')";
             } elseif ($_FILES['la_img2']['name'] == "") {
-                $insert_land = "INSERT INTO lands (code, owner_id, address, city, sale_type, total_qty, available_qty, perch_prz, description, availability, land_img1, land_img3) VALUES ('$la_code','$la_owner','$la_address','$la_city','la_s_type','$la_t_qty','$la_t_qty','$la_prz','$la_desc','$la_ava', '$la_img1','$la_img3')";
+                $insert_land = "INSERT INTO lands (code, owner_id, address, city, sale_type, total_qty, available_qty, perch_prz, total_price, description, availability, land_img1, land_img3, creater) VALUES ('$la_code','$ow_id','$la_address','$la_city','$la_s_type','$la_t_qty','$la_t_qty','$la_prz','$tot_prz','$la_desc','$la_ava', '$la_img1','$la_img3','$creater')";
             } elseif ($_FILES['la_img1']['name'] == "") {
-                $insert_land = "INSERT INTO lands (code, owner_id, address, city, sale_type, total_qty, available_qty, perch_prz, description, availability, land_img2, land_img3) VALUES ('$la_code','$la_owner','$la_address','$la_city','$la_s_type','$la_t_qty','$la_t_qty','$la_prz','$la_desc','$la_ava','$la_img2','$la_img3')";
+                $insert_land = "INSERT INTO lands (code, owner_id, address, city, sale_type, total_qty, available_qty, perch_prz, total_price, description, availability, land_img2, land_img3, creater) VALUES ('$la_code','$ow_id','$la_address','$la_city','$la_s_type','$la_t_qty','$la_t_qty','$la_prz','$tot_prz','$la_desc','$la_ava','$la_img2','$la_img3','$creater')";
             } else {
-                $insert_land = "INSERT INTO lands (code, owner_id, address, city, sale_type, total_qty, available_qty, perch_prz, description, availability, land_img1, land_img2, land_img3) VALUES ('$la_code','$la_owner','$la_address','$la_city','$la_s_type','$la_t_qty','$la_t_qty','$la_prz','$la_desc','$la_ava','$la_img1','$la_img2','$la_img3')";
+                $insert_land = "INSERT INTO lands (code, owner_id, address, city, sale_type, total_qty, available_qty, perch_prz, total_price, description, availability, land_img1, land_img2, land_img3, creater) VALUES ('$la_code','$ow_id','$la_address','$la_city','$la_s_type','$la_t_qty','$la_t_qty','$la_prz','$tot_prz','$la_desc','$la_ava','$la_img1','$la_img2','$la_img3','$creater')";
             }
 
 

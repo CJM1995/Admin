@@ -111,6 +111,22 @@ if (!isset($_SESSION['admin_email'])) {
                                 // echo ("<script>console.log('st_count1: " . $st_count . "');</script>");
                                 // echo ("<script>console.log('radio opt: " . $rdo . "');</script>");
                                 // echo ("<script>console.log('box: " . $box . "');</script>");
+                                if ($box == '' || $box == null) {
+                                    if (strcmp($first, 'Sale') == 0) {
+                                        // echo ("<script>console.log('st_count2: " . $st_count . "');</script>");
+                                        $get_rslt = "SELECT * FROM houses WHERE sale_type='" . $first . "' AND availability='" . $ava . "'";
+                                        $run_rslt = mysqli_query($con, $get_rslt);
+                                    }
+                                    if (strcmp($first, 'Rent') == 0) {
+                                        $get_rslt = "SELECT * FROM houses WHERE sale_type='" . $first . "' AND availability='" . $ava . "'";
+                                        $run_rslt = mysqli_query($con, $get_rslt);
+                                    }
+                                    if (strcmp($first, 'Lease') == 0) {
+                                        $get_rslt = "SELECT * FROM houses WHERE sale_type='" . $first . "' AND availability='" . $ava . "'";
+                                        $run_rslt = mysqli_query($con, $get_rslt);
+                                    }
+                                }
+
                                 if ((strcmp($rdo, 'City') == 0) && (strcmp($first, 'Sale') == 0)) {
                                     // echo ("<script>console.log('st_count2: " . $st_count . "');</script>");
                                     $get_rslt = "SELECT * FROM houses WHERE sale_type='" . $first . "' AND house_id IN (SELECT house_id FROM houses WHERE city LIKE '%$box%' AND availability='" . $ava . "')";
@@ -149,6 +165,24 @@ if (!isset($_SESSION['admin_email'])) {
                                     $run_rslt = mysqli_query($con, $get_rslt);
                                 }
                             } elseif ($st_count == 2) {
+                                if ($box == '' || $box == null) {
+                                    if ((strcmp($first, 'Sale') == 0) && (strcmp($second, 'Rent') == 0)) {
+                                        // echo ("<script>console.log('st_count2: " . $st_count . "');</script>");
+                                        $get_rslt = "SELECT * FROM houses WHERE availability='" . $ava . "' AND house_id IN (SELECT house_id FROM houses WHERE sale_type='" . $first . "' OR sale_type='" . $second . "')";
+                                        $run_rslt = mysqli_query($con, $get_rslt);
+                                    }
+                                    if ((strcmp($first, 'Sale') == 0) && (strcmp($second, 'Lease') == 0)) {
+                                        // echo ("<script>console.log('st_count2: " . $st_count . "');</script>");
+                                        $get_rslt = "SELECT * FROM houses WHERE availability='" . $ava . "' AND house_id IN (SELECT house_id FROM houses WHERE sale_type='" . $first . "' OR sale_type='" . $second . "')";
+                                        $run_rslt = mysqli_query($con, $get_rslt);
+                                    }
+                                    if ((strcmp($first, 'Rent') == 0) && (strcmp($second, 'Lease') == 0)) {
+                                        // echo ("<script>console.log('st_count2: " . $st_count . "');</script>");
+                                        $get_rslt = "SELECT * FROM houses WHERE availability='" . $ava . "' AND house_id IN (SELECT house_id FROM houses WHERE sale_type='" . $first . "' OR sale_type='" . $second . "')";
+                                        $run_rslt = mysqli_query($con, $get_rslt);
+                                    }
+                                }
+
                                 if ((strcmp($rdo, 'City') == 0) && (strcmp($first, 'Sale') == 0) && (strcmp($second, 'Rent') == 0)) {
                                     // echo ("<script>console.log('st_count2: " . $st_count . "');</script>");
                                     $get_rslt = "SELECT * FROM houses WHERE sale_type='" . $first . "' OR sale_type='" . $second . "' AND house_id IN (SELECT house_id FROM houses WHERE city LIKE '%$box%' AND availability='" . $ava . "')";
@@ -194,7 +228,13 @@ if (!isset($_SESSION['admin_email'])) {
                                     $get_rslt = "SELECT * FROM houses WHERE sale_type='" . $first . "' OR sale_type='" . $second . "' AND house_id IN (SELECT house_id FROM houses WHERE base_price LIKE '%$box%' AND availability='" . $ava . "')";
                                     $run_rslt = mysqli_query($con, $get_rslt);
                                 }
+                            } elseif ($st_count == 3) {
+                                if ($box == '' || $box == null) {
+                                    $get_rslt = "SELECT * FROM houses WHERE availability='" . $ava . "'";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
                             } else {
+
                                 if (strcmp($rdo, 'City') == 0) {
                                     $get_rslt = "SELECT * FROM houses WHERE city LIKE '%$box%' AND availability='" . $ava . "'";
                                     $run_rslt = mysqli_query($con, $get_rslt);
@@ -204,7 +244,7 @@ if (!isset($_SESSION['admin_email'])) {
                                     $run_rslt = mysqli_query($con, $get_rslt);
                                 }
                                 if (strcmp($rdo, 'Price') == 0) {
-                                    $get_rslt = "select * from houses WHERE base_price='" . $box . "' AND availability='" . $ava . "'";
+                                    $get_rslt = "SELECT * from houses WHERE base_price LIKE '%$box%' AND availability='" . $ava . "'";
                                     $run_rslt = mysqli_query($con, $get_rslt);
                                 }
                                 if (strcmp($rdo, 'Code') == 0) {
