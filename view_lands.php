@@ -373,7 +373,7 @@ if (!isset($_SESSION['admin_email'])) {
                                                                             rel=\"tooltip\"
                                                                             class=\"btn btn-danger btn-sm\"
                                                                             data-original-title=\"\" title=\"Remove\"
-                                                                            onclick=\"location.href = 'index.php?delete_land=$lnd_id_s';\" disabled>
+                                                                            onclick=\"location.href = 'index.php?delete_land=$lnd_id_s';\">
                                                                         <i class=\"fa fa-trash\"></i>
                                                                     </button>
                                                                 </td>";
@@ -507,7 +507,7 @@ if (!isset($_SESSION['admin_email'])) {
                                         $lnd_p_prz = $row_land['perch_prz'];
                                         $lnd_tot_prz = $row_land['total_price'];
                                         $lnd_ava = $row_land['availability'];
-                                        $lnd_creater = $row_pro['creater'];
+                                        $lnd_creater = $row_land['creater'];
 
                                         $i++;
 
@@ -541,7 +541,7 @@ if (!isset($_SESSION['admin_email'])) {
                                         <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
                                                 class=\"btn btn-danger btn-sm\"
                                                 data-original-title=\"\" title=\"Remove\"
-                                                onclick=\"location.href = 'index.php?delete_land=$lnd_id';\" disabled>
+                                                onclick=\"location.href = 'index.php?delete_land=$lnd_id';\">
                                             <i class=\"fa fa-trash\"></i>
                                         </button>
                                     </td>";

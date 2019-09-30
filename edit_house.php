@@ -248,7 +248,7 @@ if (!isset($_SESSION['admin_email'])) {
                                 <!-- form-group Starts -->
                                 <label class="col-md-3 control-label"> Creater </label>
                                 <div class="col-md-6">
-                                    <input type="text" name="ho_city" class="form-control" title="Will be updated with last editor" value="<?php echo $house_creater ?>" disabled>
+                                    <input type="text" name="ho_creater" class="form-control" title="Will be updated with last editor" value="<?php echo $house_creater ?>" disabled>
                                 </div>
                             </div><!-- form-group Ends -->
 

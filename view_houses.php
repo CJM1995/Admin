@@ -389,7 +389,7 @@ if (!isset($_SESSION['admin_email'])) {
                                                                     <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
                                                                             class=\"btn btn-danger btn-sm\"
                                                                             data-original-title=\"\" title=\"Remove\"
-                                                                            onclick=\"location.href = 'index.php?delete_house=$hou_id_s';\" disabled>
+                                                                            onclick=\"location.href = 'index.php?delete_house=$hou_id_s';\">
                                                                         <i class=\"fa fa-trash fa-fw\"></i>
                                                                     </button>
                                                                 </td>";
@@ -546,7 +546,7 @@ if (!isset($_SESSION['admin_email'])) {
                                         <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
                                                 class=\"btn btn-danger btn-sm\"
                                                 data-original-title=\"\" title=\"Remove\"
-                                                onclick=\"location.href = 'index.php?delete_house=$hou_id';\" disabled>
+                                                onclick=\"location.href = 'index.php?delete_house=$hou_id';\">
                                             <i class=\"fa fa-trash fa-fw\"></i>
                                         </button>
                                     </td>";
