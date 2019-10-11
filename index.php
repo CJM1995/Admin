@@ -224,6 +224,24 @@ if (!isset($_SESSION['admin_email'])) {
 
                 }
 
+                if (isset($_GET['insert_house_needed'])) {
+
+                    include("insert_house_needed.php");
+
+                }
+
+                if (isset($_GET['view_house_needed'])) {
+
+                    include("view_house_needed.php");
+
+                }
+
+                if (isset($_GET['delete_house_needed'])) {
+
+                    include("delete_house_needed.php");
+
+                }
+
                 if (isset($_GET['insert_warehouse_purchase'])) {
 
                     include("insert_warehouse_purchase.php");
@@ -242,6 +260,30 @@ if (!isset($_SESSION['admin_email'])) {
 
                 }
 
+                if (isset($_GET['insert_warehouse_needed'])) {
+
+                    include("insert_warehouse_needed.php");
+
+                }
+
+                if (isset($_GET['view_warehouse_needed'])) {
+
+                    include("view_warehouse_needed.php");
+
+                }
+
+                if (isset($_GET['edit_warehouse_needed'])) {
+
+                    include("edit_warehouse_needed.php");
+
+                }
+
+                if (isset($_GET['delete_warehouse_needed'])) {
+
+                    include("delete_warehouse_needed.php");
+
+                }
+
                 if (isset($_GET['insert_land_purchase'])) {
 
                     include("insert_land_purchase.php");
@@ -257,6 +299,24 @@ if (!isset($_SESSION['admin_email'])) {
                 if (isset($_GET['remove_land_purchase'])) {
 
                     include("remove_land_purchase.php");
+
+                }
+
+                if (isset($_GET['insert_land_needed'])) {
+
+                    include("insert_land_needed.php");
+
+                }
+
+                if (isset($_GET['view_land_needed'])) {
+
+                    include("view_land_needed.php");
+
+                }
+
+                if (isset($_GET['delete_land_needed'])) {
+
+                    include("delete_land_needed.php");
 
                 }
 

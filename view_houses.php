@@ -276,7 +276,7 @@ if (!isset($_SESSION['admin_email'])) {
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <div class="table-responsive">
+                                                <div class="table-responsive small-text">
                                                     <!-- table-responsive Starts -->
                                                     <table class="table table-bordered table-hover table-striped">
                                                         <!-- table table-bordered table-hover table-striped Starts -->
@@ -310,7 +310,7 @@ if (!isset($_SESSION['admin_email'])) {
                                                                     Bedrooms
                                                                 </th>
                                                                 <th style="vertical-align: middle;text-align: center">A/C
-                                                                    Bedrooms Date
+                                                                    Bedrooms
                                                                 </th>
                                                                 <th style="vertical-align: middle;text-align: center">
                                                                     Bathrooms
@@ -364,7 +364,7 @@ if (!isset($_SESSION['admin_email'])) {
                                                                 <tr>
                                                                     <?php
                                                                                     if (strcmp($hou_ava_s, 'Available') == 0) {
-                                                                                        echo "<td>
+                                                                                        echo "<td style=\"text-align:center\">
                                                                     <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
                                                                             class=\"btn btn-success btn-sm\"
                                                                             data-original-title=\"\" title=\"Edit\"
@@ -379,7 +379,7 @@ if (!isset($_SESSION['admin_email'])) {
                                                                     </button>
                                                                 </td>";
                                                                                     } else {
-                                                                                        echo "<td>
+                                                                                        echo "<td style=\"text-align:center\">
                                                                     <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
                                                                             class=\"btn btn-success btn-sm\"
                                                                             data-original-title=\"\" title=\"Edit\"
@@ -410,7 +410,7 @@ if (!isset($_SESSION['admin_email'])) {
                                                                     <td><?php echo $hou_ac_beds_s; ?></td>
                                                                     <td><?php echo $hou_baths_s; ?></td>
                                                                     <td><?php echo $hou_floor_s; ?></td>
-                                                                    <td>LKR &nbsp;<?php echo $hou_prz_s; ?></td>
+                                                                    <td>LKR &nbsp;<?php echo number_format($hou_prz_s); ?></td>
                                                                     <td><?php echo $hou_ava_s; ?></td>
                                                                     <td><?php echo $hou_creater_s; ?></td>
                                                                 </tr>
@@ -444,7 +444,7 @@ if (!isset($_SESSION['admin_email'])) {
                 <div class="panel-body">
                     <!-- panel-body Starts -->
 
-                    <div class="table-responsive">
+                    <div class="table-responsive small-text">
                         <!-- table-responsive Starts -->
                         <table class="table table-bordered table-hover table-striped">
                             <!-- table table-bordered table-hover table-striped Starts -->
@@ -462,7 +462,7 @@ if (!isset($_SESSION['admin_email'])) {
                                     <th style="vertical-align: middle;text-align: center">Sale Type</th>
                                     <th style="vertical-align: middle;text-align: center">Land Size</th>
                                     <th style="vertical-align: middle;text-align: center">Bedrooms</th>
-                                    <th style="vertical-align: middle;text-align: center">A/C Bedrooms Date</th>
+                                    <th style="vertical-align: middle;text-align: center">A/C Bedrooms</th>
                                     <th style="vertical-align: middle;text-align: center">Bathrooms</th>
                                     <th style="vertical-align: middle;text-align: center">Floor Material</th>
                                     <th style="vertical-align: middle;text-align: center">Base Price</th>
@@ -521,7 +521,7 @@ if (!isset($_SESSION['admin_email'])) {
                                     <tr>
                                         <?php
                                                 if (strcmp($hou_ava, 'Available') == 0) {
-                                                    echo "<td>
+                                                    echo "<td style=\"text-align:center\">
                                         <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
                                                 class=\"btn btn-success btn-sm\"
                                                 data-original-title=\"\" title=\"Edit\"
@@ -536,7 +536,7 @@ if (!isset($_SESSION['admin_email'])) {
                                         </button>
                                     </td>";
                                                 } else {
-                                                    echo "<td>
+                                                    echo "<td style=\"text-align:center\">
                                         <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
                                                 class=\"btn btn-success btn-sm\"
                                                 data-original-title=\"\" title=\"Edit\"
@@ -567,7 +567,7 @@ if (!isset($_SESSION['admin_email'])) {
                                         <td><?php echo $hou_ac_beds; ?></td>
                                         <td><?php echo $hou_baths; ?></td>
                                         <td><?php echo $hou_floor; ?></td>
-                                        <td>LKR &nbsp;<?php echo $hou_prz; ?></td>
+                                        <td>LKR &nbsp;<?php echo number_format($hou_prz); ?></td>
                                         <td><?php echo $hou_ava; ?></td>
                                         <td><?php echo $hou_creater; ?></td>
 

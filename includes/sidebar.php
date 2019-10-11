@@ -136,36 +136,36 @@ if (!isset($_SESSION['admin_email'])) {
                 <li class="item" id='purchase_w' data-toggle="collapse" data-target="#purchases_w">
                     <!-- li Starts -->
                     <a href="#purchase_w" class="">
-                        <i class="fa fa-fw fa-dollar"></i><i class="fa fa-fw fa-building"></i>Warehouse Purchase
+                        <i class="fa fa-fw fa-dollar"></i><i class="fa fa-fw fa-building"></i>Warehouse Needed
                         <i class="pull-right fa fa-fw fa-caret-down"></i>
                     </a>
                     <div id="purchases_w" class="smenu collapse">
-                        <a style="text-decoration: none" href="index.php?insert_warehouse_purchase"> Insert Purchase</a>
-                        <a style="text-decoration: none" href="index.php?view_warehouse_purchases"> View Purchase</a>
+                        <a style="text-decoration: none" href="index.php?insert_warehouse_needed"> Insert Details</a>
+                        <a style="text-decoration: none" href="index.php?view_warehouse_needed"> View Details</a>
                     </div>
                 </li><!-- li Ends -->
 
                 <li class="item" id='purchase_h' data-toggle="collapse" data-target="#purchases_h">
                     <!-- li Starts -->
                     <a href="#purchase_h" class="">
-                        <i class="fa fa-fw fa-dollar"></i><i class="fa fa-fw fa-home"></i>House Purchase
+                        <i class="fa fa-fw fa-dollar"></i><i class="fa fa-fw fa-home"></i>House Needed
                         <i class="pull-right fa fa-fw fa-caret-down"></i>
                     </a>
                     <div id="purchases_h" class="smenu collapse">
-                        <a style="text-decoration: none" href="index.php?insert_house_purchase"> Insert Purchase</a>
-                        <a style="text-decoration: none" href="index.php?view_house_purchases"> View Purchase</a>
+                        <a style="text-decoration: none" href="index.php?insert_house_purchase"> Insert Details</a>
+                        <a style="text-decoration: none" href="index.php?view_house_purchases"> View Details</a>
                     </div>
                 </li><!-- li Ends -->
 
                 <li class="item" id='purchase_l' data-toggle="collapse" data-target="#purchases_l">
                     <!-- li Starts -->
                     <a href="#purchase_l" class="">
-                        <i class="fa fa-fw fa-dollar"></i><i class="fa fa-fw fa-map-signs"></i>Land Purchase
+                        <i class="fa fa-fw fa-dollar"></i><i class="fa fa-fw fa-map-signs"></i>Land Needed
                         <i class="pull-right fa fa-fw fa-caret-down"></i>
                     </a>
                     <div id="purchases_l" class="smenu collapse">
-                        <a style="text-decoration: none" href="index.php?insert_land_purchase"> Insert Purchase</a>
-                        <a style="text-decoration: none" href="index.php?view_land_purchases"> View Purchase</a>
+                        <a style="text-decoration: none" href="index.php?insert_land_purchase"> Insert Details</a>
+                        <a style="text-decoration: none" href="index.php?view_land_purchases"> View Details</a>
                     </div>
                 </li><!-- li Ends -->
 

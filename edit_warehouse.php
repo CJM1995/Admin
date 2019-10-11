@@ -596,7 +596,7 @@ if (!isset($_SESSION['admin_email'])) {
                                 <!-- form-group Starts -->
                                 <label class="col-md-3 control-label"> Availability </label>
                                 <div class="col-md-6">
-                                    <select name="ava" class="form-control" disabled="">
+                                    <select name="ava" class="form-control">
                                         <?php
                                             if (strcmp($w_available, 'Available') == 0) {
                                                 echo "<option value=\"Available\" selected>Available</option>";

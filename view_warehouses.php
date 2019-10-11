@@ -306,7 +306,7 @@ if (!isset($_SESSION['admin_email'])) {
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <div class="table-responsive">
+                                                <div class="table-responsive small-text">
                                                     <!-- table-responsive Starts -->
                                                     <table class="table table-bordered table-hover table-striped">
                                                         <!-- table table-bordered table-hover table-striped Starts -->
@@ -379,7 +379,7 @@ if (!isset($_SESSION['admin_email'])) {
                                                                 <tr>
                                                                     <?php
                                                                                     if (strcmp($warehouse_availability_s, 'Available') == 0) {
-                                                                                        echo "<td>
+                                                                                        echo "<td style=\"text-align:center\">
                                                                     <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
                                                                             class=\"btn btn-success btn-sm\"
                                                                             data-original-title=\"\" title=\"Edit\"
@@ -394,7 +394,7 @@ if (!isset($_SESSION['admin_email'])) {
                                                                     </button>
                                                                 </td>";
                                                                                     } else {
-                                                                                        echo "<td>
+                                                                                        echo "<td style=\"text-align:center\">
                                                                     <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
                                                                             class=\"btn btn-success btn-sm\"
                                                                             data-original-title=\"\" title=\"Edit\"
@@ -421,14 +421,14 @@ if (!isset($_SESSION['admin_email'])) {
                                                                     <td><?php echo $warehouse_address_s; ?></td>
                                                                     <td><?php echo $warehouse_city_s; ?></td>
                                                                     <td><?php echo $warehouse_rd_acc_s; ?></td>
-                                                                    <td>LKR &nbsp;<?php echo $warehouse_price_sqft_s; ?></td>
-                                                                    <td><?php echo $warehouse_area_sqft_s; ?></td>
+                                                                    <td>LKR &nbsp;<?php echo number_format($warehouse_price_sqft_s); ?></td>
+                                                                    <td><?php echo number_format($warehouse_area_sqft_s); ?></td>
                                                                     <td><?php echo $warehouse_no_of_bays_s; ?></td>
                                                                     <td><?php echo $warehouse_electricity_s; ?></td>
                                                                     <td><?php echo $warehouse_water_s; ?></td>
                                                                     <td><?php echo $warehouse_telephone_s; ?></td>
                                                                     <td><?php echo $warehouse_cctv_s; ?></td>
-                                                                    <td>LKR &nbsp; <?php echo $warehouse_price_s; ?></td>
+                                                                    <td>LKR &nbsp; <?php echo number_format($warehouse_price_s); ?></td>
                                                                     <td><?php echo $warehouse_availability_s; ?></td>
                                                                     <td><?php echo $warehouse_creater_s; ?></td>
 
@@ -465,7 +465,7 @@ if (!isset($_SESSION['admin_email'])) {
 
                 <div class="panel-body">
                     <!-- panel-body Starts -->
-                    <div class="table-responsive">
+                    <div class="table-responsive small-text">
                         <!-- table-responsive Starts -->
                         <table style="padding: 5px; text-align: center;" class="table table-bordered table-hover table-striped">
                             <!-- table table-bordered table-hover table-striped Starts -->
@@ -538,7 +538,7 @@ if (!isset($_SESSION['admin_email'])) {
                                     <tr>
                                         <?php
                                                 if (strcmp($warehouse_availability, 'Available') == 0) {
-                                                    echo "<td>
+                                                    echo "<td style=\"text-align:center\">
                                                                     <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
                                                                             class=\"btn btn-success btn-sm\"
                                                                             data-original-title=\"\" title=\"Edit\"
@@ -553,7 +553,7 @@ if (!isset($_SESSION['admin_email'])) {
                                                                     </button>
                                                                 </td>";
                                                 } else {
-                                                    echo "<td>
+                                                    echo "<td style=\"text-align:center\">
                                                                     <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
                                                                             class=\"btn btn-success btn-sm\"
                                                                             data-original-title=\"\" title=\"Edit\"
@@ -581,14 +581,14 @@ if (!isset($_SESSION['admin_email'])) {
                                         <td><?php echo $warehouse_address; ?></td>
                                         <td><?php echo $warehouse_city; ?></td>
                                         <td><?php echo $warehouse_rd_acc; ?></td>
-                                        <td>LKR &nbsp;<?php echo $warehouse_price_sqft; ?></td>
-                                        <td><?php echo $warehouse_area_sqft; ?></td>
+                                        <td>LKR &nbsp;<?php echo number_format($warehouse_price_sqft); ?></td>
+                                        <td><?php echo number_format($warehouse_area_sqft); ?></td>
                                         <td><?php echo $warehouse_no_of_bays; ?></td>
                                         <td><?php echo $warehouse_electricity; ?></td>
                                         <td><?php echo $warehouse_water; ?></td>
                                         <td><?php echo $warehouse_telephone; ?></td>
                                         <td><?php echo $warehouse_cctv; ?></td>
-                                        <td>LKR &nbsp; <?php echo $warehouse_price; ?></td>
+                                        <td>LKR &nbsp; <?php echo number_format($warehouse_price); ?></td>
                                         <td><?php echo $warehouse_availability; ?></td>
                                         <td><?php echo $warehouse_creater; ?></td>
 

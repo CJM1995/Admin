@@ -167,7 +167,7 @@ if (!isset($_SESSION['admin_email'])) {
 //        move_uploaded_file($temp_admin_image, "admin_images/$admin_image");
 
 
-        $insert_cus = "insert into customersN (name,address,nic_passport,phone,email) values ('$cus_name','$cus_address','$cus_nic','$cus_phone','$cus_email')";
+        $insert_cus = "insert into customersn (name,address,nic_passport,phone,email) values ('$cus_name','$cus_address','$cus_nic','$cus_phone','$cus_email')";
 
         $run_cus = mysqli_query($con, $insert_cus);
 

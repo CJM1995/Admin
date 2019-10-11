@@ -159,17 +159,17 @@ if (!isset($_SESSION['admin_email'])) {
                                 if ($box == '' || $box == null) {
                                     if ((strcmp($first, 'Sale') == 0) && (strcmp($second, 'Rent') == 0)) {
                                         // echo ("<script>console.log('st_count2: " . $st_count . "');</script>");
-                                        $get_rslt = "SELECT * FROM lands WHERE availability='" . $ava . "' AND house_id IN (SELECT house_id FROM lands WHERE sale_type='" . $first . "' OR sale_type='" . $second . "')";
+                                        $get_rslt = "SELECT * FROM lands WHERE availability='" . $ava . "' AND land_id IN (SELECT land_id FROM lands WHERE sale_type='" . $first . "' OR sale_type='" . $second . "')";
                                         $run_rslt = mysqli_query($con, $get_rslt);
                                     }
                                     if ((strcmp($first, 'Sale') == 0) && (strcmp($second, 'Lease') == 0)) {
                                         // echo ("<script>console.log('st_count2: " . $st_count . "');</script>");
-                                        $get_rslt = "SELECT * FROM lands WHERE availability='" . $ava . "' AND house_id IN (SELECT house_id FROM lands WHERE sale_type='" . $first . "' OR sale_type='" . $second . "')";
+                                        $get_rslt = "SELECT * FROM lands WHERE availability='" . $ava . "' AND land_id IN (SELECT land_id FROM lands WHERE sale_type='" . $first . "' OR sale_type='" . $second . "')";
                                         $run_rslt = mysqli_query($con, $get_rslt);
                                     }
                                     if ((strcmp($first, 'Rent') == 0) && (strcmp($second, 'Lease') == 0)) {
                                         // echo ("<script>console.log('st_count2: " . $st_count . "');</script>");
-                                        $get_rslt = "SELECT * FROM lands WHERE availability='" . $ava . "' AND house_id IN (SELECT house_id FROM lands WHERE sale_type='" . $first . "' OR sale_type='" . $second . "')";
+                                        $get_rslt = "SELECT * FROM lands WHERE availability='" . $ava . "' AND land_id IN (SELECT land_id FROM lands WHERE sale_type='" . $first . "' OR sale_type='" . $second . "')";
                                         $run_rslt = mysqli_query($con, $get_rslt);
                                     }
                                 }
@@ -266,7 +266,7 @@ if (!isset($_SESSION['admin_email'])) {
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <div class="table-responsive">
+                                                <div class="table-responsive small-text">
                                                     <!-- table-responsive Starts -->
                                                     <table class="table table-bordered table-hover table-striped">
                                                         <!-- table table-bordered table-hover table-striped Starts -->
@@ -344,7 +344,7 @@ if (!isset($_SESSION['admin_email'])) {
                                                                 <tr>
                                                                     <?php
                                                                                     if (strcmp($lnd_ava_s, 'Available') == 0) {
-                                                                                        echo "<td>
+                                                                                        echo "<td style=\"text-align:center\">
                                                                     <button style=\"margin-top: 2px\" type=\"button\"
                                                                             rel=\"tooltip\"
                                                                             class=\"btn btn-success btn-sm\"
@@ -361,7 +361,7 @@ if (!isset($_SESSION['admin_email'])) {
                                                                     </button>
                                                                 </td>";
                                                                                     } else {
-                                                                                        echo "<td>
+                                                                                        echo "<td style=\"text-align:center\">
                                                                     <button style=\"margin-top: 2px\" type=\"button\"
                                                                             rel=\"tooltip\"
                                                                             class=\"btn btn-success btn-sm\"
@@ -391,8 +391,8 @@ if (!isset($_SESSION['admin_email'])) {
                                                                     <td><?php echo $lnd_s_type_s; ?></td>
                                                                     <td><?php echo $lnd_t_qty_s; ?></td>
                                                                     <td><?php echo $lnd_a_qty_s; ?></td>
-                                                                    <td>LKR &nbsp;<?php echo $lnd_p_prz_s; ?></td>
-                                                                    <td>LKR &nbsp;<?php echo $lnd_tot_prz_s; ?></td>
+                                                                    <td>LKR &nbsp;<?php echo number_format($lnd_p_prz_s); ?></td>
+                                                                    <td>LKR &nbsp;<?php echo number_format($lnd_tot_prz_s); ?></td>
                                                                     <td><?php echo $lnd_ava_s; ?></td>
                                                                     <td><?php echo $lnd_creater_s; ?></td>
                                                                 </tr>
@@ -426,7 +426,7 @@ if (!isset($_SESSION['admin_email'])) {
                 <div class="panel-body">
                     <!-- panel-body Starts -->
 
-                    <div class="table-responsive">
+                    <div class="table-responsive small-text">
                         <!-- table-responsive Starts -->
                         <table class="table table-bordered table-hover table-striped">
                             <!-- table table-bordered table-hover table-striped Starts -->
@@ -516,7 +516,7 @@ if (!isset($_SESSION['admin_email'])) {
                                     <tr>
                                         <?php
                                                 if (strcmp($lnd_ava, 'Available') == 0) {
-                                                    echo "<td>
+                                                    echo "<td style=\"text-align:center\">
                                         <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
                                                 class=\"btn btn-success btn-sm\"
                                                 data-original-title=\"\" title=\"Edit\"
@@ -531,7 +531,7 @@ if (!isset($_SESSION['admin_email'])) {
                                         </button>
                                     </td>";
                                                 } else {
-                                                    echo "<td>
+                                                    echo "<td style=\"text-align:center\">
                                         <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
                                                 class=\"btn btn-success btn-sm\"
                                                 data-original-title=\"\" title=\"Edit\"
@@ -559,8 +559,8 @@ if (!isset($_SESSION['admin_email'])) {
                                         <td><?php echo $lnd_s_type; ?></td>
                                         <td><?php echo $lnd_t_qty; ?></td>
                                         <td><?php echo $lnd_a_qty; ?></td>
-                                        <td>LKR &nbsp;<?php echo $lnd_p_prz; ?></td>
-                                        <td>LKR &nbsp;<?php echo $lnd_tot_prz; ?></td>
+                                        <td>LKR &nbsp;<?php echo number_format($lnd_p_prz); ?></td>
+                                        <td>LKR &nbsp;<?php echo number_format($lnd_tot_prz); ?></td>
                                         <td><?php echo $lnd_ava; ?></td>
                                         <td><?php echo $lnd_creater; ?></td>
 
