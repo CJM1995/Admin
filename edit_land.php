@@ -370,9 +370,12 @@ if (!isset($_SESSION['admin_email'])) {
             $temp_name2 = $_FILES['land_img2']['tmp_name'];
             $temp_name3 = $_FILES['land_img3']['tmp_name'];
 
-            move_uploaded_file($temp_name1, "land_images/$ld_img1");
-            move_uploaded_file($temp_name2, "land_images/$ld_img2");
-            move_uploaded_file($temp_name3, "land_images/$ld_img3");
+            move_uploaded_file($temp_name1, "\\\\CJ-LAPTOP\\land_images\\$ld_img1");
+            move_uploaded_file($temp_name2, "\\\\CJ-LAPTOP\\land_images\\$ld_img2");
+            move_uploaded_file($temp_name3, "\\\\CJ-LAPTOP\\land_images\\$ld_img3");
+            // move_uploaded_file($temp_name1, "land_images/$ld_img1");
+            // move_uploaded_file($temp_name2, "land_images/$ld_img2");
+            // move_uploaded_file($temp_name3, "land_images/$ld_img3");
 
             $tot_prz = (float) $ld_t_qty * (float) $ld_prz;
 

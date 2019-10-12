@@ -398,9 +398,12 @@ if (!isset($_SESSION['admin_email'])) {
             $temp_name2 = $_FILES['ho_img2']['tmp_name'];
             $temp_name3 = $_FILES['ho_img3']['tmp_name'];
 
-            move_uploaded_file($temp_name1, "house_images/$ho_img1");
-            move_uploaded_file($temp_name2, "house_images/$ho_img2");
-            move_uploaded_file($temp_name3, "house_images/$ho_img3");
+            move_uploaded_file($temp_name1, "\\\\CJ-LAPTOP\\house_images\\$ho_img1");
+            move_uploaded_file($temp_name2, "\\\\CJ-LAPTOP\\house_images\\$ho_img2");
+            move_uploaded_file($temp_name3, "\\\\CJ-LAPTOP\\house_images\\$ho_img3");
+            // move_uploaded_file($temp_name1, "house_images/$ho_img1");
+            // move_uploaded_file($temp_name2, "house_images/$ho_img2");
+            // move_uploaded_file($temp_name3, "house_images/$ho_img3");
 
             $get_ow = "select name from owners WHERE owner_id='".$ho_owner_id."'";
             $run_ow = mysqli_query($con, $get_ow);
