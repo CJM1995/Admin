@@ -154,7 +154,7 @@ if (!isset($_SESSION['admin_email'])) {
 
                                 <div class="col-md-6">
 
-                                    <input type="number" name="prz_sqft" class="form-control" pattern="^[0.00-9.99]" min="1" placeholder="LKR" required>
+                                    <input type="number" name="prz_sqft" class="form-control" pattern="^[0.00-9.99]" step="0.01" min="1.00" placeholder="LKR" required>
 
                                 </div>
 
@@ -167,7 +167,7 @@ if (!isset($_SESSION['admin_email'])) {
 
                                 <div class="col-md-6">
 
-                                    <input type="number" name="area_sqft" class="form-control" pattern="^[1-9]" min="1" step="1" required>
+                                    <input type="number" name="area_sqft" class="form-control" pattern="^[0.00-9.99]" step="0.01" min="1.00" step="0.01" required>
 
                                 </div>
 
@@ -194,7 +194,7 @@ if (!isset($_SESSION['admin_email'])) {
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <span class="input-group-btn">
-                                            <input type="number" name="roof_height" class="form-control" pattern="^[0.00-9.99]" min="1" required>
+                                            <input type="number" name="roof_height" class="form-control" pattern="^[0.00-9.99]" step="0.01" min="1.00" required>
                                         </span>
                                         <span class="input-group-btn">
                                             <select name="unit" class="form-control">
@@ -522,7 +522,7 @@ if (!isset($_SESSION['admin_email'])) {
 
                                 <div class="col-md-6">
 
-                                    <input type="number" name="g_value" class="form-control" placeholder="LKR (Optional)" pattern="^[0.00-9.99]" min="1">
+                                    <input type="number" name="g_value" class="form-control" placeholder="LKR (Optional)" pattern="^[0.00-9.99]" min="1.00" pattern="^[0.00-9.99]" step="0.01">
 
                                 </div>
 

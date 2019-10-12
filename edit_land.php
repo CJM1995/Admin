@@ -180,16 +180,16 @@ if (!isset($_SESSION['admin_email'])) {
                                     echo "<div class=\"form-group\"><!-- form-group Starts -->
                                     <label class=\"col-md-3 control-label\"> Total Qty. </label>
                                     <div class=\"col-md-6\">
-                                        <input type=\"number\" name=\"land_t_qty\" class=\"form-control\" pattern=\"^[1.0-9.9]\" min=\"$pre_not_available\"
-                                       step=\"1\" value=\"$land_t_qty\" data-tippy='This value cannot be less than $pre_not_available' data-tippy-arrow=\"true\" data-tippy-size=\"large\">
+                                        <input type=\"number\" name=\"land_t_qty\" class=\"form-control\" pattern=\"^[1.00-9.99]\" min=\"$pre_not_available\"
+                                       step=\"0.01\" value=\"$land_t_qty\" data-tippy='This value cannot be less than $pre_not_available' data-tippy-arrow=\"true\" data-tippy-size=\"large\">
                                     </div>
                                   </div><!-- form-group Ends -->";
 
                                     echo "<div class=\"form-group\"><!-- form-group Starts -->
                                     <label class=\"col-md-3 control-label\"> Available Qty. </label>
                                     <div class=\"col-md-6\">
-                                        <input type=\"number\" name=\"land_a_qty\" class=\"form-control\" pattern=\"^[1.0-9.9]\" min=\"0\"
-                                       step=\"1\" value=\"$land_a_qty\" data-tippy='This will be auto updated' data-tippy-arrow=\"true\" data-tippy-size=\"large\">
+                                        <input type=\"number\" name=\"land_a_qty\" class=\"form-control\" pattern=\"^[1.00-9.99]\" min=\"0\"
+                                       step=\"0.01\" value=\"$land_a_qty\" data-tippy='This will be auto updated' data-tippy-arrow=\"true\" data-tippy-size=\"large\">
                                     </div>
                                   </div><!-- form-group Ends -->";
                                 }
@@ -199,7 +199,7 @@ if (!isset($_SESSION['admin_email'])) {
                                 <!-- form-group Starts -->
                                 <label class="col-md-3 control-label"> Perch Price </label>
                                 <div class="col-md-6">
-                                    <input type="number" name="land_prz" class="form-control" pattern="^[0.00-9.99]" min="1" step="1" placeholder="LKR" value="<?php echo $land_prz ?>">
+                                    <input type="number" name="land_prz" class="form-control" pattern="^[0.00-9.99]" step="0.01" min="1.00" placeholder="LKR" value="<?php echo $land_prz ?>">
                                 </div>
                             </div><!-- form-group Ends -->
 
@@ -234,7 +234,7 @@ if (!isset($_SESSION['admin_email'])) {
                                 <!-- form-group Starts -->
                                 <label class="col-md-3 control-label"> Land Image 1 </label>
                                 <div class="col-md-6">
-                                    <input type="file" name="land_img1" class="form-control">
+                                    <input type="file" name="ld_img1" class="form-control">
                                     <br><img src="land_images/<?php echo $land_img1; ?>" width="70" height="70">
                                 </div>
 
@@ -244,7 +244,7 @@ if (!isset($_SESSION['admin_email'])) {
                                 <!-- form-group Starts -->
                                 <label class="col-md-3 control-label"> Land Image 2 </label>
                                 <div class="col-md-6">
-                                    <input type="file" name="land_img2" class="form-control">
+                                    <input type="file" name="ld_img2" class="form-control">
                                     <br><img src="land_images/<?php echo $land_img2; ?>" width="70" height="70">
                                 </div>
                             </div><!-- form-group Ends -->
@@ -253,7 +253,7 @@ if (!isset($_SESSION['admin_email'])) {
                                 <!-- form-group Starts -->
                                 <label class="col-md-3 control-label"> Land Image 3 </label>
                                 <div class="col-md-6">
-                                    <input type="file" name="land_img3" class="form-control">
+                                    <input type="file" name="ld_img3" class="form-control">
                                     <br><img src="land_images/<?php echo $land_img3; ?>" width="70" height="70">
                                 </div>
                             </div><!-- form-group Ends -->
@@ -362,13 +362,13 @@ if (!isset($_SESSION['admin_email'])) {
             $creater = $_SESSION['admin_name'];
             // echo "<script> alert('creater $creater !') </script>";
 
-            $ld_img1 = $_FILES['land_img1']['name'];
-            $ld_img2 = $_FILES['land_img2']['name'];
-            $ld_img3 = $_FILES['land_img3']['name'];
+            $ld_img1 = $_FILES['ld_img1']['name'];
+            $ld_img2 = $_FILES['ld_img2']['name'];
+            $ld_img3 = $_FILES['ld_img3']['name'];
 
-            $temp_name1 = $_FILES['land_img1']['tmp_name'];
-            $temp_name2 = $_FILES['land_img2']['tmp_name'];
-            $temp_name3 = $_FILES['land_img3']['tmp_name'];
+            $temp_name1 = $_FILES['ld_img1']['tmp_name'];
+            $temp_name2 = $_FILES['ld_img2']['tmp_name'];
+            $temp_name3 = $_FILES['ld_img3']['tmp_name'];
 
             move_uploaded_file($temp_name1, "\\\\CJ-LAPTOP\\land_images\\$ld_img1");
             move_uploaded_file($temp_name2, "\\\\CJ-LAPTOP\\land_images\\$ld_img2");
@@ -385,25 +385,59 @@ if (!isset($_SESSION['admin_email'])) {
             $pre_not_ava = $pre_total - $pre_ava;
             $n_total = $ld_t_qty;
 
-            if (($ld_t_qty > $ld_a_qty) || ($ld_t_qty == $ld_a_qty)) {
-                if (($_FILES['$ld_img1']['name'] == "") && ($_FILES['$ld_img2']['name'] == "") && ($_FILES['$ld_img3']['name'] == "")) {
-                    $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$n_total', available_qty='$ld_a_qty',  perch_prz='$ld_prz', description='$ld_desc', total_price='$tot_prz', creater='$creater', availability='$ldland_ava' where land_id='$land_id'";
-                } elseif (($_FILES['$ld_img1']['name'] == "") && ($_FILES['$ld_img2']['name'] == "")) {
-                    $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$n_total', available_qty='$ld_a_qty',  perch_prz='$ld_prz', description='$ld_desc',land_img3='$ld_img3', total_price='$tot_prz', creater='$creater', availability='$ldland_ava' where land_id='$land_id'";
-                } elseif (($_FILES['$ld_img1']['name'] == "") && ($_FILES['$ld_img3']['name'] == "")) {
-                    $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$n_total', available_qty='$ld_a_qty',  perch_prz='$ld_prz', description='$ld_desc',land_img2='$ld_img2', total_price='$tot_prz', creater='$creater', availability='$ldland_ava' where land_id='$land_id'";
-                } elseif (($_FILES['$ld_img2']['name'] == "") && ($_FILES['$ld_img3']['name'] == "")) {
-                    $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$n_total', available_qty='$ld_a_qty',  perch_prz='$ld_prz', description='$ld_desc',land_img1='$ld_img1', total_price='$tot_prz', creater='$creater', availability='$ldland_ava' where land_id='$land_id'";
-                } elseif ($_FILES['$ld_img3']['name'] == "") {
-                    $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$n_total', available_qty='$ld_a_qty',  perch_prz='$ld_prz', description='$ld_desc',land_img1='$ld_img1',land_img2='$ld_img2', total_price='$tot_prz', creater='$creater', availability='$ldland_ava' where land_id='$land_id'";
-                } elseif ($_FILES['$ld_img2']['name'] == "") {
-                    $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$n_total', available_qty='$ld_a_qty',  perch_prz='$ld_prz', description='$ld_desc', land_img1='$ld_img1',land_img3='$ld_img3', total_price='$tot_prz', creater='$creater', availability='$ldland_ava' where land_id='$land_id'";
-                } elseif ($_FILES['$ld_img1']['name'] == "") {
-                    $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$n_total', available_qty='$ld_a_qty',  perch_prz='$ld_prz', description='$ld_desc', land_img2='$ld_img2', land_img3='$ld_img3', total_price='$tot_prz', creater='$creater', availability='$ldland_ava' where land_id='$land_id'";
-                } else {
-                    $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$n_total', available_qty='$ld_a_qty',  perch_prz='$ld_prz', description='$ld_desc', land_img1='$ld_img1', land_img2='$ld_img2', land_img3='$ld_img3', total_price='$tot_prz', creater='$creater', availability='$ldland_ava' where land_id='$land_id'";
-                }
+            if (($_FILES['ld_img1']['name'] == "") && ($_FILES['ld_img2']['name'] == "") && ($_FILES['ld_img3']['name'] == "")) {
+                $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$ld_t_qty', total_price='$tot_prz', available_qty='$ld_a_qty', perch_prz='$ld_prz', description='$ld_prz', availability='$ldland_ava', creater='$creater' where land_id='$land_id'";
 
+            } elseif (($_FILES['ld_img1']['name'] == "") && ($_FILES['ld_img2']['name'] == "")) {
+                $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$ld_t_qty', total_price='$tot_prz', available_qty='$ld_a_qty', perch_prz='$ld_prz', description='$ld_prz', availability='$ldland_ava', creater='$creater',land_img3='$ld_img3' where land_id='$land_id'";
+
+            } elseif (($_FILES['ld_img1']['name'] == "") && ($_FILES['ld_img3']['name'] == "")) {
+                $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$ld_t_qty', total_price='$tot_prz', available_qty='$ld_a_qty', perch_prz='$ld_prz', description='$ld_prz', availability='$ldland_ava', creater='$creater',land_img2='$ld_img2' where land_id='$land_id'";
+
+            } elseif (($_FILES['ld_img2']['name'] == "") && ($_FILES['ld_img3']['name'] == "")) {
+                $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$ld_t_qty', total_price='$tot_prz', available_qty='$ld_a_qty', perch_prz='$ld_prz', description='$ld_prz', availability='$ldland_ava', creater='$creater',land_img1='$ld_img1' where land_id='$land_id'";
+
+            } elseif ($_FILES['ld_img3']['name'] == "") {
+                $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$ld_t_qty', total_price='$tot_prz', available_qty='$ld_a_qty', perch_prz='$ld_prz', description='$ld_prz', availability='$ldland_ava', creater='$creater',land_img1='$ld_img1',land_img2='$ld_img2' where land_id='$land_id'";
+
+            } elseif ($_FILES['ld_img2']['name'] == "") {
+                $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$ld_t_qty', total_price='$tot_prz', available_qty='$ld_a_qty', perch_prz='$ld_prz', description='$ld_prz', availability='$ldland_ava', creater='$creater', land_img1='$ld_img1',land_img3='$ld_img3' where land_id='$land_id'";
+
+            } elseif ($_FILES['ld_img1']['name'] == "") {
+                $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$ld_t_qty', total_price='$tot_prz', available_qty='$ld_a_qty', perch_prz='$ld_prz', description='$ld_prz', availability='$ldland_ava', creater='$creater', land_img2='$ld_img2', land_img3='$ld_img3' where land_id='$land_id'";
+                
+            } else {
+                $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$ld_t_qty', total_price='$tot_prz', available_qty='$ld_a_qty', perch_prz='$ld_prz', description='$ld_prz', availability='$ldland_ava', creater='$creater',land_img1='$ld_img1', land_img2='$ld_img2', land_img3='$ld_img3' where land_id='$land_id'";
+            }
+
+            // if (($ld_t_qty > $ld_a_qty) || ($ld_t_qty == $ld_a_qty)) {
+                // if (($_FILES['$ld_img1']['name'] == "") && ($_FILES['$ld_img2']['name'] == "") && ($_FILES['$ld_img3']['name'] == "")) {
+                //     $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$n_total', available_qty='$ld_a_qty',  perch_prz='$ld_prz', description='$ld_desc', total_price='$tot_prz', creater='$creater', availability='$ldland_ava' where land_id='$land_id'";
+
+                // } elseif (($_FILES['$ld_img1']['name'] == "") && ($_FILES['$ld_img2']['name'] == "")) {
+                //     $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$n_total', available_qty='$ld_a_qty',  perch_prz='$ld_prz', description='$ld_desc',land_img3='$ld_img3', total_price='$tot_prz', creater='$creater', availability='$ldland_ava' where land_id='$land_id'";
+
+                // } elseif (($_FILES['$ld_img1']['name'] == "") && ($_FILES['$ld_img3']['name'] == "")) {
+                //     $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$n_total', available_qty='$ld_a_qty',  perch_prz='$ld_prz', description='$ld_desc',land_img2='$ld_img2', total_price='$tot_prz', creater='$creater', availability='$ldland_ava' where land_id='$land_id'";
+
+                // } elseif (($_FILES['$ld_img2']['name'] == "") && ($_FILES['$ld_img3']['name'] == "")) {
+                //     $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$n_total', available_qty='$ld_a_qty',  perch_prz='$ld_prz', description='$ld_desc',land_img1='$ld_img1', total_price='$tot_prz', creater='$creater', availability='$ldland_ava' where land_id='$land_id'";
+
+                // } elseif ($_FILES['$ld_img3']['name'] == "") {
+                //     $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$n_total', available_qty='$ld_a_qty',  perch_prz='$ld_prz', description='$ld_desc',land_img1='$ld_img1',land_img2='$ld_img2', total_price='$tot_prz', creater='$creater', availability='$ldland_ava' where land_id='$land_id'";
+
+                // } elseif ($_FILES['$ld_img2']['name'] == "") {
+                //     $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$n_total', available_qty='$ld_a_qty',  perch_prz='$ld_prz', description='$ld_desc', land_img1='$ld_img1',land_img3='$ld_img3', total_price='$tot_prz', creater='$creater', availability='$ldland_ava' where land_id='$land_id'";
+
+                // } elseif ($_FILES['$ld_img1']['name'] == "") {
+                //     $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$n_total', available_qty='$ld_a_qty',  perch_prz='$ld_prz', description='$ld_desc', land_img1='$ld_img2', land_img3='$ld_img3', total_price='$tot_prz', creater='$creater', availability='$ldland_ava' where land_id='$land_id'";
+
+                // } else {
+                //     $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$n_total', available_qty='$ld_a_qty',  perch_prz='$ld_prz', description='$ld_desc', land_img1='$ld_img1', land_img2='$ld_img2', land_img3='$ld_img3', total_price='$tot_prz', creater='$creater', availability='$ldland_ava' where land_id='$land_id'";
+                // }
+                echo ("<script>console.log('img1: " . $ld_img1 . "');</script>");
+                echo ("<script>console.log('img2: " . $ld_img2 . "');</script>");
+                echo ("<script>console.log('img3: " . $ld_img3 . "');</script>");
                 $run_land = mysqli_query($con, $update_land);
 
                 if ($run_land) {
@@ -412,12 +446,12 @@ if (!isset($_SESSION['admin_email'])) {
                     $('#suModal').modal('show');
                   </script>";
                 }
-            } else {
-                echo "<script> alert('This value cannot be more than $n_total(Total Quantity)!') </script>";
-                echo "<script type=\"text/javascript\">
-                    $('#loadingModal').modal('hide');
-                  </script>";
-            }
+            // } else {
+            //     echo "<script> alert('This value cannot be more than $n_total(Total Quantity)!') </script>";
+            //     echo "<script type=\"text/javascript\">
+            //         $('#loadingModal').modal('hide');
+            //       </script>";
+            // }
         }
 
 

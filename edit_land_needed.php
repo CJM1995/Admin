@@ -168,7 +168,7 @@ if (!isset($_SESSION['admin_email'])) {
 
                                 <div class="col-md-6">
 
-                                    <input type="number" name="l_land_qty" class="form-control" pattern="^[1-9]" min="1" step="1" value="<?php echo $l_land_qty ?>" required>
+                                    <input type="number" name="l_land_qty" class="form-control" pattern="^[0.00-9.99]" step="0.01" min="1.00" value="<?php echo $l_land_qty ?>" required>
 
                                 </div>
 
@@ -182,7 +182,7 @@ if (!isset($_SESSION['admin_email'])) {
 
                                 <div class="col-md-6">
 
-                                    <input type="number" name="l_need_perch_price" class="form-control" placeholder="LKR" pattern="^[0.00-9.99]" min="0" value="<?php echo $l_need_perch_price ?>">
+                                    <input type="number" name="l_need_perch_price" class="form-control" placeholder="LKR" pattern="^[0.00-9.99]" step="0.01" min="0.00" value="<?php echo $l_need_perch_price ?>">
 
                                 </div>
 
@@ -196,7 +196,7 @@ if (!isset($_SESSION['admin_email'])) {
 
                                 <div class="col-md-6">
 
-                                    <input type="number" name="l_need_tot_price" class="form-control" placeholder="LKR" pattern="^[0.00-9.99]" min="0" value="<?php echo $l_need_tot_price ?>">
+                                    <input type="number" name="l_need_tot_price" class="form-control" placeholder="LKR" pattern="^[0.00-9.99]" step="0.01" min="0.00" value="<?php echo $l_need_tot_price ?>">
 
                                 </div>
 

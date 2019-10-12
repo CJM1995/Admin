@@ -9,7 +9,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 
 } else {
-    
+
     //    echo "<link rel=\"stylesheet\" href=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css\">";
     //    echo "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js\"></script>";
     //    echo "<script src=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js\"></script>";
@@ -75,14 +75,19 @@ if (!isset($_SESSION['admin_email'])) {
 
                 <li class="item" id='ware' data-toggle="collapse" data-target="#warehouses">
                     <!-- li Starts -->
-                    <a href="#ware" class="">
-                        <i class="fa fa-fw fa-building"></i> Warehouses
-                        <i class="pull-right fa fa-fw fa-caret-down"></i>
-                    </a>
-                    <div id="warehouses" class="smenu collapse">
-                        <a style="text-decoration: none" href="index.php?insert_warehouse">Insert Warehouses</a>
-                        <a style="text-decoration: none" href="index.php?view_warehouses">View Warehouses</a>
-                    </div>
+                    
+                    <?php
+                        if ($admin_job === 'Admin' || $admin_job === 'ADMIN' || $admin_job === 'Administrator' || $admin_job === 'ADMINISTRATOR') {
+                            echo "<a href=\"#ware\" class=\"\">";
+                            echo "<i class=\"fa fa-fw fa-building\"></i> Warehouses";
+                            echo "<i class=\"pull-right fa fa-fw fa-caret-down\"></i>";
+                            echo "</a>";
+                            echo "<div id=\"warehouses\" class=\"smenu collapse\">";
+                            echo "<a style=\"text-decoration: none\" href=\"index.php?insert_warehouse\"> Insert Warehouses</a>";
+                            echo "<a style=\"text-decoration: none\" href=\"index.php?view_warehouses\"> View Warehouses</a>";
+                            echo "</div>";
+                        }
+                        ?>
                 </li><!-- li Ends -->
 
                 <li class="item" id='house' data-toggle="collapse" data-target="#houses">
@@ -141,7 +146,11 @@ if (!isset($_SESSION['admin_email'])) {
                     </a>
                     <div id="purchases_w" class="smenu collapse">
                         <a style="text-decoration: none" href="index.php?insert_warehouse_needed"> Insert Details</a>
-                        <a style="text-decoration: none" href="index.php?view_warehouse_needed"> View Details</a>
+                        <?php
+                            if ($admin_job === 'Admin' || $admin_job === 'ADMIN' || $admin_job === 'Administrator' || $admin_job === 'ADMINISTRATOR') {
+                                echo "<a style=\"text-decoration: none\" href=\"index.php?view_warehouse_needed\"> View Details</a>";
+                            }
+                            ?>
                     </div>
                 </li><!-- li Ends -->
 
@@ -179,7 +188,7 @@ if (!isset($_SESSION['admin_email'])) {
                         <?php
                             if ($admin_job === 'Admin' || $admin_job === 'ADMIN' || $admin_job === 'Administrator' || $admin_job === 'ADMINISTRATOR') {
                                 echo "<a style=\"text-decoration: none\" href=\"index.php?insert_user\"> Insert User</a>";
-                                echo "<a style=\"text-decoration: none\" href=\"index.php?view_users\"> View User</a>";
+                                echo "<a style=\"text-decoration: none\" href=\"index.php?view_users\"> View Users</a>";
                             }
                             ?>
                         <a style="text-decoration: none" href="index.php?user_profile=<?php echo $admin_id; ?>"> Edit

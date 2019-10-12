@@ -202,7 +202,7 @@ if (!isset($_SESSION['admin_email'])) {
                                 <!-- form-group Starts -->
                                 <label class="col-md-3 control-label"> Price per sq. ft </label>
                                 <div class="col-md-6">
-                                    <input type="number" name="prz_sqft" class="form-control" pattern="^[0.00-9.99]" min="1" placeholder="LKR" value="<?php echo $w_p_sqft ?>" required>
+                                    <input type="number" name="prz_sqft" class="form-control" pattern="^[0.00-9.99]" step="0.01" min="1.00" placeholder="LKR" value="<?php echo $w_p_sqft ?>" required>
                                 </div>
                             </div><!-- form-group Ends -->
 
@@ -228,7 +228,7 @@ if (!isset($_SESSION['admin_email'])) {
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <span class="input-group-btn">
-                                            <input type="number" name="roof_height" class="form-control" pattern="^[0.00-9.99]" min="1" value="<?php echo $w_rf_height ?>" required>
+                                            <input type="number" name="roof_height" class="form-control" pattern="^[0.00-9.99]" step="0.01" min="1.00" value="<?php echo $w_rf_height ?>" required>
                                         </span>
                                         <span class="input-group-btn">
                                             <select name="unit" class="form-control">
@@ -588,7 +588,7 @@ if (!isset($_SESSION['admin_email'])) {
                                 <!-- form-group Starts -->
                                 <label class="col-md-3 control-label"> General Value </label>
                                 <div class="col-md-6">
-                                    <input type="number" name="g_value" class="form-control" placeholder="LKR (Optional)" pattern="^[0.00-9.99]" min="1" value="<?php echo $w_val; ?>">
+                                    <input type="number" name="g_value" class="form-control" placeholder="LKR (Optional)" pattern="^[0.00-9.99]" step="0.01" min="1.00" value="<?php echo $w_val; ?>">
                                 </div>
                             </div><!-- form-group Ends -->
 

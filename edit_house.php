@@ -182,7 +182,7 @@ if (!isset($_SESSION['admin_email'])) {
                                 <!-- form-group Starts -->
                                 <label class="col-md-3 control-label"> Land Size </label>
                                 <div class="col-md-6">
-                                    <input type="number" name="ho_land_qty" class="form-control" pattern="^[0.0-9.9]" min="1" step="1" value="<?php echo $house_land_size ?>" required placeholder="Perches">
+                                    <input type="number" name="ho_land_qty" class="form-control" pattern="^[0.00-9.99]" min="1" step="0.01" value="<?php echo $house_land_size ?>" required placeholder="Perches">
                                 </div>
                             </div><!-- form-group Ends -->
 
@@ -222,7 +222,7 @@ if (!isset($_SESSION['admin_email'])) {
                                 <!-- form-group Starts -->
                                 <label class="col-md-3 control-label"> Base Price </label>
                                 <div class="col-md-6">
-                                    <input type="number" name="ho_prz" class="form-control" pattern="^[0.00-9.99]" min="1" step="1" placeholder="LKR" value="<?php echo $house_prz ?>">
+                                    <input type="number" name="ho_prz" class="form-control" pattern="^[0.00-9.99]" min="1" step="0.01" placeholder="LKR" value="<?php echo $house_prz ?>">
                                 </div>
                             </div><!-- form-group Ends -->
 

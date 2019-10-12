@@ -111,7 +111,7 @@ if (!isset($_SESSION['admin_email'])) {
                                 <!-- form-group Starts -->
                                 <label class="col-md-3 control-label"> Total Quantity </label>
                                 <div class="col-md-6">
-                                    <input type="number" name="la_t_qty" class="form-control" pattern="^[0.0-9.9]" min="1" step="1" required placeholder="Perches">
+                                    <input type="number" name="la_t_qty" class="form-control" min="1.0" placeholder="Perches" pattern="^[0.00-9.99]" step="0.01">
                                 </div>
                             </div><!-- form-group Ends -->
 
@@ -119,7 +119,7 @@ if (!isset($_SESSION['admin_email'])) {
                                 <!-- form-group Starts -->
                                 <label class="col-md-3 control-label"> Perch Price </label>
                                 <div class="col-md-6">
-                                    <input type="number" name="la_prz" class="form-control" pattern="^[0.00-9.99]" min="1" step="1" placeholder="LKR (per Perch only)" required>
+                                    <input type="number" name="la_prz" class="form-control" pattern="^[0.00-9.99]" min="1" step="0.01" placeholder="LKR (per Perch only)" required>
                                 </div>
                             </div><!-- form-group Ends -->
 
