@@ -126,55 +126,55 @@ if (!isset($_SESSION['admin_email'])) {
                                         $run_rslt = mysqli_query($con, $get_rslt);
                                     }
                                 }
-                                    if ((strcmp($rdo, 'City') == 0) && (strcmp($first, 'Sale') == 0)) {
-                                        // echo ("<script>console.log('st_count2: " . $st_count . "');</script>");
-                                        $get_rslt = "SELECT * FROM warehouses WHERE sale_type='" . $first . "' AND warehouse_id IN (SELECT warehouse_id FROM warehouses WHERE city LIKE '%$box%' AND availability='" . $ava . "')";
-                                        $run_rslt = mysqli_query($con, $get_rslt);
-                                    }
-                                    if ((strcmp($rdo, 'City') == 0) and (strcmp($first, 'Rent') == 0)) {
-                                        $get_rslt = "SELECT * FROM warehouses WHERE sale_type='" . $first . "' AND warehouse_id IN (SELECT warehouse_id FROM warehouses WHERE city LIKE '%$box%' AND availability='" . $ava . "')";
-                                        $run_rslt = mysqli_query($con, $get_rslt);
-                                    }
-                                    if ((strcmp($rdo, 'City') == 0) and (strcmp($first, 'Lease') == 0)) {
-                                        $get_rslt = "SELECT * FROM warehouses WHERE sale_type='" . $first . "' AND warehouse_id IN (SELECT warehouse_id FROM warehouses WHERE city LIKE '%$box%' AND availability='" . $ava . "')";
-                                        $run_rslt = mysqli_query($con, $get_rslt);
-                                    }
-                                    if ((strcmp($rdo, 'Area') == 0) and (strcmp($first, 'Sale') == 0)) {
-                                        $get_rslt = "SELECT * FROM warehouses WHERE sale_type='" . $first . "' AND warehouse_id IN (SELECT warehouse_id FROM warehouses WHERE area_sqft='" . $box . "' AND availability='" . $ava . "')";
-                                        $run_rslt = mysqli_query($con, $get_rslt);
-                                    }
-                                    if ((strcmp($rdo, 'Area') == 0) and (strcmp($first, 'Rent') == 0)) {
-                                        $get_rslt = "SELECT * FROM warehouses WHERE sale_type='" . $first . "' AND warehouse_id IN (SELECT warehouse_id FROM warehouses WHERE area_sqft='" . $box . "' AND availability='" . $ava . "')";
-                                        $run_rslt = mysqli_query($con, $get_rslt);
-                                    }
-                                    if ((strcmp($rdo, 'Area') == 0) and (strcmp($first, 'Lease') == 0)) {
-                                        $get_rslt = "SELECT * FROM warehouses WHERE sale_type='" . $first . "' AND warehouse_id IN (SELECT warehouse_id FROM warehouses WHERE area_sqft='" . $box . "' AND availability='" . $ava . "')";
-                                        $run_rslt = mysqli_query($con, $get_rslt);
-                                    }
-                                    if ((strcmp($rdo, 'Price_sq') == 0) and (strcmp($first, 'Sale') == 0)) {
-                                        $get_rslt = "SELECT * FROM warehouses WHERE sale_type='" . $first . "' AND warehouse_id IN (SELECT warehouse_id FROM warehouses WHERE price_sqft LIKE '%$box%' AND availability='" . $ava . "')";
-                                        $run_rslt = mysqli_query($con, $get_rslt);
-                                    }
-                                    if ((strcmp($rdo, 'Price_sq') == 0) and (strcmp($first, 'Rent') == 0)) {
-                                        $get_rslt = "SELECT * FROM warehouses WHERE sale_type='" . $first . "' AND warehouse_id IN (SELECT warehouse_id FROM warehouses WHERE price_sqft LIKE '%$box%' AND availability='" . $ava . "')";
-                                        $run_rslt = mysqli_query($con, $get_rslt);
-                                    }
-                                    if ((strcmp($rdo, 'Price_sq') == 0) and (strcmp($first, 'Lease') == 0)) {
-                                        $get_rslt = "SELECT * FROM warehouses WHERE sale_type='" . $first . "' AND warehouse_id IN (SELECT warehouse_id FROM warehouses WHERE price_sqft LIKE '%$box%' AND availability='" . $ava . "')";
-                                        $run_rslt = mysqli_query($con, $get_rslt);
-                                    }
-                                    if ((strcmp($rdo, 'Price') == 0) and (strcmp($first, 'Sale') == 0)) {
-                                        $get_rslt = "SELECT * FROM warehouses WHERE sale_type='" . $first . "' AND warehouse_id IN (SELECT warehouse_id FROM warehouses WHERE value LIKE '%$box%' AND availability='" . $ava . "')";
-                                        $run_rslt = mysqli_query($con, $get_rslt);
-                                    }
-                                    if ((strcmp($rdo, 'Price') == 0) and (strcmp($first, 'Rent') == 0)) {
-                                        $get_rslt = "SELECT * FROM warehouses WHERE sale_type='" . $first . "' AND warehouse_id IN (SELECT warehouse_id FROM warehouses WHERE value LIKE '%$box%' AND availability='" . $ava . "')";
-                                        $run_rslt = mysqli_query($con, $get_rslt);
-                                    }
-                                    if ((strcmp($rdo, 'Price') == 0) and (strcmp($first, 'Lease') == 0)) {
-                                        $get_rslt = "SELECT * FROM warehouses WHERE sale_type='" . $first . "' AND warehouse_id IN (SELECT warehouse_id FROM warehouses WHERE value LIKE '%$box%' AND availability='" . $ava . "')";
-                                        $run_rslt = mysqli_query($con, $get_rslt);
-                                    }
+                                if ((strcmp($rdo, 'City') == 0) && (strcmp($first, 'Sale') == 0)) {
+                                    // echo ("<script>console.log('st_count2: " . $st_count . "');</script>");
+                                    $get_rslt = "SELECT * FROM warehouses WHERE sale_type='" . $first . "' AND warehouse_id IN (SELECT warehouse_id FROM warehouses WHERE city LIKE '%$box%' AND availability='" . $ava . "')";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
+                                if ((strcmp($rdo, 'City') == 0) and (strcmp($first, 'Rent') == 0)) {
+                                    $get_rslt = "SELECT * FROM warehouses WHERE sale_type='" . $first . "' AND warehouse_id IN (SELECT warehouse_id FROM warehouses WHERE city LIKE '%$box%' AND availability='" . $ava . "')";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
+                                if ((strcmp($rdo, 'City') == 0) and (strcmp($first, 'Lease') == 0)) {
+                                    $get_rslt = "SELECT * FROM warehouses WHERE sale_type='" . $first . "' AND warehouse_id IN (SELECT warehouse_id FROM warehouses WHERE city LIKE '%$box%' AND availability='" . $ava . "')";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
+                                if ((strcmp($rdo, 'Area') == 0) and (strcmp($first, 'Sale') == 0)) {
+                                    $get_rslt = "SELECT * FROM warehouses WHERE sale_type='" . $first . "' AND warehouse_id IN (SELECT warehouse_id FROM warehouses WHERE area_sqft='" . $box . "' AND availability='" . $ava . "')";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
+                                if ((strcmp($rdo, 'Area') == 0) and (strcmp($first, 'Rent') == 0)) {
+                                    $get_rslt = "SELECT * FROM warehouses WHERE sale_type='" . $first . "' AND warehouse_id IN (SELECT warehouse_id FROM warehouses WHERE area_sqft='" . $box . "' AND availability='" . $ava . "')";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
+                                if ((strcmp($rdo, 'Area') == 0) and (strcmp($first, 'Lease') == 0)) {
+                                    $get_rslt = "SELECT * FROM warehouses WHERE sale_type='" . $first . "' AND warehouse_id IN (SELECT warehouse_id FROM warehouses WHERE area_sqft='" . $box . "' AND availability='" . $ava . "')";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
+                                if ((strcmp($rdo, 'Price_sq') == 0) and (strcmp($first, 'Sale') == 0)) {
+                                    $get_rslt = "SELECT * FROM warehouses WHERE sale_type='" . $first . "' AND warehouse_id IN (SELECT warehouse_id FROM warehouses WHERE price_sqft LIKE '%$box%' AND availability='" . $ava . "')";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
+                                if ((strcmp($rdo, 'Price_sq') == 0) and (strcmp($first, 'Rent') == 0)) {
+                                    $get_rslt = "SELECT * FROM warehouses WHERE sale_type='" . $first . "' AND warehouse_id IN (SELECT warehouse_id FROM warehouses WHERE price_sqft LIKE '%$box%' AND availability='" . $ava . "')";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
+                                if ((strcmp($rdo, 'Price_sq') == 0) and (strcmp($first, 'Lease') == 0)) {
+                                    $get_rslt = "SELECT * FROM warehouses WHERE sale_type='" . $first . "' AND warehouse_id IN (SELECT warehouse_id FROM warehouses WHERE price_sqft LIKE '%$box%' AND availability='" . $ava . "')";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
+                                if ((strcmp($rdo, 'Price') == 0) and (strcmp($first, 'Sale') == 0)) {
+                                    $get_rslt = "SELECT * FROM warehouses WHERE sale_type='" . $first . "' AND warehouse_id IN (SELECT warehouse_id FROM warehouses WHERE value LIKE '%$box%' AND availability='" . $ava . "')";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
+                                if ((strcmp($rdo, 'Price') == 0) and (strcmp($first, 'Rent') == 0)) {
+                                    $get_rslt = "SELECT * FROM warehouses WHERE sale_type='" . $first . "' AND warehouse_id IN (SELECT warehouse_id FROM warehouses WHERE value LIKE '%$box%' AND availability='" . $ava . "')";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
+                                if ((strcmp($rdo, 'Price') == 0) and (strcmp($first, 'Lease') == 0)) {
+                                    $get_rslt = "SELECT * FROM warehouses WHERE sale_type='" . $first . "' AND warehouse_id IN (SELECT warehouse_id FROM warehouses WHERE value LIKE '%$box%' AND availability='" . $ava . "')";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
                             } elseif ($st_count == 2) {
                                 if ($box == '' || $box == null) {
                                     if ((strcmp($first, 'Sale') == 0) && (strcmp($second, 'Rent') == 0)) {
@@ -254,32 +254,32 @@ if (!isset($_SESSION['admin_email'])) {
                                     $get_rslt = "SELECT * FROM warehouses WHERE sale_type='" . $first . "' OR sale_type='" . $second . "' AND warehouse_id IN (SELECT warehouse_id FROM warehouses WHERE value LIKE '%$box%' AND availability='" . $ava . "')";
                                     $run_rslt = mysqli_query($con, $get_rslt);
                                 }
-                            } elseif ($st_count == 3) {
+                            } else {
                                 if ($box == '' || $box == null) {
                                     $get_rslt = "SELECT * FROM warehouses WHERE availability='" . $ava . "'";
                                     $run_rslt = mysqli_query($con, $get_rslt);
-                                }
-                            } else {
+                                } else {
 
-                                if (strcmp($rdo, 'City') == 0) {
-                                    $get_rslt = "SELECT * FROM warehouses WHERE city LIKE '%$box%' AND availability='" . $ava . "'";
-                                    $run_rslt = mysqli_query($con, $get_rslt);
-                                }
-                                if (strcmp($rdo, 'Area') == 0) {
-                                    $get_rslt = "select * from warehouses WHERE area_sqft='" . $box . "' AND availability='" . $ava . "'";
-                                    $run_rslt = mysqli_query($con, $get_rslt);
-                                }
-                                if (strcmp($rdo, 'Price_sq') == 0) {
-                                    $get_rslt = "select * from warehouses WHERE price_sqft='" . $box . "' AND availability='$ava'";
-                                    $run_rslt = mysqli_query($con, $get_rslt);
-                                }
-                                if (strcmp($rdo, 'Price') == 0) {
-                                    $get_rslt = "SELECT * from warehouses WHERE base_price LIKE '%$box%' AND availability='" . $ava . "'";
-                                    $run_rslt = mysqli_query($con, $get_rslt);
-                                }
-                                if (strcmp($rdo, 'Code') == 0) {
-                                    $get_rslt = "select * from warehouses WHERE code='" . $box . "' AND availability='" . $ava . "'";
-                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                    if (strcmp($rdo, 'City') == 0) {
+                                        $get_rslt = "SELECT * FROM warehouses WHERE city LIKE '%$box%' AND availability='" . $ava . "'";
+                                        $run_rslt = mysqli_query($con, $get_rslt);
+                                    }
+                                    if (strcmp($rdo, 'Area') == 0) {
+                                        $get_rslt = "select * from warehouses WHERE area_sqft='" . $box . "' AND availability='" . $ava . "'";
+                                        $run_rslt = mysqli_query($con, $get_rslt);
+                                    }
+                                    if (strcmp($rdo, 'Price_sq') == 0) {
+                                        $get_rslt = "select * from warehouses WHERE price_sqft='" . $box . "' AND availability='$ava'";
+                                        $run_rslt = mysqli_query($con, $get_rslt);
+                                    }
+                                    if (strcmp($rdo, 'Price') == 0) {
+                                        $get_rslt = "SELECT * from warehouses WHERE base_price LIKE '%$box%' AND availability='" . $ava . "'";
+                                        $run_rslt = mysqli_query($con, $get_rslt);
+                                    }
+                                    if (strcmp($rdo, 'Code') == 0) {
+                                        $get_rslt = "select * from warehouses WHERE code='" . $box . "' AND availability='" . $ava . "'";
+                                        $run_rslt = mysqli_query($con, $get_rslt);
+                                    }
                                 }
                             }
 

@@ -152,8 +152,8 @@ if (!isset($_SESSION['admin_email'])) {
                         <i class="pull-right fa fa-fw fa-caret-down"></i>
                     </a>
                     <div id="purchases_h" class="smenu collapse">
-                        <a style="text-decoration: none" href="index.php?insert_house_purchase"> Insert Details</a>
-                        <a style="text-decoration: none" href="index.php?view_house_purchases"> View Details</a>
+                        <a style="text-decoration: none" href="index.php?insert_house_needed"> Insert Details</a>
+                        <a style="text-decoration: none" href="index.php?view_house_needed"> View Details</a>
                     </div>
                 </li><!-- li Ends -->
 
@@ -164,8 +164,8 @@ if (!isset($_SESSION['admin_email'])) {
                         <i class="pull-right fa fa-fw fa-caret-down"></i>
                     </a>
                     <div id="purchases_l" class="smenu collapse">
-                        <a style="text-decoration: none" href="index.php?insert_land_purchase"> Insert Details</a>
-                        <a style="text-decoration: none" href="index.php?view_land_purchases"> View Details</a>
+                        <a style="text-decoration: none" href="index.php?insert_land_needed"> Insert Details</a>
+                        <a style="text-decoration: none" href="index.php?view_land_needed"> View Details</a>
                     </div>
                 </li><!-- li Ends -->
 

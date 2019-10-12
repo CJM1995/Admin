@@ -218,27 +218,27 @@ if (!isset($_SESSION['admin_email'])) {
                                     $get_rslt = "SELECT * FROM lands WHERE sale_type='" . $first . "' OR sale_type='" . $second . "' AND land_id IN (SELECT land_id FROM lands WHERE total_price LIKE '%$box%' AND availability='" . $ava . "')";
                                     $run_rslt = mysqli_query($con, $get_rslt);
                                 }
-                            } elseif ($st_count == 3) {
+                            } else {
                                 if ($box == '' || $box == null) {
                                     $get_rslt = "SELECT * FROM lands WHERE availability='" . $ava . "'";
                                     $run_rslt = mysqli_query($con, $get_rslt);
-                                }
-                            } else {
-                                if (strcmp($rdo, 'City') == 0) {
-                                    $get_rslt = "SELECT * FROM lands WHERE city LIKE '%$box%' AND availability='" . $ava . "'";
-                                    $run_rslt = mysqli_query($con, $get_rslt);
-                                }
-                                if (strcmp($rdo, 'Quantity') == 0) {
-                                    $get_rslt = "SELECT * FROM lands WHERE available_qty='" . $box . "' AND availability='" . $ava . "'";
-                                    $run_rslt = mysqli_query($con, $get_rslt);
-                                }
-                                if (strcmp($rdo, 'Price') == 0) {
-                                    $get_rslt = "SELECT * FROM lands WHERE total_price LIKE '%$box%' AND availability='" . $ava . "'";
-                                    $run_rslt = mysqli_query($con, $get_rslt);
-                                }
-                                if (strcmp($rdo, 'Code') == 0) {
-                                    $get_rslt = "SELECT * FROM lands WHERE code='" . $box . "' AND availability='" . $ava . "'";
-                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                } else {
+                                    if (strcmp($rdo, 'City') == 0) {
+                                        $get_rslt = "SELECT * FROM lands WHERE city LIKE '%$box%' AND availability='" . $ava . "'";
+                                        $run_rslt = mysqli_query($con, $get_rslt);
+                                    }
+                                    if (strcmp($rdo, 'Quantity') == 0) {
+                                        $get_rslt = "SELECT * FROM lands WHERE available_qty='" . $box . "' AND availability='" . $ava . "'";
+                                        $run_rslt = mysqli_query($con, $get_rslt);
+                                    }
+                                    if (strcmp($rdo, 'Price') == 0) {
+                                        $get_rslt = "SELECT * FROM lands WHERE total_price LIKE '%$box%' AND availability='" . $ava . "'";
+                                        $run_rslt = mysqli_query($con, $get_rslt);
+                                    }
+                                    if (strcmp($rdo, 'Code') == 0) {
+                                        $get_rslt = "SELECT * FROM lands WHERE code='" . $box . "' AND availability='" . $ava . "'";
+                                        $run_rslt = mysqli_query($con, $get_rslt);
+                                    }
                                 }
                             }
 

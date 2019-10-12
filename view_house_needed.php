@@ -19,7 +19,7 @@ if (!isset($_SESSION['admin_email'])) {
             <ol class="breadcrumb">
                 <!-- breadcrumb Starts -->
                 <li class="active">
-                    <i class="fa fa-dashboard"></i> Dashboard / View Needed Warehouses
+                    <i class="fa fa-dashboard"></i> Dashboard / View Needed Houses
                 </li>
             </ol><!-- breadcrumb Ends -->
         </div><!-- col-lg-12 Ends -->
@@ -38,7 +38,7 @@ if (!isset($_SESSION['admin_email'])) {
                     <div class="row">
                         <div class="col-xs-12">
                             <h3 class="panel-title pull-left" style="padding-top: 7.5px;">
-                                <i class="fa fa-building fa-2x fa-fw"></i> View Needed Warehouses
+                                <i class="fa fa-home fa-2x fa-fw"></i> View Needed Houses
                             </h3>
                         </div>
                     </div>
@@ -74,6 +74,7 @@ if (!isset($_SESSION['admin_email'])) {
                                 </label>
                                 <label class="radio-inline"><input type="radio" name="optradio" value="Customer">Customer Name</label>
                                 <label class="radio-inline"><input type="radio" name="optradio" value="City">City</label>
+                                <label class="radio-inline"><input type="radio" name="optradio" value="Bedrooms">Bedrooms</label>
                                 <label class="radio-inline"><input type="radio" name="optradio" value="Price">Price</label>
                             </div>
 
@@ -111,130 +112,162 @@ if (!isset($_SESSION['admin_email'])) {
                                 if ($box == '' || $box == null) {
                                     if (strcmp($first, 'Sale') == 0) {
                                         // echo ("<script>console.log('st_count2: " . $st_count . "');</script>");
-                                        $get_rslt = "SELECT * FROM warehouse_needs WHERE sale_type='" . $first . "' AND need_status='" . $status . "'";
+                                        $get_rslt = "SELECT * FROM house_needs WHERE sale_type='" . $first . "' AND need_status='" . $status . "'";
                                         $run_rslt = mysqli_query($con, $get_rslt);
                                     }
                                     if (strcmp($first, 'Rent') == 0) {
-                                        $get_rslt = "SELECT * FROM warehouse_needs WHERE sale_type='" . $first . "' AND need_status='" . $status . "'";
+                                        $get_rslt = "SELECT * FROM house_needs WHERE sale_type='" . $first . "' AND need_status='" . $status . "'";
                                         $run_rslt = mysqli_query($con, $get_rslt);
                                     }
                                     if (strcmp($first, 'Lease') == 0) {
-                                        $get_rslt = "SELECT * FROM warehouse_needs WHERE sale_type='" . $first . "' AND need_status='" . $status . "'";
+                                        $get_rslt = "SELECT * FROM house_needs WHERE sale_type='" . $first . "' AND need_status='" . $status . "'";
                                         $run_rslt = mysqli_query($con, $get_rslt);
                                     }
                                 }
 
                                 if ((strcmp($rdo, 'City') == 0) && (strcmp($first, 'Sale') == 0)) {
                                     // echo ("<script>console.log('st_count2: " . $st_count . "');</script>");
-                                    $get_rslt = "SELECT * FROM warehouse_needs WHERE sale_type='" . $first . "' AND w_need_id IN (SELECT w_need_id FROM warehouse_needs WHERE city LIKE '%$box%' AND need_status='" . $status . "')";
+                                    $get_rslt = "SELECT * FROM house_needs WHERE sale_type='" . $first . "' AND h_need_id IN (SELECT h_need_id FROM house_needs WHERE city LIKE '%$box%' AND need_status='" . $status . "')";
                                     $run_rslt = mysqli_query($con, $get_rslt);
                                 }
                                 if ((strcmp($rdo, 'City') == 0) && (strcmp($first, 'Rent') == 0)) {
-                                    $get_rslt = "SELECT * FROM warehouse_needs WHERE sale_type='" . $first . "' AND w_need_id IN (SELECT w_need_id FROM warehouse_needs WHERE city LIKE '%$box%' AND need_status='" . $status . "')";
+                                    $get_rslt = "SELECT * FROM house_needs WHERE sale_type='" . $first . "' AND h_need_id IN (SELECT h_need_id FROM house_needs WHERE city LIKE '%$box%' AND need_status='" . $status . "')";
                                     $run_rslt = mysqli_query($con, $get_rslt);
                                 }
                                 if ((strcmp($rdo, 'City') == 0) && (strcmp($first, 'Lease') == 0)) {
-                                    $get_rslt = "SELECT * FROM warehouse_needs WHERE sale_type='" . $first . "' AND w_need_id IN (SELECT w_need_id FROM warehouse_needs WHERE city LIKE '%$box%' AND need_status='" . $status . "')";
+                                    $get_rslt = "SELECT * FROM house_needs WHERE sale_type='" . $first . "' AND h_need_id IN (SELECT h_need_id FROM house_needs WHERE city LIKE '%$box%' AND need_status='" . $status . "')";
                                     $run_rslt = mysqli_query($con, $get_rslt);
                                 }
                                 if ((strcmp($rdo, 'Customer') == 0) && (strcmp($first, 'Sale') == 0)) {
-                                    $get_rslt = "SELECT * FROM warehouse_needs,customersn WHERE sale_type='" . $first . "' AND need_status='" . $status . "' AND cus_id IN (SELECT cus_id FROM customersn WHERE name LIKE '%$box%')";
+                                    $get_rslt = "SELECT * FROM house_needs,customersn WHERE sale_type='" . $first . "' AND need_status='" . $status . "' AND cus_id IN (SELECT cus_id FROM customersn WHERE name LIKE '%$box%')";
                                     $run_rslt = mysqli_query($con, $get_rslt);
                                 }
                                 if ((strcmp($rdo, 'Customer') == 0) && (strcmp($first, 'Rent') == 0)) {
-                                    $get_rslt = "SELECT * FROM warehouse_needs,customersn WHERE sale_type='" . $first . "' AND need_status='" . $status . "' AND cus_id IN (SELECT cus_id FROM customersn WHERE name LIKE '%$box%')";
+                                    $get_rslt = "SELECT * FROM house_needs,customersn WHERE sale_type='" . $first . "' AND need_status='" . $status . "' AND cus_id IN (SELECT cus_id FROM customersn WHERE name LIKE '%$box%')";
                                     $run_rslt = mysqli_query($con, $get_rslt);
                                 }
                                 if ((strcmp($rdo, 'Customer') == 0) && (strcmp($first, 'Lease') == 0)) {
-                                    $get_rslt = "SELECT * FROM warehouse_needs,customersn WHERE sale_type='" . $first . "' AND need_status='" . $status . "' AND cus_id IN (SELECT cus_id FROM customersn WHERE name LIKE '%$box%')";
+                                    $get_rslt = "SELECT * FROM house_needs,customersn WHERE sale_type='" . $first . "' AND need_status='" . $status . "' AND cus_id IN (SELECT cus_id FROM customersn WHERE name LIKE '%$box%')";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
+                                if ((strcmp($rdo, 'Bedrooms') == 0) && (strcmp($first, 'Sale') == 0)) {
+                                    // echo ("<script>console.log('st_count2: " . $st_count . "');</script>");
+                                    $get_rslt = "SELECT * FROM house_needs WHERE sale_type='" . $first . "' AND h_need_id IN (SELECT h_need_id FROM house_needs WHERE bedrooms LIKE '%$box%' AND need_status='" . $status . "')";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
+                                if ((strcmp($rdo, 'Bedrooms') == 0) && (strcmp($first, 'Rent') == 0)) {
+                                    $get_rslt = "SELECT * FROM house_needs WHERE sale_type='" . $first . "' AND h_need_id IN (SELECT h_need_id FROM house_needs WHERE bedrooms LIKE '%$box%' AND need_status='" . $status . "')";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
+                                if ((strcmp($rdo, 'Bedrooms') == 0) && (strcmp($first, 'Lease') == 0)) {
+                                    $get_rslt = "SELECT * FROM house_needs WHERE sale_type='" . $first . "' AND h_need_id IN (SELECT h_need_id FROM house_needs WHERE bedrooms LIKE '%$box%' AND need_status='" . $status . "')";
                                     $run_rslt = mysqli_query($con, $get_rslt);
                                 }
                                 if ((strcmp($rdo, 'Price') == 0) && (strcmp($first, 'Sale') == 0)) {
-                                    $get_rslt = "SELECT * FROM warehouse_needs WHERE sale_type='" . $first . "' AND w_need_id IN (SELECT w_need_id FROM warehouse_needs WHERE max_price LIKE '%$box%' AND need_status='" . $status . "')";
+                                    $get_rslt = "SELECT * FROM house_needs WHERE sale_type='" . $first . "' AND h_need_id IN (SELECT h_need_id FROM house_needs WHERE max_price LIKE '%$box%' AND need_status='" . $status . "')";
                                     $run_rslt = mysqli_query($con, $get_rslt);
                                 }
                                 if ((strcmp($rdo, 'Price') == 0) && (strcmp($first, 'Rent') == 0)) {
-                                    $get_rslt = "SELECT * FROM warehouse_needs WHERE sale_type='" . $first . "' AND w_need_id IN (SELECT w_need_id FROM warehouse_needs WHERE max_price LIKE '%$box%' AND need_status='" . $status . "')";
+                                    $get_rslt = "SELECT * FROM house_needs WHERE sale_type='" . $first . "' AND h_need_id IN (SELECT h_need_id FROM house_needs WHERE max_price LIKE '%$box%' AND need_status='" . $status . "')";
                                     $run_rslt = mysqli_query($con, $get_rslt);
                                 }
                                 if ((strcmp($rdo, 'Price') == 0) && (strcmp($first, 'Lease') == 0)) {
-                                    $get_rslt = "SELECT * FROM warehouse_needs WHERE sale_type='" . $first . "' AND w_need_id IN (SELECT w_need_id FROM warehouse_needs WHERE max_price LIKE '%$box%' AND need_status='" . $status . "')";
+                                    $get_rslt = "SELECT * FROM house_needs WHERE sale_type='" . $first . "' AND h_need_id IN (SELECT h_need_id FROM house_needs WHERE max_price LIKE '%$box%' AND need_status='" . $status . "')";
                                     $run_rslt = mysqli_query($con, $get_rslt);
                                 }
                             } elseif ($st_count == 2) {
                                 if ($box == '' || $box == null) {
                                     if ((strcmp($first, 'Sale') == 0) && (strcmp($second, 'Rent') == 0)) {
                                         // echo ("<script>console.log('st_count2: " . $st_count . "');</script>");
-                                        $get_rslt = "SELECT * FROM warehouse_needs WHERE need_status='" . $status . "' AND w_need_id IN (SELECT w_need_id FROM warehouse_needs WHERE sale_type='" . $first . "' OR sale_type='" . $second . "')";
+                                        $get_rslt = "SELECT * FROM house_needs WHERE need_status='" . $status . "' AND h_need_id IN (SELECT h_need_id FROM house_needs WHERE sale_type='" . $first . "' OR sale_type='" . $second . "')";
                                         $run_rslt = mysqli_query($con, $get_rslt);
                                     }
                                     if ((strcmp($first, 'Sale') == 0) && (strcmp($second, 'Lease') == 0)) {
                                         // echo ("<script>console.log('st_count2: " . $st_count . "');</script>");
-                                        $get_rslt = "SELECT * FROM warehouse_needs WHERE need_status='" . $status . "' AND w_need_id IN (SELECT w_need_id FROM warehouse_needs WHERE sale_type='" . $first . "' OR sale_type='" . $second . "')";
+                                        $get_rslt = "SELECT * FROM house_needs WHERE need_status='" . $status . "' AND h_need_id IN (SELECT h_need_id FROM house_needs WHERE sale_type='" . $first . "' OR sale_type='" . $second . "')";
                                         $run_rslt = mysqli_query($con, $get_rslt);
                                     }
                                     if ((strcmp($first, 'Rent') == 0) && (strcmp($second, 'Lease') == 0)) {
                                         // echo ("<script>console.log('st_count2: " . $st_count . "');</script>");
-                                        $get_rslt = "SELECT * FROM warehouse_needs WHERE need_status='" . $status . "' AND w_need_id IN (SELECT w_need_id FROM warehouse_needs WHERE sale_type='" . $first . "' OR sale_type='" . $second . "')";
+                                        $get_rslt = "SELECT * FROM house_needs WHERE need_status='" . $status . "' AND h_need_id IN (SELECT h_need_id FROM house_needs WHERE sale_type='" . $first . "' OR sale_type='" . $second . "')";
                                         $run_rslt = mysqli_query($con, $get_rslt);
                                     }
                                 }
 
                                 if ((strcmp($rdo, 'City') == 0) && (strcmp($first, 'Sale') == 0) && (strcmp($second, 'Rent') == 0)) {
                                     // echo ("<script>console.log('st_count2: " . $st_count . "');</script>");
-                                    $get_rslt = "SELECT * FROM warehouse_needs WHERE sale_type='" . $first . "' OR sale_type='" . $second . "' AND w_need_id IN (SELECT w_need_id FROM warehouse_needs WHERE city LIKE '%$box%' AND need_status='" . $status . "')";
+                                    $get_rslt = "SELECT * FROM house_needs WHERE sale_type='" . $first . "' OR sale_type='" . $second . "' AND h_need_id IN (SELECT h_need_id FROM house_needs WHERE city LIKE '%$box%' AND need_status='" . $status . "')";
                                     $run_rslt = mysqli_query($con, $get_rslt);
                                 }
                                 if ((strcmp($rdo, 'City') == 0) && (strcmp($first, 'Sale') == 0) && (strcmp($second, 'Lease') == 0)) {
                                     // echo ("<script>console.log('st_count2: " . $st_count . "');</script>");
-                                    $get_rslt = "SELECT * FROM warehouse_needs WHERE sale_type='" . $first . "' OR sale_type='" . $second . "' AND w_need_id IN (SELECT w_need_id FROM warehouse_needs WHERE city LIKE '%$box%' AND need_status='" . $status . "')";
+                                    $get_rslt = "SELECT * FROM house_needs WHERE sale_type='" . $first . "' OR sale_type='" . $second . "' AND h_need_id IN (SELECT h_need_id FROM house_needs WHERE city LIKE '%$box%' AND need_status='" . $status . "')";
                                     $run_rslt = mysqli_query($con, $get_rslt);
                                 }
                                 if ((strcmp($rdo, 'City') == 0) && (strcmp($first, 'Rent') == 0) && (strcmp($second, 'Lease') == 0)) {
                                     // echo ("<script>console.log('st_count2: " . $st_count . "');</script>");
-                                    $get_rslt = "SELECT * FROM warehouse_needs WHERE sale_type='" . $first . "' OR sale_type='" . $second . "' AND w_need_id IN (SELECT w_need_id FROM warehouse_needs WHERE city LIKE '%$box%' AND need_status='" . $status . "')";
+                                    $get_rslt = "SELECT * FROM house_needs WHERE sale_type='" . $first . "' OR sale_type='" . $second . "' AND h_need_id IN (SELECT h_need_id FROM house_needs WHERE city LIKE '%$box%' AND need_status='" . $status . "')";
                                     $run_rslt = mysqli_query($con, $get_rslt);
                                 }
                                 if ((strcmp($rdo, 'Customer') == 0) && (strcmp($first, 'Sale') == 0) && (strcmp($second, 'Rent') == 0)) {
-                                    $get_rslt = "SELECT * FROM warehouse_needs,customersn WHERE sale_type='" . $first . "' AND need_status='" . $status . "' AND cus_id IN (SELECT cus_id FROM customersn WHERE name LIKE '%$box%')";
+                                    $get_rslt = "SELECT * FROM house_needs,customersn WHERE sale_type='" . $first . "' AND need_status='" . $status . "' AND cus_id IN (SELECT cus_id FROM customersn WHERE name LIKE '%$box%')";
                                     $run_rslt = mysqli_query($con, $get_rslt);
                                 }
                                 if ((strcmp($rdo, 'Customer') == 0) && (strcmp($first, 'Rent') == 0) && (strcmp($second, 'Lease') == 0)) {
-                                    $get_rslt = "SELECT * FROM warehouse_needs,customersn WHERE sale_type='" . $first . "' AND need_status='" . $status . "' AND cus_id IN (SELECT cus_id FROM customersn WHERE name LIKE '%$box%')";
+                                    $get_rslt = "SELECT * FROM house_needs,customersn WHERE sale_type='" . $first . "' AND need_status='" . $status . "' AND cus_id IN (SELECT cus_id FROM customersn WHERE name LIKE '%$box%')";
                                     $run_rslt = mysqli_query($con, $get_rslt);
                                 }
                                 if ((strcmp($rdo, 'Customer') == 0) && (strcmp($first, 'Sale') == 0) && (strcmp($second, 'Lease') == 0)) {
-                                    $get_rslt = "SELECT * FROM warehouse_needs,customersn WHERE sale_type='" . $first . "' AND need_status='" . $status . "' AND cus_id IN (SELECT cus_id FROM customersn WHERE name LIKE '%$box%')";
+                                    $get_rslt = "SELECT * FROM house_needs,customersn WHERE sale_type='" . $first . "' AND need_status='" . $status . "' AND cus_id IN (SELECT cus_id FROM customersn WHERE name LIKE '%$box%')";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
+                                if ((strcmp($rdo, 'Bedrooms') == 0) && (strcmp($first, 'Sale') == 0) && (strcmp($second, 'Rent') == 0)) {
+                                    // echo ("<script>console.log('st_count2: " . $st_count . "');</script>");
+                                    $get_rslt = "SELECT * FROM house_needs WHERE sale_type='" . $first . "' OR sale_type='" . $second . "' AND h_need_id IN (SELECT h_need_id FROM house_needs WHERE bedrooms LIKE '%$box%' AND need_status='" . $status . "')";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
+                                if ((strcmp($rdo, 'Bedrooms') == 0) && (strcmp($first, 'Sale') == 0) && (strcmp($second, 'Lease') == 0)) {
+                                    // echo ("<script>console.log('st_count2: " . $st_count . "');</script>");
+                                    $get_rslt = "SELECT * FROM house_needs WHERE sale_type='" . $first . "' OR sale_type='" . $second . "' AND h_need_id IN (SELECT h_need_id FROM house_needs WHERE bedrooms LIKE '%$box%' AND need_status='" . $status . "')";
+                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                }
+                                if ((strcmp($rdo, 'Bedrooms') == 0) && (strcmp($first, 'Rent') == 0) && (strcmp($second, 'Lease') == 0)) {
+                                    // echo ("<script>console.log('st_count2: " . $st_count . "');</script>");
+                                    $get_rslt = "SELECT * FROM house_needs WHERE sale_type='" . $first . "' OR sale_type='" . $second . "' AND h_need_id IN (SELECT h_need_id FROM house_needs WHERE bedrooms LIKE '%$box%' AND need_status='" . $status . "')";
                                     $run_rslt = mysqli_query($con, $get_rslt);
                                 }
                                 if ((strcmp($rdo, 'Price') == 0) && (strcmp($first, 'Sale') == 0) && (strcmp($second, 'Rent') == 0)) {
-                                    $get_rslt = "SELECT * FROM warehouse_needs WHERE sale_type='" . $first . "' AND w_need_id IN (SELECT w_need_id FROM warehouse_needs WHERE max_price LIKE '%$box%' AND need_status='" . $status . "')";
+                                    $get_rslt = "SELECT * FROM house_needs WHERE sale_type='" . $first . "' AND h_need_id IN (SELECT h_need_id FROM house_needs WHERE max_price LIKE '%$box%' AND need_status='" . $status . "')";
                                     $run_rslt = mysqli_query($con, $get_rslt);
                                 }
                                 if ((strcmp($rdo, 'Price') == 0) && (strcmp($first, 'Rent') == 0) && (strcmp($second, 'Lease') == 0)) {
-                                    $get_rslt = "SELECT * FROM warehouse_needs WHERE sale_type='" . $first . "' AND w_need_id IN (SELECT w_need_id FROM warehouse_needs WHERE max_price LIKE '%$box%' AND need_status='" . $status . "')";
+                                    $get_rslt = "SELECT * FROM house_needs WHERE sale_type='" . $first . "' AND h_need_id IN (SELECT h_need_id FROM house_needs WHERE max_price LIKE '%$box%' AND need_status='" . $status . "')";
                                     $run_rslt = mysqli_query($con, $get_rslt);
                                 }
                                 if ((strcmp($rdo, 'Price') == 0) && (strcmp($first, 'Sale') == 0) && (strcmp($second, 'Lease') == 0)) {
-                                    $get_rslt = "SELECT * FROM warehouse_needs WHERE sale_type='" . $first . "' AND w_need_id IN (SELECT w_need_id FROM warehouse_needs WHERE max_price LIKE '%$box%' AND need_status='" . $status . "')";
+                                    $get_rslt = "SELECT * FROM house_needs WHERE sale_type='" . $first . "' AND h_need_id IN (SELECT h_need_id FROM house_needs WHERE max_price LIKE '%$box%' AND need_status='" . $status . "')";
                                     $run_rslt = mysqli_query($con, $get_rslt);
                                 }
                             } else {
                                 if ($box == '' || $box == null) {
-                                    $get_rslt = "SELECT * FROM warehouse_needs WHERE need_status='" . $status . "'";
+                                    $get_rslt = "SELECT * FROM house_needs WHERE need_status='" . $status . "'";
                                     $run_rslt = mysqli_query($con, $get_rslt);
                                 } else {
 
                                     if (strcmp($rdo, 'City') == 0) {
-                                        $get_rslt = "SELECT * FROM warehouse_needs WHERE city LIKE '%$box%' AND need_status='" . $status . "'";
+                                        $get_rslt = "SELECT * FROM house_needs WHERE city LIKE '%$box%' AND need_status='" . $status . "'";
                                         $run_rslt = mysqli_query($con, $get_rslt);
                                     }
                                     if (strcmp($rdo, 'Customer') == 0) {
-                                        $get_rslt = "SELECT * FROM warehouse_needs,customersn WHERE warehouse_needs.cus_id=customersn.cus_id AND warehouse_needs.need_status='" . $status . "' AND customersn.name LIKE '%$box%'";
+                                        $get_rslt = "SELECT * FROM house_needs,customersn WHERE house_needs.cus_id=customersn.cus_id AND house_needs.need_status='" . $status . "' AND customersn.name LIKE '%$box%'";
+                                        $run_rslt = mysqli_query($con, $get_rslt);
+                                    }
+                                    if (strcmp($rdo, 'Bedrooms') == 0) {
+                                        $get_rslt = "SELECT * FROM house_needs WHERE bedrooms LIKE '%$box%' AND need_status='" . $status . "'";
                                         $run_rslt = mysqli_query($con, $get_rslt);
                                     }
                                     if (strcmp($rdo, 'Price') == 0) {
-                                        $get_rslt = "SELECT * FROM warehouse_needs WHERE max_price LIKE '%$box%' AND need_status='" . $status . "'";
+                                        $get_rslt = "SELECT * FROM house_needs WHERE max_price LIKE '%$box%' AND need_status='" . $status . "'";
                                         $run_rslt = mysqli_query($con, $get_rslt);
                                     }
                                 }
@@ -258,7 +291,7 @@ if (!isset($_SESSION['admin_email'])) {
                                     <form method="post">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <button type="button" class="close" onclick="window.open('index.php?view_warehouse_needed','_self')">
+                                                <button type="button" class="close" onclick="window.open('index.php?view_house_needed','_self')">
                                                     &times;
                                                 </button>
                                             </div>
@@ -282,12 +315,12 @@ if (!isset($_SESSION['admin_email'])) {
                                                                 </th>
                                                                 <th style="vertical-align: middle;text-align: center">City
                                                                 </th>
-                                                                <th style="vertical-align: middle;text-align: center">Area sq. ft
+                                                                <th style="vertical-align: middle;text-align: center">Land Size
                                                                 </th>
                                                                 <th style="vertical-align: middle;text-align: center">
-                                                                    Electricity
+                                                                    Bedrooms
                                                                 </th>
-                                                                <th style="vertical-align: middle;text-align: center">Water
+                                                                <th style="vertical-align: middle;text-align: center">Bathrooms
                                                                 </th>
                                                                 <th style="vertical-align: middle;text-align: center">
                                                                     Maximum Price
@@ -305,43 +338,43 @@ if (!isset($_SESSION['admin_email'])) {
                                                             <?php
                                                                         $i = 0;
                                                                         while ($row_rslt = mysqli_fetch_array($run_rslt)) {
-                                                                            $w_need_id_s = $row_rslt['w_need_id'];
+                                                                            $h_need_id_s = $row_rslt['h_need_id'];
 
-                                                                            $w_need_cus_id_s = $row_rslt['cus_id'];
-                                                                            $get_cus_name_n_s = "select * from customersn where cus_id='$w_need_cus_id_s'";
+                                                                            $h_need_cus_id_s = $row_rslt['cus_id'];
+                                                                            $get_cus_name_n_s = "select * from customersn where cus_id='$h_need_cus_id_s'";
                                                                             $run_cus_name_n_s = mysqli_query($con, $get_cus_name_n_s);
                                                                             $row_cus_name_n_s = mysqli_fetch_array($run_cus_name_n_s);
                                                                             $cus_name_n_s = $row_cus_name_n_s['name'];
                                                                             $cus_number_n_s = $row_cus_name_n_s['phone'];
 
-                                                                            $w_need_cus_name_s = $cus_name_n_s;
-                                                                            $w_need_cus_number_s = $cus_number_n_s;
+                                                                            $h_need_cus_name_s = $cus_name_n_s;
+                                                                            $h_need_cus_number_s = $cus_number_n_s;
 
-                                                                            $w_need_city_s = $row_rslt['city'];
-                                                                            $w_need_s_type_s = $row_rslt['sale_type'];
-                                                                            $w_need_area_sqft_s = $row_rslt['area_sqft'];
-                                                                            $w_need_electric_s = $row_rslt['electricity'];
-                                                                            $w_need_water_s = $row_rslt['water'];
-                                                                            $w_need_max_price_s = $row_rslt['max_price'];
-                                                                            $w_need_desc_s = $row_rslt['description'];
-                                                                            $w_need_status_s = $row_rslt['need_status'];
-                                                                            $w_need_creater_s = $row_rslt['creater'];
+                                                                            $h_need_city_s = $row_rslt['city'];
+                                                                            $h_need_s_type_s = $row_rslt['sale_type'];
+                                                                            $h_need_land_size_s = $row_rslt['land_size'];
+                                                                            $h_need_bedrooms_s = $row_rslt['bedrooms'];
+                                                                            $h_need_bathrooms_s = $row_rslt['bathrooms'];
+                                                                            $h_need_max_price_s = $row_rslt['max_price'];
+                                                                            $h_need_desc_s = $row_rslt['description'];
+                                                                            $h_need_status_s = $row_rslt['need_status'];
+                                                                            $h_need_creater_s = $row_rslt['creater'];
                                                                             $i++;
                                                                             ?>
                                                                 <tr>
                                                                     <?php
-                                                                                    if ((strcmp($w_need_status_s, 'Pending') == 0) || (strcmp($w_need_status_s, 'On-hold') == 0)) {
+                                                                                    if ((strcmp($h_need_status_s, 'Pending') == 0) || (strcmp($h_need_status_s, 'On-hold') == 0)) {
                                                                                         echo "<td style=\"text-align:center\">
                                         <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
                                                 class=\"btn btn-success btn-sm\"
                                                 data-original-title=\"\" title=\"Edit\"
-                                                onclick=\"location.href = 'index.php?edit_warehouse_needed=$w_need_id_s';\">
+                                                onclick=\"location.href = 'index.php?edit_house_needed=$h_need_id_s';\">
                                             <i class=\"fa fa-pencil fa-fw\"></i>
                                         </button>
                                         <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
                                                 class=\"btn btn-danger btn-sm\"
                                                 data-original-title=\"\" title=\"Remove\"
-                                                onclick=\"location.href = 'index.php?delete_warehouse_needed=$w_need_id_s';\">
+                                                onclick=\"location.href = 'index.php?delete_house_needed=$h_need_id_s';\">
                                             <i class=\"fa fa-trash fa-fw\"></i>
                                         </button>
                                     </td>";
@@ -350,13 +383,13 @@ if (!isset($_SESSION['admin_email'])) {
                                         <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
                                                 class=\"btn btn-success btn-sm\"
                                                 data-original-title=\"\" title=\"Edit\"
-                                                onclick=\"location.href = 'index.php?edit_warehouse_needed=$w_need_id_s';\" disabled>
+                                                onclick=\"location.href = 'index.php?edit_house_needed=$h_need_id_s';\" disabled>
                                             <i class=\"fa fa-pencil fa-fw\"></i>
                                         </button>
                                         <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
                                                 class=\"btn btn-danger btn-sm\"
                                                 data-original-title=\"\" title=\"Remove\"
-                                                onclick=\"location.href = 'index.php?delete_warehouse_needed=$w_need_id_s';\">
+                                                onclick=\"location.href = 'index.php?delete_house_needed=$h_need_id_s';\">
                                             <i class=\"fa fa-trash fa-fw\"></i>
                                         </button>
                                     </td>";
@@ -364,17 +397,17 @@ if (!isset($_SESSION['admin_email'])) {
                                                                                     ?>
                                                                     <!-- <td><?php echo $i; ?></td> -->
 
-                                                                    <td style="text-align:center;"><?php echo $w_need_cus_name_s; ?></td>
-                                                                    <td><?php echo $w_need_cus_number_s; ?></td>
-                                                                    <td><?php echo $w_need_s_type_s; ?></td>
-                                                                    <td><?php echo $w_need_city_s; ?></td>
-                                                                    <td><?php echo number_format($w_need_area_sqft_s); ?></td>
-                                                                    <td><?php echo $w_need_electric_s; ?></td>
-                                                                    <td><?php echo $w_need_water_s; ?></td>
-                                                                    <td>LKR &nbsp;<?php echo number_format($w_need_max_price_s); ?></td>
-                                                                    <td><?php echo $w_need_desc_s; ?></td>
-                                                                    <td><?php echo $w_need_status_s; ?></td>
-                                                                    <td><?php echo $w_need_creater_s; ?></td>
+                                                                    <td style="text-align:center;"><?php echo $h_need_cus_name_s; ?></td>
+                                                                    <td><?php echo $h_need_cus_number_s; ?></td>
+                                                                    <td><?php echo $h_need_s_type_s; ?></td>
+                                                                    <td><?php echo $h_need_city_s; ?></td>
+                                                                    <td><?php echo number_format($h_need_land_size_s); ?></td>
+                                                                    <td><?php echo $h_need_bedrooms_s; ?></td>
+                                                                    <td><?php echo $h_need_bathrooms_s; ?></td>
+                                                                    <td>LKR &nbsp;<?php echo number_format($h_need_max_price_s); ?></td>
+                                                                    <td><?php echo $h_need_desc_s; ?></td>
+                                                                    <td><?php echo $h_need_status_s; ?></td>
+                                                                    <td><?php echo $h_need_creater_s; ?></td>
 
                                                                 </tr>
                                                             <?php } ?>
@@ -384,7 +417,7 @@ if (!isset($_SESSION['admin_email'])) {
 
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" onclick="window.open('index.php?view_warehouse_needed','_self')">Close
+                                                <button type="button" class="btn btn-default" onclick="window.open('index.php?view_house_needed','_self')">Close
                                                 </button>
                                             </div>
                                         </div>
@@ -428,12 +461,12 @@ if (!isset($_SESSION['admin_email'])) {
                                     </th>
                                     <th style="vertical-align: middle;text-align: center">City
                                     </th>
-                                    <th style="vertical-align: middle;text-align: center">Area sq. ft
+                                    <th style="vertical-align: middle;text-align: center">Land Size
                                     </th>
                                     <th style="vertical-align: middle;text-align: center">
-                                        Electricity
+                                        Bedrooms
                                     </th>
-                                    <th style="vertical-align: middle;text-align: center">Water
+                                    <th style="vertical-align: middle;text-align: center">Bathrooms
                                     </th>
                                     <th style="vertical-align: middle;text-align: center">
                                         Maximum Price
@@ -457,33 +490,33 @@ if (!isset($_SESSION['admin_email'])) {
 
                                     $i = 0;
 
-                                    $get_pro = "select * from warehouse_needs";
+                                    $get_pro = "select * from house_needs";
 
                                     $run_pro = mysqli_query($con, $get_pro);
 
                                     while ($row_pro = mysqli_fetch_array($run_pro)) {
 
-                                        $w_need_id = $row_pro['w_need_id'];
+                                        $h_need_id = $row_pro['h_need_id'];
 
-                                        $w_need_cus_id = $row_pro['cus_id'];
-                                        $get_cus_name_n = "select * from customersn where cus_id='$w_need_cus_id'";
+                                        $h_need_cus_id = $row_pro['cus_id'];
+                                        $get_cus_name_n = "select * from customersn where cus_id='$h_need_cus_id'";
                                         $run_cus_name_n = mysqli_query($con, $get_cus_name_n);
                                         $row_cus_name_n = mysqli_fetch_array($run_cus_name_n);
                                         $cus_name_n = $row_cus_name_n['name'];
                                         $cus_number_n = $row_cus_name_n['phone'];
 
-                                        $w_need_cus_name = $cus_name_n;
-                                        $w_need_cus_number = $cus_number_n;
+                                        $h_need_cus_name = $cus_name_n;
+                                        $h_need_cus_number = $cus_number_n;
 
-                                        $w_need_city = $row_pro['city'];
-                                        $w_need_s_type = $row_pro['sale_type'];
-                                        $w_need_area_sqft = $row_pro['area_sqft'];
-                                        $w_need_electric = $row_pro['electricity'];
-                                        $w_need_water = $row_pro['water'];
-                                        $w_need_max_price = $row_pro['max_price'];
-                                        $w_need_desc = $row_pro['description'];
-                                        $w_need_status = $row_pro['need_status'];
-                                        $w_need_creater = $row_pro['creater'];
+                                        $h_need_city = $row_pro['city'];
+                                        $h_need_s_type = $row_pro['sale_type'];
+                                        $h_need_land_size = $row_pro['land_size'];
+                                        $h_need_bedrooms = $row_pro['bedrooms'];
+                                        $h_need_bathrooms = $row_pro['bathrooms'];
+                                        $h_need_max_price = $row_pro['max_price'];
+                                        $h_need_desc = $row_pro['description'];
+                                        $h_need_status = $row_pro['need_status'];
+                                        $h_need_creater = $row_pro['creater'];
 
                                         $i++;
 
@@ -491,18 +524,18 @@ if (!isset($_SESSION['admin_email'])) {
 
                                     <tr>
                                         <?php
-                                                if ((strcmp($w_need_status, 'Pending') == 0) || (strcmp($w_need_status, 'On-hold') == 0)) {
+                                                if ((strcmp($h_need_status, 'Pending') == 0) || (strcmp($h_need_status, 'On-hold') == 0)) {
                                                     echo "<td style=\"text-align:center\">
                                         <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
                                                 class=\"btn btn-success btn-sm\"
                                                 data-original-title=\"\" title=\"Edit\"
-                                                onclick=\"location.href = 'index.php?edit_warehouse_needed=$w_need_id';\">
+                                                onclick=\"location.href = 'index.php?edit_house_needed=$h_need_id';\">
                                             <i class=\"fa fa-pencil fa-fw\"></i>
                                         </button>
                                         <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
                                                 class=\"btn btn-danger btn-sm\"
                                                 data-original-title=\"\" title=\"Remove\"
-                                                onclick=\"location.href = 'index.php?delete_warehouse_needed=$w_need_id';\">
+                                                onclick=\"location.href = 'index.php?delete_house_needed=$h_need_id';\">
                                             <i class=\"fa fa-trash fa-fw\"></i>
                                         </button>
                                     </td>";
@@ -511,13 +544,13 @@ if (!isset($_SESSION['admin_email'])) {
                                         <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
                                                 class=\"btn btn-success btn-sm\"
                                                 data-original-title=\"\" title=\"Edit\"
-                                                onclick=\"location.href = 'index.php?edit_warehouse_needed=$w_need_id';\" disabled>
+                                                onclick=\"location.href = 'index.php?edit_house_needed=$h_need_id';\" disabled>
                                             <i class=\"fa fa-pencil fa-fw\"></i>
                                         </button>
                                         <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
                                                 class=\"btn btn-danger btn-sm\"
                                                 data-original-title=\"\" title=\"Remove\"
-                                                onclick=\"location.href = 'index.php?delete_warehouse_needed=$w_need_id';\">
+                                                onclick=\"location.href = 'index.php?delete_house_needed=$h_need_id';\">
                                             <i class=\"fa fa-trash fa-fw\"></i>
                                         </button>
                                     </td>";
@@ -525,17 +558,17 @@ if (!isset($_SESSION['admin_email'])) {
                                                 ?>
                                         <!-- <td><?php echo $i; ?></td> -->
 
-                                        <td style="text-align:center;"><?php echo $w_need_cus_name; ?></td>
-                                        <td><?php echo $w_need_cus_number; ?></td>
-                                        <td><?php echo $w_need_s_type; ?></td>
-                                        <td><?php echo $w_need_city; ?></td>
-                                        <td><?php echo number_format($w_need_area_sqft); ?></td>
-                                        <td><?php echo $w_need_electric; ?></td>
-                                        <td><?php echo $w_need_water; ?></td>
-                                        <td>LKR &nbsp;<?php echo number_format($w_need_max_price); ?></td>
-                                        <td><?php echo $w_need_desc; ?></td>
-                                        <td><?php echo $w_need_status; ?></td>
-                                        <td><?php echo $w_need_creater; ?></td>
+                                        <td style="text-align:center;"><?php echo $h_need_cus_name; ?></td>
+                                        <td><?php echo $h_need_cus_number; ?></td>
+                                        <td><?php echo $h_need_s_type; ?></td>
+                                        <td><?php echo $h_need_city; ?></td>
+                                        <td><?php echo number_format($h_need_land_size); ?></td>
+                                        <td><?php echo $h_need_bedrooms; ?></td>
+                                        <td><?php echo $h_need_bathrooms; ?></td>
+                                        <td>LKR &nbsp;<?php echo number_format($h_need_max_price); ?></td>
+                                        <td><?php echo $h_need_desc; ?></td>
+                                        <td><?php echo $h_need_status; ?></td>
+                                        <td><?php echo $h_need_creater; ?></td>
 
                                     </tr>
 

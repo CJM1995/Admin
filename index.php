@@ -236,6 +236,12 @@ if (!isset($_SESSION['admin_email'])) {
 
                 }
 
+                if (isset($_GET['edit_house_needed'])) {
+
+                    include("edit_house_needed.php");
+
+                }
+
                 if (isset($_GET['delete_house_needed'])) {
 
                     include("delete_house_needed.php");
@@ -311,6 +317,12 @@ if (!isset($_SESSION['admin_email'])) {
                 if (isset($_GET['view_land_needed'])) {
 
                     include("view_land_needed.php");
+
+                }
+
+                if (isset($_GET['edit_land_needed'])) {
+
+                    include("edit_land_needed.php");
 
                 }
 

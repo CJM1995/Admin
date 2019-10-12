@@ -228,28 +228,28 @@ if (!isset($_SESSION['admin_email'])) {
                                     $get_rslt = "SELECT * FROM houses WHERE sale_type='" . $first . "' OR sale_type='" . $second . "' AND house_id IN (SELECT house_id FROM houses WHERE base_price LIKE '%$box%' AND availability='" . $ava . "')";
                                     $run_rslt = mysqli_query($con, $get_rslt);
                                 }
-                            } elseif ($st_count == 3) {
+                            } else {
                                 if ($box == '' || $box == null) {
                                     $get_rslt = "SELECT * FROM houses WHERE availability='" . $ava . "'";
                                     $run_rslt = mysqli_query($con, $get_rslt);
-                                }
-                            } else {
+                                } else {
 
-                                if (strcmp($rdo, 'City') == 0) {
-                                    $get_rslt = "SELECT * FROM houses WHERE city LIKE '%$box%' AND availability='" . $ava . "'";
-                                    $run_rslt = mysqli_query($con, $get_rslt);
-                                }
-                                if (strcmp($rdo, 'Bedrooms') == 0) {
-                                    $get_rslt = "select * from houses WHERE bedrooms='" . $box . "' AND availability='" . $ava . "'";
-                                    $run_rslt = mysqli_query($con, $get_rslt);
-                                }
-                                if (strcmp($rdo, 'Price') == 0) {
-                                    $get_rslt = "SELECT * from houses WHERE base_price LIKE '%$box%' AND availability='" . $ava . "'";
-                                    $run_rslt = mysqli_query($con, $get_rslt);
-                                }
-                                if (strcmp($rdo, 'Code') == 0) {
-                                    $get_rslt = "select * from houses WHERE code='" . $box . "' AND availability='" . $ava . "'";
-                                    $run_rslt = mysqli_query($con, $get_rslt);
+                                    if (strcmp($rdo, 'City') == 0) {
+                                        $get_rslt = "SELECT * FROM houses WHERE city LIKE '%$box%' AND availability='" . $ava . "'";
+                                        $run_rslt = mysqli_query($con, $get_rslt);
+                                    }
+                                    if (strcmp($rdo, 'Bedrooms') == 0) {
+                                        $get_rslt = "select * from houses WHERE bedrooms='" . $box . "' AND availability='" . $ava . "'";
+                                        $run_rslt = mysqli_query($con, $get_rslt);
+                                    }
+                                    if (strcmp($rdo, 'Price') == 0) {
+                                        $get_rslt = "SELECT * from houses WHERE base_price LIKE '%$box%' AND availability='" . $ava . "'";
+                                        $run_rslt = mysqli_query($con, $get_rslt);
+                                    }
+                                    if (strcmp($rdo, 'Code') == 0) {
+                                        $get_rslt = "select * from houses WHERE code='" . $box . "' AND availability='" . $ava . "'";
+                                        $run_rslt = mysqli_query($con, $get_rslt);
+                                    }
                                 }
                             }
 
