@@ -176,6 +176,11 @@ if (!isset($_SESSION['admin_email'])) {
                                                 echo "<option value=\"Rent\"> Rent</option>";
                                                 echo "<option value=\"Lease\"> Lease</option>";
                                             }
+                                            if ((strcmp($w_cat, 'Sale') != 0) && (strcmp($w_cat, 'Rent') != 0) && (strcmp($w_cat, 'Lease') != 0)) {
+                                                echo "<option value=\"Sale\"> Sale</option>";
+                                                echo "<option value=\"Rent\"> Rent</option>";
+                                                echo "<option value=\"Lease\"> Lease</option>";
+                                            }
                                             ?>
                                     </select>
                                 </div>
@@ -194,7 +199,7 @@ if (!isset($_SESSION['admin_email'])) {
                                 <!-- form-group Starts -->
                                 <label class="col-md-3 control-label"> Road Access </label>
                                 <div class="col-md-6">
-                                    <input type="text" name="road_acc" class="form-control" value="<?php echo $w_rda ?>" required>
+                                    <input type="text" name="road_acc" class="form-control" value="<?php echo $w_rda ?>">
                                 </div>
                             </div><!-- form-group Ends -->
 
@@ -202,7 +207,7 @@ if (!isset($_SESSION['admin_email'])) {
                                 <!-- form-group Starts -->
                                 <label class="col-md-3 control-label"> Price per sq. ft </label>
                                 <div class="col-md-6">
-                                    <input type="number" name="prz_sqft" class="form-control" pattern="^[0.00-9.99]" step="0.01" min="1.00" placeholder="LKR" value="<?php echo $w_p_sqft ?>" required>
+                                    <input type="number" name="prz_sqft" class="form-control" pattern="^[0.00-9.99]" step="0.01" min="1.00" placeholder="LKR" value="<?php echo $w_p_sqft ?>">
                                 </div>
                             </div><!-- form-group Ends -->
 
@@ -210,7 +215,7 @@ if (!isset($_SESSION['admin_email'])) {
                                 <!-- form-group Starts -->
                                 <label class="col-md-3 control-label"> Area sq. ft </label>
                                 <div class="col-md-6">
-                                    <input type="number" name="area_sqft" class="form-control" pattern="^[1-9]" min="1" step="1" value="<?php echo $w_a_sqft ?>" required>
+                                    <input type="number" name="area_sqft" class="form-control" pattern="^[0.01-9.99]" min="0" step="0.01" value="<?php echo $w_a_sqft ?>">
                                 </div>
                             </div><!-- form-group Ends -->
 
@@ -218,7 +223,7 @@ if (!isset($_SESSION['admin_email'])) {
                                 <!-- form-group Starts -->
                                 <label class="col-md-3 control-label"> No. of Landing Bays </label>
                                 <div class="col-md-6">
-                                    <input type="number" name="no_lbays" class="form-control" pattern="^[1-9]" min="1" step="1" value="<?php echo $w_bays ?>" required>
+                                    <input type="number" name="no_lbays" class="form-control" pattern="^[1-9]" min="0" step="1" value="<?php echo $w_bays ?>">
                                 </div>
                             </div><!-- form-group Ends -->
 
@@ -228,7 +233,7 @@ if (!isset($_SESSION['admin_email'])) {
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <span class="input-group-btn">
-                                            <input type="number" name="roof_height" class="form-control" pattern="^[0.00-9.99]" step="0.01" min="1.00" value="<?php echo $w_rf_height ?>" required>
+                                            <input type="number" name="roof_height" class="form-control" pattern="^[0.00-9.99]" step="0.01" min="1.00" value="<?php echo $w_rf_height ?>">
                                         </span>
                                         <span class="input-group-btn">
                                             <select name="unit" class="form-control">
@@ -323,7 +328,7 @@ if (!isset($_SESSION['admin_email'])) {
                                 <!-- form-group Starts -->
                                 <label class="col-md-3 control-label"> Container Parking Slots </label>
                                 <div class="col-md-6">
-                                    <input type="number" name="con_park" class="form-control" pattern="^[1-9]" min="1" step="1" value="<?php echo $w_park ?>" required>
+                                    <input type="number" name="con_park" class="form-control" pattern="^[1-9]" min="0" step="1" value="<?php echo $w_park ?>">
                                 </div>
                             </div><!-- form-group Ends -->
 
@@ -331,7 +336,7 @@ if (!isset($_SESSION['admin_email'])) {
                                 <!-- form-group Starts -->
                                 <label class="col-md-3 control-label"> Loading Points </label>
                                 <div class="col-md-6">
-                                    <input type="text" name="load_points" class="form-control" value="<?php echo $w_load ?>" required>
+                                    <input type="text" name="load_points" class="form-control" value="<?php echo $w_load ?>">
                                 </div>
                             </div><!-- form-group Ends -->
 

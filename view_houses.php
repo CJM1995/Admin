@@ -327,6 +327,9 @@ if (!isset($_SESSION['admin_email'])) {
                                                                 <th style="vertical-align: middle;text-align: center">
                                                                     Creater
                                                                 </th>
+                                                                <th style="vertical-align: middle;text-align: center">
+                                                                    Description
+                                                                </th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -359,19 +362,20 @@ if (!isset($_SESSION['admin_email'])) {
                                                                             $hou_prz_s = $row_rslt['base_price'];
                                                                             $hou_ava_s = $row_rslt['availability'];
                                                                             $hou_creater_s = $row_rslt['creater'];
+                                                                            $hou_extra_desc_s = $row_rslt['description'];
                                                                             $i++;
                                                                             ?>
                                                                 <tr>
                                                                     <?php
                                                                                     if (strcmp($hou_ava_s, 'Available') == 0) {
                                                                                         echo "<td style=\"text-align:center\">
-                                                                    <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                                                    <button style=\"margin-top: 2px;display:block;\" type=\"button\" rel=\"tooltip\"
                                                                             class=\"btn btn-success btn-sm\"
                                                                             data-original-title=\"\" title=\"Edit\"
                                                                             onclick=\"location.href = 'index.php?edit_house=$hou_id_s';\">
                                                                         <i class=\"fa fa-pencil fa-fw\"></i>
                                                                     </button>
-                                                                    <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                                                    <button style=\"margin-top: 2px;display:block;\" type=\"button\" rel=\"tooltip\"
                                                                             class=\"btn btn-danger btn-sm\"
                                                                             data-original-title=\"\" title=\"Remove\"
                                                                             onclick=\"location.href = 'index.php?delete_house=$hou_id_s';\">
@@ -380,13 +384,13 @@ if (!isset($_SESSION['admin_email'])) {
                                                                 </td>";
                                                                                     } else {
                                                                                         echo "<td style=\"text-align:center\">
-                                                                    <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                                                    <button style=\"margin-top: 2px;display:block;\" type=\"button\" rel=\"tooltip\"
                                                                             class=\"btn btn-success btn-sm\"
                                                                             data-original-title=\"\" title=\"Edit\"
                                                                             onclick=\"location.href = 'index.php?edit_house=$hou_id_s';\" disabled>
                                                                         <i class=\"fa fa-pencil fa-fw\"></i>
                                                                     </button>
-                                                                    <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                                                    <button style=\"margin-top: 2px;display:block;\" type=\"button\" rel=\"tooltip\"
                                                                             class=\"btn btn-danger btn-sm\"
                                                                             data-original-title=\"\" title=\"Remove\"
                                                                             onclick=\"location.href = 'index.php?delete_house=$hou_id_s';\">
@@ -405,14 +409,15 @@ if (!isset($_SESSION['admin_email'])) {
                                                                     <td><?php echo $hou_address_s; ?></td>
                                                                     <td><?php echo $hou_city_s; ?></td>
                                                                     <td><?php echo $hou_s_type_s; ?></td>
-                                                                    <td><?php echo $hou_land_size_s; ?></td>
+                                                                    <td><?php echo number_format($hou_land_size_s,2); ?></td>
                                                                     <td><?php echo $hou_beds_s; ?></td>
                                                                     <td><?php echo $hou_ac_beds_s; ?></td>
                                                                     <td><?php echo $hou_baths_s; ?></td>
                                                                     <td><?php echo $hou_floor_s; ?></td>
-                                                                    <td>LKR &nbsp;<?php echo number_format($hou_prz_s); ?></td>
+                                                                    <td>LKR &nbsp;<?php echo number_format($hou_prz_s,2); ?></td>
                                                                     <td><?php echo $hou_ava_s; ?></td>
                                                                     <td><?php echo $hou_creater_s; ?></td>
+                                                                    <td><?php echo $hou_extra_desc_s; ?></td>
                                                                 </tr>
                                                             <?php } ?>
                                                         </tbody>
@@ -468,6 +473,7 @@ if (!isset($_SESSION['admin_email'])) {
                                     <th style="vertical-align: middle;text-align: center">Base Price</th>
                                     <th style="vertical-align: middle;text-align: center">Availability</th>
                                     <th style="vertical-align: middle;text-align: center">Creater</th>
+                                    <th style="vertical-align: middle;text-align: center">Description</th>
 
 
                                 </tr>
@@ -512,7 +518,7 @@ if (!isset($_SESSION['admin_email'])) {
                                             $hou_baths = $row_pro['bathrooms'];
                                             $hou_floor = $row_pro['floor'];
                                             $hou_prz = $row_pro['base_price'];
-                                            // $hou_extra_desc = $row_pro['description'];
+                                            $hou_extra_desc = $row_pro['description'];
                                             $hou_ava = $row_pro['availability'];
                                             $hou_creater = $row_pro['creater'];
 
@@ -564,14 +570,15 @@ if (!isset($_SESSION['admin_email'])) {
                                             <td><?php echo $hou_address; ?></td>
                                             <td><?php echo $hou_city; ?></td>
                                             <td><?php echo $hou_s_type; ?></td>
-                                            <td><?php echo $hou_land_size; ?></td>
+                                            <td><?php echo number_format($hou_land_size,2); ?></td>
                                             <td><?php echo $hou_beds; ?></td>
                                             <td><?php echo $hou_ac_beds; ?></td>
                                             <td><?php echo $hou_baths; ?></td>
                                             <td><?php echo $hou_floor; ?></td>
-                                            <td>LKR &nbsp;<?php echo number_format($hou_prz); ?></td>
+                                            <td>LKR &nbsp;<?php echo number_format($hou_prz,2); ?></td>
                                             <td><?php echo $hou_ava; ?></td>
                                             <td><?php echo $hou_creater; ?></td>
+                                            <td><?php echo $hou_extra_desc; ?></td>
 
                                         </tr>
 

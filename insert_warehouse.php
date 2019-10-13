@@ -141,7 +141,7 @@ if (!isset($_SESSION['admin_email'])) {
 
                                 <div class="col-md-6">
 
-                                    <input type="text" name="road_acc" class="form-control" required>
+                                    <input type="text" name="road_acc" class="form-control">
 
                                 </div>
 
@@ -154,7 +154,7 @@ if (!isset($_SESSION['admin_email'])) {
 
                                 <div class="col-md-6">
 
-                                    <input type="number" name="prz_sqft" class="form-control" pattern="^[0.00-9.99]" step="0.01" min="1.00" placeholder="LKR" required>
+                                    <input type="number" name="prz_sqft" class="form-control" pattern="^[0.00-9.99]" step="0.01" min="1.00" placeholder="LKR">
 
                                 </div>
 
@@ -167,7 +167,7 @@ if (!isset($_SESSION['admin_email'])) {
 
                                 <div class="col-md-6">
 
-                                    <input type="number" name="area_sqft" class="form-control" pattern="^[0.00-9.99]" step="0.01" min="1.00" step="0.01" required>
+                                    <input type="number" name="area_sqft" class="form-control" pattern="^[0.00-9.99]" step="0.01" min="1.00" step="0.01">
 
                                 </div>
 
@@ -180,7 +180,7 @@ if (!isset($_SESSION['admin_email'])) {
 
                                 <div class="col-md-6">
 
-                                    <input type="number" name="no_lbays" class="form-control" pattern="^[1-9]" min="1" step="1" required>
+                                    <input type="number" name="no_lbays" class="form-control" pattern="^[1-9]" min="0" step="1">
 
                                 </div>
 
@@ -194,7 +194,7 @@ if (!isset($_SESSION['admin_email'])) {
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <span class="input-group-btn">
-                                            <input type="number" name="roof_height" class="form-control" pattern="^[0.00-9.99]" step="0.01" min="1.00" required>
+                                            <input type="number" name="roof_height" class="form-control" pattern="^[0.00-9.99]" step="0.01" min="1.00">
                                         </span>
                                         <span class="input-group-btn">
                                             <select name="unit" class="form-control">
@@ -278,7 +278,7 @@ if (!isset($_SESSION['admin_email'])) {
 
                                 <div class="col-md-6">
 
-                                    <input type="number" name="con_park" class="form-control" pattern="^[1-9]" min="1" step="1" required>
+                                    <input type="number" name="con_park" class="form-control" pattern="^[1-9]" min="0" step="1">
 
                                 </div>
 
@@ -291,7 +291,7 @@ if (!isset($_SESSION['admin_email'])) {
 
                                 <div class="col-md-6">
 
-                                    <input type="text" name="load_points" class="form-control" required>
+                                    <input type="text" name="load_points" class="form-control">
 
                                 </div>
 

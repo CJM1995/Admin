@@ -336,6 +336,9 @@ if (!isset($_SESSION['admin_email'])) {
                                                                 <th style="vertical-align: middle;text-align: center">
                                                                     Creater
                                                                 </th>
+                                                                <th style="vertical-align: middle;text-align: center">
+                                                                    Description
+                                                                </th>
 
                                                             </tr>
                                                         </thead>
@@ -372,6 +375,7 @@ if (!isset($_SESSION['admin_email'])) {
                                                                             $warehouse_price_s = $row_rslt['value'];
                                                                             $warehouse_availability_s = $row_rslt['availability'];
                                                                             $warehouse_creater_s = $row_rslt['creater'];
+                                                                            $warehouse_desc_s = $row_rslt['description'];
                                                                             $i++;
 
                                                                             ?>
@@ -380,13 +384,13 @@ if (!isset($_SESSION['admin_email'])) {
                                                                     <?php
                                                                                     if (strcmp($warehouse_availability_s, 'Available') == 0) {
                                                                                         echo "<td style=\"text-align:center\">
-                                                                    <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                                                    <button style=\"margin-top: 2px;display:block;\" type=\"button\" rel=\"tooltip\"
                                                                             class=\"btn btn-success btn-sm\"
                                                                             data-original-title=\"\" title=\"Edit\"
                                                                             onclick=\"location.href = 'index.php?edit_warehouse=$warehouse_id_s';\">
                                                                         <i class=\"fa fa-pencil fa-fw\"></i>
                                                                     </button>
-                                                                    <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                                                    <button style=\"margin-top: 2px;display:block;\" type=\"button\" rel=\"tooltip\"
                                                                             class=\"btn btn-danger btn-sm\"
                                                                             data-original-title=\"\" title=\"Remove\"
                                                                             onclick=\"location.href = 'index.php?delete_warehouse=$warehouse_id_s';\">
@@ -395,13 +399,13 @@ if (!isset($_SESSION['admin_email'])) {
                                                                 </td>";
                                                                                     } else {
                                                                                         echo "<td style=\"text-align:center\">
-                                                                    <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                                                    <button style=\"margin-top: 2px;display:block;\" type=\"button\" rel=\"tooltip\"
                                                                             class=\"btn btn-success btn-sm\"
                                                                             data-original-title=\"\" title=\"Edit\"
                                                                             onclick=\"location.href = 'index.php?edit_warehouse=$warehouse_id_s';\" disabled>
                                                                         <i class=\"fa fa-pencil fa-fw\"></i>
                                                                     </button>
-                                                                    <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                                                    <button style=\"margin-top: 2px;display:block;\" type=\"button\" rel=\"tooltip\"
                                                                             class=\"btn btn-danger btn-sm\"
                                                                             data-original-title=\"\" title=\"Remove\"
                                                                             onclick=\"location.href = 'index.php?delete_warehouse=$warehouse_id_s';\">
@@ -421,16 +425,17 @@ if (!isset($_SESSION['admin_email'])) {
                                                                     <td><?php echo $warehouse_address_s; ?></td>
                                                                     <td><?php echo $warehouse_city_s; ?></td>
                                                                     <td><?php echo $warehouse_rd_acc_s; ?></td>
-                                                                    <td>LKR &nbsp;<?php echo number_format($warehouse_price_sqft_s); ?></td>
-                                                                    <td><?php echo number_format($warehouse_area_sqft_s); ?></td>
+                                                                    <td>LKR &nbsp;<?php echo number_format($warehouse_price_sqft_s,2); ?></td>
+                                                                    <td><?php echo number_format($warehouse_area_sqft_s,2); ?></td>
                                                                     <td><?php echo $warehouse_no_of_bays_s; ?></td>
                                                                     <td><?php echo $warehouse_electricity_s; ?></td>
                                                                     <td><?php echo $warehouse_water_s; ?></td>
                                                                     <td><?php echo $warehouse_telephone_s; ?></td>
                                                                     <td><?php echo $warehouse_cctv_s; ?></td>
-                                                                    <td>LKR &nbsp; <?php echo number_format($warehouse_price_s); ?></td>
+                                                                    <td>LKR &nbsp; <?php echo number_format($warehouse_price_s,2); ?></td>
                                                                     <td><?php echo $warehouse_availability_s; ?></td>
                                                                     <td><?php echo $warehouse_creater_s; ?></td>
+                                                                    <td><?php echo $warehouse_desc_s; ?></td>
 
                                                                 </tr>
 
@@ -492,6 +497,7 @@ if (!isset($_SESSION['admin_email'])) {
                                     <th style="vertical-align: middle;text-align: center">Base Value</th>
                                     <th style="vertical-align: middle;text-align: center">Availability</th>
                                     <th style="vertical-align: middle;text-align: center">Creater</th>
+                                    <th style="vertical-align: middle;text-align: center">Description</th>
 
                                 </tr>
                             </thead>
@@ -531,6 +537,7 @@ if (!isset($_SESSION['admin_email'])) {
                                         $warehouse_price = $row_warehouse['value'];
                                         $warehouse_availability = $row_warehouse['availability'];
                                         $warehouse_creater = $row_warehouse['creater'];
+                                        $warehouse_desc = $row_warehouse['description'];
                                         $i++;
 
                                         ?>
@@ -539,13 +546,13 @@ if (!isset($_SESSION['admin_email'])) {
                                         <?php
                                                 if (strcmp($warehouse_availability, 'Available') == 0) {
                                                     echo "<td style=\"text-align:center\">
-                                                                    <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                                                    <button style=\"margin-top: 2px;display:block;\" type=\"button\" rel=\"tooltip\"
                                                                             class=\"btn btn-success btn-sm\"
                                                                             data-original-title=\"\" title=\"Edit\"
                                                                             onclick=\"location.href = 'index.php?edit_warehouse=$warehouse_id';\">
                                                                         <i class=\"fa fa-pencil fa-fw\"></i>
                                                                     </button>
-                                                                    <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                                                    <button style=\"margin-top: 2px;display:block;\" type=\"button\" rel=\"tooltip\"
                                                                             class=\"btn btn-danger btn-sm\"
                                                                             data-original-title=\"\" title=\"Remove\"
                                                                             onclick=\"location.href = 'index.php?delete_warehouse=$warehouse_id';\">
@@ -554,13 +561,13 @@ if (!isset($_SESSION['admin_email'])) {
                                                                 </td>";
                                                 } else {
                                                     echo "<td style=\"text-align:center\">
-                                                                    <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                                                    <button style=\"margin-top: 2px;display:block;\" type=\"button\" rel=\"tooltip\"
                                                                             class=\"btn btn-success btn-sm\"
                                                                             data-original-title=\"\" title=\"Edit\"
                                                                             onclick=\"location.href = 'index.php?edit_warehouse=$warehouse_id';\" disabled>
                                                                         <i class=\"fa fa-pencil fa-fw\"></i>
                                                                     </button>
-                                                                    <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                                                    <button style=\"margin-top: 2px;display:block;\" type=\"button\" rel=\"tooltip\"
                                                                             class=\"btn btn-danger btn-sm\"
                                                                             data-original-title=\"\" title=\"Remove\"
                                                                             onclick=\"location.href = 'index.php?delete_warehouse=$warehouse_id';\">
@@ -581,16 +588,17 @@ if (!isset($_SESSION['admin_email'])) {
                                         <td><?php echo $warehouse_address; ?></td>
                                         <td><?php echo $warehouse_city; ?></td>
                                         <td><?php echo $warehouse_rd_acc; ?></td>
-                                        <td>LKR &nbsp;<?php echo number_format($warehouse_price_sqft); ?></td>
-                                        <td><?php echo number_format($warehouse_area_sqft); ?></td>
+                                        <td>LKR &nbsp;<?php echo number_format($warehouse_price_sqft,2); ?></td>
+                                        <td><?php echo number_format($warehouse_area_sqft,2); ?></td>
                                         <td><?php echo $warehouse_no_of_bays; ?></td>
                                         <td><?php echo $warehouse_electricity; ?></td>
                                         <td><?php echo $warehouse_water; ?></td>
                                         <td><?php echo $warehouse_telephone; ?></td>
                                         <td><?php echo $warehouse_cctv; ?></td>
-                                        <td>LKR &nbsp; <?php echo number_format($warehouse_price); ?></td>
+                                        <td>LKR &nbsp; <?php echo number_format($warehouse_price,2); ?></td>
                                         <td><?php echo $warehouse_availability; ?></td>
                                         <td><?php echo $warehouse_creater; ?></td>
+                                        <td><?php echo $warehouse_desc; ?></td>
 
                                     </tr>
 

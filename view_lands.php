@@ -310,6 +310,8 @@ if (!isset($_SESSION['admin_email'])) {
                                                                 </th>
                                                                 <th style="vertical-align: middle;text-align: center">Creater
                                                                 </th>
+                                                                <th style="vertical-align: middle;text-align: center">Description
+                                                                </th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -339,20 +341,21 @@ if (!isset($_SESSION['admin_email'])) {
                                                                             $lnd_tot_prz_s = $row_rslt['total_price'];
                                                                             $lnd_ava_s = $row_rslt['availability'];
                                                                             $lnd_creater_s = $row_rslt['creater'];
+                                                                            $lnd_desc_s = $row_rslt['description'];
                                                                             $i++;
                                                                             ?>
                                                                 <tr>
                                                                     <?php
                                                                                     if (strcmp($lnd_ava_s, 'Available') == 0) {
                                                                                         echo "<td style=\"text-align:center\">
-                                                                    <button style=\"margin-top: 2px\" type=\"button\"
+                                                                    <button style=\"margin-top: 2px;display:block;\" type=\"button\"
                                                                             rel=\"tooltip\"
                                                                             class=\"btn btn-success btn-sm\"
                                                                             data-original-title=\"\" title=\"Edit\"
                                                                             onclick=\"location.href = 'index.php?edit_land=$lnd_id_s';\">
                                                                         <i class=\"fa fa-pencil\"></i>
                                                                     </button>
-                                                                    <button style=\"margin-top: 2px\" type=\"button\"
+                                                                    <button style=\"margin-top: 2px;display:block;\" type=\"button\"
                                                                             rel=\"tooltip\"
                                                                             class=\"btn btn-danger btn-sm\"
                                                                             data-original-title=\"\" title=\"Remove\"
@@ -362,14 +365,14 @@ if (!isset($_SESSION['admin_email'])) {
                                                                 </td>";
                                                                                     } else {
                                                                                         echo "<td style=\"text-align:center\">
-                                                                    <button style=\"margin-top: 2px\" type=\"button\"
+                                                                    <button style=\"margin-top: 2px;display:block;\" type=\"button\"
                                                                             rel=\"tooltip\"
                                                                             class=\"btn btn-success btn-sm\"
                                                                             data-original-title=\"\" title=\"Edit\"
                                                                             onclick=\"location.href = 'index.php?edit_land=$lnd_id_s';\" disabled>
                                                                         <i class=\"fa fa-pencil\"></i>
                                                                     </button>
-                                                                    <button style=\"margin-top: 2px\" type=\"button\"
+                                                                    <button style=\"margin-top: 2px;display:block;\" type=\"button\"
                                                                             rel=\"tooltip\"
                                                                             class=\"btn btn-danger btn-sm\"
                                                                             data-original-title=\"\" title=\"Remove\"
@@ -389,12 +392,13 @@ if (!isset($_SESSION['admin_email'])) {
                                                                     <td><?php echo $lnd_address_s; ?></td>
                                                                     <td><?php echo $lnd_city_s; ?></td>
                                                                     <td><?php echo $lnd_s_type_s; ?></td>
-                                                                    <td><?php echo $lnd_t_qty_s; ?></td>
-                                                                    <td><?php echo $lnd_a_qty_s; ?></td>
-                                                                    <td>LKR &nbsp;<?php echo number_format($lnd_p_prz_s); ?></td>
-                                                                    <td>LKR &nbsp;<?php echo number_format($lnd_tot_prz_s); ?></td>
+                                                                    <td><?php echo number_format($lnd_t_qty_s,2); ?></td>
+                                                                    <td><?php echo number_format($lnd_a_qty_s,2); ?></td>
+                                                                    <td>LKR &nbsp;<?php echo number_format($lnd_p_prz_s,2); ?></td>
+                                                                    <td>LKR &nbsp;<?php echo number_format($lnd_tot_prz_s,2); ?></td>
                                                                     <td><?php echo $lnd_ava_s; ?></td>
                                                                     <td><?php echo $lnd_creater_s; ?></td>
+                                                                    <td><?php echo $lnd_desc_s; ?></td>
                                                                 </tr>
                                                             <?php } ?>
                                                         </tbody>
@@ -466,6 +470,7 @@ if (!isset($_SESSION['admin_email'])) {
                                         Availability
                                     </th>
                                     <th style="vertical-align: middle;text-align: center">Creater</th>
+                                    <th style="vertical-align: middle;text-align: center">Description</th>
 
 
                                 </tr>
@@ -508,6 +513,7 @@ if (!isset($_SESSION['admin_email'])) {
                                         $lnd_tot_prz = $row_land['total_price'];
                                         $lnd_ava = $row_land['availability'];
                                         $lnd_creater = $row_land['creater'];
+                                        $lnd_desc = $row_land['description'];
 
                                         $i++;
 
@@ -517,13 +523,13 @@ if (!isset($_SESSION['admin_email'])) {
                                         <?php
                                                 if (strcmp($lnd_ava, 'Available') == 0) {
                                                     echo "<td style=\"text-align:center\">
-                                        <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                        <button style=\"margin-top: 2px;display:block;\" type=\"button\" rel=\"tooltip\"
                                                 class=\"btn btn-success btn-sm\"
                                                 data-original-title=\"\" title=\"Edit\"
                                                 onclick=\"location.href = 'index.php?edit_land=$lnd_id';\">
                                             <i class=\"fa fa-pencil\"></i>
                                         </button>
-                                        <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                        <button style=\"margin-top: 2px;display:block;\" type=\"button\" rel=\"tooltip\"
                                                 class=\"btn btn-danger btn-sm\"
                                                 data-original-title=\"\" title=\"Remove\"
                                                 onclick=\"location.href = 'index.php?delete_land=$lnd_id';\">
@@ -532,13 +538,13 @@ if (!isset($_SESSION['admin_email'])) {
                                     </td>";
                                                 } else {
                                                     echo "<td style=\"text-align:center\">
-                                        <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                        <button style=\"margin-top: 2px;display:block;\" type=\"button\" rel=\"tooltip\"
                                                 class=\"btn btn-success btn-sm\"
                                                 data-original-title=\"\" title=\"Edit\"
                                                 onclick=\"location.href = 'index.php?edit_land=$lnd_id';\" disabled>
                                             <i class=\"fa fa-pencil\"></i>
                                         </button>
-                                        <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                        <button style=\"margin-top: 2px;display:block;\" type=\"button\" rel=\"tooltip\"
                                                 class=\"btn btn-danger btn-sm\"
                                                 data-original-title=\"\" title=\"Remove\"
                                                 onclick=\"location.href = 'index.php?delete_land=$lnd_id';\">
@@ -557,12 +563,13 @@ if (!isset($_SESSION['admin_email'])) {
                                         <td><?php echo $lnd_address; ?></td>
                                         <td><?php echo $lnd_city; ?></td>
                                         <td><?php echo $lnd_s_type; ?></td>
-                                        <td><?php echo $lnd_t_qty; ?></td>
-                                        <td><?php echo $lnd_a_qty; ?></td>
-                                        <td>LKR &nbsp;<?php echo number_format($lnd_p_prz); ?></td>
-                                        <td>LKR &nbsp;<?php echo number_format($lnd_tot_prz); ?></td>
+                                        <td><?php echo number_format($lnd_t_qty,2); ?></td>
+                                        <td><?php echo number_format($lnd_a_qty,2); ?></td>
+                                        <td>LKR &nbsp;<?php echo number_format($lnd_p_prz,2); ?></td>
+                                        <td>LKR &nbsp;<?php echo number_format($lnd_tot_prz,2); ?></td>
                                         <td><?php echo $lnd_ava; ?></td>
                                         <td><?php echo $lnd_creater; ?></td>
+                                        <td><?php echo $lnd_desc; ?></td>
 
                                     </tr>
 
