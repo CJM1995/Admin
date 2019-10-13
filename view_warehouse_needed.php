@@ -368,10 +368,10 @@ if (!isset($_SESSION['admin_email'])) {
                                                                     <td><?php echo $w_need_cus_number_s; ?></td>
                                                                     <td><?php echo $w_need_s_type_s; ?></td>
                                                                     <td><?php echo $w_need_city_s; ?></td>
-                                                                    <td><?php echo number_format($w_need_area_sqft_s); ?></td>
+                                                                    <td><?php echo number_format($w_need_area_sqft_s,2); ?></td>
                                                                     <td><?php echo $w_need_electric_s; ?></td>
                                                                     <td><?php echo $w_need_water_s; ?></td>
-                                                                    <td>LKR &nbsp;<?php echo number_format($w_need_max_price_s); ?></td>
+                                                                    <td>LKR &nbsp;<?php echo number_format($w_need_max_price_s,2); ?></td>
                                                                     <td><?php echo $w_need_desc_s; ?></td>
                                                                     <td><?php echo $w_need_status_s; ?></td>
                                                                     <td><?php echo $w_need_creater_s; ?></td>
@@ -529,10 +529,10 @@ if (!isset($_SESSION['admin_email'])) {
                                         <td><?php echo $w_need_cus_number; ?></td>
                                         <td><?php echo $w_need_s_type; ?></td>
                                         <td><?php echo $w_need_city; ?></td>
-                                        <td><?php echo number_format($w_need_area_sqft); ?></td>
+                                        <td><?php echo number_format($w_need_area_sqft,2); ?></td>
                                         <td><?php echo $w_need_electric; ?></td>
                                         <td><?php echo $w_need_water; ?></td>
-                                        <td>LKR &nbsp;<?php echo number_format($w_need_max_price); ?></td>
+                                        <td>LKR &nbsp;<?php echo number_format($w_need_max_price,2); ?></td>
                                         <td><?php echo $w_need_desc; ?></td>
                                         <td><?php echo $w_need_status; ?></td>
                                         <td><?php echo $w_need_creater; ?></td>

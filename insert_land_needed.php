@@ -99,7 +99,7 @@ if (!isset($_SESSION['admin_email'])) {
 
                                 <div class="col-md-6">
 
-                                    <select name="l_need_sale_type" class="form-control">
+                                    <select name="l_need_sale_type" class="form-control" required>
 
                                         <option> Select Sale Type</option>
                                         <option value="Rent"> Rent</option>

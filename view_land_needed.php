@@ -431,9 +431,9 @@ if (!isset($_SESSION['admin_email'])) {
                                                                     <td><?php echo $l_need_cus_number_s; ?></td>
                                                                     <td><?php echo $l_need_s_type_s; ?></td>
                                                                     <td><?php echo $l_need_city_s; ?></td>
-                                                                    <td><?php echo number_format($l_need_qty_s); ?></td>
-                                                                    <td>LKR &nbsp;<?php echo number_format($l_need_perch_price_s); ?></td>
-                                                                    <td>LKR &nbsp;<?php echo number_format($l_need_tot_price_s); ?></td>
+                                                                    <td><?php echo number_format($l_need_qty_s,2); ?></td>
+                                                                    <td>LKR &nbsp;<?php echo number_format($l_need_perch_price_s,2); ?></td>
+                                                                    <td>LKR &nbsp;<?php echo number_format($l_need_tot_price_s,2); ?></td>
                                                                     <td><?php echo $l_need_desc_s; ?></td>
                                                                     <td><?php echo $l_need_status_s; ?></td>
                                                                     <td><?php echo $l_need_creater_s; ?></td>
@@ -587,9 +587,9 @@ if (!isset($_SESSION['admin_email'])) {
                                         <td><?php echo $l_need_cus_number; ?></td>
                                         <td><?php echo $l_need_s_type; ?></td>
                                         <td><?php echo $l_need_city; ?></td>
-                                        <td><?php echo number_format($l_need_quantity); ?></td>
-                                        <td>LKR &nbsp;<?php echo number_format($l_need_perch_price); ?></td>
-                                        <td>LKR &nbsp;<?php echo number_format($l_need_tot_price); ?></td>
+                                        <td><?php echo number_format($l_need_quantity,2); ?></td>
+                                        <td>LKR &nbsp;<?php echo number_format($l_need_perch_price,2); ?></td>
+                                        <td>LKR &nbsp;<?php echo number_format($l_need_tot_price,2); ?></td>
                                         <td><?php echo $l_need_desc; ?></td>
                                         <td><?php echo $l_need_status; ?></td>
                                         <td><?php echo $l_need_creater; ?></td>

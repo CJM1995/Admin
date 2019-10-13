@@ -401,10 +401,10 @@ if (!isset($_SESSION['admin_email'])) {
                                                                     <td><?php echo $h_need_cus_number_s; ?></td>
                                                                     <td><?php echo $h_need_s_type_s; ?></td>
                                                                     <td><?php echo $h_need_city_s; ?></td>
-                                                                    <td><?php echo number_format($h_need_land_size_s); ?></td>
+                                                                    <td><?php echo number_format($h_need_land_size_s,2); ?></td>
                                                                     <td><?php echo $h_need_bedrooms_s; ?></td>
                                                                     <td><?php echo $h_need_bathrooms_s; ?></td>
-                                                                    <td>LKR &nbsp;<?php echo number_format($h_need_max_price_s); ?></td>
+                                                                    <td>LKR &nbsp;<?php echo number_format($h_need_max_price_s,2); ?></td>
                                                                     <td><?php echo $h_need_desc_s; ?></td>
                                                                     <td><?php echo $h_need_status_s; ?></td>
                                                                     <td><?php echo $h_need_creater_s; ?></td>
@@ -562,10 +562,10 @@ if (!isset($_SESSION['admin_email'])) {
                                         <td><?php echo $h_need_cus_number; ?></td>
                                         <td><?php echo $h_need_s_type; ?></td>
                                         <td><?php echo $h_need_city; ?></td>
-                                        <td><?php echo number_format($h_need_land_size); ?></td>
+                                        <td><?php echo number_format($h_need_land_size,2); ?></td>
                                         <td><?php echo $h_need_bedrooms; ?></td>
                                         <td><?php echo $h_need_bathrooms; ?></td>
-                                        <td>LKR &nbsp;<?php echo number_format($h_need_max_price); ?></td>
+                                        <td>LKR &nbsp;<?php echo number_format($h_need_max_price,2); ?></td>
                                         <td><?php echo $h_need_desc; ?></td>
                                         <td><?php echo $h_need_status; ?></td>
                                         <td><?php echo $h_need_creater; ?></td>

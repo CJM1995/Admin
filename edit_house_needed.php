@@ -169,7 +169,7 @@ if (!isset($_SESSION['admin_email'])) {
 
                                 <div class="col-md-6">
 
-                                    <input type="number" name="h_land_size" class="form-control" pattern="^[0.00-9.99]" step="0.01" min="1.00" value="<?php echo $h_land_size ?>" required>
+                                    <input type="number" name="h_land_size" class="form-control" pattern="^[0.00-9.99]" step="0.01" min="1.00" value="<?php echo $h_land_size ?>">
 
                                 </div>
 

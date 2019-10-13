@@ -107,7 +107,7 @@ if (!isset($_SESSION['admin_email'])) {
 
                                 <div class="col-md-6">
 
-                                    <select name="warehouse_cat" class="form-control">
+                                    <select name="warehouse_cat" class="form-control" required>
 
                                         <option> Select a Warehouse Category</option>
                                         <option value="Rent"> Rent</option>
