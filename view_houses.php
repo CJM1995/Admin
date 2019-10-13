@@ -475,107 +475,109 @@ if (!isset($_SESSION['admin_email'])) {
                             </thead>
 
                             <tbody>
+                                <form name="extra_d" method="post" enctype="multipart/form-data">
 
-                                <?php
+                                    <?php
 
-                                    $i = 0;
+                                        $i = 0;
 
-                                    $get_pro = "select * from houses";
+                                        $get_pro = "select * from houses";
 
-                                    $run_pro = mysqli_query($con, $get_pro);
+                                        $run_pro = mysqli_query($con, $get_pro);
 
-                                    while ($row_pro = mysqli_fetch_array($run_pro)) {
+                                        while ($row_pro = mysqli_fetch_array($run_pro)) {
 
-                                        $hou_id = $row_pro['house_id'];
-                                        $hou_code = $row_pro['code'];
-                                        $hou_img1 = $row_pro['house_img1'];
-                                        $hou_img2 = $row_pro['house_img2'];
-                                        $hou_img3 = $row_pro['house_img3'];
+                                            $hou_id = $row_pro['house_id'];
+                                            $hou_code = $row_pro['code'];
+                                            $hou_img1 = $row_pro['house_img1'];
+                                            $hou_img2 = $row_pro['house_img2'];
+                                            $hou_img3 = $row_pro['house_img3'];
 
-                                        $hou_ow_id = $row_pro['owner_id'];
-                                        $get_o_name_n = "select * from owners where owner_id='$hou_ow_id'";
-                                        $run_o_name_n = mysqli_query($con, $get_o_name_n);
-                                        $row_o_name_n = mysqli_fetch_array($run_o_name_n);
-                                        $o_name_n = $row_o_name_n['name'];
-                                        $ow_number_n = $row_o_name_n['phone'];
+                                            $hou_ow_id = $row_pro['owner_id'];
+                                            $get_o_name_n = "select * from owners where owner_id='$hou_ow_id'";
+                                            $run_o_name_n = mysqli_query($con, $get_o_name_n);
+                                            $row_o_name_n = mysqli_fetch_array($run_o_name_n);
+                                            $o_name_n = $row_o_name_n['name'];
+                                            $ow_number_n = $row_o_name_n['phone'];
 
-                                        $hou_ow_name = $o_name_n;
-                                        $hou_ow_number = $ow_number_n;
+                                            $hou_ow_name = $o_name_n;
+                                            $hou_ow_number = $ow_number_n;
 
-                                        $hou_address = $row_pro['address'];
-                                        $hou_city = $row_pro['city'];
-                                        $hou_s_type = $row_pro['sale_type'];
-                                        $hou_land_size = $row_pro['land_size'];
-                                        $hou_beds = $row_pro['bedrooms'];
-                                        $hou_ac_beds = $row_pro['ac_rooms'];
-                                        $hou_baths = $row_pro['bathrooms'];
-                                        $hou_floor = $row_pro['floor'];
-                                        $hou_prz = $row_pro['base_price'];
-                                        $hou_ava = $row_pro['availability'];
-                                        $hou_creater = $row_pro['creater'];
+                                            $hou_address = $row_pro['address'];
+                                            $hou_city = $row_pro['city'];
+                                            $hou_s_type = $row_pro['sale_type'];
+                                            $hou_land_size = $row_pro['land_size'];
+                                            $hou_beds = $row_pro['bedrooms'];
+                                            $hou_ac_beds = $row_pro['ac_rooms'];
+                                            $hou_baths = $row_pro['bathrooms'];
+                                            $hou_floor = $row_pro['floor'];
+                                            $hou_prz = $row_pro['base_price'];
+                                            // $hou_extra_desc = $row_pro['description'];
+                                            $hou_ava = $row_pro['availability'];
+                                            $hou_creater = $row_pro['creater'];
 
-                                        $i++;
+                                            $i++;
 
-                                        ?>
+                                            ?>
 
-                                    <tr>
-                                        <?php
-                                                if (strcmp($hou_ava, 'Available') == 0) {
-                                                    echo "<td style=\"text-align:center\">
-                                        <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                        <tr>
+                                            <?php
+                                                    if (strcmp($hou_ava, 'Available') == 0) {
+                                                        echo "<td style=\"text-align:center\">
+                                        <button style=\"margin-top: 2px;display:block;\" type=\"button\" rel=\"tooltip\"
                                                 class=\"btn btn-success btn-sm\"
                                                 data-original-title=\"\" title=\"Edit\"
                                                 onclick=\"location.href = 'index.php?edit_house=$hou_id';\">
                                             <i class=\"fa fa-pencil fa-fw\"></i>
                                         </button>
-                                        <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                        <button style=\"margin-top: 2px;display:block;\" type=\"button\" rel=\"tooltip\"
                                                 class=\"btn btn-danger btn-sm\"
                                                 data-original-title=\"\" title=\"Remove\"
                                                 onclick=\"location.href = 'index.php?delete_house=$hou_id';\">
                                             <i class=\"fa fa-trash fa-fw\"></i>
                                         </button>
                                     </td>";
-                                                } else {
-                                                    echo "<td style=\"text-align:center\">
-                                        <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                                    } else {
+                                                        echo "<td style=\"text-align:center\">
+                                        <button style=\"margin-top: 2px;display:block;\" type=\"button\" rel=\"tooltip\"
                                                 class=\"btn btn-success btn-sm\"
                                                 data-original-title=\"\" title=\"Edit\"
                                                 onclick=\"location.href = 'index.php?edit_house=$hou_id';\" disabled>
                                             <i class=\"fa fa-pencil fa-fw\"></i>
                                         </button>
-                                        <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                        <button style=\"margin-top: 2px;display:block;\" type=\"button\" rel=\"tooltip\"
                                                 class=\"btn btn-danger btn-sm\"
                                                 data-original-title=\"\" title=\"Remove\"
                                                 onclick=\"location.href = 'index.php?delete_house=$hou_id';\">
                                             <i class=\"fa fa-trash fa-fw\"></i>
                                         </button>
                                     </td>";
-                                                }
-                                                ?>
-                                        <!-- <td><?php echo $i; ?></td> -->
-                                        <td><?php echo $hou_code; ?></td>
-                                        <!--                                    <style>-->
-                                        <!--                                    </style>-->
-                                        <td><img class="image" src="house_images/<?php echo $hou_img1; ?>" width="60" height="60"></td>
-                                        <td style="text-align:center;"><?php echo $hou_ow_name; ?></td>
-                                        <td><?php echo $hou_ow_number; ?></td>
-                                        <td><?php echo $hou_address; ?></td>
-                                        <td><?php echo $hou_city; ?></td>
-                                        <td><?php echo $hou_s_type; ?></td>
-                                        <td><?php echo $hou_land_size; ?></td>
-                                        <td><?php echo $hou_beds; ?></td>
-                                        <td><?php echo $hou_ac_beds; ?></td>
-                                        <td><?php echo $hou_baths; ?></td>
-                                        <td><?php echo $hou_floor; ?></td>
-                                        <td>LKR &nbsp;<?php echo number_format($hou_prz); ?></td>
-                                        <td><?php echo $hou_ava; ?></td>
-                                        <td><?php echo $hou_creater; ?></td>
+                                                    }
+                                                    ?>
+                                            <!-- <td><?php echo $i; ?></td> -->
+                                            <td><?php echo $hou_code; ?></td>
+                                            <!--                                    <style>-->
+                                            <!--                                    </style>-->
+                                            <td><img class="image" src="house_images/<?php echo $hou_img1; ?>" width="60" height="60"></td>
+                                            <td style="text-align:center;"><?php echo $hou_ow_name; ?></td>
+                                            <td><?php echo $hou_ow_number; ?></td>
+                                            <td><?php echo $hou_address; ?></td>
+                                            <td><?php echo $hou_city; ?></td>
+                                            <td><?php echo $hou_s_type; ?></td>
+                                            <td><?php echo $hou_land_size; ?></td>
+                                            <td><?php echo $hou_beds; ?></td>
+                                            <td><?php echo $hou_ac_beds; ?></td>
+                                            <td><?php echo $hou_baths; ?></td>
+                                            <td><?php echo $hou_floor; ?></td>
+                                            <td>LKR &nbsp;<?php echo number_format($hou_prz); ?></td>
+                                            <td><?php echo $hou_ava; ?></td>
+                                            <td><?php echo $hou_creater; ?></td>
 
-                                    </tr>
+                                        </tr>
 
-                                <?php } ?>
+                                    <?php } ?>                               
 
-
+                                </form>
                             </tbody>
 
 

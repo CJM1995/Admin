@@ -31,7 +31,7 @@ if (!isset($_SESSION['admin_email'])) {
 
     $admin_image = $row_admin['admin_image'];
 
-    $admin_country = $row_admin['admin_country'];
+    // $admin_country = $row_admin['admin_country'];
 
     $admin_job = $row_admin['admin_job'];
 

@@ -748,14 +748,17 @@ if (!isset($_SESSION['admin_email'])) {
             $temp_name2 = $_FILES['warehouse_img2']['tmp_name'];
             $temp_name3 = $_FILES['warehouse_img3']['tmp_name'];
 
-            move_uploaded_file($temp_name1, "\\\\CJ-LAPTOP\\warehouse_images\\$warehouse_img1");
-            move_uploaded_file($temp_name2, "\\\\CJ-LAPTOP\\warehouse_images\\$warehouse_img2");
-            move_uploaded_file($temp_name3, "\\\\CJ-LAPTOP\\warehouse_images\\$warehouse_img3");
+            move_uploaded_file($temp_name1, "\\\\ADMIN\\warehouse_images\\$warehouse_img1");
+            move_uploaded_file($temp_name2, "\\\\ADMIN\\warehouse_images\\$warehouse_img2");
+            move_uploaded_file($temp_name3, "\\\\ADMIN\\warehouse_images\\$warehouse_img3");
+            // move_uploaded_file($temp_name1, "\\\\CJ-LAPTOP\\warehouse_images\\$warehouse_img1");
+            // move_uploaded_file($temp_name2, "\\\\CJ-LAPTOP\\warehouse_images\\$warehouse_img2");
+            // move_uploaded_file($temp_name3, "\\\\CJ-LAPTOP\\warehouse_images\\$warehouse_img3");
             // move_uploaded_file($temp_name1, "warehouse_images/$warehouse_img1");
             // move_uploaded_file($temp_name2, "warehouse_images/$warehouse_img2");
             // move_uploaded_file($temp_name3, "warehouse_images/$warehouse_img3");
 
-            $get_ow = "select name from owners WHERE owner_id='".$ho_owner_id."'";
+            $get_ow = "select name from owners WHERE owner_id='" . $ho_owner_id . "'";
             $run_ow = mysqli_query($con, $get_ow);
             while ($row_owner = mysqli_fetch_array($run_ow)) {
                 $ow_name = $row_owner['name'];

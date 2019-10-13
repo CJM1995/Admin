@@ -3,7 +3,6 @@
 
 if (!isset($_SESSION['admin_email'])) {
     echo "<script>window.open('login.php','_self')</script>";
-
 } else {
 
     echo "<link rel=\"stylesheet\" href=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css\">";
@@ -14,14 +13,14 @@ if (!isset($_SESSION['admin_email'])) {
 
 
     <?php
-    if (isset($_GET['delete_warehouse'])) {
-        $delete_id = $_GET['delete_warehouse'];
-        $delete_warehouse = "delete from warehouses where warehouse_id='$delete_id'";
-        //$run_delete = mysqli_query($con, $delete_house);
+        if (isset($_GET['delete_warehouse'])) {
+            $delete_id = $_GET['delete_warehouse'];
+            $delete_warehouse = "delete from warehouses where warehouse_id='$delete_id'";
+            //$run_delete = mysqli_query($con, $delete_house);
 
 
-    }
-    ?>
+        }
+        ?>
     <?php echo "<script type=\"text/javascript\">
         $(window).load(function(){
             $('#myModal').modal('show');
@@ -46,8 +45,7 @@ if (!isset($_SESSION['admin_email'])) {
                         <h2 class="modal-title text-center text-danger">Are you sure?</h2>
                     </div>
                     <div class="modal-body">
-                        <i style="font-size: 800%"
-                           class="text-center text-danger center-block fa fa-times-circle-o fa-5x"></i>
+                        <i style="font-size: 800%" class="text-center text-danger center-block fa fa-times-circle-o fa-5x"></i>
                         <br>
                         <p style="font-size: 110%" class="text-center">Do you really want to delete this record? This
                             process cannot be undone.</p>
@@ -55,10 +53,8 @@ if (!isset($_SESSION['admin_email'])) {
 
                     </div>
                     <div style="text-align: center" class="modal-footer text-center center-block">
-                        <input type="submit" name="close" value="Close"
-                               class="btn btn-default" onclick="window.open('index.php?view_warehouses','_self')">
-                        <input type="submit" name="delete" value="Delete"
-                               class="btn btn-danger" onclick=$('#myModal').modal('hide');>
+                        <input type="submit" name="close" value="Close" class="btn btn-default" onclick="window.open('index.php?view_warehouses','_self')">
+                        <input type="submit" name="delete" value="Delete" class="btn btn-danger" onclick=$('#myModal').modal('hide');>
                         <!--                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
                         <!--                        <button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>-->
 
@@ -77,16 +73,14 @@ if (!isset($_SESSION['admin_email'])) {
             <div class="modal-content">
 
                 <div class="modal-body">
-                    <i style="font-size: 800%"
-                       class="text-center text-success center-block fa fa-check-circle-o fa-5x"></i>
+                    <i style="font-size: 800%" class="text-center text-success center-block fa fa-check-circle-o fa-5x"></i>
                     <br>
                     <p style="font-size: 110%" class="text-center">Record has been deleted!</p>
 
                 </div>
                 <form method="post">
                     <div style="text-align: center" class="modal-footer text-center center-block">
-                        <input type="submit" name="ok" value="OK"
-                               class="btn btn-success">
+                        <input type="submit" name="ok" value="OK" class="btn btn-success">
                     </div>
             </div>
 
@@ -103,16 +97,14 @@ if (!isset($_SESSION['admin_email'])) {
             <div class="modal-content">
 
                 <div class="modal-body">
-                    <i style="font-size: 800%"
-                       class="text-center text-warning center-block fa fa-exclamation-circle fa-5x"></i>
+                    <i style="font-size: 800%" class="text-center text-warning center-block fa fa-exclamation-circle fa-5x"></i>
                     <br>
                     <p style="font-size: 110%" class="text-center">This operation is not possible because there are purchase records of this warehouse.</p>
 
                 </div>
                 <form method="post">
                     <div style="text-align: center" class="modal-footer text-center center-block">
-                        <input type="submit" name="no" value="OK"
-                               class="btn btn-warning">
+                        <input type="submit" name="no" value="OK" class="btn btn-warning">
                     </div>
             </div>
 
@@ -138,56 +130,44 @@ if (!isset($_SESSION['admin_email'])) {
 
     <?php
 
-    if (isset($_POST['delete'])) {
-        echo "<script type=\"text/javascript\">
+        if (isset($_POST['delete'])) {
+            echo "<script type=\"text/javascript\">
                     $('#loadingModal').modal('show');
                   </script>";
 
-        $del_id = $_POST['del_id'];
+            $del_id = $_POST['del_id'];
 
-        $result_wp = mysqli_query($con, "SELECT COUNT(wp_id) AS wp_count FROM warehouse_purchases WHERE warehouse_id='$del_id'");
-        $row = mysqli_fetch_array($result_wp);
-        $wp_count = $row['wp_count'];
+            $result_wp = mysqli_query($con, "SELECT COUNT(wp_id) AS wp_count FROM warehouse_purchases WHERE warehouse_id='$del_id'");
+            $row = mysqli_fetch_array($result_wp);
+            $wp_count = $row['wp_count'];
 
-        $delete_warehouse = "delete from warehouses where warehouse_id='$del_id'";
-        //$run_delete = mysqli_query($con, $delete_warehouse);
+            $delete_warehouse = "delete from warehouses where warehouse_id='$del_id'";
+            //$run_delete = mysqli_query($con, $delete_warehouse);
 
-        if($wp_count==0){
             $run_delete = mysqli_query($con, $delete_warehouse);
-        }
-        else{
-            echo "<script type=\"text/javascript\">
-            $(window).load(function(){
-                $('#myModal').modal('hide');
-            });
-            $('#loadingModal').modal('hide');
-            $('#waModal').modal('show');
-        </script>";
-        }
 
-        if ($run_delete) {
+            if ($run_delete) {
 
-            echo "<script type=\"text/javascript\">
+                echo "<script type=\"text/javascript\">
             $(window).load(function(){
                 $('#myModal').modal('hide');
             });
             $('#loadingModal').modal('hide');
             $('#suModal').modal('show');
         </script>";
+            }
         }
-    }
-    if (isset($_POST['ok'])) {
-        echo "<script>window.open('index.php?view_warehouses','_self')</script>";
-    }
+        if (isset($_POST['ok'])) {
+            echo "<script>window.open('index.php?view_warehouses','_self')</script>";
+        }
 
-    if (isset($_POST['no'])) {
-        echo "<script>window.open('index.php?view_warehouses','_self')</script>";
-    }
+        if (isset($_POST['no'])) {
+            echo "<script>window.open('index.php?view_warehouses','_self')</script>";
+        }
 
-    if (isset($_POST['close'])) {
-        echo "<script>window.open('index.php?view_warehouses','_self')</script>";
-    }
-    ?>
+        if (isset($_POST['close'])) {
+            echo "<script>window.open('index.php?view_warehouses','_self')</script>";
+        }
+        ?>
 
 <?php } ?>
-

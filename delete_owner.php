@@ -145,7 +145,7 @@ if (!isset($_SESSION['admin_email'])) {
         $row = mysqli_fetch_array($result_w);
         $w_count = $row['w_count'];
 
-        $result_h = mysqli_query($con, "SELECT COUNT(house_id) AS h_count FROM house_purchases WHERE owner_id='$del_id'");
+        $result_h = mysqli_query($con, "SELECT COUNT(house_id) AS h_count FROM houses WHERE owner_id='$del_id'");
         $row = mysqli_fetch_array($result_h);
         $h_count = $row['h_count'];
 

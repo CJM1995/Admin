@@ -335,6 +335,9 @@ if (!isset($_SESSION['admin_email'])) {
             $temp_name2 = $_FILES['ho_img2']['tmp_name'];
             $temp_name3 = $_FILES['ho_img3']['tmp_name'];
 
+            // move_uploaded_file($temp_name1, "\\\\ADMIN\\house_images\\$ho_img1");
+            // move_uploaded_file($temp_name2, "\\\\ADMIN\\house_images\\$ho_img2");
+            // move_uploaded_file($temp_name3, "\\\\ADMIN\\house_images\\$ho_img3");
             move_uploaded_file($temp_name1, "\\\\CJ-LAPTOP\\house_images\\$ho_img1");
             move_uploaded_file($temp_name2, "\\\\CJ-LAPTOP\\house_images\\$ho_img2");
             move_uploaded_file($temp_name3, "\\\\CJ-LAPTOP\\house_images\\$ho_img3");

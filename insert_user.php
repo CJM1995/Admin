@@ -135,7 +135,7 @@ if (!isset($_SESSION['admin_email'])) {
 
                             <div class="col-md-6"><!-- col-md-6 Starts -->
 
-                                <input type="file" name="admin_image" class="form-control" required>
+                                <input type="file" name="admin_image" class="form-control">
 
                             </div><!-- col-md-6 Ends -->
 
@@ -243,6 +243,7 @@ if (!isset($_SESSION['admin_email'])) {
 
         $temp_admin_image = $_FILES['admin_image']['tmp_name'];
 
+        // move_uploaded_file($temp_admin_image, "\\\\ADMIN\\land_images\\admin_images\\$admin_image");
         move_uploaded_file($temp_admin_image, "\\\\CJ-LAPTOP\\land_images\\admin_images\\$admin_image");
         // move_uploaded_file($temp_admin_image, "admin_images/$admin_image");
 
