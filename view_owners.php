@@ -145,19 +145,19 @@ if (!isset($_SESSION['admin_email'])) {
                                                             ?>
                                                             <tr>
                                                                 <td class="text-center">
-                                                                    <button type="button" rel="tooltip" class="btn btn-success btn-sm"
+                                                                    <button style="display:block;margin:0 auto;margin-top:2px;" type="button" rel="tooltip" class="btn btn-success btn-sm"
                                                                             data-original-title="" title="Edit"
                                                                             onclick="location.href = 'index.php?edit_owner=<?php echo $ow_id_s; ?>';">
                                                                         <i class="fa fa-pencil"></i>
                                                                     </button>
-                                                                    <button type="button" rel="tooltip" class="btn btn-danger btn-sm"
+                                                                    <button style="display:block;margin:0 auto;margin-top:2px;" type="button" rel="tooltip" class="btn btn-danger btn-sm"
                                                                             data-original-title="" title="Delete"
                                                                             onclick="location.href = 'index.php?delete_owner=<?php echo $ow_id_s; ?>';">
                                                                         <i class="fa fa-trash"></i>
                                                                     </button>
                                                                 </td>
-                                                                <td><?php echo $i; ?></td>
-                                                                <td><?php echo $ow_name_s; ?></td>
+                                                                <td style="text-align:center"><?php echo $i; ?></td>
+                                                                <td style="text-align:center"><?php echo $ow_name_s; ?></td>
                                                                 <td><?php echo $ow_address_s; ?></td>
                                                                 <td><?php echo $ow_phone_s; ?></td>
                                                                 <td><?php echo $ow_fax_s; ?></td>
@@ -235,20 +235,20 @@ if (!isset($_SESSION['admin_email'])) {
                                 $i++;
                                 ?>
                                 <tr>
-                                    <td class="text-center">
-                                        <button type="button" rel="tooltip" class="btn btn-success btn-sm"
+                                    <td style="text-align:center;" class="text-center">
+                                        <button style="display:block;margin:0 auto;margin-top:2px;" type="button" rel="tooltip" class="btn btn-success btn-sm"
                                                 data-original-title="" title="Edit"
                                                 onclick="location.href = 'index.php?edit_owner=<?php echo $owner_id; ?>';">
                                             <i class="fa fa-pencil"></i>
                                         </button>
-                                        <button type="button" rel="tooltip" class="btn btn-danger btn-sm"
+                                        <button style="display:block;margin:0 auto;margin-top:2px;" type="button" rel="tooltip" class="btn btn-danger btn-sm"
                                                 data-original-title="" title="Delete"
                                                 onclick="location.href = 'index.php?delete_owner=<?php echo $owner_id; ?>';">
                                             <i class="fa fa-trash"></i>
                                         </button>
                                     </td>
-                                    <td><?php echo $i; ?></td>
-                                    <td><?php echo $owner_name; ?></td>
+                                    <td style="text-align:center"><?php echo $i; ?></td>
+                                    <td style="text-align:center"><?php echo $owner_name; ?></td>
                                     <td><?php echo $owner_address; ?></td>
                                     <td><?php echo $owner_phone; ?></td>
                                     <td><?php echo $owner_fax; ?></td>

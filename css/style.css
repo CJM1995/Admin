@@ -426,6 +426,27 @@ i.pull-right.fa.fa-fw.fa-caret-down::before {
     font-size: 12px !important;
 }
 
+.top-fixed{
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.top-fixed thead{
+    overflow-y: auto;;
+}
+
+.top-fixed tbody{
+    display: block;
+    width: 100%;
+    overflow: auto;
+    height: 200px;
+}
+
+.top-fixed thead tr{
+    display: block;
+}
+
+
 /* .table-responsive td{
     vertical-align: middle !important;
 } */

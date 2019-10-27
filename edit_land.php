@@ -389,28 +389,28 @@ if (!isset($_SESSION['admin_email'])) {
             $n_total = $ld_t_qty;
 
             if (($_FILES['ld_img1']['name'] == "") && ($_FILES['ld_img2']['name'] == "") && ($_FILES['ld_img3']['name'] == "")) {
-                $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$ld_t_qty', total_price='$tot_prz', available_qty='$ld_a_qty', perch_prz='$ld_prz', description='$ld_prz', availability='$ldland_ava', creater='$creater' where land_id='$land_id'";
+                $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$ld_t_qty', total_price='$tot_prz', available_qty='$ld_a_qty', perch_prz='$ld_prz', description='$ld_desc', availability='$ldland_ava', creater='$creater' where land_id='$land_id'";
 
             } elseif (($_FILES['ld_img1']['name'] == "") && ($_FILES['ld_img2']['name'] == "")) {
-                $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$ld_t_qty', total_price='$tot_prz', available_qty='$ld_a_qty', perch_prz='$ld_prz', description='$ld_prz', availability='$ldland_ava', creater='$creater',land_img3='$ld_img3' where land_id='$land_id'";
+                $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$ld_t_qty', total_price='$tot_prz', available_qty='$ld_a_qty', perch_prz='$ld_prz', description='$ld_desc', availability='$ldland_ava', creater='$creater',land_img3='$ld_img3' where land_id='$land_id'";
 
             } elseif (($_FILES['ld_img1']['name'] == "") && ($_FILES['ld_img3']['name'] == "")) {
-                $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$ld_t_qty', total_price='$tot_prz', available_qty='$ld_a_qty', perch_prz='$ld_prz', description='$ld_prz', availability='$ldland_ava', creater='$creater',land_img2='$ld_img2' where land_id='$land_id'";
+                $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$ld_t_qty', total_price='$tot_prz', available_qty='$ld_a_qty', perch_prz='$ld_prz', description='$ld_desc', availability='$ldland_ava', creater='$creater',land_img2='$ld_img2' where land_id='$land_id'";
 
             } elseif (($_FILES['ld_img2']['name'] == "") && ($_FILES['ld_img3']['name'] == "")) {
-                $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$ld_t_qty', total_price='$tot_prz', available_qty='$ld_a_qty', perch_prz='$ld_prz', description='$ld_prz', availability='$ldland_ava', creater='$creater',land_img1='$ld_img1' where land_id='$land_id'";
+                $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$ld_t_qty', total_price='$tot_prz', available_qty='$ld_a_qty', perch_prz='$ld_prz', description='$ld_desc', availability='$ldland_ava', creater='$creater',land_img1='$ld_img1' where land_id='$land_id'";
 
             } elseif ($_FILES['ld_img3']['name'] == "") {
-                $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$ld_t_qty', total_price='$tot_prz', available_qty='$ld_a_qty', perch_prz='$ld_prz', description='$ld_prz', availability='$ldland_ava', creater='$creater',land_img1='$ld_img1',land_img2='$ld_img2' where land_id='$land_id'";
+                $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$ld_t_qty', total_price='$tot_prz', available_qty='$ld_a_qty', perch_prz='$ld_prz', description='$ld_desc', availability='$ldland_ava', creater='$creater',land_img1='$ld_img1',land_img2='$ld_img2' where land_id='$land_id'";
 
             } elseif ($_FILES['ld_img2']['name'] == "") {
-                $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$ld_t_qty', total_price='$tot_prz', available_qty='$ld_a_qty', perch_prz='$ld_prz', description='$ld_prz', availability='$ldland_ava', creater='$creater', land_img1='$ld_img1',land_img3='$ld_img3' where land_id='$land_id'";
+                $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$ld_t_qty', total_price='$tot_prz', available_qty='$ld_a_qty', perch_prz='$ld_prz', description='$ld_desc', availability='$ldland_ava', creater='$creater', land_img1='$ld_img1',land_img3='$ld_img3' where land_id='$land_id'";
 
             } elseif ($_FILES['ld_img1']['name'] == "") {
-                $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$ld_t_qty', total_price='$tot_prz', available_qty='$ld_a_qty', perch_prz='$ld_prz', description='$ld_prz', availability='$ldland_ava', creater='$creater', land_img2='$ld_img2', land_img3='$ld_img3' where land_id='$land_id'";
+                $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$ld_t_qty', total_price='$tot_prz', available_qty='$ld_a_qty', perch_prz='$ld_prz', description='$ld_desc', availability='$ldland_ava', creater='$creater', land_img2='$ld_img2', land_img3='$ld_img3' where land_id='$land_id'";
                 
             } else {
-                $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$ld_t_qty', total_price='$tot_prz', available_qty='$ld_a_qty', perch_prz='$ld_prz', description='$ld_prz', availability='$ldland_ava', creater='$creater',land_img1='$ld_img1', land_img2='$ld_img2', land_img3='$ld_img3' where land_id='$land_id'";
+                $update_land = "update lands set code='$ld_code',owner_id='$ld_owner_id', address='$ld_address', city='$ld_city', sale_type='$ld_s_type', total_qty='$ld_t_qty', total_price='$tot_prz', available_qty='$ld_a_qty', perch_prz='$ld_prz', description='$ld_desc', availability='$ldland_ava', creater='$creater',land_img1='$ld_img1', land_img2='$ld_img2', land_img3='$ld_img3' where land_id='$land_id'";
             }
 
             // if (($ld_t_qty > $ld_a_qty) || ($ld_t_qty == $ld_a_qty)) {

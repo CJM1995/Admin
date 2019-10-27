@@ -3,9 +3,23 @@
   <component name="ChangeListManager">
     <list default="true" id="d0da5aa3-877d-44d8-8265-63be714e9f34" name="Default" comment="images">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7ad7d160-6287-4fd4-91a1-f4ed86a15088.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7ad7d160-6287-4fd4-91a1-f4ed86a15088.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/delete_owner.php" beforeDir="false" afterPath="$PROJECT_DIR$/delete_owner.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edit_land.php" beforeDir="false" afterPath="$PROJECT_DIR$/edit_land.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edit_owner.php" beforeDir="false" afterPath="$PROJECT_DIR$/edit_owner.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edit_warehouse.php" beforeDir="false" afterPath="$PROJECT_DIR$/edit_warehouse.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view_customers.php" beforeDir="false" afterPath="$PROJECT_DIR$/view_customers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view_house_needed.php" beforeDir="false" afterPath="$PROJECT_DIR$/view_house_needed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view_houses.php" beforeDir="false" afterPath="$PROJECT_DIR$/view_houses.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view_land_needed.php" beforeDir="false" afterPath="$PROJECT_DIR$/view_land_needed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view_lands.php" beforeDir="false" afterPath="$PROJECT_DIR$/view_lands.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view_owners.php" beforeDir="false" afterPath="$PROJECT_DIR$/view_owners.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view_warehouse_needed.php" beforeDir="false" afterPath="$PROJECT_DIR$/view_warehouse_needed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view_warehouses.php" beforeDir="false" afterPath="$PROJECT_DIR$/view_warehouses.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,9 +27,6 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/tooltipster/composer.json</pharConfigPath>
-    <execution>
-      <executable />
-    </execution>
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -37,73 +48,47 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="dashboard.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dashboard.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="527">
-              <caret line="31" column="33" selection-start-line="29" selection-start-column="4" selection-end-line="31" selection-end-column="33" />
+              <caret line="31" column="33" selection-start-line="31" selection-start-column="33" selection-end-line="31" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="view_houses.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/view_houses.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4964">
-              <caret line="292" column="58" selection-start-line="292" selection-start-column="58" selection-end-line="292" selection-end-column="58" />
+            <state relative-caret-position="7701">
+              <caret line="453" column="58" selection-start-line="453" selection-start-column="58" selection-end-line="453" selection-end-column="58" />
               <folding>
-                <marker date="1544641058627" expanded="true" signature="4304:4373" ph="select * fro... houses" />
-                <marker date="1544641058627" expanded="true" signature="4576:4650" ph="select * fro... houses" />
-                <marker date="1544641058627" expanded="true" signature="4852:4925" ph="select * fro... houses" />
-                <marker date="1544641058627" expanded="true" signature="5124:5199" ph="select * fro... houses" />
-                <marker date="1544641058627" expanded="true" signature="5397:5459" ph="select * fro... houses" />
-                <marker date="1544641058627" expanded="true" signature="5749:5857" ph="..." />
-                <marker date="1544641058627" expanded="true" signature="13329:14771" ph="..." />
-                <marker date="1544641058627" expanded="false" signature="13415:13430" ph="..." />
-                <marker date="1544641058627" expanded="true" signature="13464:14014" ph="..." />
-                <marker date="1544641058627" expanded="false" signature="14100:14115" ph="..." />
-                <marker date="1544641058627" expanded="true" signature="14149:14701" ph="..." />
-                <marker date="1544641058627" expanded="true" signature="14988:16448" ph="..." />
-                <marker date="1544641058627" expanded="false" signature="15074:15089" ph="..." />
-                <marker date="1544641058627" expanded="true" signature="15123:15682" ph="..." />
-                <marker date="1544641058627" expanded="false" signature="15768:15783" ph="..." />
-                <marker date="1544641058627" expanded="true" signature="15817:16378" ph="..." />
-                <marker date="1544641058627" expanded="true" signature="20115:20348" ph="..." />
-                <marker date="1544641058627" expanded="true" signature="20174:20273" ph="{...}" />
-                <marker date="1544641058627" expanded="true" signature="22647:22667" ph="select * fro... houses" />
-                <marker date="1544641058627" expanded="true" signature="24031:25105" ph="..." />
-                <marker date="1544641058627" expanded="false" signature="24089:24104" ph="..." />
-                <marker date="1544641058627" expanded="true" signature="24138:24546" ph="..." />
-                <marker date="1544641058627" expanded="false" signature="24604:24619" ph="..." />
-                <marker date="1544641058627" expanded="true" signature="24653:25063" ph="..." />
-                <marker date="1544641058627" expanded="true" signature="25238:26330" ph="..." />
-                <marker date="1544641058627" expanded="false" signature="25296:25311" ph="..." />
-                <marker date="1544641058627" expanded="true" signature="25345:25762" ph="..." />
-                <marker date="1544641058627" expanded="false" signature="25820:25835" ph="..." />
-                <marker date="1544641058627" expanded="true" signature="25869:26288" ph="..." />
+                <marker date="1570967609633" expanded="true" signature="4304:4373" ph="select * fro... houses" />
+                <marker date="1570967609633" expanded="true" signature="4576:4650" ph="select * fro... houses" />
+                <marker date="1570967609633" expanded="true" signature="4852:4925" ph="select * fro... houses" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="user_profile.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/user_profile.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="4828">
               <caret line="284" column="45" selection-start-line="284" selection-start-column="45" selection-end-line="284" selection-end-column="45" />
               <folding>
-                <marker date="1547229551158" expanded="true" signature="247:293" ph="select * fro... admins" />
-                <marker date="1547229551158" expanded="true" signature="4052:4112" ph="..." />
-                <marker date="1547229551158" expanded="true" signature="4301:4370" ph="..." />
-                <marker date="1547229551158" expanded="true" signature="9096:9178" ph="..." />
-                <marker date="1547229551158" expanded="true" signature="9829:10058" ph="update admin... " />
-                <marker date="1547229551158" expanded="true" signature="10196:10327" ph="..." />
+                <marker date="1570945920211" expanded="true" signature="247:293" ph="select * fro... admins" />
+                <marker date="1570945920211" expanded="true" signature="4052:4112" ph="..." />
+                <marker date="1570945920211" expanded="true" signature="4301:4370" ph="..." />
+                <marker date="1570945920211" expanded="true" signature="9096:9178" ph="..." />
+                <marker date="1570945920211" expanded="true" signature="10028:10257" ph="update admin... " />
+                <marker date="1570945920211" expanded="true" signature="10395:10526" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="view_users.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/view_users.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="493">
@@ -115,30 +100,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file leaf-file-name="view_house_purchases.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/view_house_purchases.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="87" column="70" selection-start-line="87" selection-start-column="70" selection-end-line="87" selection-end-column="70" />
-              <folding>
-                <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="1360">
+              <caret line="80" column="42" selection-start-line="80" selection-start-column="42" selection-end-line="80" selection-end-column="42" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="view_customers.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/view_customers.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1139">
-              <caret line="67" column="124" selection-start-line="67" selection-start-column="124" selection-end-line="67" selection-end-column="124" />
+            <state relative-caret-position="238">
+              <caret line="224" column="64" lean-forward="true" selection-start-line="224" selection-start-column="64" selection-end-line="224" selection-end-column="64" />
             </state>
           </provider>
         </entry>
@@ -163,7 +138,6 @@
         <option value="$PROJECT_DIR$/editdata.php" />
         <option value="$PROJECT_DIR$/view_products.php" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/7ad7d160-6287-4fd4-91a1-f4ed86a15088/console.sql" />
-        <option value="$PROJECT_DIR$/view_customers.php" />
         <option value="$PROJECT_DIR$/view_owners.php" />
         <option value="$PROJECT_DIR$/view_users.php" />
         <option value="$PROJECT_DIR$/view_lands.php" />
@@ -210,8 +184,20 @@
         <option value="$PROJECT_DIR$/css/style.css" />
         <option value="$PROJECT_DIR$/css/login_style.css" />
         <option value="$PROJECT_DIR$/view_house_purchases.php" />
+        <option value="$PROJECT_DIR$/view_customers.php" />
       </list>
     </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/tooltipster/package.json" />
+    </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
@@ -235,8 +221,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -400,6 +386,10 @@
       <workItem from="1569421470125" duration="2206000" />
       <workItem from="1569427820228" duration="2231000" />
       <workItem from="1569602618846" duration="898000" />
+      <workItem from="1571670426241" duration="1160000" />
+      <workItem from="1571675396197" duration="258000" />
+      <workItem from="1571709198023" duration="42000" />
+      <workItem from="1571845481963" duration="835000" />
     </task>
     <task id="LOCAL-00001" summary="warehouse view">
       <created>1543992144570</created>
@@ -587,75 +577,78 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="479352000" />
+    <option name="totallyTimeSpent" value="481647000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13388805" />
-      <window_info id="Structure" order="1" weight="0.24962178" />
-      <window_info id="Capture Tool" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Favorites" order="5" side_tool="true" />
-      <window_info id="Image Layers" order="6" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3296355" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13469985" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.3296355" />
-      <window_info anchor="bottom" id="Messages" order="8" weight="0.3296355" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.3296355" />
-      <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="Database Console" order="11" weight="0.3296355" />
       <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.3296355" />
+      <window_info anchor="right" id="Database" order="5" visible="true" weight="0.030746706" />
       <window_info anchor="bottom" id="Database Changes" order="13" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Maven Projects" order="4" />
-      <window_info anchor="right" id="Database" order="5" weight="0.18683812" />
-      <window_info anchor="right" id="Capture Analysis" order="6" />
-      <window_info anchor="right" id="Theme Preview" order="7" />
-      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.24962178" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.3296355" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" id="Maven" order="9" />
+      <window_info id="Designer" order="3" />
+      <window_info anchor="bottom" id="Database Console" order="11" weight="0.3296355" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info id="Image Layers" order="6" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="UI Designer" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.3296355" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Maven Projects" order="4" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3296355" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="right" id="Theme Preview" order="7" />
     </layout>
     <layout-to-restore>
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="bottom" id="Database Console" order="10" weight="0.3296355" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
+      <window_info anchor="right" id="Theme Preview" order="7" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19619326" />
       <window_info id="Structure" order="1" weight="0.25" />
-      <window_info id="Capture Tool" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Favorites" order="5" side_tool="true" />
-      <window_info id="Image Layers" order="6" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Console" order="10" weight="0.3296355" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Maven Projects" order="4" />
-      <window_info anchor="right" id="Database" order="5" weight="0.18740849" />
-      <window_info anchor="right" id="Capture Analysis" order="6" />
-      <window_info anchor="right" id="Theme Preview" order="7" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info id="Image Layers" order="6" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" id="Database" order="5" weight="0.18740849" />
+      <window_info anchor="right" id="Maven Projects" order="4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="warehouse view" />
@@ -977,44 +970,18 @@
     <entry file="file://$PROJECT_DIR$/dashboard.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
-          <caret line="31" column="33" selection-start-line="29" selection-start-column="4" selection-end-line="31" selection-end-column="33" />
+          <caret line="31" column="33" selection-start-line="31" selection-start-column="33" selection-end-line="31" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/view_houses.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4964">
-          <caret line="292" column="58" selection-start-line="292" selection-start-column="58" selection-end-line="292" selection-end-column="58" />
+        <state relative-caret-position="7701">
+          <caret line="453" column="58" selection-start-line="453" selection-start-column="58" selection-end-line="453" selection-end-column="58" />
           <folding>
-            <marker date="1544641058627" expanded="true" signature="4304:4373" ph="select * fro... houses" />
-            <marker date="1544641058627" expanded="true" signature="4576:4650" ph="select * fro... houses" />
-            <marker date="1544641058627" expanded="true" signature="4852:4925" ph="select * fro... houses" />
-            <marker date="1544641058627" expanded="true" signature="5124:5199" ph="select * fro... houses" />
-            <marker date="1544641058627" expanded="true" signature="5397:5459" ph="select * fro... houses" />
-            <marker date="1544641058627" expanded="true" signature="5749:5857" ph="..." />
-            <marker date="1544641058627" expanded="true" signature="13329:14771" ph="..." />
-            <marker date="1544641058627" expanded="false" signature="13415:13430" ph="..." />
-            <marker date="1544641058627" expanded="true" signature="13464:14014" ph="..." />
-            <marker date="1544641058627" expanded="false" signature="14100:14115" ph="..." />
-            <marker date="1544641058627" expanded="true" signature="14149:14701" ph="..." />
-            <marker date="1544641058627" expanded="true" signature="14988:16448" ph="..." />
-            <marker date="1544641058627" expanded="false" signature="15074:15089" ph="..." />
-            <marker date="1544641058627" expanded="true" signature="15123:15682" ph="..." />
-            <marker date="1544641058627" expanded="false" signature="15768:15783" ph="..." />
-            <marker date="1544641058627" expanded="true" signature="15817:16378" ph="..." />
-            <marker date="1544641058627" expanded="true" signature="20115:20348" ph="..." />
-            <marker date="1544641058627" expanded="true" signature="20174:20273" ph="{...}" />
-            <marker date="1544641058627" expanded="true" signature="22647:22667" ph="select * fro... houses" />
-            <marker date="1544641058627" expanded="true" signature="24031:25105" ph="..." />
-            <marker date="1544641058627" expanded="false" signature="24089:24104" ph="..." />
-            <marker date="1544641058627" expanded="true" signature="24138:24546" ph="..." />
-            <marker date="1544641058627" expanded="false" signature="24604:24619" ph="..." />
-            <marker date="1544641058627" expanded="true" signature="24653:25063" ph="..." />
-            <marker date="1544641058627" expanded="true" signature="25238:26330" ph="..." />
-            <marker date="1544641058627" expanded="false" signature="25296:25311" ph="..." />
-            <marker date="1544641058627" expanded="true" signature="25345:25762" ph="..." />
-            <marker date="1544641058627" expanded="false" signature="25820:25835" ph="..." />
-            <marker date="1544641058627" expanded="true" signature="25869:26288" ph="..." />
+            <marker date="1570967609633" expanded="true" signature="4304:4373" ph="select * fro... houses" />
+            <marker date="1570967609633" expanded="true" signature="4576:4650" ph="select * fro... houses" />
+            <marker date="1570967609633" expanded="true" signature="4852:4925" ph="select * fro... houses" />
           </folding>
         </state>
       </provider>
@@ -1024,12 +991,12 @@
         <state relative-caret-position="4828">
           <caret line="284" column="45" selection-start-line="284" selection-start-column="45" selection-end-line="284" selection-end-column="45" />
           <folding>
-            <marker date="1547229551158" expanded="true" signature="247:293" ph="select * fro... admins" />
-            <marker date="1547229551158" expanded="true" signature="4052:4112" ph="..." />
-            <marker date="1547229551158" expanded="true" signature="4301:4370" ph="..." />
-            <marker date="1547229551158" expanded="true" signature="9096:9178" ph="..." />
-            <marker date="1547229551158" expanded="true" signature="9829:10058" ph="update admin... " />
-            <marker date="1547229551158" expanded="true" signature="10196:10327" ph="..." />
+            <marker date="1570945920211" expanded="true" signature="247:293" ph="select * fro... admins" />
+            <marker date="1570945920211" expanded="true" signature="4052:4112" ph="..." />
+            <marker date="1570945920211" expanded="true" signature="4301:4370" ph="..." />
+            <marker date="1570945920211" expanded="true" signature="9096:9178" ph="..." />
+            <marker date="1570945920211" expanded="true" signature="10028:10257" ph="update admin... " />
+            <marker date="1570945920211" expanded="true" signature="10395:10526" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1044,27 +1011,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/view_customers.php">
+    <entry file="file://$PROJECT_DIR$/view_house_purchases.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1139">
-          <caret line="67" column="124" selection-start-line="67" selection-start-column="124" selection-end-line="67" selection-end-column="124" />
+        <state relative-caret-position="1360">
+          <caret line="80" column="42" selection-start-line="80" selection-start-column="42" selection-end-line="80" selection-end-column="42" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/view_house_purchases.php">
+    <entry file="file://$PROJECT_DIR$/view_customers.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="87" column="70" selection-start-line="87" selection-start-column="70" selection-end-line="87" selection-end-column="70" />
-          <folding>
-            <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="238">
+          <caret line="224" column="64" lean-forward="true" selection-start-line="224" selection-start-column="64" selection-end-line="224" selection-end-column="64" />
         </state>
       </provider>
     </entry>

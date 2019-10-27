@@ -395,13 +395,13 @@ if (!isset($_SESSION['admin_email'])) {
                                                                     <?php
                                                                                     if ((strcmp($l_need_status_s, 'Pending') == 0) || (strcmp($l_need_status_s, 'On-hold') == 0)) {
                                                                                         echo "<td style=\"text-align:center\">
-                                        <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                        <button style=\"display:block;margin:0 auto;margin-top:2px;\" type=\"button\" rel=\"tooltip\"
                                                 class=\"btn btn-success btn-sm\"
                                                 data-original-title=\"\" title=\"Edit\"
                                                 onclick=\"location.href = 'index.php?edit_land_needed=$lnd_need_id_s';\">
                                             <i class=\"fa fa-pencil fa-fw\"></i>
                                         </button>
-                                        <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                        <button style=\"display:block;margin:0 auto;margin-top:2px;\" type=\"button\" rel=\"tooltip\"
                                                 class=\"btn btn-danger btn-sm\"
                                                 data-original-title=\"\" title=\"Remove\"
                                                 onclick=\"location.href = 'index.php?delete_land_needed=$lnd_need_id_s';\">
@@ -410,13 +410,13 @@ if (!isset($_SESSION['admin_email'])) {
                                     </td>";
                                                                                     } else {
                                                                                         echo "<td style=\"text-align:center\">
-                                        <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                        <button style=\"display:block;margin:0 auto;margin-top:2px;\" type=\"button\" rel=\"tooltip\"
                                                 class=\"btn btn-success btn-sm\"
                                                 data-original-title=\"\" title=\"Edit\"
                                                 onclick=\"location.href = 'index.php?edit_land_needed=$lnd_need_id_s';\" disabled>
                                             <i class=\"fa fa-pencil fa-fw\"></i>
                                         </button>
-                                        <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                        <button style=\"display:block;margin:0 auto;margin-top:2px;\" type=\"button\" rel=\"tooltip\"
                                                 class=\"btn btn-danger btn-sm\"
                                                 data-original-title=\"\" title=\"Remove\"
                                                 onclick=\"location.href = 'index.php?delete_land_needed=$lnd_need_id_s';\">
@@ -551,13 +551,13 @@ if (!isset($_SESSION['admin_email'])) {
                                         <?php
                                                 if ((strcmp($l_need_status, 'Pending') == 0) || (strcmp($l_need_status, 'On-hold') == 0)) {
                                                     echo "<td style=\"text-align:center\">
-                                        <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                        <button style=\"display:block;margin:0 auto;margin-top:2px;\" type=\"button\" rel=\"tooltip\"
                                                 class=\"btn btn-success btn-sm\"
                                                 data-original-title=\"\" title=\"Edit\"
                                                 onclick=\"location.href = 'index.php?edit_land_needed=$lnd_need_id';\">
                                             <i class=\"fa fa-pencil fa-fw\"></i>
                                         </button>
-                                        <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                        <button style=\"display:block;margin:0 auto;margin-top:2px;\" type=\"button\" rel=\"tooltip\"
                                                 class=\"btn btn-danger btn-sm\"
                                                 data-original-title=\"\" title=\"Remove\"
                                                 onclick=\"location.href = 'index.php?delete_land_needed=$lnd_need_id';\">
@@ -566,13 +566,13 @@ if (!isset($_SESSION['admin_email'])) {
                                     </td>";
                                                 } else {
                                                     echo "<td style=\"text-align:center\">
-                                        <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                        <button style=\"display:block;margin:0 auto;margin-top:2px;\" type=\"button\" rel=\"tooltip\"
                                                 class=\"btn btn-success btn-sm\"
                                                 data-original-title=\"\" title=\"Edit\"
                                                 onclick=\"location.href = 'index.php?edit_land_needed=$lnd_need_id';\" disabled>
                                             <i class=\"fa fa-pencil fa-fw\"></i>
                                         </button>
-                                        <button style=\"margin-top: 2px\" type=\"button\" rel=\"tooltip\"
+                                        <button style=\"display:block;margin:0 auto;margin-top:2px;\" type=\"button\" rel=\"tooltip\"
                                                 class=\"btn btn-danger btn-sm\"
                                                 data-original-title=\"\" title=\"Remove\"
                                                 onclick=\"location.href = 'index.php?delete_land_needed=$lnd_need_id';\">
