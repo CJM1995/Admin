@@ -50,7 +50,7 @@ if (!isset($_SESSION['admin_email'])) {
                         <input type="submit" name="close" value="Close"
                                class="btn btn-default" onclick="window.open('index.php?view_owners','_self')">
                         <input type="submit" name="delete" value="Delete"
-                               class="btn btn-danger" onclick=$('#myModal').modal('hide');>
+                               class="btn btn-danger" onclick="$('#myModal').modal('hide');">
                         <!--                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
                         <!--                        <button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>-->
 
