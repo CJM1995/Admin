@@ -69,13 +69,17 @@ if (!isset($_SESSION['admin_email'])) {
                     </div><!-- panel-heading row Ends -->
                 </div><!-- panel-heading Ends -->
 
-                <a href="index.php?view_warehouses">
-                    <div class="panel-footer"><!-- panel-footer Starts -->
-                        <span class="pull-left"> View Details </span>
-                        <span class="pull-right"> <i class="fa fa-arrow-circle-right"></i> </span>
-                        <div class="clearfix"></div>
-                    </div><!-- panel-footer Ends -->
-                </a>
+                <?php
+                    if ($admin_job === 'Admin' || $admin_job === 'ADMIN' || $admin_job === 'Administrator' || $admin_job === 'ADMINISTRATOR') {
+                        echo "<a href=\"index.php?view_warehouses\">";
+                        echo "<div class=\"panel-footer\">";
+                        echo "<span class=\"pull-left\"> View Details </span>";
+                        echo "<span class=\"pull-right\"> <i class=\"fa fa-arrow-circle-right\"></i> </span>";
+                        echo "<div class=\"clearfix\"></div>";
+                        echo "</div>";
+                        echo "</a>";
+                    }
+                ?>
             </div><!-- panel panel-primary Ends -->
         </div><!-- col-lg-4 col-md-6 Ends -->
 

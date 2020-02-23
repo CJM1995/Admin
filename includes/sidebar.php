@@ -114,6 +114,18 @@ if (!isset($_SESSION['admin_email'])) {
                     </div>
                 </li><!-- li Ends -->
 
+                <li class="item" id='apartment' data-toggle="collapse" data-target="#apartments">
+                    <!-- li Starts -->
+                    <a href="#apartment" class="">
+                        <i class="fa fa-fw fa-bed"></i> Apartments
+                        <i class="pull-right fa fa-fw fa-caret-down"></i>
+                    </a>
+                    <div id="apartments" class="smenu collapse">
+                        <a style="text-decoration: none" href="index.php?insert_apartment"> Insert Apartment</a>
+                        <a style="text-decoration: none" href="index.php?view_apartments"> View apartments</a>
+                    </div>
+                </li><!-- li Ends -->
+
                 <li class="item" id='owner' data-toggle="collapse" data-target="#owners">
                     <!-- li Starts -->
                     <a href="#owner" class="">

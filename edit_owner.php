@@ -84,7 +84,7 @@ if (!isset($_SESSION['admin_email'])) {
 
                             <label class="col-md-3 control-label">Address </label>
                             <div class="col-md-6"><!-- col-md-6 Starts -->
-                                <input type="text" name="owner_address" class="form-control" required
+                                <input type="text" name="owner_address" class="form-control"
                                        value="<?php echo $owner_address; ?>">
                             </div><!-- col-md-6 Ends -->
                         </div><!-- form-group Ends -->
@@ -105,7 +105,7 @@ if (!isset($_SESSION['admin_email'])) {
                             <label class="col-md-3 control-label">Fax </label>
                             <div class="col-md-6"><!-- col-md-6 Starts -->
                                 <input type="number" name="owner_fax" class="form-control" pattern="^[0-9]" min="0"
-                                       step="1" required value="<?php echo $owner_fax ?>">
+                                       step="1" value="<?php echo $owner_fax ?>">
                             </div><!-- col-md-6 Ends -->
                         </div><!-- form-group Ends -->
 
@@ -117,7 +117,7 @@ if (!isset($_SESSION['admin_email'])) {
                                        name="owner_email" type="email" data-tippy-arrow="true" data-tippy-size="large"
                                        data-tippy="Owner's email (format: xxx@xxx.xxx)"
                                        pattern="[a-zA-Z0-9!#$%&amp;'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*"
-                                       value="<?php echo $owner_email ?>" required>
+                                       value="<?php echo $owner_email ?>">
                             </div><!-- col-md-6 Ends -->
                         </div><!-- form-group Ends -->
 

@@ -289,8 +289,8 @@ if (!isset($_SESSION['admin_email'])) {
 
         $temp_admin_image = $_FILES['admin_image']['tmp_name'];
 
-        // move_uploaded_file($temp_admin_image, "\\\\ADMIN\\admin_images\\$admin_image");
-        move_uploaded_file($temp_admin_image, "\\\\CJ-LAPTOP\\land_images\\admin_images\\$admin_image");
+        move_uploaded_file($temp_admin_image, "\\\\ADMIN\\admin_images\\$admin_image");
+        // move_uploaded_file($temp_admin_image, "\\\\CJ-LAPTOP\\land_images\\admin_images\\$admin_image");
         // move_uploaded_file($temp_admin_image, "admin_images/$admin_image");
 
         $update_admin = "update admins set admin_name='$admin_name',admin_email='$admin_email',admin_pass='$admin_pass',admin_image='$admin_image',admin_contact='$admin_contact',admin_job='$admin_job',admin_about='$admin_about' where admin_id='$admin_id'";

@@ -681,12 +681,12 @@ if (!isset($_SESSION['admin_email'])) {
             $temp_name2 = $_FILES['warehouse_img2']['tmp_name'];
             $temp_name3 = $_FILES['warehouse_img3']['tmp_name'];
 
-            // move_uploaded_file($temp_name1, "\\\\ADMIN\\warehouse_images\\$warehouse_img1");
-            // move_uploaded_file($temp_name2, "\\\\ADMIN\\warehouse_images\\$warehouse_img2");
-            // move_uploaded_file($temp_name3, "\\\\ADMIN\\warehouse_images\\$warehouse_img3");
-            move_uploaded_file($temp_name1, "\\\\CJ-LAPTOP\\warehouse_images\\$warehouse_img1");
-            move_uploaded_file($temp_name2, "\\\\CJ-LAPTOP\\warehouse_images\\$warehouse_img2");
-            move_uploaded_file($temp_name3, "\\\\CJ-LAPTOP\\warehouse_images\\$warehouse_img3");
+            move_uploaded_file($temp_name1, "\\\\ADMIN\\warehouse_images\\$warehouse_img1");
+            move_uploaded_file($temp_name2, "\\\\ADMIN\\warehouse_images\\$warehouse_img2");
+            move_uploaded_file($temp_name3, "\\\\ADMIN\\warehouse_images\\$warehouse_img3");
+            // move_uploaded_file($temp_name1, "\\\\CJ-LAPTOP\\warehouse_images\\$warehouse_img1");
+            // move_uploaded_file($temp_name2, "\\\\CJ-LAPTOP\\warehouse_images\\$warehouse_img2");
+            // move_uploaded_file($temp_name3, "\\\\CJ-LAPTOP\\warehouse_images\\$warehouse_img3");
             // move_uploaded_file($temp_name1, "warehouse_images/$warehouse_img1");
             // move_uploaded_file($temp_name2, "warehouse_images/$warehouse_img2");
             // move_uploaded_file($temp_name3, "warehouse_images/$warehouse_img3");

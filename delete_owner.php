@@ -153,6 +153,17 @@ if (!isset($_SESSION['admin_email'])) {
 
         if($l_count==0 && $w_count==0 && $h_count==0){
             $run_delete = mysqli_query($con, $delete_owner);
+			
+			if ($run_delete) {
+
+            echo "<script type=\"text/javascript\">
+            $(window).load(function(){
+                $('#myModal').modal('hide');
+            });
+            $('#loadingModal').modal('hide');
+            $('#suModal').modal('show');
+			</script>";
+			}
         }
         else{
             echo "<script type=\"text/javascript\">
@@ -164,16 +175,7 @@ if (!isset($_SESSION['admin_email'])) {
         </script>";
         }
 
-        if ($run_delete) {
-
-            echo "<script type=\"text/javascript\">
-            $(window).load(function(){
-                $('#myModal').modal('hide');
-            });
-            $('#loadingModal').modal('hide');
-            $('#suModal').modal('show');
-        </script>";
-        }
+        
     }
     if (isset($_POST['ok'])) {
         echo "<script>window.open('index.php?view_owners','_self')</script>";

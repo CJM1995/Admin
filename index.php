@@ -182,6 +182,30 @@ if (!isset($_SESSION['admin_email'])) {
 
                 }
 
+                if (isset($_GET['insert_apartment'])) {
+
+                    include("insert_apartment.php");
+
+                }
+
+                if (isset($_GET['view_apartments'])) {
+
+                    include("view_apartments.php");
+
+                }
+
+                if (isset($_GET['edit_apartment'])) {
+
+                    include("edit_apartment.php");
+
+                }
+
+                if (isset($_GET['delete_apartment'])) {
+
+                    include("delete_apartment.php");
+
+                }
+
                 if (isset($_GET['insert_house'])) {
 
                     include("insert_house.php");

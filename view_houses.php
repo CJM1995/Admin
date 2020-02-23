@@ -369,13 +369,13 @@ if (!isset($_SESSION['admin_email'])) {
                                                                     <?php
                                                                                     if (strcmp($hou_ava_s, 'Available') == 0) {
                                                                                         echo "<td style=\"text-align:center\">
-                                                                    <button style=\"margin-top: 2px;display:block;\" type=\"button\" rel=\"tooltip\"
+                                                                    <button style=\"display:block;margin:0 auto;margin-top:2px;\" type=\"button\" rel=\"tooltip\"
                                                                             class=\"btn btn-success btn-sm\"
                                                                             data-original-title=\"\" title=\"Edit\"
                                                                             onclick=\"location.href = 'index.php?edit_house=$hou_id_s';\">
                                                                         <i class=\"fa fa-pencil fa-fw\"></i>
                                                                     </button>
-                                                                    <button style=\"margin-top: 2px;display:block;\" type=\"button\" rel=\"tooltip\"
+                                                                    <button style=\"display:block;margin:0 auto;margin-top:2px;\" type=\"button\" rel=\"tooltip\"
                                                                             class=\"btn btn-danger btn-sm\"
                                                                             data-original-title=\"\" title=\"Remove\"
                                                                             onclick=\"location.href = 'index.php?delete_house=$hou_id_s';\">
@@ -384,13 +384,13 @@ if (!isset($_SESSION['admin_email'])) {
                                                                 </td>";
                                                                                     } else {
                                                                                         echo "<td style=\"text-align:center\">
-                                                                    <button style=\"margin-top: 2px;display:block;\" type=\"button\" rel=\"tooltip\"
+                                                                    <button style=\"display:block;margin:0 auto;margin-top:2px;\" type=\"button\" rel=\"tooltip\"
                                                                             class=\"btn btn-success btn-sm\"
                                                                             data-original-title=\"\" title=\"Edit\"
                                                                             onclick=\"location.href = 'index.php?edit_house=$hou_id_s';\" disabled>
                                                                         <i class=\"fa fa-pencil fa-fw\"></i>
                                                                     </button>
-                                                                    <button style=\"margin-top: 2px;display:block;\" type=\"button\" rel=\"tooltip\"
+                                                                    <button style=\"display:block;margin:0 auto;margin-top:2px;\" type=\"button\" rel=\"tooltip\"
                                                                             class=\"btn btn-danger btn-sm\"
                                                                             data-original-title=\"\" title=\"Remove\"
                                                                             onclick=\"location.href = 'index.php?delete_house=$hou_id_s';\">
@@ -530,13 +530,13 @@ if (!isset($_SESSION['admin_email'])) {
                                             <?php
                                                     if (strcmp($hou_ava, 'Available') == 0) {
                                                         echo "<td style=\"text-align:center\">
-                                        <button style=\"margin-top: 2px;display:block;\" type=\"button\" rel=\"tooltip\"
+                                        <button style=\"display:block;margin:0 auto;margin-top:2px;\" type=\"button\" rel=\"tooltip\"
                                                 class=\"btn btn-success btn-sm\"
                                                 data-original-title=\"\" title=\"Edit\"
                                                 onclick=\"location.href = 'index.php?edit_house=$hou_id';\">
                                             <i class=\"fa fa-pencil fa-fw\"></i>
                                         </button>
-                                        <button style=\"margin-top: 2px;display:block;\" type=\"button\" rel=\"tooltip\"
+                                        <button style=\"display:block;margin:0 auto;margin-top:2px;\" type=\"button\" rel=\"tooltip\"
                                                 class=\"btn btn-danger btn-sm\"
                                                 data-original-title=\"\" title=\"Remove\"
                                                 onclick=\"location.href = 'index.php?delete_house=$hou_id';\">
@@ -545,13 +545,13 @@ if (!isset($_SESSION['admin_email'])) {
                                     </td>";
                                                     } else {
                                                         echo "<td style=\"text-align:center\">
-                                        <button style=\"margin-top: 2px;display:block;\" type=\"button\" rel=\"tooltip\"
+                                        <button style=\"display:block;margin:0 auto;margin-top:2px;\" type=\"button\" rel=\"tooltip\"
                                                 class=\"btn btn-success btn-sm\"
                                                 data-original-title=\"\" title=\"Edit\"
                                                 onclick=\"location.href = 'index.php?edit_house=$hou_id';\" disabled>
                                             <i class=\"fa fa-pencil fa-fw\"></i>
                                         </button>
-                                        <button style=\"margin-top: 2px;display:block;\" type=\"button\" rel=\"tooltip\"
+                                        <button style=\"display:block;margin:0 auto;margin-top:2px;\" type=\"button\" rel=\"tooltip\"
                                                 class=\"btn btn-danger btn-sm\"
                                                 data-original-title=\"\" title=\"Remove\"
                                                 onclick=\"location.href = 'index.php?delete_house=$hou_id';\">

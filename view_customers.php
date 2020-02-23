@@ -147,19 +147,19 @@ if (!isset($_SESSION['admin_email'])) {
                                                             ?>
                                                             <tr>
                                                                 <td class="text-center">
-                                                                    <button type="button" rel="tooltip" class="btn btn-success btn-sm"
+                                                                    <button style="display:block;margin:0 auto;margin-top:2px;" type="button" rel="tooltip" class="btn btn-success btn-sm"
                                                                             data-original-title="" title="Edit"
                                                                             onclick="location.href = 'index.php?edit_customer=<?php echo $cus_id_s; ?>';">
                                                                         <i class="fa fa-pencil"></i>
                                                                     </button>
-                                                                    <button type="button" rel="tooltip" class="btn btn-danger btn-sm"
+                                                                    <button style="display:block;margin:0 auto;margin-top:2px;" type="button" rel="tooltip" class="btn btn-danger btn-sm"
                                                                             data-original-title="" title="Delete"
                                                                             onclick="location.href = 'index.php?delete_customer=<?php echo $cus_id_s; ?>';">
                                                                         <i class="fa fa-trash"></i>
                                                                     </button>
                                                                 </td>
-                                                                <td><?php echo $i; ?></td>
-                                                                <td><?php echo $cus_name_s; ?></td>
+                                                                <td style="text-align:center"><?php echo $i; ?></td>
+                                                                <td style="text-align:center"><?php echo $cus_name_s; ?></td>
                                                                 <td><?php echo $cus_address_s; ?></td>
                                                                 <td><?php echo $cus_nic_pass_s; ?></td>
                                                                 <td><?php echo $cus_phone_s; ?></td>
@@ -239,19 +239,19 @@ if (!isset($_SESSION['admin_email'])) {
 
                                 <tr>
                                     <td class="text-center">
-                                        <button type="button" rel="tooltip" class="btn btn-success btn-sm"
+                                        <button style="display:block;margin:0 auto;margin-top:2px;" type="button" rel="tooltip" class="btn btn-success btn-sm"
                                                 data-original-title="" title="Edit"
                                                 onclick="location.href = 'index.php?edit_customer=<?php echo $c_id; ?>';">
                                             <i class="fa fa-pencil"></i>
                                         </button>
-                                        <button type="button" rel="tooltip" class="btn btn-danger btn-sm"
+                                        <button style="display:block;margin:0 auto;margin-top:2px;" type="button" rel="tooltip" class="btn btn-danger btn-sm"
                                                 data-original-title="" title="Delete"
                                                 onclick="location.href = 'index.php?delete_customer=<?php echo $c_id; ?>';">
                                             <i class="fa fa-trash"></i>
                                         </button>
                                     </td>
-                                    <td><?php echo $i; ?></td>
-                                    <td><?php echo $c_name; ?></td>
+                                    <td style="text-align:center"><?php echo $i; ?></td>
+                                    <td style="text-align:center"><?php echo $c_name; ?></td>
                                     <td><?php echo $c_address; ?></td>
                                     <td><?php echo $c_nic; ?></td>
                                     <td><?php echo $c_phone; ?></td>
